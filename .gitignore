@@ -297,5 +297,4 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,python,pycharm+all
 
-/workflow_graph.png
 /bprograms/

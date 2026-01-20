@@ -5,7 +5,7 @@ try:
     app = build_graph()
     png_bytes = app.get_graph().draw_mermaid_png()
     
-    output_file = "workflow.png"
+    output_file = "workflow_graph.png"
     with open(output_file, "wb") as f:
         f.write(png_bytes)
         
