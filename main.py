@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 from dotenv import load_dotenv
 from langgraph.graph import StateGraph, END
 from agent.state import AgentState
@@ -16,12 +17,20 @@ from agent.nodes import (
 load_dotenv()
 
 def route_feedback(state: AgentState):
-    feedback = state.get("user_feedback", "").lower()
-    if feedback == "approve" or not feedback:
+    feedback = state.get("user_feedback")
+    
+    # Handle dict (new format) or str (legacy/simple format)
+    if isinstance(feedback, dict):
+        action = feedback.get("action", "approve")
+    else:
+        # feedback is string or None
+        action = str(feedback).lower() if feedback else "approve"
+        
+    if action == "approve":
         print("--- Workflow Completed ---")
         return END
     else:
-        print(f"--- Rerouting for Re-analysis (Feedback: {feedback}) ---")
+        print(f"--- Rerouting for Re-analysis (Action: {action}) ---")
         return "analyze"
 
 def build_graph():
@@ -58,7 +67,7 @@ def build_graph():
 def main():
     print("Starting Requirement Evolution Agent...")
     
-    domain = input("Enter domain name (default: 'General'): ").strip() or "General"
+    domain = input("Enter domain name OR Git File URL (default: 'General'): ").strip() or "General"
     
     # Check for OPENAI_API_KEY
     if not os.environ.get("OPENAI_API_KEY"):
@@ -76,7 +85,8 @@ def main():
         "json_output": {},
         "html_path": "",
         "user_feedback": None,
-        "iteration": 0
+        "iteration": 0,
+        "start_time": time.time()
     }
     
     app = build_graph()

@@ -4,6 +4,9 @@ class RequirementVersion(TypedDict):
     version_id: int
     content: str
     filename: str
+    commit_hash: Optional[str]
+    date: Optional[str]
+    author: Optional[str]
 
 class DiffEntry(TypedDict):
     diff_id: int
@@ -14,6 +17,10 @@ class DiffEntry(TypedDict):
     reason_text: str
     old_content_snippet: str
     new_content_snippet: str
+    old_commit_hash: Optional[str]
+    old_date: Optional[str]
+    new_commit_hash: Optional[str]
+    new_date: Optional[str]
 
 class AgentState(TypedDict):
     domain: str
@@ -22,5 +29,6 @@ class AgentState(TypedDict):
     diffs: List[DiffEntry]
     json_output: Dict[str, Any]
     html_path: str
-    user_feedback: Optional[str] # None, 'approve', or correction instructions
+    user_feedback: Optional[Any] # None, 'approve' (str), or correction dict
     iteration: int
+    start_time: float
