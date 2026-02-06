@@ -1,27 +1,59 @@
 import os
 import difflib
 import json
+import time
 from typing import List, Dict, Any
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import threading
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from pydantic import BaseModel, Field
 
 from agent.state import AgentState, RequirementVersion, DiffEntry
-from agent.utils import render_html_report, open_in_browser
+from agent.utils import render_html_report, open_in_browser, REASON_DEFINITIONS
+from agent.git_utils import parse_github_url, fetch_file_history, compute_git_diff
 
 # --- Analysis Models ---
 class ChangeAnalysis(BaseModel):
-    reason_type: str = Field(description="One of: Contradiction, Mistake, Inclusion, Summarization/shortening, Deletion, Clarification, Demonstration, Meaning, Other")
+    reason_type: str = Field(description=f"One of: {', '.join(REASON_DEFINITIONS.keys())}")
     reason_text: str = Field(description="Explanation for the change")
 
 # --- Nodes ---
 
 def load_files_node(state: AgentState) -> Dict[str, Any]:
-    """Loads requirement files from the specified paths."""
+    """Loads requirement files from the specified paths OR Git URL."""
     print("--- Loading Files ---")
-    files = state.get('file_paths', [])
+    
+    # Check if 'domain' acts as a placeholder for URL or if we check a specific state key
+    # For now, let's look at the 'domain' field or a 'file_paths' entry.
+    # The prompt said we'll ask for domain OR git url.
+    
+    domain_or_url = state.get('domain', '')
     versions: List[RequirementVersion] = []
+    
+    # Heuristic: Is it a GitHub URL?
+    if 'github.com' in domain_or_url:
+        print(f"Detected GitHub URL: {domain_or_url}")
+        try:
+            git_info = parse_github_url(domain_or_url)
+            versions = fetch_file_history(
+                git_info['repo_url'], 
+                git_info['file_path'], 
+                git_info['branch']
+            )
+            # Update domain name to be the file name
+            return {
+                "versions": versions, 
+                "domain": git_info['file_path'],
+                "file_paths": [domain_or_url]
+            }
+        except Exception as e:
+            print(f"Error fetching from Git: {e}")
+            return {"versions": []}
+
+    # Fallback to local files
+    files = state.get('file_paths', [])
     
     # If no files in state, try to find them in 'requirements' dir
     if not files:
@@ -35,7 +67,10 @@ def load_files_node(state: AgentState) -> Dict[str, Any]:
             versions.append({
                 "version_id": idx + 1,
                 "content": content,
-                "filename": os.path.basename(file_path)
+                "filename": os.path.basename(file_path),
+                "commit_hash": None,
+                "date": None,
+                "author": None
             })
             
     return {"versions": versions, "file_paths": files}
@@ -55,63 +90,91 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
         old_v = sorted_versions[i]
         new_v = sorted_versions[i+1]
         
-        # Split into non-empty lines (assuming each line is a requirement)
-        old_lines = [line for line in old_v['content'].splitlines() if line.strip()]
-        new_lines = [line for line in new_v['content'].splitlines() if line.strip()]
-        
-        matcher = difflib.SequenceMatcher(None, old_lines, new_lines)
-        
-        for tag, i1, i2, j1, j2 in matcher.get_opcodes():
-            if tag == 'equal':
-                continue
+        # Check if we should use Git Diff (if files are saved locally AND have hash)
+        if old_v.get('commit_hash') and new_v.get('commit_hash') and old_v.get('filename') and new_v.get('filename'):
+            diff_output = compute_git_diff(old_v['filename'], new_v['filename'])
             
-            # Extract chunks
-            old_chunk = old_lines[i1:i2]
-            new_chunk = new_lines[j1:j2]
+            # Simple Hunk Parser
+            hunks = []
+            current_hunk = []
+            in_hunk = False
             
-            # Heuristic: Break down 'replace' blocks into 1-to-1 pairs if meaningful
-            # Or just 'insert'/'delete' line by line
-            
-            # Calculate how many sub-diffs to generate
-            # For strict granular analysis "per requirement", let's behave as follows:
-            # - If 1 line replaces 1 line -> 1 diff
-            # - If N lines replace N lines -> N distinct diffs
-            # - If N lines replace M lines (and N!=M) -> Harder. 
-            #   Let's just align them 1-to-1 as much as possible, and the rest as insert/delete?
-            #   Or keep it as a block?
-            #   Simplicity for now: For 'replace', split min(N,M) pairs, then add inserts/deletes? 
-            #   Actually, difflib usually handles N!=M by having separate insert/delete/replace blocks 
-            #   or a replace block. 
-            #   Let's stick to a simple loop over max(len) to force granularity.
-            
-            max_len = max(len(old_chunk), len(new_chunk))
-            
-            for k in range(max_len):
-                sub_old = old_chunk[k] if k < len(old_chunk) else None
-                sub_new = new_chunk[k] if k < len(new_chunk) else None
+            for line in diff_output.splitlines():
+                if line.startswith('@@'):
+                    if current_hunk:
+                        hunks.append("\n".join(current_hunk))
+                        current_hunk = []
+                    in_hunk = True
+                    current_hunk.append(line)
+                elif in_hunk:
+                    current_hunk.append(line)
+                    
+            if current_hunk:
+                hunks.append("\n".join(current_hunk))
                 
-                # Construct display diff for this specific item
-                diff_lines = []
-                if sub_old:
-                    diff_lines.append(f"- {sub_old}")
-                if sub_new:
-                    diff_lines.append(f"+ {sub_new}")
-                
-                diff_text = "\n".join(diff_lines)
-                
+            for hunk in hunks:
                 diffs.append({
                     "diff_id": global_diff_id,
                     "old_version_id": old_v['version_id'],
                     "new_version_id": new_v['version_id'],
-                    "diff_text": diff_text,
+                    "diff_text": hunk,
                     "reason_type": "Pending Analysis",
                     "reason_text": "Pending...",
-                    "old_content_snippet": sub_old if sub_old else "",
-                    "new_content_snippet": sub_new if sub_new else ""
+                    "old_content_snippet": "", 
+                    "new_content_snippet": "",
+                    "old_commit_hash": old_v.get('commit_hash'),
+                    "old_date": old_v.get('date'),
+                    "new_commit_hash": new_v.get('commit_hash'),
+                    "new_date": new_v.get('date')
                 })
                 global_diff_id += 1
+                
+        else:
+            # Fallback to difflib logic for plain text files
+            old_lines = [line for line in old_v['content'].splitlines() if line.strip()]
+            new_lines = [line for line in new_v['content'].splitlines() if line.strip()]
+            
+            matcher = difflib.SequenceMatcher(None, old_lines, new_lines)
+            
+            for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+                if tag == 'equal':
+                    continue
+                
+                old_chunk = old_lines[i1:i2]
+                new_chunk = new_lines[j1:j2]
+                
+                max_len = max(len(old_chunk), len(new_chunk))
+                
+                for k in range(max_len):
+                    sub_old = old_chunk[k] if k < len(old_chunk) else None
+                    sub_new = new_chunk[k] if k < len(new_chunk) else None
+                    
+                    diff_lines = []
+                    if sub_old:
+                        diff_lines.append(f"- {sub_old}")
+                    if sub_new:
+                        diff_lines.append(f"+ {sub_new}")
+                    
+                    diff_text = "\n".join(diff_lines)
+                    
+                    diffs.append({
+                        "diff_id": global_diff_id,
+                        "old_version_id": old_v['version_id'],
+                        "new_version_id": new_v['version_id'],
+                        "diff_text": diff_text,
+                        "reason_type": "Pending Analysis",
+                        "reason_text": "Pending...",
+                        "old_content_snippet": sub_old if sub_old else "",
+                        "new_content_snippet": sub_new if sub_new else "",
+                        "old_commit_hash": old_v.get('commit_hash'),
+                        "old_date": old_v.get('date'),
+                        "new_commit_hash": new_v.get('commit_hash'),
+                        "new_date": new_v.get('date')
+                    })
+                    global_diff_id += 1
         
     return {"diffs": diffs}
+
 
 def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
     """Uses LLM to analyze the reasons for changes."""
@@ -122,39 +185,34 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
         print("WARNING: OPENAI_API_KEY not found. Skipping analysis.")
         return {}
 
-    llm = ChatOpenAI(temperature=0, model="gpt-4o")
+    llm = ChatOpenAI(temperature=0, model="gpt-5-nano", api_key=os.environ.get("OPENAI_API_KEY"))
     parser = JsonOutputParser(pydantic_object=ChangeAnalysis)
+    
+    # Build Reason Types list for prompt
+    reasons_prompt_list = "\n".join([f"- {k}: {v}" for k, v in REASON_DEFINITIONS.items()])
     
     prompt_messages = [
         ("system", "You are an expert business analyst specializing in requirement evolution."),
-        ("user", """Analyze the changes between these two requirement document versions.
+        ("user", f"""Analyze the changes between these two requirement document versions.
         
         Old Version:
-        {old_text}
+        {{old_text}}
         
         New Version:
-        {new_text}
+        {{new_text}}
         
         Diff:
-        {diff_text}
+        {{diff_text}}
         
         Identify the PRIMARY reason for the changes. If there are multiple distinct changes, 
         summarize the dominant one or the most critical one.
         
         Possible reason types:
-        - Contradiction: The change was introduced to fix a contradiction between two requirements.
-        - Mistake: The change fixes a mistake in one requirements or more.
-        - Inclusion: The requirement was change to be more inclusive.
-        - Summarization/shortening: The change is made to summarize and shorten a lengthy requirement.
-        - Deletion: The requirement was redundant and therefore removed.
-        - Clarification of a requirement: The change was made to help understanding the requirement.
-        - Demonstration (example, visualization): An example was required to assist in understanding the requirement.
-        - Meaning: The requirement required a change to its meaning/intention.
-        - Other. 
+        {reasons_prompt_list}
         
-        {feedback_section}
+        {{feedback_section}}
         
-        {format_instructions}
+        {{format_instructions}}
         """)
     ]
     
@@ -168,28 +226,65 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
     # Check for feedback
     feedback = state.get('user_feedback')
     feedback_section = ""
-    if feedback and feedback != "approve":
-        feedback_section = f"IMPORTANT: The user rejected a previous analysis with the following feedback/correction:\n'{feedback}'\nPlease adjust your analysis to respect this feedback."
+    # legacy global feedback support
+    if feedback and isinstance(feedback, str) and feedback != "approve":
+         feedback_section = f"IMPORTANT: The user rejected a previous analysis with the following feedback/correction:\n'{feedback}'\nPlease adjust your analysis to respect this feedback."
     
     for diff in state['diffs']:
-        # Skip if already analyzed (unless re-running)
-        # But here we just re-analyze or analyze pending
+        # Logic for determining if we should analyze or skip
+        should_analyze = False
+        specific_reason = None
+        specific_explanation = None
         
+        # 1. Existing Feedback Check
+        if isinstance(feedback, dict):
+             # Check for structured feedback
+             specific_reason = feedback.get(f"reason_{diff['diff_id']}")
+             specific_explanation = feedback.get(f"explanation_{diff['diff_id']}")
+             
+             if specific_reason or specific_explanation:
+                 should_analyze = True
+        
+        # 2. Logic
+        if diff.get('reason_type') == "Pending Analysis":
+            should_analyze = True
+        elif feedback == 'retry':
+            # Legacy global retry
+            should_analyze = True
+            
+        if not should_analyze:
+            updated_diffs.append(diff)
+            continue
+
+        print(f"Analyzing diff {diff['diff_id']} (Reason: {specific_reason}, Exp: {specific_explanation})...")
+            
         old_text = versions.get(diff['old_version_id'], "")
         new_text = versions.get(diff['new_version_id'], "")
         
+        current_feedback_section = ""
+        if specific_reason or specific_explanation:
+            current_feedback_section = "IMPORTANT: The user rejected the previous analysis.\n"
+            if specific_reason:
+                current_feedback_section += f"- The user SPECIFIED the reason type must be: '{specific_reason}'.\n"
+            if specific_explanation:
+                current_feedback_section += f"- User Explanation/Context: '{specific_explanation}'.\n"
+            current_feedback_section += "Please adjust your analysis to strictly reflect this feedback."
+        elif feedback_section: 
+             # Fallback to global feedback
+             current_feedback_section = feedback_section
+
         try:
             result = chain.invoke({
                 "old_text": old_text,
                 "new_text": new_text,
                 "diff_text": diff['diff_text'],
-                "feedback_section": feedback_section,
+                "feedback_section": current_feedback_section,
                 "format_instructions": parser.get_format_instructions()
             })
             
             diff['reason_type'] = result['reason_type']
             diff['reason_text'] = result['reason_text']
-            
+            # Replaced/cleared previous correction if any, effectively
         except Exception as e:
             print(f"Error analyzing diff {diff['diff_id']}: {e}")
             diff['reason_type'] = "Error"
@@ -204,6 +299,13 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
     # In LangGraph, we return the DIFFS update. We probably shouldn't clear 'user_feedback' here 
     # explicitly unless we return it as None. 
     # Let's return it as None to "consume" the feedback.
+    
+    # Calculate execution time
+    start_time = state.get('start_time')
+    if start_time:
+        elapsed = time.time() - start_time
+        print(f"--- Analysis Completed in {elapsed:.2f} seconds ---")
+        
     return {"diffs": updated_diffs, "user_feedback": None}
 
 def generate_json_node(state: AgentState) -> Dict[str, Any]:
@@ -242,18 +344,54 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
         "diffs": json_diffs
     }
     
+    # Generate filename: output_{basename}.json
+    domain = state.get("domain", "Unknown Domain")
+    base_name = os.path.basename(domain)
+    name_root, _ = os.path.splitext(base_name)
+    safe_name = "".join(c for c in name_root if c.isalnum() or c in ('-', '_')).strip()
+    if not safe_name:
+        safe_name = "analysis"
+        
+    outputs_dir = os.path.join(os.getcwd(), "outputs")
+    if not os.path.exists(outputs_dir):
+        os.makedirs(outputs_dir)
+        
+    output_filename = os.path.join(outputs_dir, f"output_{safe_name}.json")
+    
     # Save to file
-    with open("output.json", "w") as f:
+    with open(output_filename, "w") as f:
         json.dump(json_output, f, indent=2)
         
     return {"json_output": json_output}
 
 def generate_html_node(state: AgentState) -> Dict[str, Any]:
     print("--- Generating HTML ---")
+    
+    domain = state.get("domain", "Unknown")
+    
+    # Generate filename: report_{basename}.html
+    # Remove extension if present
+    base_name = os.path.basename(domain)
+    name_root, _ = os.path.splitext(base_name)
+    
+    # Basic sanitization
+    safe_name = "".join(c for c in name_root if c.isalnum() or c in ('-', '_')).strip()
+    if not safe_name:
+        safe_name = "analysis"
+        
+    # Create reports directory if it doesn't exist
+    reports_dir = os.path.join(os.getcwd(), "reports")
+    if not os.path.exists(reports_dir):
+        os.makedirs(reports_dir)
+        
+    output_filename = os.path.join(reports_dir, f"report_{safe_name}.html")
+    
     html_path = render_html_report(
-        domain=state.get("domain", "Unknown"),
+        domain=domain,
         num_versions=len(state['versions']),
-        diffs=state['diffs']
+        diffs=state['diffs'],
+        reason_types=list(REASON_DEFINITIONS.keys()),
+        output_path=output_filename
     )
     
     # Auto-open
@@ -274,14 +412,71 @@ def feedback_node(state: AgentState) -> Dict[str, Any]:
     # But how do we get the input? 
     # We can prompt via input() in the terminal if running interactively.
     
-    print("Check the opened HTML file.")
-    user_input = input("Enter 'approve' to finish, or enter correction Instructions to re-analyze: ")
     
-    if user_input.strip().lower() == 'approve' or user_input.strip() == '':
+    print("Check the opened HTML file. Waiting for feedback via web UI...")
+    
+    feedback_data = {}
+    event = threading.Event()
+    
+    class FeedbackHandler(BaseHTTPRequestHandler):
+        def do_POST(self):
+            if self.path == '/submit':
+                content_length = int(self.headers['Content-Length'])
+                post_data = self.rfile.read(content_length)
+                data = json.loads(post_data.decode('utf-8'))
+                
+                feedback_data.update(data)
+                
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({'status': 'received'}).encode('utf-8'))
+                
+                # Signal completion
+                event.set()
+                
+        def do_OPTIONS(self):
+            self.send_response(200)
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+            self.end_headers()
+            
+        def log_message(self, format, *args):
+            return # Silence logs
+
+    server_address = ('localhost', 8000)
+    httpd = HTTPServer(server_address, FeedbackHandler)
+    
+    # Run server in a separate thread so we can wait on the event
+    server_thread = threading.Thread(target=httpd.serve_forever)
+    server_thread.daemon = True
+    server_thread.start()
+    
+    print(f"Feedback server running at http://localhost:8000")
+    
+    try:
+        # Loop until event is set
+        while not event.is_set():
+            # Wait for 1 second at a time to allow signal handling for Ctrl+C
+            event.wait(1.0)
+    except KeyboardInterrupt:
+        print("\nUser interrupted. Shutting down server...")
+        # Optionally exit or just cleanup
+        httpd.shutdown()
+        # Re-raise so LangGraph or main can handle it? 
+        # Or return END? 
+        return {"user_feedback": "approve"} # Treat interruption as done/approve? Or exit
+
+    httpd.shutdown()
+    
+    action = feedback_data.get('action', 'approve')
+    print(f"User action: {action}")
+    
+    if action == 'approve':
         return {"user_feedback": "approve"}
     else:
-        # We treat any other input as correction instructions that should guide the analysis?
-        # For simplicity, we just loop back. 
-        # A more advanced version would add this feedback to the LLM prompt.
-        return {"user_feedback": user_input}
+        # Pass the whole data dict as feedback
+        return {"user_feedback": feedback_data}
 

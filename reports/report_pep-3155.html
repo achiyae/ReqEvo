@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirement Evolution Analysis - peps/pep-3155.rst</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        .container { max-width: 95%; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .diff-text { font-family: 'Consolas', 'Courier New', monospace; white-space: pre-wrap; background-color: #f8f9fa; padding: 5px; border-radius: 4px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        .reason-type { font-weight: bold; color: #2980b9; position: relative; display: inline-block; cursor: help; border-bottom: 1px dotted #2980b9; }
+        .old-version { color: #c0392b; text-decoration: line-through; }
+        .new-version { color: #27ae60; }
+        .meta { margin-bottom: 20px; color: #7f8c8d; }
+        
+        /* Tooltip container */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            font-weight: normal;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Git Style Diff */
+        .diff-line { display: block; min-height: 1.2em; }
+        .diff-added { background-color: #e6ffed; color: #22863a; }
+        .diff-removed { background-color: #ffeef0; color: #b31d28; }
+        .diff-header { color: #6f7781; font-weight: bold; }
+        
+        /* Feedback Form */
+        .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
+        .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+        .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; }
+        .submit-btn:hover { background-color: #27ae60; }
+        label { font-weight: bold; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Requirement Evolution: peps/pep-3155.rst</h1>
+        <div class="meta">
+            <p><strong>Number of Versions:</strong> 5</p>
+        </div>
+        
+        <form id="feedbackForm">
+            <table>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 45%;">
+                    <col style="width: 25%;">
+                    <col style="width: 25%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Change Details</th>
+                        <th>AI Analysis</th>
+                        <th>Your Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                08d688f (Cached) &rarr; 6aa0b66 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-header">@@ -158,15 +158,4 @@ References</span>
+<span class="diff-line"> Copyright</span>
+<span class="diff-line"> =========</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This document has been placed in the public domain.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-..</span>
+<span class="diff-line diff-removed">-   Local Variables:</span>
+<span class="diff-line diff-removed">-   mode: indented-text</span>
+<span class="diff-line diff-removed">-   indent-tabs-mode: nil</span>
+<span class="diff-line diff-removed">-   sentence-end-double-space: t</span>
+<span class="diff-line diff-removed">-   fill-column: 70</span>
+<span class="diff-line diff-removed">-   coding: utf-8</span>
+<span class="diff-line diff-removed">-   End:</span>
+<span class="diff-line">\ No newline at end of file</span>
+<span class="diff-line diff-added">+This document has been placed in the public domain.</span>
+<span class="diff-line">\ No newline at end of file</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Eliminated the Local Variables block (editor configuration) at the end of the document; this is boilerplate/metadata formatting with no impact on the specification content.</p>
+                        </td>
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_1">Correct Reason:</label>
+                                    <select id="reason_1" name="reason_1" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_1">Explanation / Comment:</label>
+                                    <textarea id="explanation_1" name="explanation_1" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6aa0b66 (Cached) &rarr; b990d05 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-header">@@ -5,7 +5,6 @@ Last-Modified: $Date$</span>
+<span class="diff-line"> Author: Antoine Pitrou <solipsis@pitrou.net></span>
+<span class="diff-line"> Status: Final</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line diff-removed">-Content-Type: text/x-rst</span>
+<span class="diff-line"> Created: 29-Oct-2011</span>
+<span class="diff-line"> Python-Version: 3.3</span>
+<span class="diff-line"> Post-History:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Removed the Content-Type: text/x-rst line from the document header as part of formatting/metadata cleanup; no substantive changes to the requirement content.</p>
+                        </td>
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_2">Correct Reason:</label>
+                                    <select id="reason_2" name="reason_2" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_2">Explanation / Comment:</label>
+                                    <textarea id="explanation_2" name="explanation_2" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                b990d05 (Cached) &rarr; e155470 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-header">@@ -1,7 +1,6 @@</span>
+<span class="diff-line"> PEP: 3155</span>
+<span class="diff-line"> Title: Qualified name for classes and functions</span>
+<span class="diff-line"> Version: $Revision$</span>
+<span class="diff-line diff-removed">-Last-Modified: $Date$</span>
+<span class="diff-line"> Author: Antoine Pitrou <solipsis@pitrou.net></span>
+<span class="diff-line"> Status: Final</span>
+<span class="diff-line"> Type: Standards Track</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Removed the Last-Modified metadata line from the header; a boilerplate/metadata cleanup that does not change the requirement content or intended meaning.</p>
+                        </td>
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_3">Correct Reason:</label>
+                                    <select id="reason_3" name="reason_3" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_3">Explanation / Comment:</label>
+                                    <textarea id="explanation_3" name="explanation_3" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div><strong>From:</strong> 4 &rarr; <strong>To:</strong> 5</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                e155470 (Cached) &rarr; b39aefe (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-header">@@ -1,6 +1,5 @@</span>
+<span class="diff-line"> PEP: 3155</span>
+<span class="diff-line"> Title: Qualified name for classes and functions</span>
+<span class="diff-line diff-removed">-Version: $Revision$</span>
+<span class="diff-line"> Author: Antoine Pitrou <solipsis@pitrou.net></span>
+<span class="diff-line"> Status: Final</span>
+<span class="diff-line"> Type: Standards Track</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            </div>
+                            <p>Removed the Version line (Version: $Revision$) from the header in the New Version; this metadata was redundant and not part of the formal requirement content.</p>
+                        </td>
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_4">Correct Reason:</label>
+                                    <select id="reason_4" name="reason_4" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_4">Explanation / Comment:</label>
+                                    <textarea id="explanation_4" name="explanation_4" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            <button type="button" class="submit-btn" onclick="submitFeedback()">Submit Corrections & Re-Analyze</button>
+        </form>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, select, textarea');
+            let hasFeedback = false;
+            
+            inputs.forEach(input => {
+                const val = input.value.trim();
+                if (val) {
+                    formData[input.name] = val;
+                    hasFeedback = true;
+                }
+            });
+            
+            if (!hasFeedback) {
+                if(!confirm("No feedback entered. Do you want to approve the current analysis?")) {
+                    return;
+                }
+                formData['action'] = 'approve';
+            } else {
+                formData['action'] = 'retry';
+            }
+
+            fetch('http://localhost:8000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Feedback submitted! You can close this tab/window now.");
+                window.close();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("Submitted! (Note: Server might have closed if it received the response)");
+            });
+        }
+    </script>
+</body>
+</html>
