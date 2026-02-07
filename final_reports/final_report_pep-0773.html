@@ -1,0 +1,1686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirement Evolution Analysis - peps/pep-0773.rst</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        .container { max-width: 95%; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .diff-text { font-family: 'Consolas', 'Courier New', monospace; white-space: pre-wrap; background-color: #f8f9fa; padding: 5px; border-radius: 4px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        .reason-type { font-weight: bold; color: #2980b9; position: relative; display: inline-block; cursor: help; border-bottom: 1px dotted #2980b9; }
+        .old-version { color: #c0392b; text-decoration: line-through; }
+        .new-version { color: #27ae60; }
+        .meta { margin-bottom: 20px; color: #7f8c8d; }
+        
+        /* Tooltip container */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            font-weight: normal;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Git Style Diff */
+        .diff-line { display: block; min-height: 1.2em; }
+        .diff-added { background-color: #e6ffed; color: #22863a; }
+        .diff-removed { background-color: #ffeef0; color: #b31d28; }
+        .diff-header { color: #6f7781; font-weight: bold; }
+        
+        /* Feedback Form */
+        .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
+        .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+        .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
+        label { font-weight: bold; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Requirement Evolution: peps/pep-0773.rst</h1>
+        <div class="meta">
+            <p><strong>Number of Versions:</strong> 5</p>
+        </div>
+        
+        <form id="feedbackForm">
+            <table>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 60%;">
+                    <col style="width: 35%;">
+                    
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Change Details</th>
+                        <th>AI Analysis</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">and provides the core team with the ability to manage releases for many years</span>
+<span class="diff-line"> to come.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+With the new installer, the recommended command to launch the default Python on</span>
+<span class="diff-line diff-added">+Windows will be ``python``, while the command for managing multiple versions</span>
+<span class="diff-line diff-added">+(including launching a specific one) will be ``py``. Users can also opt-in to</span>
+<span class="diff-line diff-added">+having global ``python3.x`` commands by adding an extra entry to their ``PATH``</span>
+<span class="diff-line diff-added">+environment variable. We recommend starting with the "How to teach this" section</span>
+<span class="diff-line diff-added">+for the most concise high-level overview of the features.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Reader's Note</span>
+<span class="diff-line"> -------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The New Version adds a new design where the default Python launcher on Windows is 'python' and the command for managing multiple versions (including launching a specific one) is 'py'; it also mentions optional global 'python3.x' commands via PATH and suggests using the 'How to teach this' section for an overview, representing a new direction not present in the Old Version.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">in their user profile, and is able to be reset, backed-up and restored using</span>
+<span class="diff-line"> regular OS functionality.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Nuget Package</span>
+<span class="diff-line diff-added">+NuGet Package</span>
+<span class="diff-line"> -------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The Nuget packages for CPython are produced and published as part of our</span>
+<span class="diff-line diff-added">+The NuGet packages for CPython are produced and published as part of our</span>
+<span class="diff-line"> normal release process. The contents are identical to the traditional</span>
+<span class="diff-line diff-removed">-installer. A Nuget package is published to nuget.org, which is a package</span>
+<span class="diff-line diff-added">+installer. A NuGet package is published to nuget.org, which is a package</span>
+<span class="diff-line"> manager typically associated with .NET languages, but highly integrated with</span>
+<span class="diff-line"> any project supported by Visual Studio. This makes it a nice format for users</span>
+<span class="diff-line"> who want a lightweight install of Python as part of their regular build process,</span>
+<span class="diff-line"> and can simplify embedding scenarios.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The packages are installed using any tool capable of using the Nuget API, or</span>
+<span class="diff-line diff-added">+The packages are installed using any tool capable of using the NuGet API, or</span>
+<span class="diff-line"> may be downloaded directly once the URL of the package is known. The package is</span>
+<span class="diff-line"> a plain ZIP file with some metadata. It contains the CPython interpreter, the</span>
+<span class="diff-line"> standard library, development headers and import libraries, and pip. It does</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Editorial capitalization corrections in the NuGet section: replacing 'Nuget' with the branded 'NuGet' (and adjusting related references such as 'NuGet API') to be consistent with branding and documentation style. No changes to meaning or functionality.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">version to be launched, though in general the targets can only be changed</span>
+<span class="diff-line"> manually by the user, and not by merely installing another app.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Both the Nuget package and the embeddable distro are as simple and reliable to</span>
+<span class="diff-line diff-added">+Both the NuGet package and the embeddable distro are as simple and reliable to</span>
+<span class="diff-line"> install as extracting an archive file, though it's worth noting that for many</span>
+<span class="diff-line"> Python users this is not a common task. They provide no install management at</span>
+<span class="diff-line"> all, and cannot be reliably updated other than by deleting and re-extracting.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Minor syntactic change - Nuget to NuGet.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Overview of PyManager</span>
+<span class="diff-line"> =====================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-("PyManager" name open for bikeshedding)</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> PyManager is the internal name of our proposed replacement installer tool. It</span>
+<span class="diff-line"> will be distributed both in the Windows Store and on python.org as an MSIX</span>
+<span class="diff-line"> package. Downloading from either source will get an identical package, and</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Removed the editorial note line in the Overview of PyManager section that mentioned the name being open for bikeshedding, eliminating non-substantive text and shortening that portion of the document.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">on. The proposed commands are detailed later. The existing behaviour of the</span>
+<span class="diff-line"> :pep:`397` launcher is preserved, however, launching through ``py`` will not</span>
+<span class="diff-line"> automatically install runtimes (by default). If one is requested but is not</span>
+<span class="diff-line diff-removed">-installed, users will just get an error. The ``py run ...`` subcommand, however,</span>
+<span class="diff-line diff-removed">-will install automatically, and supports the same options as bare ``py``.</span>
+<span class="diff-line diff-added">+installed, users will just get an error. The ``py exec ...`` subcommand,</span>
+<span class="diff-line diff-added">+however, will install automatically, and supports the same options as bare</span>
+<span class="diff-line diff-added">+``py``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> These commands are added at very low priority in the user's ``PATH`` by the OS.</span>
+<span class="diff-line"> Every existing configuration we may have created on a user's machine will take</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Dominant change: the automatic-install behavior for unresolved runtimes moves from the py run subcommand to the py exec subcommand; effectively removing py run as the auto-install path and implementing that behavior under py exec in the new spec.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">--------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Our intent is to immediately stop publishing individual versions to the Windows</span>
+<span class="diff-line diff-removed">-Store, and to deprecate and phase out the traditional installer and Nuget</span>
+<span class="diff-line diff-removed">-packages by Python 3.16. The embeddable distro would remain, but its listing on</span>
+<span class="diff-line diff-removed">-python.org download pages would be phased out and it will be available only</span>
+<span class="diff-line diff-removed">-through PyManager.</span>
+<span class="diff-line diff-added">+Store, and to deprecate and phase out the traditional installer by Python 3.16.</span>
+<span class="diff-line diff-added">+The embeddable distro will remain, but its listing on python.org download pages</span>
+<span class="diff-line diff-added">+will be phased out and it will be available only through PyManager. No changes</span>
+<span class="diff-line diff-added">+will be made to the NuGet packages.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> PyManager will be made available as an app package downloadable manually from</span>
+<span class="diff-line"> python.org, and the double-click install experience is generally smooth. This</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Mistake
+                                <span class="tooltiptext">The change fixes a mistake (logically wrong statement) in the requirement.</span>
+                            </div>
+                            <p>Incorrectly stated that NuGet packages would be deprecated along with the traditional installer; the change clarifies that only the traditional installer will be deprecated/phase-out by Python 3.16, while NuGet packages will remain available.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Some automated deployment scenarios do not work with the newer MSIX format, and</span>
+<span class="diff-line"> so a simple MSI will also be provided on python.org. This will have no options</span>
+<span class="diff-line"> or user interface, and require administrative privileges, which are typically</span>
+<span class="diff-line diff-removed">-available for these kinds of scenarios. This MSI would be discouraged for most</span>
+<span class="diff-line diff-removed">-users, and the MSIX should be the default.</span>
+<span class="diff-line diff-added">+available for these kinds of scenarios. Additionally, the MSI will be required</span>
+<span class="diff-line diff-added">+by users on non-standard systems, such as Wine, that do not support the MSIX</span>
+<span class="diff-line diff-added">+format. While not officially supported, the MSI will enable these platforms to</span>
+<span class="diff-line diff-added">+continue using upstream distributions of CPython. The MSI would be discouraged</span>
+<span class="diff-line diff-added">+for most other users, and the MSIX is considered the default.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> It's worth noting that there is no way to make the MSI install fully compatible</span>
+<span class="diff-line"> with the MSIX, and users with both will likely encounter confusion or problems.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The new version expands deployment options by adding and explicitly requiring an MSI-based installer for non-standard environments (e.g., Wine) that do not support MSIX, broadening the installation pathways beyond the default MSIX/Store path while keeping MSIX as the recommended default.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">.. code:: text</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-   pymanager exec -V:tag [interpreter opts] [script.py|-m module|-c code] [script args]</span>
+<span class="diff-line diff-removed">-   pymanager exec -3.* ...</span>
+<span class="diff-line diff-removed">-   pymanager exec [--only-managed] [--[no-]install] [-V:<TAG>|-3.*] ...</span>
+<span class="diff-line diff-removed">-   py [-V:<TAG>|-3.*] ...</span>
+<span class="diff-line diff-added">+   py [-V:<TAG>] [interpreter opts] [script.py|-m module|-c code] [script args]</span>
+<span class="diff-line diff-added">+   py [-3.*] [interpreter opts] [script.py|-m module|-c code] [script args]</span>
+<span class="diff-line">    python ...</span>
+<span class="diff-line">    python3 ...</span>
+<span class="diff-line diff-added">+   pymanager exec -V:tag ...</span>
+<span class="diff-line diff-added">+   pymanager exec -3.* ...</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> This subcommand is used to select and launch a runtime. It is the default action</span>
+<span class="diff-line"> for the ``py`` command, and the only action supported by the ``python`` and</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The Exec subcommand syntax was clarified by separating the combined -V/-3.* forms into distinct py and pymanager specifications. Py now uses -V:<TAG> and a separate -3.* option (instead of -V:<TAG>|-3.*), while pymanager retains -V:tag and -3.*. This makes the tag syntax explicit and consistent across commands, reducing ambiguity in how runtimes are selected and launched.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The best installed runtime matching the tag is then selected and launched with</span>
+<span class="diff-line"> the remaining command line.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-If no matching runtime is found, and the ``--install`` option is set, it will be</span>
+<span class="diff-line diff-removed">-installed and then launched. This is the default for ``py exec``, and also for</span>
+<span class="diff-line diff-removed">-``python`` but only when no runtime was requested (which implies that no</span>
+<span class="diff-line diff-removed">-runtimes were installed). In all other cases, if no install is found, an error</span>
+<span class="diff-line diff-removed">-is printed and the process exits.</span>
+<span class="diff-line diff-added">+If no matching runtime is found, the ``py exec`` and ``pymanager exec`` commands</span>
+<span class="diff-line diff-added">+will automatically install and launch one (user configuration permitting). The</span>
+<span class="diff-line diff-added">+``py``, ``python`` and ``python3`` commands will report and error and exit.</span>
+<span class="diff-line diff-added">+However, in the case where no runtimes are available at all, including none</span>
+<span class="diff-line diff-added">+detected from other installers, the first runtime will be automatically</span>
+<span class="diff-line diff-added">+installed. This provides a useful first-launch experience, where a new user who</span>
+<span class="diff-line diff-added">+has just installed PyManager will directly launch the latest (or requested)</span>
+<span class="diff-line diff-added">+version of CPython. After this first time, errors will again be reported when a</span>
+<span class="diff-line diff-added">+requested runtime is not found.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Install subcommand</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The behavior when no matching runtime is found has been reframed: instead of a blanket error or requiring --install to trigger installation for certain commands, PyManager now defines distinct outcomes per command: py exec and pymanager exec auto-install and launch a runtime if none found; py, python, and python3 will report an error if no runtime is found unless no runtimes are available at all, in which case the first runtime is auto-installed. This changes the intention of the install flow from a simple 'install if requested' to a more proactive, targeted auto-install path, aligning with the new installer approach.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">.. code:: text</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-   py install [-s|--source <URL>] [-f|--force] [-u|--upgrade] [tag ...]</span>
+<span class="diff-line diff-removed">-   py install [-s|--source <URL>] [-t|--target <DIR>] [tag ...]</span>
+<span class="diff-line diff-removed">-   py install [-s|--source <URL>] [-d|--download <DIR>] [tag ...]</span>
+<span class="diff-line diff-added">+   py install [-s|--source <URL>] [-f|--force] [-u|--upgrade] tag [...]</span>
+<span class="diff-line diff-added">+   py install [-s|--source <URL>] [-t|--target <DIR>] tag</span>
+<span class="diff-line diff-added">+   py install [-s|--source <URL>] [-d|--download <DIR>] tag [...]</span>
+<span class="diff-line">    py install --refresh</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> .. note::</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The Install subcommand syntax was changed to require explicit tag specification (no implicit/latest install) and to remove the -f/--force and -u/--upgrade options from the primary install path. This makes installations version-driven and unambiguous, and reduces flexibility that allowed installing without specifying a target version. The change enforces a more explicit usage pattern for installations, aligning with the new design intent.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">prefixes, preferring a full match over a prefix, and tags use case-insensitive,</span>
+<span class="diff-line"> number-aware matches, with dotted numbers treated as versions. Tags must match</span>
+<span class="diff-line"> one of the listed "install for" tags, and entries list multiple such tags to</span>
+<span class="diff-line diff-removed">-handle abbreviated requests.</span>
+<span class="diff-line diff-added">+handle abbreviated requests. The special tag ``default`` resolves to the user's</span>
+<span class="diff-line diff-added">+configured default (typically ``3``).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> For example, the ``3.10.5`` entry would list all of ``3``, ``3.10`` and</span>
+<span class="diff-line"> ``3.10.5`` as tags to be installed for. A request for ``3.10`` would match one</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added support for a special 'default' tag in the install command. The 'default' tag resolves to the user's configured default (typically '3'), ensuring a defined default runtime is selected when no explicit tag is provided.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The default index file is hosted on python.org, and contains install information</span>
+<span class="diff-line"> including package URLs and hashes for all installable versions. An alternate</span>
+<span class="diff-line"> index may be specified by the user or their administrator (see Configuration</span>
+<span class="diff-line diff-removed">-below). Entries in the index file list the full tags they should be installed</span>
+<span class="diff-line diff-removed">-for, and if an exact match is found the package will be selected. In the case</span>
+<span class="diff-line diff-removed">-of no exact match, a prefix match will be used. In both cases, numbers in the</span>
+<span class="diff-line diff-removed">-tag are treated logically - that is, ``3.1`` is a prefix of ``3.1.2`` but not of</span>
+<span class="diff-line diff-removed">-``3.10``.</span>
+<span class="diff-line diff-added">+below). Entries in the index file list the full set of tags they should be</span>
+<span class="diff-line diff-added">+installed for, and if an exact match is found the package will be selected. In</span>
+<span class="diff-line diff-added">+the case of no exact match, a prefix match will be used. In both cases, numbers</span>
+<span class="diff-line diff-added">+in the tag are treated logically - that is, ``3.1`` is a prefix of ``3.1.2`` but</span>
+<span class="diff-line diff-added">+not of ``3.10``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> If a tag is already satisfied by an existing install, nothing will be installed.</span>
+<span class="diff-line"> The user must pass an ``--upgrade`` or ``--force`` option to replace the</span>
+<span class="diff-line"> existing install; the former will only replace it with a newer version, while</span>
+<span class="diff-line"> the latter will remove and replace even with the same version.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Calling the command without providing any tags will install the latest default</span>
+<span class="diff-line diff-removed">-version (in effect, the first non-prerelease entry in the index).</span>
+<span class="diff-line diff-removed">-Passing ``--upgrade`` with no tags is an error.</span>
+<span class="diff-line diff-added">+Calling the command without providing any tags will not install anything, but</span>
+<span class="diff-line diff-added">+will display the help text and an error (as for any invalid option). However,</span>
+<span class="diff-line diff-added">+passing ``--upgrade`` with no tags will attempt to upgrade all installs.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Passing ``--refresh`` will regenerate all metadata and shortcuts for all</span>
+<span class="diff-line"> installs. This is intentionally applied to all installs at once, as shortcut</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The dominant change is a semantic shift in the Install subcommand: when invoked with no tags, it no longer installs the latest default version; instead it does not install anything and displays the help text and an error. Previously, it installed the latest default version. Additionally, --upgrade with no tags now attempts to upgrade all installs. This represents a fundamental redesign of user interaction and install semantics, not a simple wording fix.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">If the ``--purge`` option is passed with no tags, then (after confirmation) all</span>
+<span class="diff-line"> runtimes will be removed, along with shortcuts and any cached files.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Uninstalling PyManager does not uninstall any runtimes that were installed. For</span>
+<span class="diff-line diff-added">+technical reasons, this would not be reliably possible (we cannot run arbitrary</span>
+<span class="diff-line diff-added">+code at uninstall time), and so instead we deliberately ensure that anything</span>
+<span class="diff-line diff-added">+that has been installed will continue to work. Reinstalling PyManager allows</span>
+<span class="diff-line diff-added">+management of these installs to resume. Running ``py uninstall --purge`` before uninstalling</span>
+<span class="diff-line diff-added">+PyManager will perform a complete uninstall.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> List subcommand</span>
+<span class="diff-line"> ---------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Added explicit clarification in the Uninstall subsection that uninstalling PyManager does not uninstall runtimes that were installed; explains the rationale (we cannot run arbitrary code at uninstall time) and notes that reinstalling PyManager allows management of those installs to resume; also clarifies that running 'py uninstall --purge' before uninstalling PyManager will perform a complete uninstall.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>14</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">py list [-f|--format <FMT>] [-1|--one] [--only-managed] [tag ...]</span>
+<span class="diff-line">    py list [-f|--format <FMT>] [-1|--one] [--online] [--source <URL>] [tag ...]</span>
+<span class="diff-line diff-removed">-   py [--list|-0]</span>
+<span class="diff-line diff-removed">-   py [--list-paths|-0p]</span>
+<span class="diff-line diff-added">+   py [--list|--list-paths|-0|-0p]</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> This subcommand will list any or all installs matching the specified tags or</span>
+<span class="diff-line"> ranges. If no tags are provided, lists all installs. Runtimes not managed by</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>The two separate usage lines for the 'py' command’s list options (py [--list|-0] and py [--list-paths|-0p]) have been merged into a single line: py [--list|--list-paths|-0|-0p]. This is a summarization/shortening change that preserves the same semantics (both flags combined) while reducing duplication in the Exec subcommand section.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>15</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">fill in any gaps from the index file. This is intended to allow the typically</span>
+<span class="diff-line"> large ``shortcuts`` key to be removed from the index file, but may also extend</span>
+<span class="diff-line"> to ``alias``, ``executable`` and ``executable_args``. Omitting other keys from</span>
+<span class="diff-line diff-removed">-the index may result in problems installing the package.</span>
+<span class="diff-line diff-added">+the index may result in problems installing the package. Ensuring correct</span>
+<span class="diff-line diff-added">+behaviour is left to the implementation - this is not an interoperability point,</span>
+<span class="diff-line diff-added">+and so we do not intend to specify the details here (beyond the normal compatibility</span>
+<span class="diff-line diff-added">+requirements that apply).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> A second top-level key ``next`` contains an optional URL to another index. This</span>
+<span class="diff-line"> may be used if PyManager cannot find a suitable package in the included</span>
+<span class="diff-line"> versions. The intent is to allow for older indexes to be archived and only</span>
+<span class="diff-line"> accessed when required, reducing the size of the initial download without</span>
+<span class="diff-line diff-removed">-cutting off users from older versions.</span>
+<span class="diff-line diff-added">+cutting off users from older versions. When searching for a suitable install,</span>
+<span class="diff-line diff-added">+later indexes will not be searched if a viable candidate is found (in other</span>
+<span class="diff-line diff-added">+words, the first index consulted should have the latest versions in it).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The initial schema is shown below:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Added clarifying notes in the index schema diff: (1) that correct behavior is left to the implementation and is not an interoperability guarantee, so details are not specified beyond general compatibility; and (2) that when searching for installs across multiple indexes, later indexes are not searched once a viable candidate is found (first index consulted should contain the latest versions), making the behavior clearer and more predictable.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>16</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Unlike the support currently in the ``py.exe`` launcher, we propose to reduce</span>
+<span class="diff-line"> this functionality to only support Python commands where the command matches</span>
+<span class="diff-line diff-removed">-a global alias listed for an install. (The existing launcher is able to run any</span>
+<span class="diff-line diff-removed">-executable, and attempts to extract version information from the command, rather</span>
+<span class="diff-line diff-removed">-than simple matching.)</span>
+<span class="diff-line diff-added">+a global alias listed for an install, with anything not matching being treated</span>
+<span class="diff-line diff-added">+as an arbitrary executable path. In practice, this is expected to produce the</span>
+<span class="diff-line diff-added">+same (or better) results for non-contrived cases, but may result in subtle</span>
+<span class="diff-line diff-added">+changes where users are relying on unspecified edge case behaviours of the</span>
+<span class="diff-line diff-added">+existing launcher.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The specific patterns to be detected are left to the implementation.</span>
+<span class="diff-line diff-added">+The specific patterns to be detected are left to the implementation, but should</span>
+<span class="diff-line diff-added">+be largely compatible with the existing launcher.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Rationale</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff updates the Shebang Processing section to clarify that PyManager's handling of shebangs will only resolve to a global alias; anything that does not match the alias is treated as an arbitrary executable path. This makes behavior more predictable and aligns with implementation intent, but may cause subtle differences for edge cases relied on by users of the old launcher (which could parse version information from arbitrary commands). The change does not alter core goals or interfaces, only clarifies non-matching cases.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>17</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This is much closer to the desired behaviour of the global ``python`` command</span>
+<span class="diff-line"> than any alternative.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-TODO: Note that this follows Gentoo's design as well</span>
+<span class="diff-line diff-added">+It has been noted that Gentoo also distributes an intelligent ``python``</span>
+<span class="diff-line diff-added">+command, in order to serve their users better than a simple symlink.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Replacing py.exe</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Editorial change: replaced a placeholder TODO note mentioning Gentoo's design with a full sentence explaining that Gentoo also distributes an intelligent 'python' command to serve users better than a simple symlink. No functional or requirements changes; it's a wording clarification.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>18</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">resolve this in favour of PyManager is to uninstall the launcher, which can be</span>
+<span class="diff-line"> done through the standard Installed Apps control panel.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+We propose to update the existing launcher, which will continue to be released</span>
+<span class="diff-line diff-added">+with the traditional installer, to detect attempted use of the new subcommands</span>
+<span class="diff-line diff-added">+and provide a useful message for the user rather than the current error. These</span>
+<span class="diff-line diff-added">+warnings can also detect the unlikely case where a user is intentionally</span>
+<span class="diff-line diff-added">+launching extensionless files by those names and retain that behaviour, allowing</span>
+<span class="diff-line diff-added">+a viable alternative for users who cannot make other changes to their setup.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Interaction with venv</span>
+<span class="diff-line"> ---------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The diff adds a new proposal: update the existing launcher (py.exe) that ships with the traditional installer to detect the new PyManager subcommands and present a useful message instead of the current error. It would also emit warnings for edge cases where users launch extensionless files by those names, preserving that behavior as a viable fallback for users who cannot modify their setup.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>19</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">:mod:`venv` module, will modify the user's ``PATH`` environment variable to ensure</span>
+<span class="diff-line"> that the venv launcher will take precedence over other executables. As a result,</span>
+<span class="diff-line"> when a venv has been activated, PyManager can only be launched by its aliases</span>
+<span class="diff-line diff-removed">-other than ``python``.</span>
+<span class="diff-line diff-added">+other than ``python``. When an active virtual environment is detected, it will</span>
+<span class="diff-line diff-added">+be treated as the user's default runtime (except for uninstall), which ensures</span>
+<span class="diff-line diff-added">+that other commands will also behave as expected.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> This means that working virtual environments will behave as they do today with</span>
+<span class="diff-line"> no additional support from PyManager.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The venv interaction semantics were changed: previously, when a virtual environment was active, PyManager could only be launched via its own aliases (not the python alias). The new version changes this to treat an active virtual environment as the default runtime (except for uninstall), ensuring that other commands behave as if that environment is the current runtime. This alters the intended user experience and command resolution in virtualized contexts.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>20</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">suggest users use our own tooling for downloads.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The deprecation period for the traditional installer allows time for these users</span>
+<span class="diff-line diff-removed">-to learn about the upcoming change.</span>
+<span class="diff-line diff-added">+to learn about the upcoming change. Where possible, we will add deprecation</span>
+<span class="diff-line diff-added">+warnings to the traditional installer.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Scripted installs</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The changes reflect a new Windows install management direction: introducing PyManager as the canonical installer and redefining the default and management commands (python for launching the best runtime, py for managing multiple versions). This represents a new design/approach that replaces the prior traditional/Store/NuGet distribution model, adds a revised index/spec and governance, and includes deprecation warnings for older installers.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>21</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">considered an acceptable change.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The deprecation period for the traditional installer allows time for these users</span>
+<span class="diff-line diff-removed">-to learn about the upcoming change.</span>
+<span class="diff-line diff-added">+to learn about the upcoming change. Where possible, we will add deprecation</span>
+<span class="diff-line diff-added">+warnings to the traditional installer.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Old runtime installed</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The primary change is the introduction of PyManager as the centralized Windows installation manager, replacing the prior plan of multiple separate installers with a single workflow. This new approach defines a concrete user-facing model where 'python' is the default launcher and 'py' manages multiple runtimes, distributed via MSIX/Store alongside python.org packaging, and accompanied by new governance/configuration mechanisms. In short, the core requirement scope shifts from describing existing installer formats to formalizing a new unified install manager and its command semantics, deployment model, and ecosystem integration.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>22</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Python versions prior to the first release of PyManager can be backfilled into</span>
+<span class="diff-line"> the python.org index, either based on newly repackaged archives or using the</span>
+<span class="diff-line diff-removed">-almost equivalent packages from Nuget (the latter does not include Tcl/Tk,</span>
+<span class="diff-line diff-added">+almost equivalent packages from NuGet (the latter does not include Tcl/Tk,</span>
+<span class="diff-line"> making them significantly incompatible for some users, but this is likely okay</span>
+<span class="diff-line"> for especially old versions).</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Capitalization of NuGet was corrected from 'Nuget' to 'NuGet' in the diff snippet; a branding/name capitalization fix with no impact on meaning or requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>23</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">parties who desire this functionality are encouraged to provide their own</span>
+<span class="diff-line"> distributions.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-PyManager can only be installed for all users, and can be extensively configured</span>
+<span class="diff-line diff-removed">-by an administrator, including to constrain the actual runtimes which users may</span>
+<span class="diff-line diff-added">+PyManager can only be installed for all users, though an MSIX does not require</span>
+<span class="diff-line diff-added">+administrative privileges to install, and can be extensively configured by an</span>
+<span class="diff-line diff-added">+administrator, including to constrain the actual runtimes which users may</span>
+<span class="diff-line"> install. Additionally, PyManager supports local extraction for bundling, and so</span>
+<span class="diff-line"> embedding apps can easily generate their own layout, which can be installed for</span>
+<span class="diff-line"> all users if they so desire.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change adds a clarification about installation privileges: the old text stated PyManager can only be installed for all users and requires administrator privileges, but the new text notes that an MSIX package does not require administrative privileges to install. This clarifies deployment options for all-user installations and aligns deployment semantics with the MSIX packaging model, reducing implied restrictions and potential confusion about admin rights.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>24</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Build-time installs</span>
+<span class="diff-line"> -------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Users currently using Nuget packages will also have to change to a new workflow.</span>
+<span class="diff-line diff-removed">-Further investigation is required to determine how best to support this, as it</span>
+<span class="diff-line diff-removed">-is possible that the PyManager MSIX package may not be installable on all</span>
+<span class="diff-line diff-removed">-continuous integration systems. No differences are anticipated between a package</span>
+<span class="diff-line diff-removed">-installed by PyManager compared to one installed by Nuget.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> Users using the embeddable distro may have to change to a new method for</span>
+<span class="diff-line"> discovering the URL to the packages, though the recommendation would be to use</span>
+<span class="diff-line"> PyManager to discover and install. No differences are anticipated due to the</span>
+<span class="diff-line"> change of installer, and the embeddable distro package would be identical to</span>
+<span class="diff-line"> today.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+No changes to the NuGet packages are proposed.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Single architecture installer</span>
+<span class="diff-line diff-added">+-----------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The current proposal only makes an Intel 64-bit build of PyManager available.</span>
+<span class="diff-line diff-added">+This will prevent users on 32-bit only operating systems or CPUs from being able</span>
+<span class="diff-line diff-added">+to install PyManager. As this is a vanishingly small proportion of machines</span>
+<span class="diff-line diff-added">+today, and an even smaller proportion of developer machines (the target audience</span>
+<span class="diff-line diff-added">+for PyManager), we are not concerned about excluding users.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Windows ARM64 machines support running binaries built for Intel 64-bit through</span>
+<span class="diff-line diff-added">+efficient emulation. CPython 32-bit builds will still be available as they have</span>
+<span class="diff-line diff-added">+an important role in integrating with 32-bit executables, which does not allow</span>
+<span class="diff-line diff-added">+substitution of 64-bit binaries. As PyManager runs as a standalone executable,</span>
+<span class="diff-line diff-added">+this is not a necessary feature for the manager.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Security Implications</span>
+<span class="diff-line"> =====================</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Added a new design constraint in the Build-time installs section: to publish only a single architecture (Intel 64-bit) for PyManager, with notes that Windows ARM64 can run via emulation and 32-bit CPython remains for compatibility. Also added a line stating no changes to NuGet packages are proposed. This changes how the requirement will be implemented (scope/architecture) without altering the overall goal of the Windows Python installation manager.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>25</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">attacker who can run PyManager is able to do whatever the user can do, and only</span>
+<span class="diff-line"> a complete application whitelisting approach can prevent the use of Python.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-TODO: Notes about security of package acquisition (tl;dr: TLS)</span>
+<span class="diff-line diff-added">+Acquisition of packages over HTTPS is protected by the connection security. We</span>
+<span class="diff-line diff-added">+use native Windows download mechanisms that support public and enterprise</span>
+<span class="diff-line diff-added">+certificates, as well as authenticated proxy servers. The feed may include</span>
+<span class="diff-line diff-added">+hashes for downloadable packages, which will be verified, but there is no</span>
+<span class="diff-line diff-added">+third-party hosted verification built into PyManager. This is consistent with</span>
+<span class="diff-line diff-added">+today's model.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Runtime installs by PyManager are fully accessible by, and modifiable by, the</span>
+<span class="diff-line"> current user. This is equivalent to typical installs using the traditional</span>
+<span class="diff-line diff-removed">-installer or a Nuget package, but is more vulnerable to tampering than a Store</span>
+<span class="diff-line diff-added">+installer or a NuGet package, but is more vulnerable to tampering than a Store</span>
+<span class="diff-line"> install or a per-machine install with the traditional installer. It is not</span>
+<span class="diff-line"> possible to fully protect an install from the user who installed it.</span>
+<span class="diff-line diff-added">+Reinstalling or updating an install performs a clean install, which will revert</span>
+<span class="diff-line diff-added">+any tampering that may have occurred since the original install.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The aliases generated by PyManager when installing a runtime are designed to</span>
+<span class="diff-line"> use a signed, unmodified executable that uses an adjacent data file to launch</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>New security details added in Security Implications: replaced the placeholder TLS note with explicit HTTPS-based acquisition security (describing use of native Windows download mechanisms, certificates, proxies, and verification). Corrected capitalization from 'Nuget' to 'NuGet' in the related section. Added guidance that runtime installation/update can revert tampering by performing a clean install, and clarified that PyManager installs are more vulnerable to tampering than Store or per-machine installs; overall, this is a clarification with new security content rather than a change in core functionality.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>26</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Reference Implementation</span>
+<span class="diff-line"> ========================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The reference implementation is available at https://github.com/zooba/pymanager/</span>
+<span class="diff-line diff-removed">-with a precompiled MSIX package under the Releases at</span>
+<span class="diff-line diff-removed">-https://github.com/zooba/pymanager/releases. This sample includes a bundled</span>
+<span class="diff-line diff-removed">-index, rather than a hosted one, and references a range of existing Nuget</span>
+<span class="diff-line diff-added">+The reference implementation is available at `the author's repository</span>
+<span class="diff-line diff-added">+<https://github.com/zooba/pymanager/>`_</span>
+<span class="diff-line diff-added">+with a precompiled MSIX package under `Releases</span>
+<span class="diff-line diff-added">+<https://github.com/zooba/pymanager/releases>`_. This sample includes a bundled</span>
+<span class="diff-line diff-added">+index, rather than a hosted one, and references a range of existing NuGet</span>
+<span class="diff-line"> packages to allow install testing.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Reference documentation can also be found in `the same repository</span>
+<span class="diff-line diff-added">+<https://github.com/zooba/pymanager/blob/main/doc/using.rst>`_.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Rejected Ideas</span>
+<span class="diff-line"> ==============</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Editorial cleanup of the Reference Implementation section: replaced plain URLs with reStructuredText markup and added a link to the repository's documentation (doc/using.rst). Also corrected 'Nuget' to 'NuGet' and clarified the location of reference materials in the author's repository, without changing substantive content.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>27</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Due to the additional steps needed to make this functional on other platforms,</span>
+<span class="diff-line"> and the fact that there isn't a need to replace existing installers for those</span>
+<span class="diff-line"> platforms, we consider this idea out of scope for this PEP. It may be pursued in</span>
+<span class="diff-line diff-removed">-the future.</span>
+<span class="diff-line diff-added">+the future (and the contributors most likely to do so have indicated that they</span>
+<span class="diff-line diff-added">+are looking into it and would be able to use a consistent interface).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Include a runtime pre-installed with the manager</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Added a clarifying parenthetical to the 'Make every version a Windows Store package' rejection, stating that the future work may be pursued and that the contributors most likely to do so have indicated they would be able to use a consistent interface; this clarifies scope and intent without changing the decision.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>28</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Include a runtime INSTEAD OF the manager</span>
+<span class="diff-line"> ----------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This is the current situation, which we are trying to change. If you made this</span>
+<span class="diff-line diff-removed">-argument, and somehow still read this far, please go back and start again.</span>
+<span class="diff-line diff-added">+This is the current situation, which we are trying to change. If you read this</span>
+<span class="diff-line diff-added">+far and still chose to make this argument, please go back and start again.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Use a built-in module rather than subcommands</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Reworded the sentence in the 'Include a runtime INSTEAD OF the manager' section to improve readability without changing the meaning. From 'If you made this argument, and somehow still read this far, please go back and start again.' to 'If you read this far and still chose to make this argument, please go back and start again.'</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>29</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">-------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Publishing the plain ZIP file is part of the plan, however, it will not be</span>
+<span class="diff-line diff-removed">-visibly listed (for example, on the python.org downloads pages, though they will</span>
+<span class="diff-line diff-added">+visibly listed (for example, on the python.org download pages, though they will</span>
+<span class="diff-line"> be visible in the FTP view). An alternative would be to publish and list these</span>
+<span class="diff-line"> packages, and expect users to download and manually extract and configure them.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Grammar correction: the Old Version used 'download pages' while the New Version uses 'downloads pages' in the Publishing the plain ZIP file section. This is a minor typographical adjustment (pluralization) that does not change the meaning or intent.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>30</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">use it, or for users who are willing to navigate JSON in order to find the URL.</span>
+<span class="diff-line"> The ``--target`` option on the install command also provides a trivial download</span>
+<span class="diff-line"> and extract operation, allowing users to have the same experience as a ZIP file.</span>
+<span class="diff-line diff-added">+And the ``--download`` option can give users the ZIP file still zipped.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Only publish PyManager to one place</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>A line was added indicating that the --download option can deliver the ZIP file still zipped when publishing plain ZIP files, introducing a new distribution capability (offline or zipped artifacts) in the New Version.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>31</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">redirector in Windows can only open to a Store page. As such, removing the Store</span>
+<span class="diff-line"> app is equivalent to denying hundreds of thousands of installs each month.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Additionally, automatic updates are only supported through the Store. We would</span>
+<span class="diff-line diff-removed">-have to implement automatic updates manually if we did not publish there. It is</span>
+<span class="diff-line diff-removed">-possible to have the MSIX from python.org find its own updates on the Store, and</span>
+<span class="diff-line diff-removed">-we can assume that machines without access are responsible for their own</span>
+<span class="diff-line diff-removed">-updates.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> The two builds are practically identical. The only difference between the MSIX</span>
+<span class="diff-line"> we provide to the Store and the one that goes to python.org is package signing:</span>
+<span class="diff-line"> we sign the python.org package ourselves, while the Store package is signed as</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            </div>
+                            <p>Removed a paragraph in the 'Just publish the plain ZIP file' section that stated automatic updates are only supported through the Windows Store and that the MSIX from python.org could find its own updates on the Store for machines without access. The deletion eliminates an implied Store-only update mechanism and clarifies update behavior without committing to automated Store-based updates.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>32</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                334ba78 (Cached) &rarr; 1fb889b (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Open Issues</span>
+<span class="diff-line"> ===========</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-TODO: Raise open issues</span>
+<span class="diff-line diff-added">+Generate packages for old versions</span>
+<span class="diff-line diff-added">+----------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+At present, we can install versions of Python back to 3.5 from the NuGet feed.</span>
+<span class="diff-line diff-added">+These are identical to the traditional installer releases of the same versions,</span>
+<span class="diff-line diff-added">+but do not include Tkinter, IDLE, documentation, or the test suite. However, it</span>
+<span class="diff-line diff-added">+is very little work (and no additional storage space) to use them for older</span>
+<span class="diff-line diff-added">+releases.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+New binaries releases will generate new packages, even for already released</span>
+<span class="diff-line diff-added">+versions (currently 3.12 and 3.13). So these will exist. The open issue is</span>
+<span class="diff-line diff-added">+whether we go back through old releases and generate full PyManager packages for</span>
+<span class="diff-line diff-added">+them all, and how far back to go. This is merely repackaging, and does not</span>
+<span class="diff-line diff-added">+require rebuilding or modifying the release.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Include test suite in PyManager packages</span>
+<span class="diff-line diff-added">+----------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The test suite consumes the majority of the size of our current distribution,</span>
+<span class="diff-line diff-added">+but is not intended to be used by most of our users. By omitting it from the</span>
+<span class="diff-line diff-added">+standard PyManager package, all downloads become smaller and faster, at the cost</span>
+<span class="diff-line diff-added">+of some users having to obtain the test suite in another way (such as building</span>
+<span class="diff-line diff-added">+from source).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+It seems obviously preferable to have some way to access the exact test suite</span>
+<span class="diff-line diff-added">+intended for a particular build. So the question is whether to include it by</span>
+<span class="diff-line diff-added">+default (there are no optional components anymore), to publish it independently</span>
+<span class="diff-line diff-added">+(for manual download as a ZIP file), or to publish a second feed of packages</span>
+<span class="diff-line diff-added">+that include both the runtime and the test suite.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Footnotes</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added new Open Issues entries: 'Generate packages for old versions' and 'Include test suite in PyManager packages', indicating an expanded scope and planning for historical versions and testing. Additionally, there are updates to Abstract and Exec subcommand wording to reflect a shift in the installer design (default python usage, py for version management) and more precise command syntax, but the dominant change is the addition of new open issues.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>33</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">environment variable. We recommend starting with the "How to teach this" section</span>
+<span class="diff-line"> for the most concise high-level overview of the features.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+The existing ``.exe`` installer and ``py`` launcher will be deprecated and no</span>
+<span class="diff-line diff-added">+longer released from two years after this PEP is accepted. The existing</span>
+<span class="diff-line diff-added">+embeddable distro will no longer be listed as a download, but will be available</span>
+<span class="diff-line diff-added">+through the install manager. The Windows Store app will be immediately replaced</span>
+<span class="diff-line diff-added">+with the install manager.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Reader's Note</span>
+<span class="diff-line"> -------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added a deprecation plan for the existing Windows installers and launcher: they will be deprecated and no longer released two years after this PEP is accepted; the embeddable distro will no longer be listed on python.org and will instead be available only through PyManager; the Windows Store app will be immediately replaced by the install manager. This represents a major policy and architectural shift, consolidating Windows Python distribution under PyManager.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>34</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">number-aware matches, with dotted numbers treated as versions. Tags must match</span>
+<span class="diff-line"> one of the listed "install for" tags, and entries list multiple such tags to</span>
+<span class="diff-line"> handle abbreviated requests. The special tag ``default`` resolves to the user's</span>
+<span class="diff-line diff-removed">-configured default (typically ``3``).</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-For example, the ``3.10.5`` entry would list all of ``3``, ``3.10`` and</span>
+<span class="diff-line diff-removed">-``3.10.5`` as tags to be installed for. A request for ``3.10`` would match one</span>
+<span class="diff-line diff-removed">-of these and so the entry is selected. Due to the number-aware matches, a</span>
+<span class="diff-line diff-removed">-request for ``03.0010`` would also match, and ``3.10.50`` would not.</span>
+<span class="diff-line diff-added">+configured default (typically ``3``; see Configuration later for details on</span>
+<span class="diff-line diff-added">+configuring settings).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Tags may also be specified as a constraint, using ``>``, ``>=``, ``<``, ``<=``</span>
+<span class="diff-line"> or ``!=`` followed by the ``Company\\Tag`` or ``Tag`` value. When matching a</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>The change shortens and localizes the explanation of the 'default' tag by replacing the explicit example 'the user's configured default (typically 3)' with a briefer form 'configured default (typically 3; see Configuration later for details on configuring settings)', effectively removing the inline example and deferring to configuration documentation.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>35</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The default index file is hosted on python.org, and contains install information</span>
+<span class="diff-line"> including package URLs and hashes for all installable versions. An alternate</span>
+<span class="diff-line diff-removed">-index may be specified by the user or their administrator (see Configuration</span>
+<span class="diff-line diff-removed">-below). Entries in the index file list the full set of tags they should be</span>
+<span class="diff-line diff-removed">-installed for, and if an exact match is found the package will be selected. In</span>
+<span class="diff-line diff-removed">-the case of no exact match, a prefix match will be used. In both cases, numbers</span>
+<span class="diff-line diff-removed">-in the tag are treated logically - that is, ``3.1`` is a prefix of ``3.1.2`` but</span>
+<span class="diff-line diff-removed">-not of ``3.10``.</span>
+<span class="diff-line diff-added">+index may be specified by the user using a configuration file or the</span>
+<span class="diff-line diff-added">+``--source`` command line option, or their administrator through a configuration</span>
+<span class="diff-line diff-added">+file. The requested tag is matched against the index file, and if an exact match</span>
+<span class="diff-line diff-added">+is found the package will be selected. In the case of no exact match, a prefix</span>
+<span class="diff-line diff-added">+match will be used. In both cases, numbers in the tag are treated logically -</span>
+<span class="diff-line diff-added">+that is, ``3.1`` is a prefix of ``3.1.2`` but not of ``3.10``. See Index Schema</span>
+<span class="diff-line diff-added">+below for information on exactly how install tags are specified in the index</span>
+<span class="diff-line diff-added">+file.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> If a tag is already satisfied by an existing install, nothing will be installed.</span>
+<span class="diff-line"> The user must pass an ``--upgrade`` or ``--force`` option to replace the</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change adds explicit details to the Index Schema that were previously implied: it clarifies how an alternate index can be specified (via a user configuration file or the --source option, and via an administrator configuration file) and it specifies the exact tag-matching semantics (if no exact match is found, a prefix match is used; tag numbers are compared logically so 3.1 is a prefix of 3.1.2 but not of 3.10). This supersedes the prior, briefer wording and reduces ambiguity about index resolution behavior.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>36</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">embedding cases, or downloading the files for incompatible platforms. Passing</span>
+<span class="diff-line"> multiple tags with ``--target`` is an error.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-If the ``--download <DIR>`` option is passed, runtimes will be downloaded to the</span>
+<span class="diff-line diff-removed">-specified directory as their source packages, and an ``index.json`` will be</span>
+<span class="diff-line diff-removed">-created referencing these files. This index can be referenced later to perform</span>
+<span class="diff-line diff-removed">-offline installs with ``python install --source <index.json> [tag ...]``.</span>
+<span class="diff-line diff-added">+If the ``--download <DIR>`` option is passed, runtime packages are downloaded</span>
+<span class="diff-line diff-added">+but not installed. They are stored in the specified directory as their source</span>
+<span class="diff-line diff-added">+packages, and an ``index.json`` is created that references these files. This</span>
+<span class="diff-line diff-added">+index can be used later to perform offline installs with ``python install</span>
+<span class="diff-line diff-added">+--source <index.json> [tag ...]``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Uninstall subcommand</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change clarifies the behavior of the --download <DIR> option: the new text explicitly states that the packages are downloaded but not installed, stored in the specified directory as source packages, and an index.json is created that references these files. This clarifies that offline installs are performed from the downloaded index via --source, and does not alter the overall workflow beyond removing ambiguity about whether installation occurs during download.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>37</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">be prompted before uninstalling each runtime.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> If the ``--purge`` option is passed with no tags, then (after confirmation) all</span>
+<span class="diff-line diff-removed">-runtimes will be removed, along with shortcuts and any cached files.</span>
+<span class="diff-line diff-added">+runtimes will be removed, along with shortcuts and any cached files. Passing any</span>
+<span class="diff-line diff-added">+tags with ``--purge`` will produce an error.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Uninstalling PyManager does not uninstall any runtimes that were installed. For</span>
+<span class="diff-line"> technical reasons, this would not be reliably possible (we cannot run arbitrary</span>
+<span class="diff-line"> code at uninstall time), and so instead we deliberately ensure that anything</span>
+<span class="diff-line"> that has been installed will continue to work. Reinstalling PyManager allows</span>
+<span class="diff-line diff-removed">-management of these installs to resume. Running ``py uninstall --purge`` before uninstalling</span>
+<span class="diff-line diff-removed">-PyManager will perform a complete uninstall.</span>
+<span class="diff-line diff-added">+management of these installs to resume. Running ``py uninstall --purge`` before</span>
+<span class="diff-line diff-added">+uninstalling PyManager will perform a complete uninstall.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> List subcommand</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Clarified uninstall purge semantics.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>38</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The default format is user-friendly. Other formats will include machine-readable</span>
+<span class="diff-line"> and single string formats (e.g. ``--format=prefix`` simply prints ``sys.prefix``</span>
+<span class="diff-line diff-removed">-on a line by itself). The exact list of formats is left to implementation.</span>
+<span class="diff-line diff-added">+on a line by itself). The exact list of formats is left to the implementation.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> If ``--one`` is provided, only the best result is listed. This is to assist</span>
+<span class="diff-line"> shell scripts that want to locate the default (or a suitable) runtime without</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Minor grammatical correction: added 'the' to 'left to implementation' to read 'left to the implementation'. No change in meaning.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>39</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">"id": str,</span>
+<span class="diff-line"> </span>
+<span class="diff-line">                # Name to display in the UI</span>
+<span class="diff-line diff-removed">-               "displayName": str,</span>
+<span class="diff-line diff-added">+               "display-name": str,</span>
+<span class="diff-line"> </span>
+<span class="diff-line">                # Version used to sort packages. Also determines prerelease status.</span>
+<span class="diff-line">                # Should follow Python's format, but is only compared among releases</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Index Schema changed the field name 'displayName' to 'display-name' to align with kebab-case naming convention used elsewhere in the schema (e.g., sort-version, install-for). This is a naming/formatting change and does not alter semantics or data model.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>40</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line"># List of tags to install this package for. This does not have to be</span>
+<span class="diff-line">                # unique across all installs; the first match will be selected.</span>
+<span class="diff-line diff-added">+               # For example, the 3.10.5 package may list '3', '3.10' and</span>
+<span class="diff-line diff-added">+               # '3.10.5' so that any of those may be specified to install it.</span>
+<span class="diff-line diff-added">+               # Matches are number aware, so that 3.1 is not a prefix of 3.10.</span>
+<span class="diff-line">                "install-for": [str],</span>
+<span class="diff-line"> </span>
+<span class="diff-line">                # List of tags to run this package for. Does not have to be unique</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Demonstration
+                                <span class="tooltiptext">An example or visualization was added to assist in understanding.</span>
+                            </div>
+                            <p>A new example comment was added under the install-for schema to illustrate number-aware matching: showing that 3, 3.10, and 3.10.5 may be listed and that 3.1 is not a prefix of 3.10. This clarifies how the index should interpret version-like tags.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>41</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">}</span>
+<span class="diff-line">        ],</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-       # Full or partial URL to the next index file</span>
+<span class="diff-line diff-added">+       # URL (or relative path) to the next index file</span>
+<span class="diff-line">        "next": str,</span>
+<span class="diff-line">    }</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Generalization
+                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
+                            </div>
+                            <p>The description of the 'next' field was generalized from 'Full or partial URL' to 'URL (or relative path) to the next index file', expanding acceptable inputs to include relative/local paths in addition to URLs.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>42</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                1fb889b (Cached) &rarr; 21848e4 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This will remove all installs and any shortcuts that would otherwise be left</span>
+<span class="diff-line">    behind. If you already removed the manager, you can reinstall it and run the</span>
+<span class="diff-line">    above uninstall command again to clean up. Individual runtimes can be</span>
+<span class="diff-line diff-removed">-   uninstalled by replacing the ``--purge`` option with the tag, found by looking</span>
+<span class="diff-line diff-removed">-   at ``python list``.</span>
+<span class="diff-line diff-added">+   uninstalled by specifying the tag instead of ``--purge``. Tags can be found</span>
+<span class="diff-line diff-added">+   by looking at ``python list``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Configuration</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The uninstall instruction was rewritten by splitting a long sentence into two shorter sentences. The old phrasing 'uninstall by replacing the ``--purge`` option with the tag, found by looking at ``python list``.' was replaced with 'uninstalled by specifying the tag instead of ``--purge``. Tags can be found by looking at ``python list``.', making the instruction clearer and less ambiguous.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>43</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                21848e4 (Cached) &rarr; d4dba2d (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">making them significantly incompatible for some users, but this is likely okay</span>
+<span class="diff-line"> for especially old versions).</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+As of this PEP's acceptance, the plan is to create packages for all versions of</span>
+<span class="diff-line diff-added">+Python 3.10.0 onwards (including patch releases, but excluding pre-releases), so that all non-EOL releases can</span>
+<span class="diff-line diff-added">+be fully installed using PyManager. Versions from Python 3.5.0 onwards (excluding</span>
+<span class="diff-line diff-added">+pre-releases) will directly reference the packages on NuGet, making them easily</span>
+<span class="diff-line diff-added">+available in reduced form. Neither approach requires rebuilding the existing</span>
+<span class="diff-line diff-added">+releases, nor are any changes required to the sources of those releases.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Administrator installs</span>
+<span class="diff-line"> ----------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Revision of the Old version availability policy: the plan shifts from backfilling older Python releases and using NuGet for older versions to a cutover where PyManager packages will cover all non-EOL releases starting at Python 3.10.0, while Python 3.5.0 through 3.9.x would be available via NuGet. This narrows the scope to newer versions and changes how older versions are distributed, reflecting a change in distribution strategy.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>44</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                21848e4 (Cached) &rarr; d4dba2d (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">this is not a necessary feature for the manager.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Test suite and debug symbols</span>
+<span class="diff-line diff-added">+----------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The existing installer optionally allows installation of the Python standard</span>
+<span class="diff-line diff-added">+library test suite, and optional installation of debug symbols. Neither of these</span>
+<span class="diff-line diff-added">+are necessary for most users, but they are convenient for some. Preliminary</span>
+<span class="diff-line diff-added">+testing shows that omitting the test suite and debug symbols saves about 60% of</span>
+<span class="diff-line diff-added">+the size of the compressed package (from 46MB to 18MB).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The "default" CPython packages installed by PyManager will therefore not include</span>
+<span class="diff-line diff-added">+the test suite or the debug symbols. However, there will be a second set of</span>
+<span class="diff-line diff-added">+packages that do include these extras, grouped under ``PythonTest`` (as opposed</span>
+<span class="diff-line diff-added">+to the default, ``PythonCore``). For example, where ``py install 3.13`` would</span>
+<span class="diff-line diff-added">+install the default, ``py install PythonTest\\3.13`` would install a second</span>
+<span class="diff-line diff-added">+runtime with the additional files (which can either be launched with ``py</span>
+<span class="diff-line diff-added">+-V:PythonTest\\3.13``, or simply ``py -V:3.13`` if no equivalent ``PythonCore``</span>
+<span class="diff-line diff-added">+version is installed).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Debug binaries are no longer distributed, and all other optional features are</span>
+<span class="diff-line diff-added">+included by default.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Global pip command</span>
+<span class="diff-line diff-added">+------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Unlike the current Windows Store install, no global ``pip`` command is included</span>
+<span class="diff-line diff-added">+(the traditional installer also does not include a global ``pip`` command,</span>
+<span class="diff-line diff-added">+unless the options to modify ``PATH`` and to install pip are selected; the first</span>
+<span class="diff-line diff-added">+of these is off by default). This impacts global installation of packages, which</span>
+<span class="diff-line diff-added">+is already discouraged, but has no impact on activated virtual environments.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The existing recommendation remains, which is to run ``python -m pip`` or</span>
+<span class="diff-line diff-added">+``py -V:<TAG> -m pip`` to launch pip.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Security Implications</span>
+<span class="diff-line"> =====================</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>New – the changes introduce substantial new packaging options and features not present in the old version: (1) a test suite and debugging symbols packaging path (PythonTest) to reduce default package size while providing access to tests and debugging artifacts, (2) a new Global pip command section describing its absence in the default Store/installer, and (3) related adjustments to Security Implications and deployment details. In short, the dominant change is the expansion/augmentation of the distribution packaging rather than a refinement of existing behavior.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>45</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                21848e4 (Cached) &rarr; d4dba2d (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">match its requirement, but this is not part of the initial proposal.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Open Issues</span>
+<span class="diff-line diff-removed">-===========</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Generate packages for old versions</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-At present, we can install versions of Python back to 3.5 from the NuGet feed.</span>
+<span class="diff-line diff-removed">-These are identical to the traditional installer releases of the same versions,</span>
+<span class="diff-line diff-removed">-but do not include Tkinter, IDLE, documentation, or the test suite. However, it</span>
+<span class="diff-line diff-removed">-is very little work (and no additional storage space) to use them for older</span>
+<span class="diff-line diff-removed">-releases.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-New binaries releases will generate new packages, even for already released</span>
+<span class="diff-line diff-removed">-versions (currently 3.12 and 3.13). So these will exist. The open issue is</span>
+<span class="diff-line diff-removed">-whether we go back through old releases and generate full PyManager packages for</span>
+<span class="diff-line diff-removed">-them all, and how far back to go. This is merely repackaging, and does not</span>
+<span class="diff-line diff-removed">-require rebuilding or modifying the release.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Include test suite in PyManager packages</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-The test suite consumes the majority of the size of our current distribution,</span>
+<span class="diff-line diff-removed">-but is not intended to be used by most of our users. By omitting it from the</span>
+<span class="diff-line diff-removed">-standard PyManager package, all downloads become smaller and faster, at the cost</span>
+<span class="diff-line diff-removed">-of some users having to obtain the test suite in another way (such as building</span>
+<span class="diff-line diff-removed">-from source).</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-It seems obviously preferable to have some way to access the exact test suite</span>
+<span class="diff-line diff-removed">-intended for a particular build. So the question is whether to include it by</span>
+<span class="diff-line diff-removed">-default (there are no optional components anymore), to publish it independently</span>
+<span class="diff-line diff-removed">-(for manual download as a ZIP file), or to publish a second feed of packages</span>
+<span class="diff-line diff-removed">-that include both the runtime and the test suite.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Footnotes</span>
+<span class="diff-line diff-removed">-=========</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-TODO: Collate references</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> Copyright</span>
+<span class="diff-line"> =========</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            </div>
+                            <p>The Open Issues section and its subsections were removed in the New Version, eliminating the previously stated open problems (e.g., 'Generate packages for old versions', 'Include test suite in PyManager packages', 'Footnotes'). The rest of the document remains unchanged, indicating a scope reduction rather than a content change to requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>46</td>
+                        <td>
+                            <div><strong>From:</strong> 4 &rarr; <strong>To:</strong> 5</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                d4dba2d (Cached) &rarr; 06c4421 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Title: A Python Installation Manager for Windows</span>
+<span class="diff-line"> Author: Steve Dower</span>
+<span class="diff-line"> Discussions-To: https://discuss.python.org/t/77900/</span>
+<span class="diff-line diff-removed">-Status: Draft</span>
+<span class="diff-line diff-added">+Status: Accepted</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line"> Topic: Release</span>
+<span class="diff-line"> Created: 21-Jan-2025</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Not a requirement.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>47</td>
+                        <td>
+                            <div><strong>From:</strong> 4 &rarr; <strong>To:</strong> 5</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                d4dba2d (Cached) &rarr; 06c4421 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">`18-Dec-2024 <https://discuss.python.org/t/74556/>`__,</span>
+<span class="diff-line">    `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,</span>
+<span class="diff-line"> Replaces: 397, 486</span>
+<span class="diff-line diff-added">+Resolution: `25-Apr-2025 <https://discuss.python.org/t/77900/180>`__</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Abstract</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Not a requirement.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            
+        </form>
+    </div>
+
+    
+</body>
+</html>

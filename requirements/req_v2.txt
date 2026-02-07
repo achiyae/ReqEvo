@@ -1,4 +1,0 @@
-The system shall allow users to log in using an email address and password.
-The password must be at least 10 characters long and include a special character.
-Users can view their profile details. For example, they can see their name, email address and password.
-The system should support English, Spanish, and French.

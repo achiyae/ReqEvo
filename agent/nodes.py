@@ -5,6 +5,7 @@ import time
 from typing import List, Dict, Any
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import threading
+import pickle
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -105,8 +106,11 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                         hunks.append("\n".join(current_hunk))
                         current_hunk = []
                     in_hunk = True
-                    current_hunk.append(line)
+                    # Skip the @@ line
                 elif in_hunk:
+                    # Skip git metadata lines
+                    if line.startswith('---') or line.startswith('+++') or line.startswith('diff') or line.startswith('index') or line.startswith('new file') or line.startswith('deleted file'):
+                        continue
                     current_hunk.append(line)
                     
             if current_hunk:
@@ -117,7 +121,7 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                     "diff_id": global_diff_id,
                     "old_version_id": old_v['version_id'],
                     "new_version_id": new_v['version_id'],
-                    "diff_text": hunk,
+                    "diff_text": hunk.strip(),
                     "reason_type": "Pending Analysis",
                     "reason_text": "Pending...",
                     "old_content_snippet": "", 
@@ -161,7 +165,7 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                         "diff_id": global_diff_id,
                         "old_version_id": old_v['version_id'],
                         "new_version_id": new_v['version_id'],
-                        "diff_text": diff_text,
+                        "diff_text": diff_text.strip(),
                         "reason_type": "Pending Analysis",
                         "reason_text": "Pending...",
                         "old_content_snippet": sub_old if sub_old else "",
@@ -192,7 +196,18 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
     reasons_prompt_list = "\n".join([f"- {k}: {v}" for k, v in REASON_DEFINITIONS.items()])
     
     prompt_messages = [
-        ("system", "You are an expert business analyst specializing in requirement evolution."),
+        ("system", """You are an expert business analyst specializing in requirement evolution. 
+        Your goal is to accurately classify changes between document versions.
+        
+        ### CLASSIFICATION GUIDELINES & LESSONS:
+        1. **Meaning vs. New**: If a change discusses the same requirement but extends it or implements it differently, classify it as 'Meaning'. Reserve 'New' ONLY for entirely fresh requirements that have no predecessor in the previous version.
+        2. **Summarization/shortening vs. New**: If a part of a requirement (like a redundant note, header, or parenthetical) is removed, it is 'Summarization/shortening', NOT 'New'.
+        3. **Typo vs. New**: Case changes, spelling corrections (e.g., 'Nuget' to 'NuGet'), and grammar fixes are 'Typo', NOT 'New'.
+        4. **Mistake vs. Deletion**: If a statement is corrected (e.g., changing a rule or a platform support statement), it is a 'Mistake' correction. 'Deletion' is only for removing an ENTIRE requirement block that is now redundant.
+        5. **Meaning vs. Mistake**: If a rule changes (e.g., a command name changes from 'run' to 'exec'), it represents a change in intent/behavior and should be classified as 'Meaning', NOT 'Mistake'.
+        6. **Prioritize Significant Changes**: If a diff contains multiple parts (e.g., a minor 'Clarification' and a 'Meaning' change), always classify based on the most significant or "strongest" change. For example, 'Meaning' is more important than 'Clarification'.
+        7. **Summarization/shortening vs. Clarification**: If a change involves combining multiple lines, rows, or bullet points into one while keeping the wording and meaning nearly identical, classify it as 'Summarization/shortening', NOT 'Clarification'.
+        """),
         ("user", f"""Analyze the changes between these two requirement document versions.
         
         Old Version:
@@ -327,15 +342,21 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
             "reason text": d['reason_text'],
             "old_version": {
                 "version id": d['old_version_id'],
-                "requirement id": 0, # Placeholder as per request usually 0 if unstructured
-                "content": old_v['content'] if old_v else ""
+                "requirement id": 0,
+                "content": old_v['content'] if old_v else "",
+                "commit_hash": d.get('old_commit_hash'),
+                "date": d.get('old_date')
             },
             "new_version": {
                 "version id": d['new_version_id'],
                 "requirement id": 0,
-                "content": new_v['content'] if new_v else ""
+                "content": new_v['content'] if new_v else "",
+                "commit_hash": d.get('new_commit_hash'),
+                "date": d.get('new_date')
             },
-            "diff": d['diff_text']
+            "diff": d['diff_text'],
+            "old_content_snippet": d.get('old_content_snippet', ''),
+            "new_content_snippet": d.get('new_content_snippet', '')
         })
         
     json_output = {
@@ -353,14 +374,19 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
         safe_name = "analysis"
         
     outputs_dir = os.path.join(os.getcwd(), "outputs")
-    if not os.path.exists(outputs_dir):
-        os.makedirs(outputs_dir)
-        
+    os.makedirs(outputs_dir, exist_ok=True)
     output_filename = os.path.join(outputs_dir, f"output_{safe_name}.json")
     
-    # Save to file
+    # Save to JSON
     with open(output_filename, "w") as f:
         json.dump(json_output, f, indent=2)
+
+    # Save to Pickle for full state persistence
+    states_dir = os.path.join(os.getcwd(), "states")
+    os.makedirs(states_dir, exist_ok=True)
+    pickle_filename = os.path.join(states_dir, f"{safe_name}.pkl")
+    with open(pickle_filename, "wb") as f:
+        pickle.dump(dict(state), f)
         
     return {"json_output": json_output}
 
@@ -368,30 +394,29 @@ def generate_html_node(state: AgentState) -> Dict[str, Any]:
     print("--- Generating HTML ---")
     
     domain = state.get("domain", "Unknown")
+    is_final = state.get("is_final", False)
     
     # Generate filename: report_{basename}.html
-    # Remove extension if present
     base_name = os.path.basename(domain)
     name_root, _ = os.path.splitext(base_name)
-    
-    # Basic sanitization
     safe_name = "".join(c for c in name_root if c.isalnum() or c in ('-', '_')).strip()
     if not safe_name:
         safe_name = "analysis"
         
-    # Create reports directory if it doesn't exist
-    reports_dir = os.path.join(os.getcwd(), "reports")
-    if not os.path.exists(reports_dir):
-        os.makedirs(reports_dir)
+    if is_final:
+        reports_dir = os.path.join(os.getcwd(), "final_reports")
+        output_filename = os.path.join(reports_dir, f"final_report_{safe_name}.html")
+    else:
+        reports_dir = os.path.join(os.getcwd(), "reports")
+        output_filename = os.path.join(reports_dir, f"report_{safe_name}.html")
         
-    output_filename = os.path.join(reports_dir, f"report_{safe_name}.html")
-    
     html_path = render_html_report(
         domain=domain,
         num_versions=len(state['versions']),
         diffs=state['diffs'],
         reason_types=list(REASON_DEFINITIONS.keys()),
-        output_path=output_filename
+        output_path=output_filename,
+        is_final=is_final
     )
     
     # Auto-open
@@ -400,20 +425,8 @@ def generate_html_node(state: AgentState) -> Dict[str, Any]:
     return {"html_path": html_path}
 
 def feedback_node(state: AgentState) -> Dict[str, Any]:
-    print("--- Waiting for User Feedback ---")
-    # In a real LangGraph server, this would be an interrupt.
-    # Here we are running locally, so we might simulate or just rely on the user 
-    # checking the HTML. The 'user' here is the collaborative user I'm pair programming with
-    # or the end-user of the script.
-    
-    # The requirement says: "Allow user to make changes and go back based on the user input to 4."
-    # We will check the 'user_feedback' key in state. 
-    # If this key is set to 'retry', we go back.
-    # But how do we get the input? 
-    # We can prompt via input() in the terminal if running interactively.
-    
-    
-    print("Check the opened HTML file. Waiting for feedback via web UI...")
+    print("\n--- Waiting for User Feedback via HTML ---")
+    print("Check the opened HTML file. Feedback server running at http://localhost:8000")
     
     feedback_data = {}
     event = threading.Event()
@@ -449,34 +462,24 @@ def feedback_node(state: AgentState) -> Dict[str, Any]:
     server_address = ('localhost', 8000)
     httpd = HTTPServer(server_address, FeedbackHandler)
     
-    # Run server in a separate thread so we can wait on the event
+    # Run server in a separate thread
     server_thread = threading.Thread(target=httpd.serve_forever)
     server_thread.daemon = True
     server_thread.start()
     
-    print(f"Feedback server running at http://localhost:8000")
-    
     try:
         # Loop until event is set
         while not event.is_set():
-            # Wait for 1 second at a time to allow signal handling for Ctrl+C
             event.wait(1.0)
     except KeyboardInterrupt:
         print("\nUser interrupted. Shutting down server...")
-        # Optionally exit or just cleanup
         httpd.shutdown()
-        # Re-raise so LangGraph or main can handle it? 
-        # Or return END? 
-        return {"user_feedback": "approve"} # Treat interruption as done/approve? Or exit
+        return {"user_feedback": "approve"}
 
     httpd.shutdown()
     
     action = feedback_data.get('action', 'approve')
     print(f"User action: {action}")
     
-    if action == 'approve':
-        return {"user_feedback": "approve"}
-    else:
-        # Pass the whole data dict as feedback
-        return {"user_feedback": feedback_data}
-
+    # Return feedback data directly (including action type like 'finish')
+    return {"user_feedback": feedback_data}

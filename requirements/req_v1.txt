@@ -1,4 +1,0 @@
-The system shall allow users to log in using a username and password.
-The password must be at least 8 characters long.
-Users can view their profile details.
-The system should support English and Spanish.
