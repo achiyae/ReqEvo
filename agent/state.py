@@ -32,3 +32,4 @@ class AgentState(TypedDict):
     user_feedback: Optional[Any] # None, 'approve' (str), or correction dict
     iteration: int
     start_time: float
+    is_final: bool

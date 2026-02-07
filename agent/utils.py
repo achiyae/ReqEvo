@@ -12,6 +12,7 @@ REASON_DEFINITIONS = {
     "Summarization/shortening": "The change is made to summarize/shorten without changing meaning.",
     "Deletion": "An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.",
     "Demonstration": "An example or visualization was added to assist in understanding.",
+    "New": "A new requirement was added.",
     "Other": "The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate)."
 }
 
@@ -84,8 +85,8 @@ HTML_TEMPLATE = """
         .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
         .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
         .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
-        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; }
-        .submit-btn:hover { background-color: #27ae60; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
         label { font-weight: bold; font-size: 0.9em; color: #555; }
     </style>
 </head>
@@ -100,16 +101,16 @@ HTML_TEMPLATE = """
             <table>
                 <colgroup>
                     <col style="width: 50px;">
-                    <col style="width: 45%;">
-                    <col style="width: 25%;">
-                    <col style="width: 25%;">
+                    <col style="width: {% if final_mode %}60%{% else %}45%{% endif %};">
+                    <col style="width: {% if final_mode %}35%{% else %}25%{% endif %};">
+                    {% if not final_mode %}<col style="width: 25%;">{% endif %}
                 </colgroup>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Change Details</th>
                         <th>AI Analysis</th>
-                        <th>Your Feedback</th>
+                        {% if not final_mode %}<th>Your Feedback</th>{% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -131,6 +132,7 @@ HTML_TEMPLATE = """
                             </div>
                             <p>{{ diff.reason_text }}</p>
                         </td>
+                        {% if not final_mode %}
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -149,17 +151,24 @@ HTML_TEMPLATE = """
                                 </div>
                             </div>
                         </td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             
-            <button type="button" class="submit-btn" onclick="submitFeedback()">Submit Corrections & Re-Analyze</button>
+            {% if not final_mode %}
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button type="button" class="submit-btn" onclick="submitFeedback('retry')" style="flex: 1; background-color: rgb(230, 230, 10); color: #333; font-weight: bold;">Submit Corrections & Re-Analyze</button>
+                <button type="button" class="submit-btn" onclick="submitFeedback('finish')" style="flex: 1; background-color: #27ae60;">Finish Analysis (Save Final Report)</button>
+            </div>
+            {% endif %}
         </form>
     </div>
 
+    {% if not final_mode %}
     <script>
-        function submitFeedback() {
+        function submitFeedback(actionType) {
             const formData = {};
             const inputs = document.querySelectorAll('input, select, textarea');
             let hasFeedback = false;
@@ -172,13 +181,13 @@ HTML_TEMPLATE = """
                 }
             });
             
-            if (!hasFeedback) {
+            formData['action'] = actionType;
+            
+            if (actionType === 'retry' && !hasFeedback) {
                 if(!confirm("No feedback entered. Do you want to approve the current analysis?")) {
                     return;
                 }
                 formData['action'] = 'approve';
-            } else {
-                formData['action'] = 'retry';
             }
 
             fetch('http://localhost:8000/submit', {
@@ -190,7 +199,7 @@ HTML_TEMPLATE = """
             })
             .then(response => response.json())
             .then(data => {
-                alert("Feedback submitted! You can close this tab/window now.");
+                alert("Action submitted! You can close this tab/window now.");
                 window.close();
             })
             .catch((error) => {
@@ -199,11 +208,12 @@ HTML_TEMPLATE = """
             });
         }
     </script>
+    {% endif %}
 </body>
 </html>
 """
 
-def render_html_report(domain: str, num_versions: int, diffs: list, output_path: str = "report.html", reason_types: list = None):
+def render_html_report(domain: str, num_versions: int, diffs: list, output_path: str = "report.html", reason_types: list = None, is_final: bool = False):
     # Pre-process diffs to add html_diff field
     for diff in diffs:
         raw_diff = diff['diff_text']
@@ -228,11 +238,16 @@ def render_html_report(domain: str, num_versions: int, diffs: list, output_path:
         num_versions=num_versions, 
         diffs=diffs, 
         reason_types=reason_types,
-        definitions=REASON_DEFINITIONS
+        definitions=REASON_DEFINITIONS,
+        final_mode=is_final
     )
     
     # Use absolute path for robustness
     abs_path = os.path.abspath(output_path)
+    
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+    
     with open(abs_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     

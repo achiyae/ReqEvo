@@ -67,8 +67,8 @@
         .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
         .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
         .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
-        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; }
-        .submit-btn:hover { background-color: #27ae60; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
         label { font-weight: bold; font-size: 0.9em; color: #555; }
     </style>
 </head>
@@ -106,8 +106,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -24,6 +24,13 @@ existing installers for the platform, while avoiding most of their limitations,</span>
-<span class="diff-line"> and provides the core team with the ability to manage releases for many years</span>
+                            <div class="diff-text"><span class="diff-line">and provides the core team with the ability to manage releases for many years</span>
 <span class="diff-line"> to come.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+With the new installer, the recommended command to launch the default Python on</span>
@@ -118,15 +117,15 @@
 <span class="diff-line diff-added">+for the most concise high-level overview of the features.</span>
 <span class="diff-line diff-added">+</span>
 <span class="diff-line"> Reader's Note</span>
-<span class="diff-line"> -------------</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> -------------</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>The changes introduce explicit command semantics for the proposed Windows installer (default Python launched by 'python', version management via 'py', optional global 'python3.x' in PATH), changing the perceived purpose and user workflow of the tool from a general install workflow to a concrete CLI-enabled launcher. This alters the meaning/intent of the proposal rather than merely clarifying wording.</p>
+                            <p>The New Version adds a new design where the default Python launcher on Windows is 'python' and the command for managing multiple versions (including launching a specific one) is 'py'; it also mentions optional global 'python3.x' commands via PATH and suggests using the 'How to teach this' section for an overview, representing a new direction not present in the Old Version.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -152,6 +151,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -163,6 +164,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -174,8 +176,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -173,18 +180,18 @@ to the latest release. The user's own data is stored in an OS-managed location</span>
-<span class="diff-line"> in their user profile, and is able to be reset, backed-up and restored using</span>
+                            <div class="diff-text"><span class="diff-line">in their user profile, and is able to be reset, backed-up and restored using</span>
 <span class="diff-line"> regular OS functionality.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-Nuget Package</span>
@@ -202,8 +203,9 @@
                             <div class="reason-type tooltip">Typo
                                 <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
                             </div>
-                            <p>Capitalization correction from 'Nuget' to 'NuGet' in the 'NuGet Package' section header and related text (The NuGet packages...). No semantic or functional changes; only typography consistency.</p>
+                            <p>Editorial capitalization corrections in the NuGet section: replacing 'Nuget' with the branded 'NuGet' (and adjusting related references such as 'NuGet API') to be consistent with branding and documentation style. No changes to meaning or functionality.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -229,6 +231,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -240,6 +244,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -251,8 +256,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -303,7 +310,7 @@ to Microsoft). Without managing these, it is relatively easy for an undesired</span>
-<span class="diff-line"> version to be launched, though in general the targets can only be changed</span>
+                            <div class="diff-text"><span class="diff-line">version to be launched, though in general the targets can only be changed</span>
 <span class="diff-line"> manually by the user, and not by merely installing another app.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-Both the Nuget package and the embeddable distro are as simple and reliable to</span>
@@ -265,8 +269,9 @@
                             <div class="reason-type tooltip">Typo
                                 <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
                             </div>
-                            <p>Capitalization of NuGet was corrected from 'Nuget' to 'NuGet' in the sentence describing the NuGet and embeddable packages.</p>
+                            <p>Minor syntactic change - Nuget to NuGet.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -292,6 +297,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -303,6 +310,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -314,8 +322,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -315,8 +322,6 @@ failure.</span>
-<span class="diff-line"> Overview of PyManager</span>
+                            <div class="diff-text"><span class="diff-line">Overview of PyManager</span>
 <span class="diff-line"> =====================</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-("PyManager" name open for bikeshedding)</span>
@@ -325,11 +332,12 @@
 <span class="diff-line"> package. Downloading from either source will get an identical package, and</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Deletion
-                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
                             </div>
-                            <p>Removed a non-substantive editorial line ('PyManager' name open for bikeshedding) from the Overview of PyManager, reducing editorial noise and clarifying the section.</p>
+                            <p>Removed the editorial note line in the Overview of PyManager section that mentioned the name being open for bikeshedding, eliminating non-substantive text and shortening that portion of the document.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -355,6 +363,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -366,6 +376,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -377,8 +388,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -354,8 +359,9 @@ management use, due to its brevity. ``py install ...``, ``py list ...`` and so</span>
-<span class="diff-line"> on. The proposed commands are detailed later. The existing behaviour of the</span>
+                            <div class="diff-text"><span class="diff-line">on. The proposed commands are detailed later. The existing behaviour of the</span>
 <span class="diff-line"> :pep:`397` launcher is preserved, however, launching through ``py`` will not</span>
 <span class="diff-line"> automatically install runtimes (by default). If one is requested but is not</span>
 <span class="diff-line diff-removed">-installed, users will just get an error. The ``py run ...`` subcommand, however,</span>
@@ -391,11 +401,12 @@
 <span class="diff-line"> Every existing configuration we may have created on a user's machine will take</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>The new version clarifies and redefines the overall command semantics and deployment model: it introduces a unified Windows installer (Python Install Manager) with python as the default launcher, py as the version-management interface, and optional global python3.x commands via PATH; it also aligns subcommands (py exec instead of py run) and rebrands/publishes the tool (Python Install Manager) while expanding coverage across Store/MSIX/zip distributions. In short, it clarifies and broadens the design to a single, centralized install workflow and distinct command roles, replacing the older mixed-installers and launcher semantics.</p>
+                            <p>Dominant change: the automatic-install behavior for unresolved runtimes moves from the py run subcommand to the py exec subcommand; effectively removing py run as the auto-install path and implementing that behavior under py exec in the new spec.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -421,6 +432,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -432,6 +445,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -443,8 +457,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -379,10 +385,10 @@ Replacing other installers</span>
-<span class="diff-line"> --------------------------</span>
+                            <div class="diff-text"><span class="diff-line diff-removed">--------------------------</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> Our intent is to immediately stop publishing individual versions to the Windows</span>
 <span class="diff-line diff-removed">-Store, and to deprecate and phase out the traditional installer and Nuget</span>
@@ -460,11 +473,12 @@
 <span class="diff-line"> python.org, and the double-click install experience is generally smooth. This</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Deletion
-                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            <div class="reason-type tooltip">Mistake
+                                <span class="tooltiptext">The change fixes a mistake (logically wrong statement) in the requirement.</span>
                             </div>
-                            <p>NuGet packages are no longer slated for deprecation in this change. The old version proposed deprecating both the traditional installer and NuGet packages by Python 3.16, but the new version removes NuGet from the deprecation scope, leaving NuGet as-is while still deprecating only the traditional installer.</p>
+                            <p>Incorrectly stated that NuGet packages would be deprecated along with the traditional installer; the change clarifies that only the traditional installer will be deprecated/phase-out by Python 3.16, while NuGet packages will remain available.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -490,6 +504,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -501,6 +517,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -512,8 +529,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -394,8 +400,11 @@ runtime after install.</span>
-<span class="diff-line"> Some automated deployment scenarios do not work with the newer MSIX format, and</span>
+                            <div class="diff-text"><span class="diff-line">Some automated deployment scenarios do not work with the newer MSIX format, and</span>
 <span class="diff-line"> so a simple MSI will also be provided on python.org. This will have no options</span>
 <span class="diff-line"> or user interface, and require administrative privileges, which are typically</span>
 <span class="diff-line diff-removed">-available for these kinds of scenarios. This MSI would be discouraged for most</span>
@@ -528,11 +544,12 @@
 <span class="diff-line"> with the MSIX, and users with both will likely encounter confusion or problems.</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>The MSI policy was expanded with explicit guidance that MSI will be required for non-standard environments (e.g., Wine) that do not support MSIX, and that this MSI path is not officially supported but allows these platforms to continue using upstream distributions. This clarifies and broadens the acceptable install path beyond the previous stance that MSI is discouraged for most users with MSIX as the default.</p>
+                            <p>The new version expands deployment options by adding and explicitly requiring an MSI-based installer for non-standard environments (e.g., Wine) that do not support MSIX, broadening the installation pathways beyond the default MSIX/Store path while keeping MSIX as the recommended default.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -558,6 +575,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -569,6 +588,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -580,9 +600,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -435,12 +444,12 @@ Exec subcommand</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> .. code:: text</span>
+                            <div class="diff-text"><span class="diff-line">.. code:: text</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-   pymanager exec -V:tag [interpreter opts] [script.py|-m module|-c code] [script args]</span>
 <span class="diff-line diff-removed">-   pymanager exec -3.* ...</span>
@@ -602,8 +620,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>Primary change is clarification and reorganization of the Exec subcommand block: the old merged form 'pymanager exec -V:tag [interpreter opts] [script.py|-m module|-c code] [script args]', 'pymanager exec -3.*', 'pymanager exec [--only-managed] ...', 'py -V:<TAG>|-3.*', etc. is replaced with explicit two lines for py usage ('py -V:<TAG>' and 'py -3.*') and separate, later lines for PyManager usage ('pymanager exec -V:tag', 'pymanager exec -3.*'). This clarifies that the py launcher is primary and separates PyManager's own exec commands from the Python launcher semantics, enhancing readability and consistency without altering core behavior.</p>
+                            <p>The Exec subcommand syntax was clarified by separating the combined -V/-3.* forms into distinct py and pymanager specifications. Py now uses -V:<TAG> and a separate -3.* option (instead of -V:<TAG>|-3.*), while pymanager retains -V:tag and -3.*. This makes the tag syntax explicit and consistent across commands, reducing ambiguity in how runtimes are selected and launched.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -629,6 +648,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -640,6 +661,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -651,8 +673,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -490,11 +499,15 @@ be allowed.</span>
-<span class="diff-line"> The best installed runtime matching the tag is then selected and launched with</span>
+                            <div class="diff-text"><span class="diff-line">The best installed runtime matching the tag is then selected and launched with</span>
 <span class="diff-line"> the remaining command line.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-If no matching runtime is found, and the ``--install`` option is set, it will be</span>
@@ -674,11 +695,12 @@
 <span class="diff-line"> Install subcommand</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Generalization
-                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>The dominant change is a broadening/unification of the Windows Python installation management model: shifting to a single installer (PyManager) with a clear python vs py command separation, expanding automatic installation behavior to include pymanager exec (in addition to py exec), and introducing a first-launch experience for new users, i.e., generalizing the installer behavior beyond the more limited prior version.</p>
+                            <p>The behavior when no matching runtime is found has been reframed: instead of a blanket error or requiring --install to trigger installation for certain commands, PyManager now defines distinct outcomes per command: py exec and pymanager exec auto-install and launch a runtime if none found; py, python, and python3 will report an error if no runtime is found unless no runtimes are available at all, in which case the first runtime is auto-installed. This changes the intention of the install flow from a simple 'install if requested' to a more proactive, targeted auto-install path, aligning with the new installer approach.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -704,6 +726,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -715,6 +739,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -726,9 +751,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -502,9 +515,9 @@ Install subcommand</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> .. code:: text</span>
+                            <div class="diff-text"><span class="diff-line">.. code:: text</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-   py install [-s|--source <URL>] [-f|--force] [-u|--upgrade] [tag ...]</span>
 <span class="diff-line diff-removed">-   py install [-s|--source <URL>] [-t|--target <DIR>] [tag ...]</span>
@@ -744,8 +767,9 @@
                             <div class="reason-type tooltip">Meaning
                                 <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>The dominant change is in the Install subcommand syntax: the old version allowed multiple tags in one install invocation (represented as [tag ...]), whereas the new version requires exactly a single tag (tag). This is a change in the command's input semantics, restricting from multi-target installs to single-target per call. It alters the meaning/intent of the requirement (not merely formatting or clarifying). The rest of the behavior described remains, but with a narrower input contract that will affect automation that relied on passing multiple tags at once.</p>
+                            <p>The Install subcommand syntax was changed to require explicit tag specification (no implicit/latest install) and to remove the -f/--force and -u/--upgrade options from the primary install path. This makes installations version-driven and unambiguous, and reduces flexibility that allowed installing without specifying a target version. The change enforces a more explicit usage pattern for installations, aligning with the new design intent.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -771,6 +795,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -782,6 +808,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -793,8 +820,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -518,7 +531,8 @@ and are used to search the index file. Company names match as case-insensitive</span>
-<span class="diff-line"> prefixes, preferring a full match over a prefix, and tags use case-insensitive,</span>
+                            <div class="diff-text"><span class="diff-line">prefixes, preferring a full match over a prefix, and tags use case-insensitive,</span>
 <span class="diff-line"> number-aware matches, with dotted numbers treated as versions. Tags must match</span>
 <span class="diff-line"> one of the listed "install for" tags, and entries list multiple such tags to</span>
 <span class="diff-line diff-removed">-handle abbreviated requests.</span>
@@ -805,11 +831,12 @@
 <span class="diff-line"> ``3.10.5`` as tags to be installed for. A request for ``3.10`` would match one</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Introduction of a new special tag 'default' in the Install subcommand tag matching rules. It resolves to the user's configured default (typically 3), thereby changing the semantics of how tags are matched and installed by allowing a default-version lookup via a tag.</p>
+                            <p>Added support for a special 'default' tag in the install command. The 'default' tag resolves to the user's configured default (typically '3'), ensuring a defined default runtime is selected when no explicit tag is provided.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -835,6 +862,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -846,6 +875,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -857,8 +887,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -540,20 +554,20 @@ Users are expected to use shorter tags for convenience, rather than ranges.</span>
-<span class="diff-line"> The default index file is hosted on python.org, and contains install information</span>
+                            <div class="diff-text"><span class="diff-line">The default index file is hosted on python.org, and contains install information</span>
 <span class="diff-line"> including package URLs and hashes for all installable versions. An alternate</span>
 <span class="diff-line"> index may be specified by the user or their administrator (see Configuration</span>
 <span class="diff-line diff-removed">-below). Entries in the index file list the full tags they should be installed</span>
@@ -891,8 +920,9 @@
                             <div class="reason-type tooltip">Meaning
                                 <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>The New Version changes the default behavior of the 'py install' subcommand: in the Old Version, calling 'py install' with no tags would install the latest default runtime; in the New Version, this now does not install anything and instead displays help text and an error, with '--upgrade' able to upgrade all installs. This is a change in the intended semantic meaning of the install command and affects user workflow, requiring migration considerations. Additional edits such as clarified launcher naming, explicit default commands (python/py), and architectural notes are secondary and do not alter the core semantics as drastically.</p>
+                            <p>The dominant change is a semantic shift in the Install subcommand: when invoked with no tags, it no longer installs the latest default version; instead it does not install anything and displays the help text and an error. Previously, it installed the latest default version. Additionally, --upgrade with no tags now attempts to upgrade all installs. This represents a fundamental redesign of user interaction and install semantics, not a simple wording fix.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -918,6 +948,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -929,6 +961,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -940,8 +973,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -588,6 +602,13 @@ be prompted before uninstalling each runtime.</span>
-<span class="diff-line"> If the ``--purge`` option is passed with no tags, then (after confirmation) all</span>
+                            <div class="diff-text"><span class="diff-line">If the ``--purge`` option is passed with no tags, then (after confirmation) all</span>
 <span class="diff-line"> runtimes will be removed, along with shortcuts and any cached files.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+Uninstalling PyManager does not uninstall any runtimes that were installed. For</span>
@@ -959,8 +991,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>Dominant change: a fundamental redefinition of the Windows Python installation surface by introducing a unified PyManager-based installer where 'python' becomes the default launcher and 'py' handles version management, replacing the prior multi-installer/launcher setup. This core shift is accompanied by clarifications on uninstall behavior and virtual environment interaction in the new version.</p>
+                            <p>Added explicit clarification in the Uninstall subsection that uninstalling PyManager does not uninstall runtimes that were installed; explains the rationale (we cannot run arbitrary code at uninstall time) and notes that reinstalling PyManager allows management of those installs to resume; also clarifies that running 'py uninstall --purge' before uninstalling PyManager will perform a complete uninstall.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -986,6 +1019,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -997,6 +1032,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1008,9 +1044,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -596,8 +617,7 @@ List subcommand</span>
-<span class="diff-line"> </span>
-<span class="diff-line">    py list [-f|--format <FMT>] [-1|--one] [--only-managed] [tag ...]</span>
+                            <div class="diff-text"><span class="diff-line">py list [-f|--format <FMT>] [-1|--one] [--only-managed] [tag ...]</span>
 <span class="diff-line">    py list [-f|--format <FMT>] [-1|--one] [--online] [--source <URL>] [tag ...]</span>
 <span class="diff-line diff-removed">-   py [--list|-0]</span>
 <span class="diff-line diff-removed">-   py [--list-paths|-0p]</span>
@@ -1023,8 +1057,9 @@
                             <div class="reason-type tooltip">Summarization/shortening
                                 <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
                             </div>
-                            <p>Documentation formatting cleanup: two separate lines for the list command options were merged into a single line, combining 'py [--list|-0]' and 'py [--list-paths|-0p]' into 'py [--list|--list-paths|-0|-0p]'. This shortens and clarifies that all four forms are accepted.</p>
+                            <p>The two separate usage lines for the 'py' command’s list options (py [--list|-0] and py [--list-paths|-0p]) have been merged into a single line: py [--list|--list-paths|-0|-0p]. This is a summarization/shortening change that preserves the same semantics (both flags combined) while reducing duplication in the Exec subcommand section.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1050,6 +1085,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1061,6 +1098,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1072,8 +1110,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -767,13 +787,18 @@ stored in the root of each package archive. The entries in the bundled file will</span>
-<span class="diff-line"> fill in any gaps from the index file. This is intended to allow the typically</span>
+                            <div class="diff-text"><span class="diff-line">fill in any gaps from the index file. This is intended to allow the typically</span>
 <span class="diff-line"> large ``shortcuts`` key to be removed from the index file, but may also extend</span>
 <span class="diff-line"> to ``alias``, ``executable`` and ``executable_args``. Omitting other keys from</span>
 <span class="diff-line diff-removed">-the index may result in problems installing the package.</span>
@@ -1091,15 +1128,15 @@
 <span class="diff-line diff-added">+later indexes will not be searched if a viable candidate is found (in other</span>
 <span class="diff-line diff-added">+words, the first index consulted should have the latest versions in it).</span>
 <span class="diff-line"> </span>
-<span class="diff-line"> The initial schema is shown below:</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> The initial schema is shown below:</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The New Version represents a fundamental shift in intent and design: it redesigns PyManager as the primary Windows installer workflow for Python, changes default command semantics (python is the primary launcher, py manages multiple runtimes), and introduces automatic runtime installation on demand along with expanded deployment options (Store/MSIX/MSI, single-arch; admin/config controls). This is not a minor clarification or formatting change but a core redefinition of how installation, launching, and updates are supposed to work, affecting behavior across Exec/Install/Uninstall paths, venv interaction, and guidance for teaching the concept.</p>
+                            <p>Added clarifying notes in the index schema diff: (1) that correct behavior is left to the implementation and is not an interoperability guarantee, so details are not specified beyond general compatibility; and (2) that when searching for installs across multiple indexes, later indexes are not searched once a viable candidate is found (first index consulted should contain the latest versions), making the behavior clearer and more predictable.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1125,6 +1162,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1136,6 +1175,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1147,9 +1187,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -867,11 +892,14 @@ suitable runtime for the script.</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> Unlike the support currently in the ``py.exe`` launcher, we propose to reduce</span>
+                            <div class="diff-text"><span class="diff-line">Unlike the support currently in the ``py.exe`` launcher, we propose to reduce</span>
 <span class="diff-line"> this functionality to only support Python commands where the command matches</span>
 <span class="diff-line diff-removed">-a global alias listed for an install. (The existing launcher is able to run any</span>
 <span class="diff-line diff-removed">-executable, and attempts to extract version information from the command, rather</span>
@@ -1168,11 +1206,12 @@
 <span class="diff-line"> Rationale</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The Shebang Processing description was changed from restricting interpretation to Python commands that match a global alias to broadening it so that non-matching shebang lines are treated as arbitrary executable paths. This alters the intended semantics of how shebangs are resolved and could cause edge-case differences from the existing launcher. The note about the patterns remains, but is now stated to be largely compatible with the existing launcher.</p>
+                            <p>The diff updates the Shebang Processing section to clarify that PyManager's handling of shebangs will only resolve to a global alias; anything that does not match the alias is treated as an arbitrary executable path. This makes behavior more predictable and aligns with implementation intent, but may cause subtle differences for edge cases relied on by users of the old launcher (which could parse version information from arbitrary commands). The change does not alter core goals or interfaces, only clarifies non-matching cases.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1198,6 +1237,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1209,6 +1250,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1220,8 +1262,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -906,7 +934,8 @@ launches the most appropriate version of Python available on the user's machine.</span>
-<span class="diff-line"> This is much closer to the desired behaviour of the global ``python`` command</span>
+                            <div class="diff-text"><span class="diff-line">This is much closer to the desired behaviour of the global ``python`` command</span>
 <span class="diff-line"> than any alternative.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-TODO: Note that this follows Gentoo's design as well</span>
@@ -1235,8 +1276,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The Abstract was updated to clarify the intended user experience and command surface of the new Windows installer. Specifically, it now states that the default Python command on Windows will be 'python', that multi-version management is via 'py', and that users can enable global 'python3.x' commands by adjusting PATH. This provides a clearer mental model for users and implementers and aligns with the recommended teaching guidance. (A minor wording adjustment about Gentoo in the same section also appears.)</p>
+                            <p>Editorial change: replaced a placeholder TODO note mentioning Gentoo's design with a full sentence explaining that Gentoo also distributes an intelligent 'python' command to serve users better than a simple symlink. No functional or requirements changes; it's a wording clarification.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1262,6 +1304,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1273,6 +1317,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1284,8 +1329,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -935,6 +964,13 @@ always find ``py`` resolving to the launcher. Ultimately, the only way to</span>
-<span class="diff-line"> resolve this in favour of PyManager is to uninstall the launcher, which can be</span>
+                            <div class="diff-text"><span class="diff-line">resolve this in favour of PyManager is to uninstall the launcher, which can be</span>
 <span class="diff-line"> done through the standard Installed Apps control panel.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+We propose to update the existing launcher, which will continue to be released</span>
@@ -1300,11 +1344,12 @@
 <span class="diff-line"> ---------------------</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>A new note was added clarifying that the existing py.exe launcher will be updated to detect use of the new PyManager subcommands and to present a helpful message instead of an error. It also notes that extensionless file invocations will be recognized so that users who cannot change their setup still have a viable path. This clarifies backward-compatibility and UX expectations rather than altering core functionality.</p>
+                            <p>The diff adds a new proposal: update the existing launcher (py.exe) that ships with the traditional installer to detect the new PyManager subcommands and present a useful message instead of the current error. It would also emit warnings for edge cases where users launch extensionless files by those names, preserving that behavior as a viable fallback for users who cannot modify their setup.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1330,6 +1375,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1341,6 +1388,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1352,8 +1400,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -943,7 +979,9 @@ An activated virtual environment, as implemented by the standard library</span>
-<span class="diff-line"> :mod:`venv` module, will modify the user's ``PATH`` environment variable to ensure</span>
+                            <div class="diff-text"><span class="diff-line">:mod:`venv` module, will modify the user's ``PATH`` environment variable to ensure</span>
 <span class="diff-line"> that the venv launcher will take precedence over other executables. As a result,</span>
 <span class="diff-line"> when a venv has been activated, PyManager can only be launched by its aliases</span>
 <span class="diff-line diff-removed">-other than ``python``.</span>
@@ -1368,8 +1415,9 @@
                             <div class="reason-type tooltip">Meaning
                                 <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>New Version redefines core semantics and user workflow: introduces 'python' as the default launcher while 'py' manages multiple runtimes, changes install behavior for no-tags to not install by default, adds a 'default' tag, updates venv interaction and uninstall semantics, and adds several clarifications that together constitute a fundamental shift in the Windows install manager design.</p>
+                            <p>The venv interaction semantics were changed: previously, when a virtual environment was active, PyManager could only be launched via its own aliases (not the python alias). The new version changes this to treat an active virtual environment as the default runtime (except for uninstall), ensuring that other commands behave as if that environment is the current runtime. This alters the intended user experience and command resolution in virtualized contexts.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1395,6 +1443,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1406,6 +1456,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1417,8 +1468,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -975,7 +1013,8 @@ predictable, and so we have no recourse to do anything other than apologise and</span>
-<span class="diff-line"> suggest users use our own tooling for downloads.</span>
+                            <div class="diff-text"><span class="diff-line">suggest users use our own tooling for downloads.</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> The deprecation period for the traditional installer allows time for these users</span>
 <span class="diff-line diff-removed">-to learn about the upcoming change.</span>
@@ -1429,11 +1479,12 @@
 <span class="diff-line"> Scripted installs</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>The New Version primarily clarifies and redefines the user-facing command semantics: it designates python as the default launcher and py as the multi-version management tool, reorganizes the Exec subcommand usage and option syntax, and adds explicit guidance about PATH behavior and the distinction between the default Python launch and version management. In short, it's a clarification/consistency update rather than a new feature addition.</p>
+                            <p>The changes reflect a new Windows install management direction: introducing PyManager as the canonical installer and redefining the default and management commands (python for launching the best runtime, py for managing multiple versions). This represents a new design/approach that replaces the prior traditional/Store/NuGet distribution model, adds a revised index/spec and governance, and includes deprecation warnings for older installers.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1459,6 +1510,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1470,6 +1523,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1481,8 +1535,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -989,7 +1028,8 @@ intervention (that is, someone has to change the command already), this is</span>
-<span class="diff-line"> considered an acceptable change.</span>
+                            <div class="diff-text"><span class="diff-line">considered an acceptable change.</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> The deprecation period for the traditional installer allows time for these users</span>
 <span class="diff-line diff-removed">-to learn about the upcoming change.</span>
@@ -1493,11 +1546,12 @@
 <span class="diff-line"> Old runtime installed</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>A minor editorial addition clarifies the deprecation approach: where possible, the traditional installer will emit deprecation warnings; this clarifies how users should expect changes during the transition rather than a pure functional change.</p>
+                            <p>The primary change is the introduction of PyManager as the centralized Windows installation manager, replacing the prior plan of multiple separate installers with a single workflow. This new approach defines a concrete user-facing model where 'python' is the default launcher and 'py' manages multiple runtimes, distributed via MSIX/Store alongside python.org packaging, and accompanied by new governance/configuration mechanisms. In short, the core requirement scope shifts from describing existing installer formats to formalizing a new unified install manager and its command semantics, deployment model, and ecosystem integration.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1523,6 +1577,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1534,6 +1590,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1545,22 +1602,20 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1046,7 +1086,7 @@ Old version availability</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> Python versions prior to the first release of PyManager can be backfilled into</span>
+                            <div class="diff-text"><span class="diff-line">Python versions prior to the first release of PyManager can be backfilled into</span>
 <span class="diff-line"> the python.org index, either based on newly repackaged archives or using the</span>
 <span class="diff-line diff-removed">-almost equivalent packages from Nuget (the latter does not include Tcl/Tk,</span>
 <span class="diff-line diff-added">+almost equivalent packages from NuGet (the latter does not include Tcl/Tk,</span>
 <span class="diff-line"> making them significantly incompatible for some users, but this is likely okay</span>
-<span class="diff-line"> for especially old versions).</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> for especially old versions).</span></div>
                         </td>
                         <td>
                             <div class="reason-type tooltip">Typo
                                 <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
                             </div>
-                            <p>Capitalization fix: corrected Nuget to NuGet in the 'Old version availability' paragraph.</p>
+                            <p>Capitalization of NuGet was corrected from 'Nuget' to 'NuGet' in the diff snippet; a branding/name capitalization fix with no impact on meaning or requirements.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1586,6 +1641,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1597,6 +1654,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1608,8 +1666,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1061,8 +1101,9 @@ distribution, and so we will simply not provide an option for them. Third</span>
-<span class="diff-line"> parties who desire this functionality are encouraged to provide their own</span>
+                            <div class="diff-text"><span class="diff-line">parties who desire this functionality are encouraged to provide their own</span>
 <span class="diff-line"> distributions.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-PyManager can only be installed for all users, and can be extensively configured</span>
@@ -1625,8 +1682,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The change adds explicit clarification about installation scope and packaging: (1) MSIX can be installed without administrator privileges, (2) PyManager can be installed for all users but is configurable by an administrator, and (3) additional notes on bundling/embedding runtimes and layouts. This clarifies the previously generic admin/install rights and aligns with updated packaging approaches.</p>
+                            <p>The change adds a clarification about installation privileges: the old text stated PyManager can only be installed for all users and requires administrator privileges, but the new text notes that an MSIX package does not require administrative privileges to install. This clarifies deployment options for all-user installations and aligns deployment semantics with the MSIX packaging model, reducing implied restrictions and potential confusion about admin rights.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1652,6 +1710,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1663,6 +1723,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1674,8 +1735,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1074,18 +1115,30 @@ changes, this will be documented only.</span>
-<span class="diff-line"> Build-time installs</span>
+                            <div class="diff-text"><span class="diff-line">Build-time installs</span>
 <span class="diff-line"> -------------------</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-Users currently using Nuget packages will also have to change to a new workflow.</span>
@@ -1713,11 +1773,12 @@
 <span class="diff-line"> =====================</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
                             </div>
-                            <p>The new version primarily clarifies and refines the design of the Windows installation manager (PyManager): it explicitly repositions the python and py commands, reorganizes the Exec subcommand to show both py and pymanager variants, adds a new Single architecture installer section, tightens Shebang Processing rules, updates deployment strategy (Store/NuGet/MSIX/MSI) to reflect a refined approach, and expands the Open Issues with concrete tasks. In short, it represents a design clarification and scope evolution rather than a typo or straightforward correction.</p>
+                            <p>Added a new design constraint in the Build-time installs section: to publish only a single architecture (Intel 64-bit) for PyManager, with notes that Windows ARM64 can run via emulation and 32-bit CPython remains for compatibility. Also added a line stating no changes to NuGet packages are proposed. This changes how the requirement will be implemented (scope/architecture) without altering the overall goal of the Windows Python installation manager.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1743,6 +1804,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1754,6 +1817,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1765,8 +1829,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1114,13 +1167,20 @@ use it to install Python. The admin-only configuration described earlier in</span>
-<span class="diff-line"> attacker who can run PyManager is able to do whatever the user can do, and only</span>
+                            <div class="diff-text"><span class="diff-line">attacker who can run PyManager is able to do whatever the user can do, and only</span>
 <span class="diff-line"> a complete application whitelisting approach can prevent the use of Python.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-TODO: Notes about security of package acquisition (tl;dr: TLS)</span>
@@ -1790,11 +1853,12 @@
 <span class="diff-line"> use a signed, unmodified executable that uses an adjacent data file to launch</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Clarification: Replaced the TODO placeholder on security of package acquisition with explicit details about HTTPS transport security, Windows download mechanisms, certificates, proxies, and verification expectations; fixed Nuget to NuGet capitalization; added a note that reinstalling or updating an install performs a clean install to revert tampering, clarifying security behavior around runtime installs.</p>
+                            <p>New security details added in Security Implications: replaced the placeholder TLS note with explicit HTTPS-based acquisition security (describing use of native Windows download mechanisms, certificates, proxies, and verification). Corrected capitalization from 'Nuget' to 'NuGet' in the related section. Added guidance that runtime installation/update can revert tampering by performing a clean install, and clarified that PyManager installs are more vulnerable to tampering than Store or per-machine installs; overall, this is a clarification with new security content rather than a change in core functionality.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1820,6 +1884,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1831,6 +1897,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1842,8 +1909,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1287,12 +1347,16 @@ lines:</span>
-<span class="diff-line"> Reference Implementation</span>
+                            <div class="diff-text"><span class="diff-line">Reference Implementation</span>
 <span class="diff-line"> ========================</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-The reference implementation is available at https://github.com/zooba/pymanager/</span>
@@ -1868,8 +1934,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The Reference Implementation section was clarified and expanded: it now points to the author's repository (instead of a bare URL), uses the NuGet branding correctly (NuGet), adds a separate link to the documentation in the repository, and corrects capitalization. No functional requirements changed; it's a metadata/link/documentation clarification to improve traceability and consistency.</p>
+                            <p>Editorial cleanup of the Reference Implementation section: replaced plain URLs with reStructuredText markup and added a link to the repository's documentation (doc/using.rst). Also corrected 'Nuget' to 'NuGet' and clarified the location of reference materials in the author's repository, without changing substantive content.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1895,6 +1962,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1906,6 +1975,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1917,8 +1987,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1322,7 +1386,8 @@ for Windows.</span>
-<span class="diff-line"> Due to the additional steps needed to make this functional on other platforms,</span>
+                            <div class="diff-text"><span class="diff-line">Due to the additional steps needed to make this functional on other platforms,</span>
 <span class="diff-line"> and the fact that there isn't a need to replace existing installers for those</span>
 <span class="diff-line"> platforms, we consider this idea out of scope for this PEP. It may be pursued in</span>
 <span class="diff-line diff-removed">-the future.</span>
@@ -1932,8 +2001,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The changes primarily provide clarification and formalization of the PyManager design and behavior: explicit default command semantics, auto-install behavior, new installation options (single-architecture), admin/configuration changes, updated references, and a reorganized, more precise specification.</p>
+                            <p>Added a clarifying parenthetical to the 'Make every version a Windows Store package' rejection, stating that the future work may be pursued and that the contributors most likely to do so have indicated they would be able to use a consistent interface; this clarifies scope and intent without changing the decision.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -1959,6 +2029,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -1970,6 +2042,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -1981,8 +2054,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1352,8 +1417,8 @@ as is appropriate (whether through a shebang or an active environment).</span>
-<span class="diff-line"> Include a runtime INSTEAD OF the manager</span>
+                            <div class="diff-text"><span class="diff-line">Include a runtime INSTEAD OF the manager</span>
 <span class="diff-line"> ----------------------------------------</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-This is the current situation, which we are trying to change. If you made this</span>
@@ -1997,8 +2069,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The text was reworded to improve clarity; it changes from 'If you made this argument, and somehow still read this far, please go back and start again.' to 'If you read this far and still chose to make this argument, please go back and start again.' The meaning remains the same, but the phrasing more clearly indicates the reader has progressed to this point.</p>
+                            <p>Reworded the sentence in the 'Include a runtime INSTEAD OF the manager' section to improve readability without changing the meaning. From 'If you made this argument, and somehow still read this far, please go back and start again.' to 'If you read this far and still chose to make this argument, please go back and start again.'</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2024,6 +2097,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2035,6 +2110,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2046,22 +2122,21 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1523,7 +1588,7 @@ Just publish the plain ZIP file</span>
-<span class="diff-line"> -------------------------------</span>
+                            <div class="diff-text"><span class="diff-line diff-removed">-------------------------------</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> Publishing the plain ZIP file is part of the plan, however, it will not be</span>
 <span class="diff-line diff-removed">-visibly listed (for example, on the python.org downloads pages, though they will</span>
 <span class="diff-line diff-added">+visibly listed (for example, on the python.org download pages, though they will</span>
 <span class="diff-line"> be visible in the FTP view). An alternative would be to publish and list these</span>
-<span class="diff-line"> packages, and expect users to download and manually extract and configure them.</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> packages, and expect users to download and manually extract and configure them.</span></div>
                         </td>
                         <td>
                             <div class="reason-type tooltip">Typo
                                 <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
                             </div>
-                            <p>Fixed editorial typo in the 'Just publish the plain ZIP file' section: changed 'python.org downloads pages' to the correct 'python.org download pages'.</p>
+                            <p>Grammar correction: the Old Version used 'download pages' while the New Version uses 'downloads pages' in the Publishing the plain ZIP file section. This is a minor typographical adjustment (pluralization) that does not change the meaning or intent.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2087,6 +2162,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2098,6 +2175,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2109,8 +2187,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1543,6 +1608,7 @@ The index protocol and download list will be available for tools that wish to</span>
-<span class="diff-line"> use it, or for users who are willing to navigate JSON in order to find the URL.</span>
+                            <div class="diff-text"><span class="diff-line">use it, or for users who are willing to navigate JSON in order to find the URL.</span>
 <span class="diff-line"> The ``--target`` option on the install command also provides a trivial download</span>
 <span class="diff-line"> and extract operation, allowing users to have the same experience as a ZIP file.</span>
 <span class="diff-line diff-added">+And the ``--download`` option can give users the ZIP file still zipped.</span>
@@ -2119,11 +2196,12 @@
 <span class="diff-line"> Only publish PyManager to one place</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>A minor textual addition clarifies the behavior of the --download option: it can return the ZIP file still zipped when publishing plain ZIPs. This change doesn't alter requirements but improves understanding of offline packaging and downloads.</p>
+                            <p>A line was added indicating that the --download option can deliver the ZIP file still zipped when publishing plain ZIP files, introducing a new distribution capability (offline or zipped artifacts) in the New Version.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2149,6 +2227,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2160,6 +2240,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2171,8 +2252,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1561,12 +1627,6 @@ Many users rely on the Windows Store app to install packages, and the built-in</span>
-<span class="diff-line"> redirector in Windows can only open to a Store page. As such, removing the Store</span>
+                            <div class="diff-text"><span class="diff-line">redirector in Windows can only open to a Store page. As such, removing the Store</span>
 <span class="diff-line"> app is equivalent to denying hundreds of thousands of installs each month.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-Additionally, automatic updates are only supported through the Store. We would</span>
@@ -2186,11 +2266,12 @@
 <span class="diff-line"> we sign the python.org package ourselves, while the Store package is signed as</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
                             </div>
-                            <p>The new version clarifies and redefines the overall UX/architecture of the Windows install manager: it positions PyManager as the primary Windows installer with python as the default launcher and py as the management command, adds explicit guidance on first-launch behavior and command semantics, and removes the earlier text implying automatic updates only via the Store (replacing that with a broader update model).</p>
+                            <p>Removed a paragraph in the 'Just publish the plain ZIP file' section that stated automatic updates are only supported through the Windows Store and that the MSIX from python.org could find its own updates on the Store for machines without access. The deletion eliminates an implied Store-only update mechanism and clarifies update behavior without committing to automated Store-based updates.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2216,6 +2297,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2227,6 +2310,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2238,8 +2322,7 @@
                                 334ba78 (Cached) &rarr; 1fb889b (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1606,7 +1666,36 @@ match its requirement, but this is not part of the initial proposal.</span>
-<span class="diff-line"> Open Issues</span>
+                            <div class="diff-text"><span class="diff-line">Open Issues</span>
 <span class="diff-line"> ===========</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-TODO: Raise open issues</span>
@@ -2278,11 +2361,12 @@
 <span class="diff-line"> Footnotes</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Primary change is a semantic redefinition of the Windows installer model: moving from preserving the legacy python.exe launcher semantics to a unified PyManager that uses 'python' as the default launcher and 'py' for version management, with auto-install on demand; effectively altering the meaning/intent of the requirements rather than only clarifying wording.</p>
+                            <p>Added new Open Issues entries: 'Generate packages for old versions' and 'Include test suite in PyManager packages', indicating an expanded scope and planning for historical versions and testing. Additionally, there are updates to Abstract and Exec subcommand wording to reflect a shift in the installer design (default python usage, py for version management) and more precise command syntax, but the dominant change is the addition of new open issues.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2308,6 +2392,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2319,6 +2405,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2330,8 +2417,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -31,6 +31,12 @@ having global ``python3.x`` commands by adding an extra entry to their ``PATH``</span>
-<span class="diff-line"> environment variable. We recommend starting with the "How to teach this" section</span>
+                            <div class="diff-text"><span class="diff-line">environment variable. We recommend starting with the "How to teach this" section</span>
 <span class="diff-line"> for the most concise high-level overview of the features.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+The existing ``.exe`` installer and ``py`` launcher will be deprecated and no</span>
@@ -2341,15 +2427,15 @@
 <span class="diff-line diff-added">+with the install manager.</span>
 <span class="diff-line diff-added">+</span>
 <span class="diff-line"> Reader's Note</span>
-<span class="diff-line"> -------------</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> -------------</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>The New Version adds a deprecation plan for the existing Windows installers (.exe) and the py launcher, as well as the embeddable distro and Windows Store packaging, stating they will be deprecated and removed from release two years after acceptance and replaced by PyManager. This changes the document's intent from supporting multiple installers to consolidating under PyManager, thereby altering the deployment model and user experience.</p>
+                            <p>Added a deprecation plan for the existing Windows installers and launcher: they will be deprecated and no longer released two years after this PEP is accepted; the embeddable distro will no longer be listed on python.org and will instead be available only through PyManager; the Windows Store app will be immediately replaced by the install manager. This represents a major policy and architectural shift, consolidating Windows Python distribution under PyManager.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2375,6 +2461,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2386,6 +2474,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2397,8 +2486,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -532,12 +538,8 @@ prefixes, preferring a full match over a prefix, and tags use case-insensitive,</span>
-<span class="diff-line"> number-aware matches, with dotted numbers treated as versions. Tags must match</span>
+                            <div class="diff-text"><span class="diff-line">number-aware matches, with dotted numbers treated as versions. Tags must match</span>
 <span class="diff-line"> one of the listed "install for" tags, and entries list multiple such tags to</span>
 <span class="diff-line"> handle abbreviated requests. The special tag ``default`` resolves to the user's</span>
 <span class="diff-line diff-removed">-configured default (typically ``3``).</span>
@@ -2417,8 +2505,9 @@
                             <div class="reason-type tooltip">Summarization/shortening
                                 <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
                             </div>
-                            <p>The old text explicitly described version examples (3, 3.10, 3.10.5) to illustrate tag matching for the default. The new text shortens this by removing the explicit examples and replacing them with a briefer statement that the default is typically 3 and that details are in the Configuration section. This is a minor editorial clarification/conciseness change that does not affect behavior or interfaces, only documentation placement.</p>
+                            <p>The change shortens and localizes the explanation of the 'default' tag by replacing the explicit example 'the user's configured default (typically 3)' with a briefer form 'configured default (typically 3; see Configuration later for details on configuring settings)', effectively removing the inline example and deferring to configuration documentation.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2444,6 +2533,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2455,6 +2546,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2466,9 +2558,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -553,12 +555,14 @@ Users are expected to use shorter tags for convenience, rather than ranges.</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> The default index file is hosted on python.org, and contains install information</span>
+                            <div class="diff-text"><span class="diff-line">The default index file is hosted on python.org, and contains install information</span>
 <span class="diff-line"> including package URLs and hashes for all installable versions. An alternate</span>
 <span class="diff-line diff-removed">-index may be specified by the user or their administrator (see Configuration</span>
 <span class="diff-line diff-removed">-below). Entries in the index file list the full set of tags they should be</span>
@@ -2492,8 +2582,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The New Version clarifies how to specify the install index. It explicitly states that the index may be specified by the user via a configuration file or the --source command-line option, or by the administrator via a configuration file, and adds a cross-reference 'See Index Schema below'. The previous wording referred to an alternate index and referred to 'Configuration below' generically. This is a semantic refinement of the interface, not a functionality change.</p>
+                            <p>The change adds explicit details to the Index Schema that were previously implied: it clarifies how an alternate index can be specified (via a user configuration file or the --source option, and via an administrator configuration file) and it specifies the exact tag-matching semantics (if no exact match is found, a prefix match is used; tag numbers are compared logically so 3.1 is a prefix of 3.1.2 but not of 3.10). This supersedes the prior, briefer wording and reduces ambiguity about index resolution behavior.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2519,6 +2610,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2530,6 +2623,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2541,8 +2635,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -581,10 +585,11 @@ install (or generating aliases or shortcuts). This is intended to cover</span>
-<span class="diff-line"> embedding cases, or downloading the files for incompatible platforms. Passing</span>
+                            <div class="diff-text"><span class="diff-line">embedding cases, or downloading the files for incompatible platforms. Passing</span>
 <span class="diff-line"> multiple tags with ``--target`` is an error.</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-If the ``--download <DIR>`` option is passed, runtimes will be downloaded to the</span>
@@ -2562,8 +2655,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>Clarifies the behavior of the --download option: the updated text states that runtime packages are downloaded but not installed, stored as source packages in the specified directory, with an index.json referencing these files. The previous wording implied installation could occur; the change removes that ambiguity by explicitly separating download from installation and noting offline-install usage via --source <index.json>.</p>
+                            <p>The change clarifies the behavior of the --download <DIR> option: the new text explicitly states that the packages are downloaded but not installed, stored in the specified directory as source packages, and an index.json is created that references these files. This clarifies that offline installs are performed from the downloaded index via --source, and does not alter the overall workflow beyond removing ambiguity about whether installation occurs during download.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2589,6 +2683,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2600,6 +2696,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2611,8 +2708,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -600,14 +605,15 @@ inspect existing installs. Unless the ``--yes`` option is passed, the user will</span>
-<span class="diff-line"> be prompted before uninstalling each runtime.</span>
+                            <div class="diff-text"><span class="diff-line">be prompted before uninstalling each runtime.</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> If the ``--purge`` option is passed with no tags, then (after confirmation) all</span>
 <span class="diff-line diff-removed">-runtimes will be removed, along with shortcuts and any cached files.</span>
@@ -2632,11 +2728,12 @@
 <span class="diff-line"> List subcommand</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>A behavioral constraint was added to Uninstall: passing any tags with --purge now yields an error. Previously, the doc described purging all runtimes when --purge is used with no tags but did not specify restrictions for providing specific tags. The change tightens uninstall semantics to require a full purge without tag arguments, clarifying and strengthening the policy.</p>
+                            <p>Clarified uninstall purge semantics.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2662,6 +2759,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2673,6 +2772,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2684,9 +2784,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -625,7 +631,7 @@ PyManager (including an active virtual environment) may be listed separately.</span>
-<span class="diff-line"> </span>
-<span class="diff-line"> The default format is user-friendly. Other formats will include machine-readable</span>
+                            <div class="diff-text"><span class="diff-line">The default format is user-friendly. Other formats will include machine-readable</span>
 <span class="diff-line"> and single string formats (e.g. ``--format=prefix`` simply prints ``sys.prefix``</span>
 <span class="diff-line diff-removed">-on a line by itself). The exact list of formats is left to implementation.</span>
 <span class="diff-line diff-added">+on a line by itself). The exact list of formats is left to the implementation.</span>
@@ -2695,11 +2793,12 @@
 <span class="diff-line"> shell scripts that want to locate the default (or a suitable) runtime without</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Generalization
-                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
                             </div>
-                            <p>The New Version introduces a deprecation policy for existing installers (the traditional .exe installer and py launcher) and transitions toward managing installs exclusively via PyManager, expanding the scope beyond the original proposal. This deprecation timeline and policy broaden the plan's coverage; additional minor editorial changes (e.g., hyphenated index schema field names) accompany the update but the dominant change is the broadened scope to deprecate older installers.</p>
+                            <p>Minor grammatical correction: added 'the' to 'left to implementation' to read 'left to the implementation'. No change in meaning.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2725,6 +2824,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2736,6 +2837,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2747,8 +2849,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -815,7 +821,7 @@ The initial schema is shown below:</span>
-<span class="diff-line">                "id": str,</span>
+                            <div class="diff-text"><span class="diff-line">"id": str,</span>
 <span class="diff-line"> </span>
 <span class="diff-line">                # Name to display in the UI</span>
 <span class="diff-line diff-removed">-               "displayName": str,</span>
@@ -2761,8 +2862,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>The field name changed from 'displayName' to 'display-name' in the Index Schema to align with the hyphenated naming convention used for other fields (e.g., 'sort-version'), improving consistency and parseability without changing semantics.</p>
+                            <p>Index Schema changed the field name 'displayName' to 'display-name' to align with kebab-case naming convention used elsewhere in the schema (e.g., sort-version, install-for). This is a naming/formatting change and does not alter semantics or data model.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2788,6 +2890,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2799,6 +2903,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2810,9 +2915,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -837,6 +843,9 @@ The initial schema is shown below:</span>
-<span class="diff-line"> </span>
-<span class="diff-line">                # List of tags to install this package for. This does not have to be</span>
+                            <div class="diff-text"><span class="diff-line"># List of tags to install this package for. This does not have to be</span>
 <span class="diff-line">                # unique across all installs; the first match will be selected.</span>
 <span class="diff-line diff-added">+               # For example, the 3.10.5 package may list '3', '3.10' and</span>
 <span class="diff-line diff-added">+               # '3.10.5' so that any of those may be specified to install it.</span>
@@ -2822,11 +2925,12 @@
 <span class="diff-line">                # List of tags to run this package for. Does not have to be unique</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Clarification
-                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            <div class="reason-type tooltip">Demonstration
+                                <span class="tooltiptext">An example or visualization was added to assist in understanding.</span>
                             </div>
-                            <p>The diff adds clarifying comments to the Index Schema section for the install-for field, including an example showing that version-like tags may be listed as 3, 3.10, and 3.10.5 and that matches are number-aware (so 3.1 is not treated as a prefix of 3.10). This is a documentation/clarification improvement rather than a functional change.</p>
+                            <p>A new example comment was added under the install-for schema to illustrate number-aware matching: showing that 3, 3.10, and 3.10.5 may be listed and that 3.1 is not a prefix of 3.10. This clarifies how the index should interpret version-like tags.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2852,6 +2956,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2863,6 +2969,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2874,22 +2981,21 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -877,7 +886,7 @@ The initial schema is shown below:</span>
-<span class="diff-line">            }</span>
+                            <div class="diff-text"><span class="diff-line">}</span>
 <span class="diff-line">        ],</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-       # Full or partial URL to the next index file</span>
 <span class="diff-line diff-added">+       # URL (or relative path) to the next index file</span>
 <span class="diff-line">        "next": str,</span>
-<span class="diff-line">    }</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line">    }</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">Generalization
+                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
                             </div>
-                            <p>Changed the Index Schema 'next' field description from 'Full or partial URL to the next index file' to 'URL (or relative path) to the next index file', broadening acceptable inputs from URL-only to include relative filesystem paths and clarifying the semantics.</p>
+                            <p>The description of the 'next' field was generalized from 'Full or partial URL' to 'URL (or relative path) to the next index file', expanding acceptable inputs to include relative/local paths in addition to URLs.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2915,6 +3021,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2926,6 +3034,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -2937,8 +3046,7 @@
                                 1fb889b (Cached) &rarr; 21848e4 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1309,8 +1318,8 @@ We suggest an explanation like this:</span>
-<span class="diff-line">    This will remove all installs and any shortcuts that would otherwise be left</span>
+                            <div class="diff-text"><span class="diff-line">This will remove all installs and any shortcuts that would otherwise be left</span>
 <span class="diff-line">    behind. If you already removed the manager, you can reinstall it and run the</span>
 <span class="diff-line">    above uninstall command again to clean up. Individual runtimes can be</span>
 <span class="diff-line diff-removed">-   uninstalled by replacing the ``--purge`` option with the tag, found by looking</span>
@@ -2953,8 +3061,9 @@
                             <div class="reason-type tooltip">Clarification
                                 <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
                             </div>
-                            <p>Changed wording in the Uninstall subcommand guidance to use 'specifying the tag instead of the --purge option' and 'Tags can be found...' instead of 'replacing the --purge option with the tag, found by looking at ...'. This clarifies user-facing uninstall instructions; no functional change.</p>
+                            <p>The uninstall instruction was rewritten by splitting a long sentence into two shorter sentences. The old phrasing 'uninstall by replacing the ``--purge`` option with the tag, found by looking at ``python list``.' was replaced with 'uninstalled by specifying the tag instead of ``--purge``. Tags can be found by looking at ``python list``.', making the instruction clearer and less ambiguous.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -2980,6 +3089,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -2991,6 +3102,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -3002,8 +3114,7 @@
                                 21848e4 (Cached) &rarr; d4dba2d (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1099,6 +1099,13 @@ almost equivalent packages from NuGet (the latter does not include Tcl/Tk,</span>
-<span class="diff-line"> making them significantly incompatible for some users, but this is likely okay</span>
+                            <div class="diff-text"><span class="diff-line">making them significantly incompatible for some users, but this is likely okay</span>
 <span class="diff-line"> for especially old versions).</span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+As of this PEP's acceptance, the plan is to create packages for all versions of</span>
@@ -3018,11 +3129,12 @@
 <span class="diff-line"> ----------------------</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Generalization
-                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Added an explicit plan to broaden distribution coverage: from Python 3.10.0 onwards PyManager will provide packages for all non-EOL releases, while Python 3.5.0 onwards will be served via NuGet instead of new PyManager packages. This generalizes the release strategy and clarifies maintenance expectations, replacing ambiguity about future packaging of older versions.</p>
+                            <p>Revision of the Old version availability policy: the plan shifts from backfilling older Python releases and using NuGet for older versions to a cutover where PyManager packages will cover all non-EOL releases starting at Python 3.10.0, while Python 3.5.0 through 3.9.x would be available via NuGet. This narrows the scope to newer versions and changes how older versions are distributed, reflecting a change in distribution strategy.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -3048,6 +3160,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -3059,6 +3173,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -3070,8 +3185,7 @@
                                 21848e4 (Cached) &rarr; d4dba2d (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1149,6 +1156,41 @@ substitution of 64-bit binaries. As PyManager runs as a standalone executable,</span>
-<span class="diff-line"> this is not a necessary feature for the manager.</span>
+                            <div class="diff-text"><span class="diff-line">this is not a necessary feature for the manager.</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-added">+Test suite and debug symbols</span>
@@ -3110,15 +3224,15 @@
 <span class="diff-line diff-added">+</span>
 <span class="diff-line diff-added">+</span>
 <span class="diff-line"> Security Implications</span>
-<span class="diff-line"> =====================</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> =====================</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
-                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Two new sections were added in the New Version: 'Test suite and debug symbols' and 'Global pip command', expanding the proposal's scope to include optional test assets and a clarified stance on pip usage. This is an expansion/clarification of packaging options and usage guidance, not a correction of existing content.</p>
+                            <p>New – the changes introduce substantial new packaging options and features not present in the old version: (1) a test suite and debugging symbols packaging path (PythonTest) to reduce default package size while providing access to tests and debugging artifacts, (2) a new Global pip command section describing its absence in the default Store/installer, and (3) related adjustments to Security Implications and deployment details. In short, the dominant change is the expansion/augmentation of the distribution packaging rather than a refinement of existing behavior.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -3144,6 +3258,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -3155,6 +3271,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -3166,15 +3283,13 @@
                                 21848e4 (Cached) &rarr; d4dba2d (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -1672,47 +1714,6 @@ We could also detect the metadata and warn if the selected runtime does not</span>
-<span class="diff-line"> match its requirement, but this is not part of the initial proposal.</span>
+                            <div class="diff-text"><span class="diff-line">match its requirement, but this is not part of the initial proposal.</span>
 <span class="diff-line"> </span>
 <span class="diff-line"> </span>
 <span class="diff-line diff-removed">-Open Issues</span>
 <span class="diff-line diff-removed">-===========</span>
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-Generate packages for old versions</span>
-<span class="diff-line diff-removed">-----------------------------------</span>
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-At present, we can install versions of Python back to 3.5 from the NuGet feed.</span>
 <span class="diff-line diff-removed">-These are identical to the traditional installer releases of the same versions,</span>
@@ -3190,7 +3305,6 @@
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-Include test suite in PyManager packages</span>
-<span class="diff-line diff-removed">-----------------------------------------</span>
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-The test suite consumes the majority of the size of our current distribution,</span>
 <span class="diff-line diff-removed">-but is not intended to be used by most of our users. By omitting it from the</span>
@@ -3212,15 +3326,15 @@
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line diff-removed">-</span>
 <span class="diff-line"> Copyright</span>
-<span class="diff-line"> =========</span>
-<span class="diff-line"> </span></div>
+<span class="diff-line"> =========</span></div>
                         </td>
                         <td>
                             <div class="reason-type tooltip">Deletion
                                 <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
                             </div>
-                            <p>The Open Issues section and its subsections were removed in the new version, deleting content about generating packages for old versions and including the test suite (and the Footnotes). This represents a scoping/clarity simplification, deferring discussion of those issues to later phases rather than including them in the proposal.</p>
+                            <p>The Open Issues section and its subsections were removed in the New Version, eliminating the previously stated open problems (e.g., 'Generate packages for old versions', 'Include test suite in PyManager packages', 'Footnotes'). The rest of the document remains unchanged, indicating a scope reduction rather than a content change to requirements.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -3246,6 +3360,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -3257,6 +3373,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -3268,8 +3385,7 @@
                                 d4dba2d (Cached) &rarr; 06c4421 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -2,7 +2,7 @@ PEP: 773</span>
-<span class="diff-line"> Title: A Python Installation Manager for Windows</span>
+                            <div class="diff-text"><span class="diff-line">Title: A Python Installation Manager for Windows</span>
 <span class="diff-line"> Author: Steve Dower</span>
 <span class="diff-line"> Discussions-To: https://discuss.python.org/t/77900/</span>
 <span class="diff-line diff-removed">-Status: Draft</span>
@@ -3279,11 +3395,12 @@
 <span class="diff-line"> Created: 21-Jan-2025</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Meaning
-                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
-                            <p>The document transitioned from a Draft to Accepted status, with an added Resolution field indicating the formal approval date. The substantive content appears unchanged; the primary change is the status/approval metadata, i.e., the meaning of the document changed from a proposal to an approved PEP.</p>
+                            <p>Not a requirement.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -3309,6 +3426,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -3320,6 +3439,7 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                     <tr>
@@ -3331,8 +3451,7 @@
                                 d4dba2d (Cached) &rarr; 06c4421 (Cached)
                             </div>
                             
-                            <div class="diff-text"><span class="diff-line diff-header">@@ -10,6 +10,7 @@ Post-History:</span>
-<span class="diff-line">    `18-Dec-2024 <https://discuss.python.org/t/74556/>`__,</span>
+                            <div class="diff-text"><span class="diff-line">`18-Dec-2024 <https://discuss.python.org/t/74556/>`__,</span>
 <span class="diff-line">    `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,</span>
 <span class="diff-line"> Replaces: 397, 486</span>
 <span class="diff-line diff-added">+Resolution: `25-Apr-2025 <https://discuss.python.org/t/77900/180>`__</span>
@@ -3344,8 +3463,9 @@
                             <div class="reason-type tooltip">Other
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
-                            <p>The document moved from Draft to Accepted and added a Resolution entry in Post-History, changing its status and adding formal approval metadata. No substantial changes to the requirement content; the evolution is limited to publication/approval metadata.</p>
+                            <p>Not a requirement.</p>
                         </td>
+                        
                         <td>
                             <div class="feedback-cell">
                                 <div>
@@ -3371,6 +3491,8 @@
                                         
                                         <option value="Demonstration">Demonstration</option>
                                         
+                                        <option value="New">New</option>
+                                        
                                         <option value="Other">Other</option>
                                         
                                     </select>
@@ -3382,17 +3504,24 @@
                                 </div>
                             </div>
                         </td>
+                        
                     </tr>
                     
                 </tbody>
             </table>
             
-            <button type="button" class="submit-btn" onclick="submitFeedback()">Submit Corrections & Re-Analyze</button>
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button type="button" class="submit-btn" onclick="submitFeedback('retry')" style="flex: 1; background-color: rgb(230, 230, 10); color: #333; font-weight: bold;">Submit Corrections & Re-Analyze</button>
+                <button type="button" class="submit-btn" onclick="submitFeedback('finish')" style="flex: 1; background-color: #27ae60;">Finish Analysis (Save Final Report)</button>
+            </div>
+            
         </form>
     </div>
 
+    
     <script>
-        function submitFeedback() {
+        function submitFeedback(actionType) {
             const formData = {};
             const inputs = document.querySelectorAll('input, select, textarea');
             let hasFeedback = false;
@@ -3405,13 +3534,13 @@
                 }
             });
             
-            if (!hasFeedback) {
+            formData['action'] = actionType;
+            
+            if (actionType === 'retry' && !hasFeedback) {
                 if(!confirm("No feedback entered. Do you want to approve the current analysis?")) {
                     return;
                 }
                 formData['action'] = 'approve';
-            } else {
-                formData['action'] = 'retry';
             }
 
             fetch('http://localhost:8000/submit', {
@@ -3423,7 +3552,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert("Feedback submitted! You can close this tab/window now.");
+                alert("Action submitted! You can close this tab/window now.");
                 window.close();
             })
             .catch((error) => {
@@ -3432,5 +3561,6 @@
             });
         }
     </script>
+    
 </body>
 </html>
