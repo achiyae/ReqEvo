@@ -298,3 +298,5 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,python,pycharm+all
 
 /bprograms/
+
+.classification_results_with_feedback/
