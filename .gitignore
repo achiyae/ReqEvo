@@ -299,4 +299,4 @@ pyrightconfig.json
 
 /bprograms/
 
-.classification_results_with_feedback/
+/classification_results_with_feedback/
