@@ -9,8 +9,15 @@ The repo provides some kinds of artifacts:
 
 ## How to Extand\Edit the Dataset?
 1. Clone the repo.
-2. Run `python main.py` and follow the steps in the terminal.
-3. In order to add a new domain, type "N" and provide a git file URL.
-4. In order to edit an already exsiting one, type "R" and enter the name of the domain you would like to review.
-5. In both cases, an HTML editable report will appear. You can provide some feedback and submit it.
+2. Create a virtual environment: `python -m venv venv`
+3. Activate the virtual environment: `venv\Scripts\activate`
+4. Install the requirements: `pip install -r requirements.txt`
+5. Add `.env` file to the root directory of the repo with a valid OpenAI API key. You can get one from [here](https://platform.openai.com/account/api-keys). E.g.:
+```
+OPENAI_API_KEY=sk-...
+```
+6. Run `python main.py` and follow the steps in the terminal:
+   - In order to add a new domain, type "N" and provide a git file URL.
+   - In order to edit an already exsiting one, type "R" and enter the name of the domain you would like to review.
+7. In both cases, an HTML editable report will appear. You can provide some feedback and submit it.
    There is a button for submitting the feedback during the process that allows some iterations of re-analysis, and another button to approve the analysis that generates a final HTML report when you finish.

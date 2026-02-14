@@ -1,0 +1,2530 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirement Evolution Analysis - peps/pep-0554.rst</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        .container { max-width: 95%; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .diff-text { font-family: 'Consolas', 'Courier New', monospace; white-space: pre-wrap; background-color: #f8f9fa; padding: 5px; border-radius: 4px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        .reason-type { font-weight: bold; color: #2980b9; position: relative; display: inline-block; cursor: help; border-bottom: 1px dotted #2980b9; }
+        .old-version { color: #c0392b; text-decoration: line-through; }
+        .new-version { color: #27ae60; }
+        .meta { margin-bottom: 20px; color: #7f8c8d; }
+        
+        /* Tooltip container */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            font-weight: normal;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Git Style Diff */
+        .diff-line { display: block; min-height: 1.2em; }
+        .diff-added { background-color: #e6ffed; color: #22863a; }
+        .diff-removed { background-color: #ffeef0; color: #b31d28; }
+        .diff-header { color: #6f7781; font-weight: bold; }
+        
+        /* Feedback Form */
+        .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
+        .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+        .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
+        label { font-weight: bold; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Requirement Evolution: peps/pep-0554.rst</h1>
+        <div class="meta">
+            <p><strong>Number of Versions:</strong> 5</p>
+        </div>
+        
+        <form id="feedbackForm">
+            <table>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 60%;">
+                    <col style="width: 35%;">
+                    
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Change Details</th>
+                        <th>AI Analysis</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                08d688f (Cached) &rarr; 6f1da20 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">of ways.  Furthermore, subinterpreters provide a well-defined framework</span>
+<span class="diff-line"> in which such isolation may extended.  (See :pep:`684`.)</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Nick Coghlan explained some of the benefits through a comparison with</span>
+<span class="diff-line diff-added">+Alyssa (Nick) Coghlan explained some of the benefits through a comparison with</span>
+<span class="diff-line"> multi-processing [benefits]_::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    [I] expect that communicating between subinterpreters is going</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Editorial/name attribution clarification: the sentence changes from 'Nick Coghlan' to 'Alyssa (Nick) Coghlan' in the Rationale section. It does not alter any requirement, constraint, or behavior, so it is not a change in meaning or requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This proposal introduces the stdlib ``interpreters`` module.  It exposes</span>
+<span class="diff-line"> the basic functionality of multiple interpreters already provided by the</span>
+<span class="diff-line diff-removed">-C-API, along with describing a *very* basic way to communicate</span>
+<span class="diff-line diff-removed">-(i.e. pass data between interpreters).</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-A Disclaimer about the GIL</span>
+<span class="diff-line diff-removed">-==========================</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-To avoid any confusion up front:  This PEP is meant to be independent</span>
+<span class="diff-line diff-removed">-of any efforts to stop sharing the GIL between interpreters (:pep:`684`).</span>
+<span class="diff-line diff-removed">-At most this proposal will allow users to take advantage of any</span>
+<span class="diff-line diff-removed">-GIL-related work.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-The author's position here is that exposing multiple interpreters</span>
+<span class="diff-line diff-removed">-to Python code is worth doing, even if they still share the GIL.</span>
+<span class="diff-line diff-removed">-Conversations with past steering councils indicates they do not</span>
+<span class="diff-line diff-removed">-necessarily agree.</span>
+<span class="diff-line diff-added">+C-API, along with basic support for communicating between interpreters.</span>
+<span class="diff-line diff-added">+This module is especially relevant since :pep:`684` introduced a</span>
+<span class="diff-line diff-added">+per-interpreter GIL in Python 3.12.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Proposal</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Generalization
+                                <span class="tooltiptext">The requirement was changed to be more general (old was too specific).</span>
+                            </div>
+                            <p>The changes generalize the motivation by removing the long-standing, detailed GIL-disclaimer and ancillary historical notes from the 'Abstract/Proposal' section, and replacing them with a concise justification that the module is relevant in light of a per-interpreter GIL (PEP 684). This consolidates multiple theme-specific justifications into a broader rationale, i.e., a generalization of the motivation rather than introducing a new, distinct goal.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Summary:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> * add a new stdlib module: "interpreters"</span>
+<span class="diff-line diff-added">+* add concurrent.futures.InterpreterPoolExecutor</span>
+<span class="diff-line"> * help for extension module maintainers</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added a new requirement to the proposal: introduce concurrent.futures.InterpreterPoolExecutor to run per-thread tasks in subinterpreters, expanding the scope beyond the interpreters module addition.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">See the `Examples`_ section for concrete usage and use cases.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Along with exposing the existing (in CPython) multiple interpreter</span>
+<span class="diff-line diff-removed">-support, the module will also support a very basic mechanism for</span>
+<span class="diff-line diff-removed">-passing data between interpreters.  That involves setting simple objects</span>
+<span class="diff-line diff-removed">-in the ``__main__`` module of a target subinterpreter.  If one end of</span>
+<span class="diff-line diff-removed">-an ``os.pipe()`` is passed this way then that pipe can be used to send</span>
+<span class="diff-line diff-removed">-bytes between the two interpreters.</span>
+<span class="diff-line diff-added">+support, the module will also support a basic mechanism for</span>
+<span class="diff-line diff-added">+passing data between interpreters.  That involves setting "shareable"</span>
+<span class="diff-line diff-added">+objects in the ``__main__`` module of a target subinterpreter.  Some</span>
+<span class="diff-line diff-added">+such objects, like  ``os.pipe()``, may be used to communicate further.</span>
+<span class="diff-line diff-added">+The module will also provide a minimal implementation of "channels"</span>
+<span class="diff-line diff-added">+as a demonstration of cross-interpreter communication.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Note that *objects* are not shared between interpreters since they are</span>
+<span class="diff-line"> tied to the interpreter in which they were created.  Instead, the</span>
+<span class="diff-line"> objects' *data* is passed between interpreters.  See the `Shared Data`_</span>
+<span class="diff-line diff-removed">-and `API For Sharing Data`_ sections for more details about</span>
+<span class="diff-line diff-added">+and `API For Communication`_ sections for more details about</span>
+<span class="diff-line"> sharing/communicating between interpreters.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> API summary for interpreters module</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The change broadens the interpreters proposal by expanding how data is shared across interpreters: it introduces the concept of 'shareable' objects bound in __main__, adds channels as a minimal cross-interpreter communication mechanism, and updates the API narrative to include set_main_attrs, is_shareable, and channel-based communication, indicating a shift from a simple pipe-based data transfer to a formal shareable data protocol.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-added">+----------------------------------+---------------------------------------------------+</span>
+<span class="diff-line"> | ``.close()``                     | Finalize and destroy the interpreter.             |</span>
+<span class="diff-line"> +----------------------------------+---------------------------------------------------+</span>
+<span class="diff-line diff-removed">-| ``.run(src_str, /)``             | | Run the given source code in the interpreter    |</span>
+<span class="diff-line diff-added">+| ``.set_main_attrs(**kwargs)``    | Bind "shareable" objects in ``__main__``.         |</span>
+<span class="diff-line diff-added">++----------------------------------+---------------------------------------------------+</span>
+<span class="diff-line diff-added">+| ``.get_main_attr(name)``         | Get a "shareable" object from ``__main__``.       |</span>
+<span class="diff-line diff-added">++----------------------------------+---------------------------------------------------+</span>
+<span class="diff-line diff-added">+| ``.exec(src_str, /)``            | | Run the given source code in the interpreter    |</span>
+<span class="diff-line"> |                                  | | (in the current thread).                        |</span>
+<span class="diff-line"> +----------------------------------+---------------------------------------------------+</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. XXX Support blocking interp.run() until the interpreter</span>
+<span class="diff-line diff-added">+.. XXX Support blocking interp.exec() until the interpreter</span>
+<span class="diff-line">    finishes its current work.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-|</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-+--------------------+------------------+------------------------------------------------------+</span>
+<span class="diff-line diff-removed">-| exception          | base             | description                                          |</span>
+<span class="diff-line diff-removed">-+====================+==================+======================================================+</span>
+<span class="diff-line diff-removed">-| ``RunFailedError`` | ``RuntimeError`` | Interpreter.run() resulted in an uncaught exception. |</span>
+<span class="diff-line diff-removed">-+--------------------+------------------+------------------------------------------------------+</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-.. XXX Add "InterpreterAlreadyRunningError"?</span>
+<span class="diff-line diff-added">+For communicating between interpreters:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">++---------------------------------------------------------+--------------------------------------------+</span>
+<span class="diff-line diff-added">+| signature                                               | description                                |</span>
+<span class="diff-line diff-added">++=========================================================+============================================+</span>
+<span class="diff-line diff-added">+| ``is_shareable(obj) -> Bool``                           | | Can the object's data be passed          |</span>
+<span class="diff-line diff-added">+|                                                         | | between interpreters?                    |</span>
+<span class="diff-line diff-added">++---------------------------------------------------------+--------------------------------------------+</span>
+<span class="diff-line diff-added">+| ``create_channel() -> (RecvChannel, SendChannel)``      | | Create a new channel for passing         |</span>
+<span class="diff-line diff-added">+|                                                         | | data between interpreters.               |</span>
+<span class="diff-line diff-added">++---------------------------------------------------------+--------------------------------------------+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+concurrent.futures.InterpreterPoolExecutor</span>
+<span class="diff-line diff-added">+------------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+An executor will be added that extends ``ThreadPoolExecutor`` to run</span>
+<span class="diff-line diff-added">+per-thread tasks in subinterpreters.  Initially, the only supported</span>
+<span class="diff-line diff-added">+tasks will be whatever ``Interpreter.exec()`` takes (e.g. a ``str``</span>
+<span class="diff-line diff-added">+script).  However, we may also support some functions, as well as</span>
+<span class="diff-line diff-added">+eventually a separate method for pickling the task and arguments,</span>
+<span class="diff-line diff-added">+to reduce friction (at the expense of performance</span>
+<span class="diff-line diff-added">+for short-running tasks).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Help for Extension Module Maintainers</span>
+<span class="diff-line"> -------------------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Dominant change is a redesign of the interpreters API: replacing run() with exec() for running code, adding set_main_attrs/get_main_attr for sharing objects in __main__, introducing a cross-interpreter channels mechanism (is_shareable, create_channel, RecvChannel/SendChannel), and adding concurrent.futures.InterpreterPoolExecutor, representing a shift in intent/behavior rather than a simple typo or content removal.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Examples</span>
+<span class="diff-line"> ========</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Run isolated code</span>
+<span class="diff-line diff-added">+Run isolated code in current OS thread</span>
+<span class="diff-line diff-added">+--------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    interp = interpreters.create()</span>
+<span class="diff-line">    print('before')</span>
+<span class="diff-line diff-removed">-   interp.run('print("during")')</span>
+<span class="diff-line diff-added">+   interp.exec('print("during")')</span>
+<span class="diff-line">    print('after')</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Run in a thread</span>
+<span class="diff-line diff-added">+Run in a different thread</span>
+<span class="diff-line diff-added">+-------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    interp = interpreters.create()</span>
+<span class="diff-line">    def run():</span>
+<span class="diff-line diff-removed">-       interp.run('print("during")')</span>
+<span class="diff-line diff-added">+       interp.exec('print("during")')</span>
+<span class="diff-line">    t = threading.Thread(target=run)</span>
+<span class="diff-line">    print('before')</span>
+<span class="diff-line">    t.start()</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The changes are primarily wording refinements: the section shifts from 'Run isolated code' (using interp.run) to 'Run isolated code in current OS thread' (using interp.exec), thereby clarifying the API change from run() to exec() and the threading model. No new capability or behavioral change is introduced; it is a renaming/clarification of existing content.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    interp = interpreters.create()</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent("""</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent("""</span>
+<span class="diff-line">        import some_lib</span>
+<span class="diff-line">        import an_expensive_module</span>
+<span class="diff-line">        some_lib.set_up()</span>
+<span class="diff-line">        """))</span>
+<span class="diff-line">    wait_for_request()</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent("""</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent("""</span>
+<span class="diff-line">        some_lib.handle_request()</span>
+<span class="diff-line">        """))</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff shows only a naming change: interp.run(...) replaced with interp.exec(...). The underlying behavior remains the same (execute code in the sub-interpreter); no new functionality or meaning change is introduced. This is a clarification of API naming to align with Python's standard terminology.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    try:</span>
+<span class="diff-line diff-removed">-       interp.run(tw.dedent("""</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent("""</span>
+<span class="diff-line">            raise KeyError</span>
+<span class="diff-line">            """))</span>
+<span class="diff-line">    except interpreters.RunFailedError as exc:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff is a simple API name change: the example switches from interp.run(...) to interp.exec(...). The underlying behavior remains the same; this is a clarification of the API usage, not a new feature or a change in meaning.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    try:</span>
+<span class="diff-line">        try:</span>
+<span class="diff-line diff-removed">-           interp.run(tw.dedent("""</span>
+<span class="diff-line diff-added">+           interp.exec(tw.dedent("""</span>
+<span class="diff-line">                raise KeyError</span>
+<span class="diff-line">                """))</span>
+<span class="diff-line">        except interpreters.RunFailedError as exc:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff shows only a name change of the API call from interp.run(...) to interp.exec(...). The underlying semantics remain the same; there is no new functionality or change in requirements. This is a clarification/renaming of the API usage rather than a change in meaning.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Note that this pattern is a candidate for later improvement.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Interact with the __main__ namespace</span>
+<span class="diff-line diff-added">+------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   interp = interpreters.create()</span>
+<span class="diff-line diff-added">+   interp.set_main_attrs(a=1, b=2)</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent("""</span>
+<span class="diff-line diff-added">+       res = do_something(a, b)</span>
+<span class="diff-line diff-added">+       """))</span>
+<span class="diff-line diff-added">+   res = interp.get_main_attr('res')</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Synchronize using an OS pipe</span>
+<span class="diff-line"> ----------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    interp = interpreters.create()</span>
+<span class="diff-line diff-removed">-   r, s = os.pipe()</span>
+<span class="diff-line diff-removed">-   print('before')</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent(f"""</span>
+<span class="diff-line diff-added">+   r1, s1 = os.pipe()</span>
+<span class="diff-line diff-added">+   r2, s2 = os.pipe()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   def task():</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent(f"""</span>
+<span class="diff-line">            import os</span>
+<span class="diff-line diff-removed">-           os.read({r}, 1)</span>
+<span class="diff-line diff-removed">-           print("during")</span>
+<span class="diff-line diff-added">+           os.read({r1}, 1)</span>
+<span class="diff-line diff-added">+           print('during B')</span>
+<span class="diff-line diff-added">+           os.write({s2}, '')</span>
+<span class="diff-line">            """))</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   t = threading.thread(target=task)</span>
+<span class="diff-line diff-added">+   t.start()</span>
+<span class="diff-line diff-added">+   print('before')</span>
+<span class="diff-line diff-added">+   os.write(s1, '')</span>
+<span class="diff-line diff-added">+   print('during A')</span>
+<span class="diff-line diff-added">+   os.read(r2, 1)</span>
+<span class="diff-line">    print('after')</span>
+<span class="diff-line diff-removed">-   os.write(s, '')</span>
+<span class="diff-line diff-added">+   t.join()</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Sharing a file descriptor</span>
+<span class="diff-line"> -------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Demonstration
+                                <span class="tooltiptext">An example or visualization was added to assist in understanding.</span>
+                            </div>
+                            <p>A new example section 'Interact with the __main__ namespace' was added to illustrate using set_main_attrs and exec; the 'Synchronize using an OS pipe' example was expanded to show two pipes and a small threaded task for cross-interpreter interaction. These are demonstrations to aid understanding, not changes to requirements or behavior.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    interp = interpreters.create()</span>
+<span class="diff-line diff-removed">-   r1, s1 = os.pipe()</span>
+<span class="diff-line diff-removed">-   r2, s2 = os.pipe()</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent(f"""</span>
+<span class="diff-line diff-added">+   with open('spamspamspam') as infile:</span>
+<span class="diff-line diff-added">+       interp.set_main_attrs(fd=infile.fileno())</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent(f"""</span>
+<span class="diff-line">            import os</span>
+<span class="diff-line diff-removed">-           fd = int.from_bytes(</span>
+<span class="diff-line diff-removed">-                   os.read({r1}, 10), 'big')</span>
+<span class="diff-line">            for line in os.fdopen(fd):</span>
+<span class="diff-line">                print(line)</span>
+<span class="diff-line diff-removed">-           os.write({s2}, b'')</span>
+<span class="diff-line">            """))</span>
+<span class="diff-line diff-removed">-   with open('spamspamspam') as infile:</span>
+<span class="diff-line diff-removed">-       fd = infile.fileno().to_bytes(1, 'big')</span>
+<span class="diff-line diff-removed">-       os.write(s1, fd)</span>
+<span class="diff-line diff-removed">-       os.read(r2, 1)</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Passing objects via pickle</span>
+<span class="diff-line"> --------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The diff replaces the pipe-based data-passing example in 'Passing objects via pickle' with a file-descriptor-based approach using Interpreter.set_main_attrs(fd=...) and os.fdopen(fd). This alters the demonstrated usage of cross-interpreter data sharing without adding new functionality, i.e., a change in meaning/usage rather than a new feature.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    r, s = os.pipe()</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent(f"""</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent(f"""</span>
+<span class="diff-line">        import os</span>
+<span class="diff-line">        import pickle</span>
+<span class="diff-line">        reader = {r}</span>
+<span class="diff-line">        """))</span>
+<span class="diff-line diff-removed">-   interp.run(tw.dedent("""</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent("""</span>
+<span class="diff-line">            data = b''</span>
+<span class="diff-line">            c = os.read(reader, 1)</span>
+<span class="diff-line">            while c != b'\x00':</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change renames the invocation from interp.run(...) to interp.exec(...) in the examples, effectively clarifying the terminology to reflect that code is executed in the target interpreter. It does not introduce new behavior or remove functionality; it's a naming/clarification of the existing mechanism, hence a Clarification rather than a new feature or a behavior change.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    stdout = io.StringIO()</span>
+<span class="diff-line">    with contextlib.redirect_stdout(stdout):</span>
+<span class="diff-line diff-removed">-       interp.run(tw.dedent("""</span>
+<span class="diff-line diff-removed">-               print('spam!')</span>
+<span class="diff-line diff-removed">-               """))</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent("""</span>
+<span class="diff-line diff-added">+           print('spam!')</span>
+<span class="diff-line diff-added">+           """))</span>
+<span class="diff-line">    assert(stdout.getvalue() == 'spam!')</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+   # alternately:</span>
+<span class="diff-line diff-added">+   interp.exec(tw.dedent("""</span>
+<span class="diff-line diff-added">+       import contextlib, io</span>
+<span class="diff-line diff-added">+       stdout = io.StringIO()</span>
+<span class="diff-line diff-added">+       with contextlib.redirect_stdout(stdout):</span>
+<span class="diff-line diff-added">+           print('spam!')</span>
+<span class="diff-line diff-added">+       captured = stdout.getvalue()</span>
+<span class="diff-line diff-added">+       """))</span>
+<span class="diff-line diff-added">+   captured = interp.get_main_attr('captured')</span>
+<span class="diff-line diff-added">+   assert(captured == 'spam!')</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> A pipe (``os.pipe()``) could be used similarly.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Running a module</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Dominant change: update the example to use the new exec() API for running code in subinterpreters, replacing the old run() usage, and add an alternate example showing capturing stdout via a main attribute (captured) to illustrate returning results. This reflects the shift from Interpreter.run() to Interpreter.exec() in the new version and demonstrates cross-interpreter data capture.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>14</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    main_module = mod_name</span>
+<span class="diff-line diff-removed">-   interp.run(f'import runpy; runpy.run_module({main_module!r})')</span>
+<span class="diff-line diff-added">+   interp.exec(f'import runpy; runpy.run_module({main_module!r})')</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Running as script (including zip archives & directories)</span>
+<span class="diff-line"> --------------------------------------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff changes only a code example: interp.run(...) is replaced with interp.exec(...). This is a syntax/usage clarification of the example snippet, not a change in meaning or system requirements. The underlying goal of showing how to execute code in a subinterpreter remains the same.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>15</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">interp = interpreters.create()</span>
+<span class="diff-line">    main_script = path_name</span>
+<span class="diff-line diff-removed">-   interp.run(f"import runpy; runpy.run_path({main_script!r})")</span>
+<span class="diff-line diff-added">+   interp.exec(f"import runpy; runpy.run_path({main_script!r})")</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Using a channel to communicate</span>
+<span class="diff-line diff-added">+------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   tasks_recv, tasks = interpreters.create_channel()</span>
+<span class="diff-line diff-added">+   results, results_send = interpreters.create_channel()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   def worker():</span>
+<span class="diff-line diff-added">+       interp = interpreters.create()</span>
+<span class="diff-line diff-added">+       interp.set_main_attrs(tasks=tasks_recv, results=results_send)</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent("""</span>
+<span class="diff-line diff-added">+           def handle_request(req):</span>
+<span class="diff-line diff-added">+               ...</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+           def capture_exception(exc):</span>
+<span class="diff-line diff-added">+               ...</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+           while True:</span>
+<span class="diff-line diff-added">+               try:</span>
+<span class="diff-line diff-added">+                   req = tasks.recv()</span>
+<span class="diff-line diff-added">+               except Exception:</span>
+<span class="diff-line diff-added">+                   # channel closed</span>
+<span class="diff-line diff-added">+                   break</span>
+<span class="diff-line diff-added">+               try:</span>
+<span class="diff-line diff-added">+                   res = handle_request(req)</span>
+<span class="diff-line diff-added">+               except Exception as exc:</span>
+<span class="diff-line diff-added">+                   res = capture_exception(exc)</span>
+<span class="diff-line diff-added">+               results.send_nowait(res)</span>
+<span class="diff-line diff-added">+           """))</span>
+<span class="diff-line diff-added">+   threads = [threading.Thread(target=worker) for _ in range(20)]</span>
+<span class="diff-line diff-added">+   for t in threads:</span>
+<span class="diff-line diff-added">+       t.start()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   requests = ...</span>
+<span class="diff-line diff-added">+   for req in requests:</span>
+<span class="diff-line diff-added">+       tasks.send(req)</span>
+<span class="diff-line diff-added">+   tasks.close()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   for t in threads:</span>
+<span class="diff-line diff-added">+       t.join()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Sharing a memoryview (imagine map-reduce)</span>
+<span class="diff-line diff-added">+-----------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   data, chunksize = read_large_data_set()</span>
+<span class="diff-line diff-added">+   buf = memoryview(data)</span>
+<span class="diff-line diff-added">+   numchunks = (len(buf) + 1) / chunksize</span>
+<span class="diff-line diff-added">+   results = memoryview(b'\0' * numchunks)</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   tasks_recv, tasks = interpreters.create_channel()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   def worker():</span>
+<span class="diff-line diff-added">+       interp = interpreters.create()</span>
+<span class="diff-line diff-added">+       interp.set_main_attrs(data=buf, results=results, tasks=tasks_recv)</span>
+<span class="diff-line diff-added">+       interp.exec(tw.dedent("""</span>
+<span class="diff-line diff-added">+           while True:</span>
+<span class="diff-line diff-added">+               try:</span>
+<span class="diff-line diff-added">+                   req = tasks.recv()</span>
+<span class="diff-line diff-added">+               except Exception:</span>
+<span class="diff-line diff-added">+                   # channel closed</span>
+<span class="diff-line diff-added">+                   break</span>
+<span class="diff-line diff-added">+               resindex, start, end = req</span>
+<span class="diff-line diff-added">+               chunk = data[start: end]</span>
+<span class="diff-line diff-added">+               res = reduce_chunk(chunk)</span>
+<span class="diff-line diff-added">+               results[resindex] = res</span>
+<span class="diff-line diff-added">+           """))</span>
+<span class="diff-line diff-added">+   t = threading.Thread(target=worker)</span>
+<span class="diff-line diff-added">+   t.start()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   for i in range(numchunks):</span>
+<span class="diff-line diff-added">+       if not workers_running():</span>
+<span class="diff-line diff-added">+           raise ...</span>
+<span class="diff-line diff-added">+       start = i * chunksize</span>
+<span class="diff-line diff-added">+       end = start + chunksize</span>
+<span class="diff-line diff-added">+       if end > len(buf):</span>
+<span class="diff-line diff-added">+           end = len(buf)</span>
+<span class="diff-line diff-added">+       tasks.send((start, end, i))</span>
+<span class="diff-line diff-added">+   tasks.close()</span>
+<span class="diff-line diff-added">+   t.join()</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   use_results(results)</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Rationale</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Demonstration
+                                <span class="tooltiptext">An example or visualization was added to assist in understanding.</span>
+                            </div>
+                            <p>Added a concrete usage demonstration for inter-interpreter communication via channels. The patch replaces an interp.run example with interp.exec and introduces a full 'Using a channel to communicate' example (channel creation, worker, threading, sending/receiving, and a shared workflow), illustrating how channels can be used to coordinate work across interpreters.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>16</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">(See `Nathaniel's post <nathaniel-asyncio_>`_ on python-dev.)</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> However, this PEP does not propose any new concurrency API.</span>
+<span class="diff-line diff-removed">-At most it exposes minimal tools (e.g. subinterpreters)</span>
+<span class="diff-line diff-added">+At most it exposes minimal tools (e.g. subinterpreters, channels)</span>
+<span class="diff-line"> which may be used to write code that follows patterns associated with</span>
+<span class="diff-line"> (relatively) new-to-Python `concurrency models <Concurrency_>`_.</span>
+<span class="diff-line"> Those tools could also be used as the basis for APIs for such</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff adds 'channels' to the explicit example of the minimal toolset in the Proposal section, changing 'e.g. subinterpreters' to 'e.g. subinterpreters, channels'. This is a clarification of scope, not a new requirement or a change in intended behavior. It does not introduce a new capability by itself but makes explicit that channels are part of the intended minimal tooling.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>17</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Consequently, the mechanism for sharing needs to be carefully considered.</span>
+<span class="diff-line"> There are a number of valid solutions, several of which may be</span>
+<span class="diff-line diff-removed">-appropriate to support in Python.  Earlier versions of this proposal</span>
+<span class="diff-line diff-removed">-included a basic capability ("channels"), though most of the options</span>
+<span class="diff-line diff-removed">-were quite similar.</span>
+<span class="diff-line diff-added">+appropriate to support in Python's stdlib and C-API.  Any such solution</span>
+<span class="diff-line diff-added">+is likely to share many characteristics with the others.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In the meantime, we propose here a minimal solution</span>
+<span class="diff-line diff-added">+(``Interpreter.set_main_attrs()``), which sets some precedent for how</span>
+<span class="diff-line diff-added">+objects are shared.  More importantly, it facilitates the introduction</span>
+<span class="diff-line diff-added">+of more advanced approaches later and allows them to coexist and cooperate.</span>
+<span class="diff-line diff-added">+In part to demonstrate that, we will provide a basic implementation of</span>
+<span class="diff-line diff-added">+"channels", as a somewhat more advanced sharing solution.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Note that the implementation of ``Interpreter.run()`` will be done</span>
+<span class="diff-line diff-removed">-in a way that allows for may of these solutions to be implemented</span>
+<span class="diff-line diff-removed">-independently and to coexist, but doing so is not technically</span>
+<span class="diff-line diff-removed">-a part of the proposal here.</span>
+<span class="diff-line diff-added">+Separate proposals may cover:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* the addition of a public C-API based on the implementation</span>
+<span class="diff-line diff-added">+  ``Interpreter.set_main_attrs()``</span>
+<span class="diff-line diff-added">+* the addition of other sharing approaches to the "interpreters" module</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The fundamental enabling feature for communication is that most objects</span>
+<span class="diff-line"> can be converted to some encoding of underlying raw data, which is safe</span>
+<span class="diff-line"> to be passed between interpreters.  For example, an ``int`` object can</span>
+<span class="diff-line diff-removed">-be turned into a C ``long`` value, send to another interpreter, and</span>
+<span class="diff-line diff-removed">-turned back into an ``int`` object there.</span>
+<span class="diff-line diff-added">+be turned into a C ``long`` value, sent to another interpreter, and</span>
+<span class="diff-line diff-added">+turned back into an ``int`` object there.  As another example,</span>
+<span class="diff-line diff-added">+``None`` may be passed as-is.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Regardless, the effort to determine the best way forward here is outside</span>
+<span class="diff-line diff-removed">-the scope of this PEP.  In the meantime, this proposal provides a basic</span>
+<span class="diff-line diff-removed">-interim solution, described in `API For Sharing Data`_ below.</span>
+<span class="diff-line diff-added">+Regardless, the effort to determine the best way forward here is mostly</span>
+<span class="diff-line diff-added">+outside the scope of this PEP.  In the meantime, this proposal describes</span>
+<span class="diff-line diff-added">+a basic interim solution using pipes (``os.pipe()``), as well as</span>
+<span class="diff-line diff-added">+providing a dedicated capability ("channels").</span>
+<span class="diff-line diff-added">+See `API For Communication`_ below.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Interpreter Isolation</span>
+<span class="diff-line"> ---------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The sharing mechanism discussion was broadened and re-scoped: the new version introduces a minimal sharing mechanism Interpreter.set_main_attrs(), frames sharing as a pluggable, multi-approach problem, and adds separate proposals for sharing approaches (public C-API based on set_main_attrs and other sharing methods) and channels, replacing the previous narrower note that focused on channels as an interim solution.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>18</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">functions, and variables.  The same applies to state in C, including in</span>
+<span class="diff-line"> extension modules.  The CPython C-API docs explain more. [caveats]_</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-However, there are ways in which interpreters share some state.  First</span>
+<span class="diff-line diff-removed">-of all, some process-global state remains shared:</span>
+<span class="diff-line diff-added">+However, there are ways in which interpreters do share some state.</span>
+<span class="diff-line diff-added">+First of all, some process-global state remains shared:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> * file descriptors</span>
+<span class="diff-line diff-added">+* low-level env vars</span>
+<span class="diff-line diff-added">+* process memory (though allocators *are* isolated)</span>
+<span class="diff-line"> * builtin types (e.g. dict, bytes)</span>
+<span class="diff-line"> * singletons (e.g. None)</span>
+<span class="diff-line"> * underlying static module data (e.g. functions) for</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Expanded and clarified the Shared Data section: the text changes from 'interpreters share some state' to 'interpreters do share some state' and adds new bullet items ('low-level env vars' and 'process memory (though allocators are isolated)') to the list of state that may be shared between interpreters, thereby expanding the set of shared state and strengthening the assertion about cross-interpreter data sharing.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>19</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">of CPython.  Improvements are currently going on to address gaps in this</span>
+<span class="diff-line"> area:</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-* GC is not run per-interpreter [global-gc]_</span>
+<span class="diff-line diff-removed">-* at-exit handlers are not run per-interpreter [global-atexit]_</span>
+<span class="diff-line diff-removed">-* extensions using the ``PyGILState_*`` API are incompatible [gilstate]_</span>
+<span class="diff-line diff-removed">-* interpreters share memory management (e.g. allocators, gc)</span>
+<span class="diff-line diff-removed">-* interpreters share the GIL</span>
+<span class="diff-line diff-added">+* extensions using the ``PyGILState_*`` API are somewhat incompatible [gilstate]_</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Existing Usage</span>
+<span class="diff-line"> --------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Multiple interpreter support is not a widely used feature.  In fact,</span>
+<span class="diff-line diff-removed">-the only documented cases of widespread usage are</span>
+<span class="diff-line diff-added">+Multiple interpreter support has not been a widely used feature.</span>
+<span class="diff-line diff-added">+In fact, there have been only a handful of documented cases of</span>
+<span class="diff-line diff-added">+widespread usage, including</span>
+<span class="diff-line"> `mod_wsgi <https://github.com/GrahamDumpleton/mod_wsgi>`_,</span>
+<span class="diff-line"> `OpenStack Ceph <https://github.com/ceph/ceph/pull/14971>`_, and</span>
+<span class="diff-line"> `JEP <https://github.com/ninia/jep>`_.  On the one hand, these cases</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Clarified the language without changing the substantive requirements: (1) changed a bullet from 'extensions using the PyGILState_* API are incompatible' to 'somewhat incompatible', softening the stated compatibility impact; (2) reworded Existing Usage to a less absolute claim (tense and wording adjusted to say 'has not been a widely used feature' and 'a handful of documented cases' with examples), preserving meaning while softening emphasis.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>20</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">.. _interpreters-get-current:</span>
+<span class="diff-line"> .. _interpreters-create:</span>
+<span class="diff-line"> .. _interpreters-Interpreter:</span>
+<span class="diff-line diff-added">+.. _interpreters-is-shareable:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> "interpreters" Module API</span>
+<span class="diff-line"> =========================</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Added a new documentation anchor label '.. _interpreters-is-shareable:' in the 'interpreters' Module API section. This is a formatting/navigation change and does not modify requirements, constraints, or behavior.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>21</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">It will remain idle until something is run in it and always</span>
+<span class="diff-line">       run in its own thread.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+   is_shareable(obj) -> bool:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      Return True if the object may be "shared" between interpreters.</span>
+<span class="diff-line diff-added">+      This does not necessarily mean that the actual objects will be</span>
+<span class="diff-line diff-added">+      shared.  Insead, it means that the objects' underlying data will</span>
+<span class="diff-line diff-added">+      be shared in a cross-interpreter way, whether via a proxy, a</span>
+<span class="diff-line diff-added">+      copy, or some other means.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The module also provides the following classes::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The module also provides the following class::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    class Interpreter(id):</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Introduces a new API function is_shareable(obj) -> bool in the interpreters module API, indicating a new capability to query whether an object is eligible to be shared across interpreters.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>22</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">is_running() -> bool:</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-         Return whether or not the interpreter's "run()" is currently</span>
+<span class="diff-line diff-added">+         Return whether or not the interpreter's "exec()" is currently</span>
+<span class="diff-line">          executing code.  Code running in subthreads is ignored.</span>
+<span class="diff-line">          Calling this on the current interpreter will always return True.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>This is a Clarification: the wording updates the referenced method name from 'run()' to 'exec()' to reflect the actual API name; the underlying meaning remains the same (whether the interpreter is currently executing code); no new functionality or behavior is introduced.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>23</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This may not be called on an already running interpreter.</span>
+<span class="diff-line">          Doing so results in a RuntimeError.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-      run(source_str, /):</span>
+<span class="diff-line diff-added">+      set_main_attrs(iterable_or_mapping, /):</span>
+<span class="diff-line diff-added">+      set_main_attrs(**kwargs):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Set attributes in the interpreter's __main__ module</span>
+<span class="diff-line diff-added">+         corresponding to the given name-value pairs.  Each value</span>
+<span class="diff-line diff-added">+         must be a "shareable" object and will be converted to a new</span>
+<span class="diff-line diff-added">+         object (e.g. copy, proxy) in whatever way that object's type</span>
+<span class="diff-line diff-added">+         defines.  If an attribute with the same name is already set,</span>
+<span class="diff-line diff-added">+         it will be overwritten.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         This method is helpful for setting up an interpreter before</span>
+<span class="diff-line diff-added">+         calling exec().</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      get_main_attr(name, default=None, /):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Return the value of the corresponding attribute of the</span>
+<span class="diff-line diff-added">+         interpreter's __main__ module.  If the attribute isn't set</span>
+<span class="diff-line diff-added">+         then the default is returned.  If it is set, but the value</span>
+<span class="diff-line diff-added">+         isn't "shareable" then a ValueError is raised.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         This may be used to introspect the __main__ module, as well</span>
+<span class="diff-line diff-added">+         as a very basic mechanism for "returning" one or more results</span>
+<span class="diff-line diff-added">+         from Interpreter.exec().</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      exec(source_str, /):</span>
+<span class="diff-line"> </span>
+<span class="diff-line">          Run the provided Python source code in the interpreter,</span>
+<span class="diff-line">          in its __main__ module.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The Interpreter API change replaces the previous run(source_str, /) method with a new set_main_attrs(iterable_or_mapping, /) and set_main_attrs(**kwargs) plus get_main_attr(name, default=None, /) and exec(source_str, /). This shifts the core execution model from a single run() call to a design that emphasizes binding shareable objects into __main__ (via set_main_attrs), introspection of __main__ (via get_main_attr), and execution via exec(). It represents a significant change in intent/behavior of how subinterpreters are used and how data is shared between interpreters, rather than a minor clarification or rename.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>24</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This may not be called on an already running interpreter.</span>
+<span class="diff-line">          Doing so results in a RuntimeError.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-         A "run()" call is similar to an exec() call (or calling</span>
+<span class="diff-line diff-removed">-         a function that returns None).  Once "run()" completes,</span>
+<span class="diff-line diff-removed">-         the code that called "run()" continues executing (in the</span>
+<span class="diff-line diff-removed">-         original interpreter).  Likewise, if there is any uncaught</span>
+<span class="diff-line diff-removed">-         exception then it effectively (see below) propagates into</span>
+<span class="diff-line diff-removed">-         the code where ``run()`` was called.  Like exec() (and threads),</span>
+<span class="diff-line diff-removed">-         but unlike function calls, there is no return value.  If any</span>
+<span class="diff-line diff-removed">-         "return" value from the code is needed, send the data out</span>
+<span class="diff-line diff-removed">-         via a pipe (os.pipe()).</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-         The big difference from exec() or functions is that "run()"</span>
+<span class="diff-line diff-removed">-         executes the code in an entirely different interpreter,</span>
+<span class="diff-line diff-removed">-         with entirely separate state.  The interpreters are completely</span>
+<span class="diff-line diff-removed">-         isolated from each other, so the state of the original interpreter</span>
+<span class="diff-line diff-removed">-         (including the code it was executing in the current OS thread)</span>
+<span class="diff-line diff-removed">-         does not affect the state of the target interpreter</span>
+<span class="diff-line diff-removed">-         (the one that will execute the code).  Likewise, the target</span>
+<span class="diff-line diff-removed">-         does not affect the original, nor any of its other threads.</span>
+<span class="diff-line diff-added">+         An "interp.exec()" call is similar to a builtin exec() call</span>
+<span class="diff-line diff-added">+         (or to calling a function that returns None).  Once</span>
+<span class="diff-line diff-added">+         "interp.exec()" completes, the code that called "exec()"</span>
+<span class="diff-line diff-added">+         continues executing (in the original interpreter).  Likewise,</span>
+<span class="diff-line diff-added">+         if there is any uncaught exception then it effectively</span>
+<span class="diff-line diff-added">+         (see below) propagates into the code where ``interp.exec()``</span>
+<span class="diff-line diff-added">+         was called.  Like exec() (and threads), but unlike function</span>
+<span class="diff-line diff-added">+         calls, there is no return value.  If any "return" value from</span>
+<span class="diff-line diff-added">+         the code is needed, send the data out via a pipe (os.pipe())</span>
+<span class="diff-line diff-added">+         or channel or other cross-interpreter communication mechanism.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         The big difference from exec() or functions is that</span>
+<span class="diff-line diff-added">+         "interp.exec()" executes the code in an entirely different</span>
+<span class="diff-line diff-added">+         interpreter, with entirely separate state.  The interpreters</span>
+<span class="diff-line diff-added">+         are completely isolated from each other, so the state of the</span>
+<span class="diff-line diff-added">+         original interpreter (including the code it was executing in</span>
+<span class="diff-line diff-added">+         the current OS thread) does not affect the state of the target</span>
+<span class="diff-line diff-added">+         interpreter (the one that will execute the code).  Likewise,</span>
+<span class="diff-line diff-added">+         the target does not affect the original, nor any of its other</span>
+<span class="diff-line diff-added">+         threads.</span>
+<span class="diff-line"> </span>
+<span class="diff-line">          Instead, the state of the original interpreter (for this thread)</span>
+<span class="diff-line">          is frozen, and the code it's executing code completely blocks.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Expanded the data-sharing mechanism in the Interpreter.exec() narrative by adding channels (i.e., cross-interpreter communication channels) as an alternative to pipes for returning data from the subinterpreter. This changes the intended capability described (not just wording) by enabling an additional mechanism beyond os.pipe(). The rest of the changes (terminology shifts like 'run()' to 'interp.exec()') are clarifications, but the dominant change is the introduction of channels as a data-sharing option.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>25</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">OS thread.  Then, when it finishes executing, the original</span>
+<span class="diff-line">          interpreter gets control back and continues executing.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-         So calling "run()" will effectively cause the current Python</span>
+<span class="diff-line diff-removed">-         thread to completely pause.  Sometimes you won't want that pause,</span>
+<span class="diff-line diff-removed">-         in which case you should make the "run()" call in another thread.</span>
+<span class="diff-line diff-removed">-         To do so, add a function that calls "run()" and then run that</span>
+<span class="diff-line diff-removed">-         function in a normal "threading.Thread".</span>
+<span class="diff-line diff-added">+         So calling "interp.exec()" will effectively cause the current</span>
+<span class="diff-line diff-added">+         Python thread to completely pause.  Sometimes you won't want</span>
+<span class="diff-line diff-added">+         that pause, in which case you should make the "exec()" call in</span>
+<span class="diff-line diff-added">+         another thread.  To do so, add a function that calls</span>
+<span class="diff-line diff-added">+         "interp.exec()" and then run that function in a normal</span>
+<span class="diff-line diff-added">+         "threading.Thread".</span>
+<span class="diff-line"> </span>
+<span class="diff-line">          Note that the interpreter's state is never reset, neither</span>
+<span class="diff-line diff-removed">-         before "run()" executes the code nor after.  Thus the</span>
+<span class="diff-line diff-removed">-         interpreter state is preserved between calls to "run()".</span>
+<span class="diff-line diff-removed">-         This includes "sys.modules", the "builtins" module, and the</span>
+<span class="diff-line diff-removed">-         internal state of C extension modules.</span>
+<span class="diff-line diff-added">+         before "interp.exec()" executes the code nor after.  Thus the</span>
+<span class="diff-line diff-added">+         interpreter state is preserved between calls to</span>
+<span class="diff-line diff-added">+         "interp.exec()".  This includes "sys.modules", the "builtins"</span>
+<span class="diff-line diff-added">+         module, and the internal state of C extension modules.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-         Also note that "run()" executes in the namespace of the</span>
+<span class="diff-line diff-added">+         Also note that "interp.exec()" executes in the namespace of the</span>
+<span class="diff-line">          "__main__" module, just like scripts, the REPL, "-m", and</span>
+<span class="diff-line">          "-c".  Just as the interpreter's state is not ever reset, the</span>
+<span class="diff-line">          "__main__" module is never reset.  You can imagine</span>
+<span class="diff-line diff-removed">-         concatenating the code from each "run()" call into one long</span>
+<span class="diff-line diff-removed">-         script.  This is the same as how the REPL operates.</span>
+<span class="diff-line diff-added">+         concatenating the code from each "interp.exec()" call into one</span>
+<span class="diff-line diff-added">+         long script.  This is the same as how the REPL operates.</span>
+<span class="diff-line"> </span>
+<span class="diff-line">          Supported code: source text.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. XXX Add "InterpreterAlreadyRunningError"?</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In addition to the functionality of ``Interpreter.set_main_attrs()``,</span>
+<span class="diff-line diff-added">+the module provides a related way to pass data between interpreters:</span>
+<span class="diff-line diff-added">+channels.  See `Channels`_ below.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Uncaught Exceptions</span>
+<span class="diff-line"> -------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Regarding uncaught exceptions in ``Interpreter.run()``, we noted that</span>
+<span class="diff-line diff-removed">-they are "effectively" propagated into the code where ``run()`` was</span>
+<span class="diff-line diff-removed">-called.  To prevent leaking exceptions (and tracebacks) between</span>
+<span class="diff-line diff-added">+Regarding uncaught exceptions in ``Interpreter.exec()``, we noted that</span>
+<span class="diff-line diff-added">+they are "effectively" propagated into the code where ``interp.exec()``</span>
+<span class="diff-line diff-added">+was called.  To prevent leaking exceptions (and tracebacks) between</span>
+<span class="diff-line"> interpreters, we create a surrogate of the exception and its traceback</span>
+<span class="diff-line"> (see :class:`traceback.TracebackException`), set it to ``__cause__``</span>
+<span class="diff-line diff-removed">-on a new ``RunFailedError``, and raise that.</span>
+<span class="diff-line diff-added">+on a new ``interpreters.RunFailedError``, and raise that.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Directly raising (a proxy of) the exception is problematic since it's</span>
+<span class="diff-line diff-removed">-harder to distinguish between an error in the ``run()`` call and an</span>
+<span class="diff-line diff-removed">-uncaught exception from the subinterpreter.</span>
+<span class="diff-line diff-added">+harder to distinguish between an error in the ``interp.exec()`` call</span>
+<span class="diff-line diff-added">+and an uncaught exception from the subinterpreter.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-API For Sharing Data</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Interpreter Restrictions</span>
+<span class="diff-line diff-added">+========================</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Every new interpreter created by ``interpreters.create()``</span>
+<span class="diff-line diff-added">+now has specific restrictions on any code it runs.  This includes the</span>
+<span class="diff-line diff-added">+following:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* importing an extension module fails if it does not implement</span>
+<span class="diff-line diff-added">+  multi-phase init</span>
+<span class="diff-line diff-added">+* daemon threads may not be created</span>
+<span class="diff-line diff-added">+* ``os.fork()`` is not allowed (so no ``multiprocessing``)</span>
+<span class="diff-line diff-added">+* ``os.exec*()`` is not allowed</span>
+<span class="diff-line diff-added">+  (but "fork+exec", a la ``subprocess`` is okay)</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Note that interpreters created with the existing C-API do not have these</span>
+<span class="diff-line diff-added">+restrictions.  The same is true for the "main" interpreter, so</span>
+<span class="diff-line diff-added">+existing use of Python will not change.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+.. XXX Mention the similar restrictions in PEP 684?</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+We may choose to later loosen some of the above restrictions or provide</span>
+<span class="diff-line diff-added">+a way to enable/disable granular restrictions individually.  Regardless,</span>
+<span class="diff-line diff-added">+requiring multi-phase init from extension modules will always be a</span>
+<span class="diff-line diff-added">+default restriction.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+API For Communication</span>
+<span class="diff-line diff-added">+=====================</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> As discussed in `Shared Data`_ above, multiple interpreter support</span>
+<span class="diff-line"> is less useful without a mechanism for sharing data (communicating)</span>
+<span class="diff-line"> between them.  Sharing actual Python objects between interpreters,</span>
+<span class="diff-line"> however, has enough potential problems that we are avoiding support</span>
+<span class="diff-line"> for that in this proposal.  Nor, as mentioned earlier, are we adding</span>
+<span class="diff-line diff-removed">-anything more than the most minimal mechanism for communication.</span>
+<span class="diff-line diff-added">+anything more than a basic mechanism for communication.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+That mechanism is the ``Interpreter.set_main_attrs()`` method.</span>
+<span class="diff-line diff-added">+It may be used to set up global variables before ``Interpreter.exec()``</span>
+<span class="diff-line diff-added">+is called.  The name-value pairs passed to ``set_main_attrs()`` are</span>
+<span class="diff-line diff-added">+bound as attributes of the interpreter's ``__main__`` module.</span>
+<span class="diff-line diff-added">+The values must be "shareable".  See `Shareable Types`_ below.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-That very basic mechanism, using pipes (see ``os.pipe()``), will allow</span>
+<span class="diff-line diff-removed">-users to send data (bytes) from one interpreter to another.  We'll</span>
+<span class="diff-line diff-removed">-take a closer look in a moment.  Fundamentally, it's a simple</span>
+<span class="diff-line diff-removed">-application of the underlying sharing capability proposed here.</span>
+<span class="diff-line diff-added">+Additional approaches to communicating and sharing objects are enabled</span>
+<span class="diff-line diff-added">+through ``Interpreter.set_main_attrs()``.  A shareable object could be</span>
+<span class="diff-line diff-added">+implemented which works like a queue, but with cross-interpreter safety.</span>
+<span class="diff-line diff-added">+In fact, this PEP does include an example of such an approach: channels.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Shareable Types</span>
+<span class="diff-line diff-added">+---------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The various aspects of the approach, including keeping the API minimal,</span>
+<span class="diff-line diff-removed">-helps us avoid further exposing any underlying complexity</span>
+<span class="diff-line diff-removed">-to Python users.</span>
+<span class="diff-line diff-added">+An object is "shareable" if its type supports shareable instances.</span>
+<span class="diff-line diff-added">+The type must implement a new internal protocol, which is used to</span>
+<span class="diff-line diff-added">+convert an object to interpreter-independent data and then coverted</span>
+<span class="diff-line diff-added">+back to an object on the other side.  Also see</span>
+<span class="diff-line diff-added">+`is_shareable() <interpreters-is-shareable_>`_ above.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+A minimal set of simple, immutable builtin types will be supported</span>
+<span class="diff-line diff-added">+initially, including:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* ``None``</span>
+<span class="diff-line diff-added">+* ``bool``</span>
+<span class="diff-line diff-added">+* ``bytes``</span>
+<span class="diff-line diff-added">+* ``str``</span>
+<span class="diff-line diff-added">+* ``int``</span>
+<span class="diff-line diff-added">+* ``float``</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+We will also support a small number of complex types initially:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* ``memoryview``, to allow sharing :pep:`3118` buffers</span>
+<span class="diff-line diff-added">+* `channels <Channels_>`_</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Further builtin types may be supported later, complex or not.</span>
+<span class="diff-line diff-added">+Limiting the initial shareable types is a practical matter, reducing</span>
+<span class="diff-line diff-added">+the potential complexity of the initial implementation.  There are a</span>
+<span class="diff-line diff-added">+number of strategies we may pursue in the future to expand supported</span>
+<span class="diff-line diff-added">+objects, once we have more experience with interpreter isolation.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In the meantime, a separate proposal will discuss making the internal</span>
+<span class="diff-line diff-added">+protocol (and C-API) used by ``Interpreter.set_main_attrs()`` public.</span>
+<span class="diff-line diff-added">+With that protocol, support for other types could be added</span>
+<span class="diff-line diff-added">+by extension modules.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Communicating Through OS Pipes</span>
+<span class="diff-line"> ''''''''''''''''''''''''''''''</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-As noted, this proposal enables a very basic mechanism for</span>
+<span class="diff-line diff-removed">-communicating between interpreters, which makes use of</span>
+<span class="diff-line diff-removed">-``Interpreter.run()``:</span>
+<span class="diff-line diff-added">+Even without a dedicated object for communication, users may already</span>
+<span class="diff-line diff-added">+use existing tools.  For example, one basic approach for sending data</span>
+<span class="diff-line diff-added">+between interpreters is to use a pipe (see ``os.pipe()``):</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> 1. interpreter A calls ``os.pipe()`` to get a read/write pair</span>
+<span class="diff-line">    of file descriptors (both ``int`` objects)</span>
+<span class="diff-line diff-removed">-2. interpreter A calls ``run()`` on interpreter B, including</span>
+<span class="diff-line diff-removed">-   the read FD via string formatting</span>
+<span class="diff-line diff-removed">-3. interpreter A writes some bytes to the write FD</span>
+<span class="diff-line diff-removed">-4. interpreter B reads those bytes</span>
+<span class="diff-line diff-added">+2. interpreter A calls ``interp.set_main_attrs()``, binding the read FD</span>
+<span class="diff-line diff-added">+   (or embeds it using string formatting)</span>
+<span class="diff-line diff-added">+3. interpreter A calls ``interp.exec()`` on interpreter B</span>
+<span class="diff-line diff-added">+4. interpreter A writes some bytes to the write FD</span>
+<span class="diff-line diff-added">+5. interpreter B reads those bytes</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Several of the earlier examples demonstrate this, such as</span>
+<span class="diff-line"> `Synchronize using an OS pipe`_.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. _interpreters-create-channel:</span>
+<span class="diff-line diff-added">+.. _interpreters-RecvChannel:</span>
+<span class="diff-line diff-added">+.. _interpreters-SendChannel:</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Interpreter Restrictions</span>
+<span class="diff-line diff-removed">-========================</span>
+<span class="diff-line diff-added">+Channels</span>
+<span class="diff-line diff-added">+--------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Every new interpreter created by ``interpreters.create()``</span>
+<span class="diff-line diff-removed">-now has specific restrictions on any code it runs.  This includes the</span>
+<span class="diff-line diff-removed">-following:</span>
+<span class="diff-line diff-added">+The ``interpreters`` module will include a dedicated solution for</span>
+<span class="diff-line diff-added">+passing object data between interpreters: channels.  They are included</span>
+<span class="diff-line diff-added">+in the module in part to provide an easier mechanism than using</span>
+<span class="diff-line diff-added">+``os.pipe()`` and in part to demonstrate how libraries may take</span>
+<span class="diff-line diff-added">+advantage of ``Interpreter.set_main_attrs()``</span>
+<span class="diff-line diff-added">+and the protocol it uses.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-* importing an extension module fails if it does not implement</span>
+<span class="diff-line diff-removed">-  multi-phase init</span>
+<span class="diff-line diff-removed">-* daemon threads may not be created</span>
+<span class="diff-line diff-removed">-* ``os.fork()`` is not allowed (so no ``multiprocessing``)</span>
+<span class="diff-line diff-removed">-* ``os.exec*()`` is not allowed</span>
+<span class="diff-line diff-removed">-  (but "fork+exec", a la ``subprocess`` is okay)</span>
+<span class="diff-line diff-added">+A channel is a simplex FIFO.  It is a basic, opt-in data sharing</span>
+<span class="diff-line diff-added">+mechanism that draws inspiration from pipes, queues, and CSP's</span>
+<span class="diff-line diff-added">+channels. [fifo]_ The main difference from pipes is that channels can</span>
+<span class="diff-line diff-added">+be associated with zero or more interpreters on either end.  Like</span>
+<span class="diff-line diff-added">+queues, which are also many-to-many, channels are buffered (though</span>
+<span class="diff-line diff-added">+they also offer methods with unbuffered semantics).</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Note that interpreters created with the existing C-API do not have these</span>
+<span class="diff-line diff-removed">-restrictions.  The same is true for the "main" interpreter, so</span>
+<span class="diff-line diff-removed">-existing use of Python will not change.</span>
+<span class="diff-line diff-added">+Channels have two operations: send and receive.  A key characteristic</span>
+<span class="diff-line diff-added">+of those operations is that channels transmit data derived from Python</span>
+<span class="diff-line diff-added">+objects rather than the objects themselves.  When objects are sent,</span>
+<span class="diff-line diff-added">+their data is extracted.  When the "object" is received in the other</span>
+<span class="diff-line diff-added">+interpreter, the data is converted back into an object owned by that</span>
+<span class="diff-line diff-added">+interpreter.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. Mention the similar restrictions in PEP 684?</span>
+<span class="diff-line diff-added">+To make this work, the mutable shared state will be managed by the</span>
+<span class="diff-line diff-added">+Python runtime, not by any of the interpreters.  Initially we will</span>
+<span class="diff-line diff-added">+support only one type of objects for shared state: the channels provided</span>
+<span class="diff-line diff-added">+by ``interpreters.create_channel()``.  Channels, in turn, will carefully</span>
+<span class="diff-line diff-added">+manage passing objects between interpreters.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-We may choose to later loosen some of the above restrictions or provide</span>
+<span class="diff-line diff-removed">-a way to enable/disable granular restrictions individually.  Regardless,</span>
+<span class="diff-line diff-removed">-requiring multi-phase init from extension modules will always be a</span>
+<span class="diff-line diff-removed">-default restriction.</span>
+<span class="diff-line diff-added">+This approach, including keeping the API minimal, helps us avoid further</span>
+<span class="diff-line diff-added">+exposing any underlying complexity to Python users.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The ``interpreters`` module provides the following function related</span>
+<span class="diff-line diff-added">+to channels::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   create_channel() -> (RecvChannel, SendChannel):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      Create a new channel and return (recv, send), the RecvChannel</span>
+<span class="diff-line diff-added">+      and SendChannel corresponding to the ends of the channel.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      Both ends of the channel are supported "shared" objects (i.e.</span>
+<span class="diff-line diff-added">+      may be safely shared by different interpreters.  Thus they</span>
+<span class="diff-line diff-added">+      may be set using "Interpreter.set_main_attrs()".</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The module also provides the following channel-related classes::</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   class RecvChannel(id):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      The receiving end of a channel.  An interpreter may use this to</span>
+<span class="diff-line diff-added">+      receive objects from another interpreter.  Any type supported by</span>
+<span class="diff-line diff-added">+      Interpreter.set_main_attrs() will be supported here, though at</span>
+<span class="diff-line diff-added">+      first only a few of the simple, immutable builtin types</span>
+<span class="diff-line diff-added">+      will be supported.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      id -> int:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         The channel's unique ID.  The "send" end has the same one.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      recv(*, timeout=None):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Return the next object from the channel.  If none have been</span>
+<span class="diff-line diff-added">+         sent then wait until the next send (or until the timeout is hit).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         At the least, the object will be equivalent to the sent object.</span>
+<span class="diff-line diff-added">+         That will almost always mean the same type with the same data,</span>
+<span class="diff-line diff-added">+         though it could also be a compatible proxy.  Regardless, it may</span>
+<span class="diff-line diff-added">+         use a copy of that data or actually share the data.  That's up</span>
+<span class="diff-line diff-added">+         to the object's type.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      recv_nowait(default=None):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Return the next object from the channel.  If none have been</span>
+<span class="diff-line diff-added">+         sent then return the default.  Otherwise, this is the same</span>
+<span class="diff-line diff-added">+         as the "recv()" method.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+   class SendChannel(id):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      The sending end of a channel.  An interpreter may use this to</span>
+<span class="diff-line diff-added">+      send objects to another interpreter.  Any type supported by</span>
+<span class="diff-line diff-added">+      Interpreter.set_main_attrs() will be supported here, though</span>
+<span class="diff-line diff-added">+      at first only a few of the simple, immutable builtin types</span>
+<span class="diff-line diff-added">+      will be supported.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      id -> int:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         The channel's unique ID.  The "recv" end has the same one.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      send(obj, *, timeout=None):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Send the object (i.e. its data) to the "recv" end of the</span>
+<span class="diff-line diff-added">+         channel.  Wait until the object is received.  If the object</span>
+<span class="diff-line diff-added">+         is not shareable then ValueError is raised.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         The builtin memoryview is supported, so sending a buffer</span>
+<span class="diff-line diff-added">+         across involves first wrapping the object in a memoryview</span>
+<span class="diff-line diff-added">+         and then sending that.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+      send_nowait(obj):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+         Send the object to the "recv" end of the channel.  This</span>
+<span class="diff-line diff-added">+         behaves the same as "send()", except for the waiting part.</span>
+<span class="diff-line diff-added">+         If no interpreter is currently receiving (waiting on the</span>
+<span class="diff-line diff-added">+         other end) then queue the object and return False.  Otherwise</span>
+<span class="diff-line diff-added">+         return True.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Caveats For Shared Objects</span>
+<span class="diff-line diff-added">+--------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Again, Python objects are not shared between interpreters.</span>
+<span class="diff-line diff-added">+However, in some cases data those objects wrap is actually shared</span>
+<span class="diff-line diff-added">+and not just copied.  One example might be :pep:`3118` buffers.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In those cases the object in the original interpreter is kept alive</span>
+<span class="diff-line diff-added">+until the shared data in the other interpreter is no longer used.</span>
+<span class="diff-line diff-added">+Then object destruction can happen like normal in the original</span>
+<span class="diff-line diff-added">+interpreter, along with the previously shared data.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Documentation</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The New Version introduces a sweeping redesign of the PEP 554 concept: renames and redefines the core API from run()-based subinterpreter execution to exec()-based execution, adds a formal sharing mechanism via set_main_attrs and a new shareable object protocol including is_shareable and channels, introduces channels (RecvChannel / SendChannel) and create_channel, and adds concurrent.futures.InterpreterPoolExecutor support, effectively broadening scope beyond the original minimal interpreter.run() approach and aligning with per-interpreter GIL considerations.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>26</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">negative impact that the new ``interpreters`` module might have on</span>
+<span class="diff-line"> extension module maintainers.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Also, the ``ImportError`` for incompatible extension modules will have</span>
+<span class="diff-line diff-removed">-a message that clearly says it is due to missing multiple interpreters</span>
+<span class="diff-line diff-added">+Also, the ``ImportError`` for incompatible extension modules will be</span>
+<span class="diff-line diff-added">+updated to clearly say it is due to missing multiple interpreters</span>
+<span class="diff-line"> compatibility and that extensions are not required to provide it.  This</span>
+<span class="diff-line"> will help set user expectations properly.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Clarifies wording about the ImportError message: it will be updated to explicitly state that the missing multiple interpreters compatibility is the issue and that extensions are not required to provide it; this is a wording/clarification without changing policy.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>27</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Similar reasoning applies for support in the ``multiprocessing`` module.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Open Questions</span>
+<span class="diff-line diff-added">+==============</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* will is be too confusing that ``interp.exec()`` runs in the current thread?</span>
+<span class="diff-line diff-added">+* should we add pickling fallbacks right now for ``interp.exec()``, and/or</span>
+<span class="diff-line diff-added">+  ``Interpreter.set_main_attrs()`` and ``Interpreter.get_main_attr()``?</span>
+<span class="diff-line diff-added">+* should we support (limited) functions in ``interp.exec()`` right now?</span>
+<span class="diff-line diff-added">+* rename ``Interpreter.close()`` to ``Interpreter.destroy()``?</span>
+<span class="diff-line diff-added">+* drop ``Interpreter.get_main_attr()``, since we have channels?</span>
+<span class="diff-line diff-added">+* should channels be its own PEP?</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Deferred Functionality</span>
+<span class="diff-line"> ======================</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added Open Questions section and Deferred Functionality in the Proposal, introducing new questions and future work (e.g., interp.exec running in the current thread, pickling fallbacks, functions in interp.exec, renaming methods, channels as a feature, etc.). This is new content not present in the prior version.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>28</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">this is not a judgement against any of said capability, but rather a</span>
+<span class="diff-line"> deferment.  That said, each is arguably valid.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Shareable Objects</span>
+<span class="diff-line diff-added">+Add convenience API</span>
+<span class="diff-line diff-added">+-------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+There are a number of things I can imagine would smooth out</span>
+<span class="diff-line diff-added">+*hypothetical* rough edges with the new module:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* add something like ``Interpreter.run()`` or ``Interpreter.call()``</span>
+<span class="diff-line diff-added">+  that calls ``interp.exec()`` and falls back to pickle</span>
+<span class="diff-line diff-added">+* fall back to pickle in ``Interpreter.set_main_attrs()``</span>
+<span class="diff-line diff-added">+  and ``Interpreter.get_main_attr()``</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+These would be easy to do if this proves to be a pain point.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Avoid possible confusion about interpreters running in the current thread</span>
+<span class="diff-line diff-added">+-------------------------------------------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+One regular point of confusion has been that ``Interpreter.exec()``</span>
+<span class="diff-line diff-added">+executes in the current OS thread, temporarily blocking the current</span>
+<span class="diff-line diff-added">+Python thread.  It may be worth doing something to avoid that confusion.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Some possible solutions for this hypothetical problem:</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Earlier versions of this proposal included a mechanism by which the</span>
+<span class="diff-line diff-removed">-data underlying a given object could be passed to another interpreter</span>
+<span class="diff-line diff-removed">-or even shared, even if the object can't be.  Without channels there</span>
+<span class="diff-line diff-removed">-isn't enough benefit to keep the concept of shareable objects around.</span>
+<span class="diff-line diff-added">+* by default, run in a new thread?</span>
+<span class="diff-line diff-added">+* add ``Interpreter.exec_in_thread()``?</span>
+<span class="diff-line diff-added">+* add ``Interpreter.exec_in_current_thread()``?</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In earlier versions of this PEP the method was ``interp.run()``.</span>
+<span class="diff-line diff-added">+The simple change to ``interp.exec()`` alone will probably reduce</span>
+<span class="diff-line diff-added">+confusion sufficiently, when coupled with educating users via</span>
+<span class="diff-line diff-added">+the docs.  It it turns out to be a real problem, we can pursue</span>
+<span class="diff-line diff-added">+one of the alternatives at that point.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Clarify "running" vs. "has threads"</span>
+<span class="diff-line diff-added">+-----------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+``Interpreter.is_running()`` refers specifically to whether or not</span>
+<span class="diff-line diff-added">+``Interpreter.exec()`` (or similar) is running somewhere.  It does not</span>
+<span class="diff-line diff-added">+say anything about if the interpreter has any subthreads running.  That</span>
+<span class="diff-line diff-added">+information might be helpful.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Some things we could do:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+* rename ``Interpreter.is_running()`` to ``Interpreter.is_running_main()``</span>
+<span class="diff-line diff-added">+* add ``Interpreter.has_threads()``, to complement ``Interpreter.is_running()``</span>
+<span class="diff-line diff-added">+* expand to ``Interpreter.is_running(main=True, threads=False)``</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+None of these are urgent and any could be done later, if desired.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+A Dunder Method For Sharing</span>
+<span class="diff-line diff-added">+---------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+We could add a special method, like ``__xid__`` to correspond to ``tp_xid``.</span>
+<span class="diff-line diff-added">+At the very least, it would allow Python types to convert their instances</span>
+<span class="diff-line diff-added">+to some other type that implements ``tp_xid``.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The problem is that exposing this capability to Python code presents</span>
+<span class="diff-line diff-added">+a degree of complixity that hasn't been explored yet, nor is there</span>
+<span class="diff-line diff-added">+a compelling case to investigate that complexity.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Interpreter.call()</span>
+<span class="diff-line"> ------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> It would be convenient to run existing functions in subinterpreters</span>
+<span class="diff-line diff-removed">-directly.  ``Interpreter.run()`` could be adjusted to support this or</span>
+<span class="diff-line diff-added">+directly.  ``Interpreter.exec()`` could be adjusted to support this or</span>
+<span class="diff-line"> a ``call()`` method could be added::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    Interpreter.call(f, *args, **kwargs)</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Introduction of new API surface content (Add convenience API) and related changes, representing a new requirement surface rather than a mere modification or correction; the old version's 'Shareable Objects' section is expanded/replaced with new API items, indicating a genuinely new set of requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>29</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Interpreter.run_in_thread()</span>
+<span class="diff-line"> ---------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This method would make a ``run()`` call for you in a thread.  Doing this</span>
+<span class="diff-line diff-removed">-using only ``threading.Thread`` and ``run()`` is relatively trivial so</span>
+<span class="diff-line diff-removed">-we've left it out.</span>
+<span class="diff-line diff-added">+This method would make a ``interp.exec()`` call for you in a thread.</span>
+<span class="diff-line diff-added">+Doing this using only ``threading.Thread`` and ``interp.exec()`` is</span>
+<span class="diff-line diff-added">+relatively trivial so we've left it out.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Synchronization Primitives</span>
+<span class="diff-line"> --------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff updates the documentation wording to reference interp.exec() instead of run() for the threaded helper, clarifying a rename in the API. The change does not modify functionality or requirements; it only clarifies terminology.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>30</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">there are relatively few cases we know of through mod_wsgi, we can</span>
+<span class="diff-line"> leave this for later.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Poisoning channels</span>
+<span class="diff-line diff-added">+------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+CSP has the concept of poisoning a channel.  Once a channel has been</span>
+<span class="diff-line diff-added">+poisoned, any ``send()`` or ``recv()`` call on it would raise a special</span>
+<span class="diff-line diff-added">+exception, effectively ending execution in the interpreter that tried</span>
+<span class="diff-line diff-added">+to use the poisoned channel.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+This could be accomplished by adding a ``poison()`` method to both ends</span>
+<span class="diff-line diff-added">+of the channel.  The ``close()`` method can be used in this way</span>
+<span class="diff-line diff-added">+(mostly), but these semantics are relatively specialized and can wait.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Resetting __main__</span>
+<span class="diff-line"> ------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-As proposed, every call to ``Interpreter.run()`` will execute in the</span>
+<span class="diff-line diff-added">+As proposed, every call to ``Interpreter.exec()`` will execute in the</span>
+<span class="diff-line"> namespace of the interpreter's existing ``__main__`` module.  This means</span>
+<span class="diff-line diff-removed">-that data persists there between ``run()`` calls.  Sometimes this isn't</span>
+<span class="diff-line diff-removed">-desirable and you want to execute in a fresh ``__main__``.  Also,</span>
+<span class="diff-line diff-removed">-you don't necessarily want to leak objects there that you aren't using</span>
+<span class="diff-line diff-removed">-any more.</span>
+<span class="diff-line diff-added">+that data persists there between ``interp.exec()`` calls.  Sometimes</span>
+<span class="diff-line diff-added">+this isn't desirable and you want to execute in a fresh ``__main__``.</span>
+<span class="diff-line diff-added">+Also, you don't necessarily want to leak objects there that you aren't</span>
+<span class="diff-line diff-added">+using any more.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Note that the following won't work right because it will clear too much</span>
+<span class="diff-line"> (e.g. ``__name__`` and the other "__dunder__" attributes::</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-   interp.run('globals().clear()')</span>
+<span class="diff-line diff-added">+   interp.exec('globals().clear()')</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Possible solutions include:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> * a ``create()`` arg to indicate resetting ``__main__`` after each</span>
+<span class="diff-line diff-removed">-  ``run`` call</span>
+<span class="diff-line diff-added">+  ``interp.exec()`` call</span>
+<span class="diff-line"> * an ``Interpreter.reset_main`` flag to support opting in or out</span>
+<span class="diff-line">   after the fact</span>
+<span class="diff-line"> * an ``Interpreter.reset_main()`` method to opt in when desired</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>A new 'Poisoning channels' section was added, introducing the concept of poisoning a channel and proposing a poison() method to allow invalidating a channel; this is content that did not exist in the previous version.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>31</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The basic functionality of multiple interpreters support does not depend</span>
+<span class="diff-line"> on async and can be added later.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-channels</span>
+<span class="diff-line diff-added">+A possible solution is to provide async implementations of the blocking</span>
+<span class="diff-line diff-added">+channel methods (``recv()``, and ``send()``).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Alternately, "readiness callbacks" could be used to simplify use in</span>
+<span class="diff-line diff-added">+async scenarios.  This would mean adding an optional ``callback``</span>
+<span class="diff-line diff-added">+(kw-only) parameter to the ``recv_nowait()`` and ``send_nowait()``</span>
+<span class="diff-line diff-added">+channel methods.  The callback would be called once the object was sent</span>
+<span class="diff-line diff-added">+or received (respectively).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+(Note that making channels buffered makes readiness callbacks less</span>
+<span class="diff-line diff-added">+important.)</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Support for iteration</span>
+<span class="diff-line diff-added">+---------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Supporting iteration on ``RecvChannel`` (via ``__iter__()`` or</span>
+<span class="diff-line diff-added">+``_next__()``) may be useful.  A trivial implementation would use the</span>
+<span class="diff-line diff-added">+``recv()`` method, similar to how files do iteration.  Since this isn't</span>
+<span class="diff-line diff-added">+a fundamental capability and has a simple analog, adding iteration</span>
+<span class="diff-line diff-added">+support can wait until later.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-We could introduce some relatively efficient, native data types for</span>
+<span class="diff-line diff-removed">-passing data between interpreters, to use instead of OS pipes.  Earlier</span>
+<span class="diff-line diff-removed">-versions of this PEP introduced one such mechanism, called "channels".</span>
+<span class="diff-line diff-removed">-This can be pursued later.</span>
+<span class="diff-line diff-added">+Channel context managers</span>
+<span class="diff-line diff-added">+------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Context manager support on ``RecvChannel`` and ``SendChannel`` may be</span>
+<span class="diff-line diff-added">+helpful.  The implementation would be simple, wrapping a call to</span>
+<span class="diff-line diff-added">+``close()`` (or maybe ``release()``) like files do.  As with iteration,</span>
+<span class="diff-line diff-added">+this can wait.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Pipes and Queues</span>
+<span class="diff-line"> ----------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The changes expand the channel/communication design by introducing async-friendly enhancements and usability features: (1) add async implementations for blocking channel methods (recv, send) and readiness callbacks; (2) add iteration support for RecvChannel; (3) add channel context managers; these together shift the design from a minimal channel concept toward a richer, more ergonomic cross-interpreter communication framework, indicating a meaningful change in intent/behavior rather than a simple clarification or typo.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>32</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">channels.  Alternatively they could be implemented for efficiency at the</span>
+<span class="diff-line"> same low level as channels.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Return a lock from send()</span>
+<span class="diff-line diff-added">+-------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+When sending an object through a channel, you don't have a way of knowing</span>
+<span class="diff-line diff-added">+when the object gets received on the other end.  One way to work around</span>
+<span class="diff-line diff-added">+this is to return a locked ``threading.Lock`` from ``SendChannel.send()``</span>
+<span class="diff-line diff-added">+that unlocks once the object is received.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Alternately, the proposed ``SendChannel.send()`` (blocking) and</span>
+<span class="diff-line diff-added">+``SendChannel.send_nowait()`` provide an explicit distinction that is</span>
+<span class="diff-line diff-added">+less likely to confuse users.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Note that returning a lock would matter for buffered channels</span>
+<span class="diff-line diff-added">+(i.e. queues).  For unbuffered channels it is a non-issue.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Support prioritization in channels</span>
+<span class="diff-line diff-added">+----------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+A simple example is ``queue.PriorityQueue`` in the stdlib.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Support inheriting settings (and more?)</span>
+<span class="diff-line"> ---------------------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Introduced new channel enhancements under the Channels section: a new 'Return a lock from send()' subsection describing SendChannel.send() returning a Lock that unlocks on receipt, plus a new 'Support prioritization in channels' subsection proposing priority semantics for channels (e.g., prioritizing messages). These are new features not present in the previous version, expanding the cross-interpreter communication primitives.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>33</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">it isn't essential or (particularly common) so we can wait on doing</span>
+<span class="diff-line"> that.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Make everything shareable through serialization</span>
+<span class="diff-line diff-added">+-----------------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+We could use pickle (or marshal) to serialize everything and thus</span>
+<span class="diff-line diff-added">+make them shareable.  Doing this is potentially inefficient,</span>
+<span class="diff-line diff-added">+but it may be a matter of convenience in the end.</span>
+<span class="diff-line diff-added">+We can add it later, but trying to remove it later</span>
+<span class="diff-line diff-added">+would be significantly more painful.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Make RunFailedError.__cause__ lazy</span>
+<span class="diff-line"> ----------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-An uncaught exception in a subinterpreter (from ``run()``) is copied</span>
+<span class="diff-line diff-removed">-to the calling interpreter and set as ``__cause__`` on a</span>
+<span class="diff-line diff-added">+An uncaught exception in a subinterpreter (from ``interp.exec()``) is</span>
+<span class="diff-line diff-added">+copied to the calling interpreter and set as ``__cause__`` on a</span>
+<span class="diff-line"> ``RunFailedError`` which is then raised.  That copying part involves</span>
+<span class="diff-line"> some sort of deserialization in the calling interpreter, which can be</span>
+<span class="diff-line"> expensive (e.g. due to imports) yet is not always necessary.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>Added a new serialization-based sharing capability: introduced a section 'Make everything shareable through serialization' proposing using pickle/marshal to serialize data so that objects can be shared across interpreters. This is the dominant change in the diff. (A minor textual adjustment also changes references from 'run()' to 'interp.exec()' in the RunFailedError explanation, but the primary change is the new serialization-based sharing feature.)</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>34</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">descriptor that does the lazy deserialization (and set ``__cause__``)</span>
+<span class="diff-line"> on the ``RunFailedError`` instance.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Make everything shareable through serialization</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-We could use pickle (or marshal) to serialize everything and thus</span>
+<span class="diff-line diff-removed">-make them shareable.  Doing this is potentially inefficient,</span>
+<span class="diff-line diff-removed">-but it may be a matter of convenience in the end.</span>
+<span class="diff-line diff-removed">-We can add it later, but trying to remove it later</span>
+<span class="diff-line diff-removed">-would be significantly more painful.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Return a value from ``run()``</span>
+<span class="diff-line diff-added">+Return a value from ``interp.exec()``</span>
+<span class="diff-line diff-added">+-------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Currently ``run()`` always returns None.  One idea is to return the</span>
+<span class="diff-line diff-removed">-return value from whatever the subinterpreter ran.  However, for now</span>
+<span class="diff-line diff-added">+Currently ``interp.exec()`` always returns None.  One idea is to return</span>
+<span class="diff-line diff-added">+the return value from whatever the subinterpreter ran.  However, for now</span>
+<span class="diff-line"> it doesn't make sense.  The only thing folks can run is a string of</span>
+<span class="diff-line"> code (i.e. a script).  This is equivalent to ``PyRun_StringFlags()``,</span>
+<span class="diff-line"> ``exec()``, or a module body.  None of those "return" anything.  We can</span>
+<span class="diff-line diff-removed">-revisit this once ``run()`` supports functions, etc.</span>
+<span class="diff-line diff-added">+revisit this once ``interp.exec()`` supports functions, etc.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Add a shareable synchronization primitive</span>
+<span class="diff-line"> -----------------------------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Removal of the 'Make everything shareable through serialization' proposal. The old version described using pickle/marshal to serialize and share all objects across interpreters; the new version eliminates that option and instead focuses on limited cross-interpreter sharing via set_main_attrs and channels, with alternative approaches discussed elsewhere. This constitutes a Meaning change in intent/behavior (serialization-based sharing is no longer part of the design), not a typo, new requirement, or mere summarization.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>35</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">``Exception``) are usually treated specially.  These types are:</span>
+<span class="diff-line"> ``KeyboardInterrupt``, ``SystemExit``, and ``GeneratorExit``.  It may</span>
+<span class="diff-line"> make sense to treat them specially when it comes to propagation from</span>
+<span class="diff-line diff-removed">-``run()``.  Here are some options::</span>
+<span class="diff-line diff-added">+``interp.exec()``.  Here are some options::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">    * propagate like normal via RunFailedError</span>
+<span class="diff-line">    * do not propagate (handle them somehow in the subinterpreter)</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Renaming of API surface from run() to exec() in the affected sections (e.g., using interp.exec() instead of Interpreter.run()) and accompanying wording adjustments. This changes terminology and references but does not alter the underlying behavior or capabilities; it is a clarification/renaming rather than a substantive change.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>36</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">We aren't going to worry about handling them differently.  Threads</span>
+<span class="diff-line"> already ignore ``SystemExit``, so for now we will follow that pattern.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Add an explicit release() and close() to channel end classes</span>
+<span class="diff-line diff-added">+------------------------------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+It can be convenient to have an explicit way to close a channel against</span>
+<span class="diff-line diff-added">+further global use.  Likewise it could be useful to have an explicit</span>
+<span class="diff-line diff-added">+way to release one of the channel ends relative to the current</span>
+<span class="diff-line diff-added">+interpreter.  Among other reasons, such a mechanism is useful for</span>
+<span class="diff-line diff-added">+communicating overall state between interpreters without the extra</span>
+<span class="diff-line diff-added">+boilerplate that passing objects through a channel directly would</span>
+<span class="diff-line diff-added">+require.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The challenge is getting automatic release/close right without making</span>
+<span class="diff-line diff-added">+it hard to understand.  This is especially true when dealing with a</span>
+<span class="diff-line diff-added">+non-empty channel.  We should be able to get by without release/close</span>
+<span class="diff-line diff-added">+for now.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Add SendChannel.send_buffer()</span>
+<span class="diff-line diff-added">+-----------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+This method would allow no-copy sending of an object through a channel</span>
+<span class="diff-line diff-added">+if it supports the :pep:`3118` buffer protocol (e.g. memoryview).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Support for this is not fundamental to channels and can be added on</span>
+<span class="diff-line diff-added">+later without much disruption.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Auto-run in a thread</span>
+<span class="diff-line diff-added">+--------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+The PEP proposes a hard separation between subinterpreters and threads:</span>
+<span class="diff-line diff-added">+if you want to run in a thread you must create the thread yourself and</span>
+<span class="diff-line diff-added">+call ``interp.exec()`` in it.  However, it might be convenient if</span>
+<span class="diff-line diff-added">+``interp.exec()`` could do that for you, meaning there would be less</span>
+<span class="diff-line diff-added">+boilerplate.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Furthermore, we anticipate that users will want to run in a thread much</span>
+<span class="diff-line diff-added">+more often than not.  So it would make sense to make this the default</span>
+<span class="diff-line diff-added">+behavior.  We would add a kw-only param "threaded" (default ``True``)</span>
+<span class="diff-line diff-added">+to ``interp.exec()`` to allow the run-in-the-current-thread operation.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Rejected Ideas</span>
+<span class="diff-line"> ==============</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Explicit channel association</span>
+<span class="diff-line diff-added">+----------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Interpreters are implicitly associated with channels upon ``recv()`` and</span>
+<span class="diff-line diff-added">+``send()`` calls.  They are de-associated with ``release()`` calls.  The</span>
+<span class="diff-line diff-added">+alternative would be explicit methods.  It would be either</span>
+<span class="diff-line diff-added">+``add_channel()`` and ``remove_channel()`` methods on ``Interpreter``</span>
+<span class="diff-line diff-added">+objects or something similar on channel objects.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+In practice, this level of management shouldn't be necessary for users.</span>
+<span class="diff-line diff-added">+So adding more explicit support would only add clutter to the API.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Add an API based on pipes</span>
+<span class="diff-line"> -------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-(Earlier versions of this PEP proposed "channels" for communicating</span>
+<span class="diff-line diff-removed">-between interpreters.  This idea is written relative to that.)</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> A pipe would be a simplex FIFO between exactly two interpreters.  For</span>
+<span class="diff-line"> most use cases this would be sufficient.  It could potentially simplify</span>
+<span class="diff-line"> the implementation as well.  However, it isn't a big step to supporting</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The diff adds entirely new features to the interpreters module's channels and execution model: an explicit release() and close() for channel ends; a new SendChannel.send_buffer() method to enable zero-copy sending via the buffer protocol; and an Auto-run in a thread enhancement that would make exec() run in a thread by default with a threaded kw-only parameter. These are new capabilities not present in the Old Version, representing fresh requirements rather than clarifications or corrections.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>37</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Add an API based on queues</span>
+<span class="diff-line"> --------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-(Earlier versions of this PEP proposed "channels" for communicating</span>
+<span class="diff-line diff-removed">-between interpreters.  This idea is written relative to that.)</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> Queues and buffered channels are almost the same thing.  The main</span>
+<span class="diff-line"> difference is that channels have a stronger relationship with context</span>
+<span class="diff-line"> (i.e. the associated interpreter).</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Removed a parenthetical historical note under the 'Add an API based on queues' section that referenced earlier versions proposing 'channels'. This shortens the spec without changing meaning; the substantive content comparing queues and channels remains.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>38</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">---------------------------------------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> In function calls, uncaught exceptions propagate to the calling frame.</span>
+<span class="diff-line diff-removed">-The same approach could be taken with ``run()``.  However, this would</span>
+<span class="diff-line diff-removed">-mean that exception objects would leak across the inter-interpreter</span>
+<span class="diff-line diff-added">+The same approach could be taken with ``interp.exec()``.  However, this</span>
+<span class="diff-line diff-added">+would mean that exception objects would leak across the inter-interpreter</span>
+<span class="diff-line"> boundary.  Likewise, the frames in the traceback would potentially leak.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> While that might not be a problem currently, it would be a problem once</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>No meaning change; this is a clarification due to a function name rename in the new version, replacing references to run() with interp.exec() to reflect the updated API naming.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>39</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">(requires a cross-interpreter representation)</span>
+<span class="diff-line"> * wrap in a proxy at the boundary (including with support for</span>
+<span class="diff-line">   something like ``err.raise()`` to propagate the traceback).</span>
+<span class="diff-line diff-removed">-* return the exception (or its proxy) from ``run()`` instead of</span>
+<span class="diff-line diff-added">+* return the exception (or its proxy) from ``interp.exec()`` instead of</span>
+<span class="diff-line">   raising it</span>
+<span class="diff-line"> * return a result object (like ``subprocess`` does) [result-object]_</span>
+<span class="diff-line">   (unnecessary complexity?)</span>
+<span class="diff-line"> * throw the exception away and expect users to deal with unhandled</span>
+<span class="diff-line diff-removed">-  exceptions explicitly in the script they pass to ``run()``</span>
+<span class="diff-line diff-removed">-  (they can pass error info out via ``os.pipe()``);</span>
+<span class="diff-line diff-added">+  exceptions explicitly in the script they pass to ``interp.exec()``</span>
+<span class="diff-line diff-added">+  (they can pass error info out via channels);</span>
+<span class="diff-line">   with threads you have to do something similar</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Always associate each new interpreter with its own thread</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>This change is a terminology clarification rather than a new behavior: it updates the reference from run() to interp.exec() in the rejected ideas about returning the exception proxy, aligning with the updated API naming and reducing ambiguity about which API surface handles the return.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>40</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">not at the same time).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The proposed module maintains this behavior.  Interpreters are not</span>
+<span class="diff-line diff-removed">-tied to threads.  Only calls to ``Interpreter.run()`` are.  However,</span>
+<span class="diff-line diff-added">+tied to threads.  Only calls to ``Interpreter.exec()`` are.  However,</span>
+<span class="diff-line"> one of the key objectives of this PEP is to provide a more</span>
+<span class="diff-line"> human-centric concurrency model.  With that in mind, from a conceptual</span>
+<span class="diff-line"> standpoint the module *might* be easier to understand if each</span>
+<span class="diff-line"> interpreter were associated with its own thread.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> That would mean ``interpreters.create()`` would create a new thread</span>
+<span class="diff-line diff-removed">-and ``Interpreter.run()`` would only execute in that thread (and</span>
+<span class="diff-line diff-added">+and ``Interpreter.exec()`` would only execute in that thread (and</span>
+<span class="diff-line"> nothing else would).  The benefit is that users would not have to</span>
+<span class="diff-line diff-removed">-wrap ``Interpreter.run()`` calls in a new ``threading.Thread``.  Nor</span>
+<span class="diff-line diff-added">+wrap ``Interpreter.exec()`` calls in a new ``threading.Thread``.  Nor</span>
+<span class="diff-line"> would they be in a position to accidentally pause the current</span>
+<span class="diff-line"> interpreter (in the current thread) while their interpreter</span>
+<span class="diff-line"> executes.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The changes are a terminology/API rename in the documentation: references to the run-based API have been updated to exec. This includes replacing ‘Interpreter.run()’ with ‘Interpreter.exec()’ in the descriptions and examples, and adjusting phrasing like “wrap Interpreter.exec() calls” instead of “wrap Interpreter.run() calls.” No new functionality or behavior is introduced; it is a clarification/renaming to align the doc with the updated API.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>41</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">implementation overly complicated.  Finally, it might not even make</span>
+<span class="diff-line"> the module easier to understand.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Allow multiple simultaneous calls to Interpreter.run()</span>
+<span class="diff-line diff-added">+Only associate interpreters upon use</span>
+<span class="diff-line diff-added">+------------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Associate interpreters with channel ends only once ``recv()``,</span>
+<span class="diff-line diff-added">+``send()``, etc. are called.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Doing this is potentially confusing and also can lead to unexpected</span>
+<span class="diff-line diff-added">+races where a channel is auto-closed before it can be used in the</span>
+<span class="diff-line diff-added">+original (creating) interpreter.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Allow multiple simultaneous calls to Interpreter.exec()</span>
+<span class="diff-line diff-added">+-------------------------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This would make sense especially if ``Interpreter.run()`` were to</span>
+<span class="diff-line diff-added">+This would make sense especially if ``Interpreter.exec()`` were to</span>
+<span class="diff-line"> manage new threads for you (which we've rejected).  Essentially,</span>
+<span class="diff-line"> each call would run independently, which would be mostly fine</span>
+<span class="diff-line"> from a narrow technical standpoint, since each interpreter</span>
+<span class="diff-line"> can have multiple threads.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The problem is that the interpreter has only one ``__main__`` module</span>
+<span class="diff-line diff-removed">-and simultaneous ``Interpreter.run()`` calls would have to sort out</span>
+<span class="diff-line diff-added">+and simultaneous ``Interpreter.exec()`` calls would have to sort out</span>
+<span class="diff-line"> sharing ``__main__`` or we'd have to invent a new mechanism.  Neither</span>
+<span class="diff-line"> would be simple enough to be worth doing.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Dominant change: a fundamental shift in the interpreter-thread/concurrency model. The old version required every new interpreter to be associated with its own thread, and allowed multiple simultaneous calls to Interpreter.run(). The new version replaces this with a policy to only associate interpreters upon use (via channel ends after recv/send), and changes the concurrency model to support multiple simultaneous Interpreter.exec() calls (not run()). In short, a Meaning/intent change affecting core execution semantics rather than a minor wording fix.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>42</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">try:</span>
+<span class="diff-line">        try:</span>
+<span class="diff-line diff-removed">-           interp.run(script)</span>
+<span class="diff-line diff-added">+           interp.exec(script)</span>
+<span class="diff-line">        except RunFailedError as exc:</span>
+<span class="diff-line">            exc.reraise()</span>
+<span class="diff-line">    except MyException:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>This is a clarification: the example previously used interp.run(), but the API is interp.exec(). No functional change; it's a correction to reflect the real method name in the requirement text.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>43</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">try:</span>
+<span class="diff-line">        try:</span>
+<span class="diff-line diff-removed">-           interp.run(script)</span>
+<span class="diff-line diff-added">+           interp.exec(script)</span>
+<span class="diff-line">        except RunFailedError as exc:</span>
+<span class="diff-line">            raise exc.__cause__</span>
+<span class="diff-line">    except MyException:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff only changes the example from interp.run(script) to interp.exec(script), aligning the example with the actual proposed API (Interpreter.exec) and avoiding confusion between a run() method and the exec() method. No behavior or intent changes are introduced; the exception handling remains the same. This is a naming clarification in the documentation rather than a functional change.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>44</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">try:</span>
+<span class="diff-line">        try:</span>
+<span class="diff-line diff-removed">-           interp.run(script)</span>
+<span class="diff-line diff-added">+           interp.exec(script)</span>
+<span class="diff-line">        except RunFailedError as exc:</span>
+<span class="diff-line">            if exc.__cause__ is not None:</span>
+<span class="diff-line">                raise exc.__cause__</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff shows only a rename of the API method in an example from interp.run(...) to interp.exec(...). The underlying meaning and behavior of the uncaught-exception handling remains the same; this is a clarification/renaming in the documentation to reflect the current API (exec) rather than indicating a new requirement or change in behavior.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>45</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">* the high-level module described in this PEP (mostly a light wrapper</span>
+<span class="diff-line">   around a low-level C extension</span>
+<span class="diff-line"> * the low-level C extension module</span>
+<span class="diff-line diff-removed">-* additions to the ("private") C=API needed by the low-level module</span>
+<span class="diff-line diff-added">+* additions to the internal C-API needed by the low-level module</span>
+<span class="diff-line"> * secondary fixes/changes in the CPython runtime that facilitate</span>
+<span class="diff-line">   the low-level module (among other benefits)</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change replaces the phrase 'private' C-API with 'internal' C-API in the Implementation section. This is a terminology clarification that does not change any requirements, behaviors, or scope; it simply clarifies that the API surface is internal rather than private.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>46</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">* the low-level module is mostly complete.  The bulk of the</span>
+<span class="diff-line">   implementation was merged into master in December 2018 as the</span>
+<span class="diff-line">   "_xxsubinterpreters" module (for the sake of testing multiple</span>
+<span class="diff-line diff-removed">-  interpreters functionality).  Only 3 parts of the implementation</span>
+<span class="diff-line diff-removed">-  remain: "send_wait()", "send_buffer()", and exception propagation.</span>
+<span class="diff-line diff-removed">-  All three have been mostly finished, but were blocked by work</span>
+<span class="diff-line diff-removed">-  related to ceval.  That blocker is basically resolved now and</span>
+<span class="diff-line diff-removed">-  finishing the low-level will not require extensive work.</span>
+<span class="diff-line diff-added">+  interpreters functionality).  Only the exception propagation</span>
+<span class="diff-line diff-added">+  implementation remains to be finished, which will not require</span>
+<span class="diff-line diff-added">+  extensive work.</span>
+<span class="diff-line"> * all necessary C-API work has been finished</span>
+<span class="diff-line"> * all anticipated work in the runtime has been finished</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The remaining implementation tasks were reduced: the old note claimed three unfinished parts (send_wait(), send_buffer(), and exception propagation) remain; the new version states only exception propagation remains, indicating a change in scope/intent about what is left to implement.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>47</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6f1da20 (Cached) &rarr; 502a13a (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">https://en.wikipedia.org/wiki/Communicating_sequential_processes</span>
+<span class="diff-line">    https://github.com/futurecore/python-csp</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. [fifo]</span>
+<span class="diff-line diff-added">+   https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Pipe</span>
+<span class="diff-line diff-added">+   https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Queue</span>
+<span class="diff-line diff-added">+   https://docs.python.org/3/library/queue.html#module-queue</span>
+<span class="diff-line diff-added">+   http://stackless.readthedocs.io/en/2.7-slp/library/stackless/channels.html</span>
+<span class="diff-line diff-added">+   https://golang.org/doc/effective_go.html#sharing</span>
+<span class="diff-line diff-added">+   http://www.jtolds.com/writing/2016/03/go-channels-are-bad-and-you-should-feel-bad/</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> .. [caveats]</span>
+<span class="diff-line">    https://docs.python.org/3/c-api/init.html#bugs-and-caveats</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> .. [cryptography]</span>
+<span class="diff-line">    https://github.com/pyca/cryptography/issues/2299</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. [global-gc]</span>
+<span class="diff-line diff-removed">-   http://bugs.python.org/issue24554</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> .. [gilstate]</span>
+<span class="diff-line">    https://bugs.python.org/issue10915</span>
+<span class="diff-line">    http://bugs.python.org/issue15751</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. [global-atexit]</span>
+<span class="diff-line diff-removed">-   https://bugs.python.org/issue6531</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> .. [bug-rate]</span>
+<span class="diff-line">    https://mail.python.org/pipermail/python-ideas/2017-September/047094.html</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>References section updated, not a requirement change. Added/expanded the 'fifo' reference block with additional links and removed the 'global-gc' and 'global-atexit' bullets. No changes to requirements, constraints, or behavior; editorial metadata only.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>48</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                502a13a (Cached) &rarr; 6aeaba7 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Title: Multiple Interpreters in the Stdlib</span>
+<span class="diff-line"> Author: Eric Snow <ericsnowcurrently@gmail.com></span>
+<span class="diff-line"> Discussions-To: https://discuss.python.org/t/pep-554-multiple-interpreters-in-the-stdlib/24855</span>
+<span class="diff-line diff-removed">-Status: Draft</span>
+<span class="diff-line diff-added">+Status: Superseded</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line"> Content-Type: text/x-rst</span>
+<span class="diff-line"> Created: 05-Sep-2017</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Updated document metadata: Status changed from Draft to Superseded and added 'Superseded-By: 734'; no substantive changes to the requirements content.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>49</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                502a13a (Cached) &rarr; 6aeaba7 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">`05-Dec-2017 <https://mail.python.org/archives/list/python-dev@python.org/thread/BCSRGAMCYB3NGXNU42U66J56XNZVMQP2/>`__,</span>
+<span class="diff-line">               `04-May-2020 <https://mail.python.org/archives/list/python-dev@python.org/thread/X2KPCSRVBD2QD5GP5IMXXZTGZ46OXD3D/>`__,</span>
+<span class="diff-line">               `14-Mar-2023 <https://discuss.python.org/t/pep-554-multiple-interpreters-in-the-stdlib/24855/2/>`__,</span>
+<span class="diff-line diff-added">+              `01-Nov-2023 <https://discuss.python.org/t/pep-554-multiple-interpreters-in-the-stdlib/24855/26/>`__,</span>
+<span class="diff-line diff-added">+Superseded-By: 734</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+.. note::</span>
+<span class="diff-line diff-added">+   This PEP effectively continues in a cleaner form in :pep:`734`.</span>
+<span class="diff-line diff-added">+   This PEP is kept as-is for the sake of the various sections of</span>
+<span class="diff-line diff-added">+   background information and deferred/rejected ideas that have</span>
+<span class="diff-line diff-added">+   been stripped from :pep:`734`.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Abstract</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Editorial/administrative change: the new version adds a 'Superseded-By: 734' indicator and an introductory note stating that the PEP's contents continue in PEP 734. No substantive requirement changes; it's a status/metadata update rather than a functional requirement change.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>50</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                502a13a (Cached) &rarr; 6aeaba7 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Return True if the object may be "shared" between interpreters.</span>
+<span class="diff-line">       This does not necessarily mean that the actual objects will be</span>
+<span class="diff-line diff-removed">-      shared.  Insead, it means that the objects' underlying data will</span>
+<span class="diff-line diff-added">+      shared.  Instead, it means that the objects' underlying data will</span>
+<span class="diff-line">       be shared in a cross-interpreter way, whether via a proxy, a</span>
+<span class="diff-line">       copy, or some other means.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Fixed the misspelling 'Insead' to 'Instead' in the sentence explaining that 'shared' refers to data, not the actual objects.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>51</td>
+                        <td>
+                            <div><strong>From:</strong> 3 &rarr; <strong>To:</strong> 4</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                502a13a (Cached) &rarr; 6aeaba7 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">An object is "shareable" if its type supports shareable instances.</span>
+<span class="diff-line"> The type must implement a new internal protocol, which is used to</span>
+<span class="diff-line diff-removed">-convert an object to interpreter-independent data and then coverted</span>
+<span class="diff-line diff-added">+convert an object to interpreter-independent data and then converted</span>
+<span class="diff-line"> back to an object on the other side.  Also see</span>
+<span class="diff-line"> `is_shareable() <interpreters-is-shareable_>`_ above.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Typo
+                                <span class="tooltiptext">The change was made to correct a typo (wrong spelling/grammar only).</span>
+                            </div>
+                            <p>Fixed a spelling typo: 'coverted' corrected to 'converted' in the Shareable Types definition; meaning remains unchanged.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>52</td>
+                        <td>
+                            <div><strong>From:</strong> 4 &rarr; <strong>To:</strong> 5</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                6aeaba7 (Cached) &rarr; b990d05 (Cached)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Discussions-To: https://discuss.python.org/t/pep-554-multiple-interpreters-in-the-stdlib/24855</span>
+<span class="diff-line"> Status: Superseded</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line diff-removed">-Content-Type: text/x-rst</span>
+<span class="diff-line"> Created: 05-Sep-2017</span>
+<span class="diff-line"> Python-Version: 3.13</span>
+<span class="diff-line"> Post-History: `07-Sep-2017 <https://mail.python.org/archives/list/python-ideas@python.org/thread/HQQWEE527HG3ILJVKQTXVSJIQO6NUSIA/>`__,</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Not a requirement.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            
+        </form>
+    </div>
+
+    
+</body>
+</html>
