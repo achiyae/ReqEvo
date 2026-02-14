@@ -1,0 +1,1799 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirement Evolution Analysis - peps/pep-0820.rst</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        .container { max-width: 95%; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .diff-text { font-family: 'Consolas', 'Courier New', monospace; white-space: pre-wrap; background-color: #f8f9fa; padding: 5px; border-radius: 4px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        .reason-type { font-weight: bold; color: #2980b9; position: relative; display: inline-block; cursor: help; border-bottom: 1px dotted #2980b9; }
+        .old-version { color: #c0392b; text-decoration: line-through; }
+        .new-version { color: #27ae60; }
+        .meta { margin-bottom: 20px; color: #7f8c8d; }
+        
+        /* Tooltip container */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            font-weight: normal;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Git Style Diff */
+        .diff-line { display: block; min-height: 1.2em; }
+        .diff-added { background-color: #e6ffed; color: #22863a; }
+        .diff-removed { background-color: #ffeef0; color: #b31d28; }
+        .diff-header { color: #6f7781; font-weight: bold; }
+        
+        /* Feedback Form */
+        .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
+        .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+        .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
+        label { font-weight: bold; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Requirement Evolution: peps/pep-0820.rst</h1>
+        <div class="meta">
+            <p><strong>Number of Versions:</strong> 3</p>
+        </div>
+        
+        <form id="feedbackForm">
+            <table>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 45%;">
+                    <col style="width: 25%;">
+                    <col style="width: 25%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Change Details</th>
+                        <th>AI Analysis</th>
+                        <th>Your Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                0df3190 (2026-01-06 14:25:03 +0100) &rarr; 166e82e (2026-01-06 14:53:31 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">PEP: 820</span>
+<span class="diff-line"> Title: PySlot: Unified slot system for the C API</span>
+<span class="diff-line"> Author: Petr Viktorin <encukou@gmail.com></span>
+<span class="diff-line diff-removed">-Discussions-To: Pending</span>
+<span class="diff-line diff-added">+Discussions-To: https://discuss.python.org/t/105552</span>
+<span class="diff-line"> Status: Draft</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line"> Created: 19-Dec-2025</span>
+<span class="diff-line"> Python-Version: 3.15</span>
+<span class="diff-line diff-removed">-Post-History: Pending</span>
+<span class="diff-line diff-added">+Post-History: `06-Jan-2026 <https://discuss.python.org/t/105552>`__</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> .. highlight:: c</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>The diff only updates metadata fields (Discussions-To URL and Post-History reference) between versions; the substantive requirements text remains unchanged. This is not a change to the meaning/intent of requirements nor a new requirement, but a metadata attribution correction.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_1">Correct Reason:</label>
+                                    <select id="reason_1" name="reason_1" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_1">Explanation / Comment:</label>
+                                    <textarea id="explanation_1" name="explanation_1" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Abstract</span>
+<span class="diff-line"> ========</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Replace type and module slots with a new, more type-safe structure that allows</span>
+<span class="diff-line diff-removed">-adding new slots in a more forward-compatible way.</span>
+<span class="diff-line diff-added">+Replace type and module slots with a new structure: a tagged anonymous</span>
+<span class="diff-line diff-added">+union with flags.</span>
+<span class="diff-line diff-added">+This improves type safety and allows adding new slots</span>
+<span class="diff-line diff-added">+in a more forward-compatible way.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+API added in 3.15 (:external+py3.15:c:func:`PyModule_FromSlotsAndSpec` and the</span>
+<span class="diff-line diff-added">+new :external+py3.15:ref:`extension export hook <extension-export-hook>`)</span>
+<span class="diff-line diff-added">+will be changed to use the new slots.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The existing slot structures and related API is soft-deprecated.</span>
+<span class="diff-line diff-removed">-(That is: it will continue to work without warnings, and it’ll be fully</span>
+<span class="diff-line diff-added">+(That is: they will continue to work without warnings, and it’ll be fully</span>
+<span class="diff-line"> documented and supported, but we plan to not add any new features to it.)</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Refines the Abstract to describe the new internal representation as a tagged anonymous union with flags and to explicitly tie the API changes (PyModule_FromSlotsAndSpec and the extension export hook) to the new slots, i.e., a change in design/intent rather than a simple new feature.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_2">Correct Reason:</label>
+                                    <select id="reason_2" name="reason_2" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_2">Explanation / Comment:</label>
+                                    <textarea id="explanation_2" name="explanation_2" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">allowing future CPython versions (or even alternative implementations) to</span>
+<span class="diff-line"> change the details.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Both structures contain a *slots* field – essentially an array of</span>
+<span class="diff-line diff-removed">-`tagged unions <https://en.wikipedia.org/wiki/Tagged_union>`__,</span>
+<span class="diff-line diff-removed">-which allows for future expansion.</span>
+<span class="diff-line diff-removed">-(In practice, slots are ``void`` pointers taged with an ``int`` ID.)</span>
+<span class="diff-line diff-added">+Both structures contain a *slots* field, essentially an array of</span>
+<span class="diff-line diff-added">+`tagged unions <https://en.wikipedia.org/wiki/Tagged_union>`__</span>
+<span class="diff-line diff-added">+(``void`` pointers taged with an ``int`` ID).</span>
+<span class="diff-line diff-added">+This allows for future expansion.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> In :pep:`793`, new module creation API was added.</span>
+<span class="diff-line"> Instead of the ``PyModuleDef`` structure, it uses only an array of *slots*.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Minor textual/formatting clarification: the description of how slots are stored was rewritten from a separate parenthetical clause to an inline form and an extra clarifying sentence 'This allows for future expansion.' added. No change to the requirement's meaning or intent; only clarifies and tightens formatting.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_3">Correct Reason:</label>
+                                    <select id="reason_3" name="reason_3" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_3">Explanation / Comment:</label>
+                                    <textarea id="explanation_3" name="explanation_3" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">but is technically undefined or implementation-defined behaviour in C.</span>
+<span class="diff-line"> </span>
+<span class="diff-line">     For example: :c:macro:`Py_tp_doc` marks a string; :c:macro:`Py_mod_gil`</span>
+<span class="diff-line diff-removed">-    an integer, and :c:macro:`Py_tp_repr` a function; all must</span>
+<span class="diff-line diff-added">+    a small integer, and :c:macro:`Py_tp_repr` a function; all must</span>
+<span class="diff-line">     be cast to ``void*``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Limited forward compatibility</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The wording describing Py_mod_gil changed from 'an integer' to 'a small integer', refining the type’s size to clarify the expected size without altering the overall slot semantics.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_4">Correct Reason:</label>
+                                    <select id="reason_4" name="reason_4" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_4">Explanation / Comment:</label>
+                                    <textarea id="explanation_4" name="explanation_4" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">support the ``@`` operator only on CPython versions with that operator.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. _pep820-rationale:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Rationale</span>
+<span class="diff-line"> =========</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Introduces a formal anchor and header for the pep820 rationale and clarifies that the Rationale section is specific to pep820, providing a cross-reference anchor (_pep820-rationale) for easier navigation. This is a structural/clarification change that does not alter requirements, behavior, or functionality.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_5">Correct Reason:</label>
+                                    <select id="reason_5" name="reason_5" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_5">Explanation / Comment:</label>
+                                    <textarea id="explanation_5" name="explanation_5" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">- Mixing dynamically allocated (or stack-allocated) slots with ``static`` ones.</span>
+<span class="diff-line">   This solves the issue that lead to the ``PyType_From*`` family of</span>
+<span class="diff-line diff-removed">-  functions expanding with values that typically can't  be ``static``</span>
+<span class="diff-line diff-removed">-  (i.e. it's often a symbol from another DLL, which can't be ``static``</span>
+<span class="diff-line diff-removed">-  data on Windows).</span>
+<span class="diff-line diff-added">+  functions expanding with values that typically can't  be ``static``.</span>
+<span class="diff-line diff-added">+  For example, the *module* argument to :c:func:`PyType_FromModuleAndSpec`</span>
+<span class="diff-line diff-added">+  should be a heap-allocated module object.</span>
+<span class="diff-line"> - Sharing a subset of the slots to implement functionality</span>
+<span class="diff-line">   common to several classes/modules.</span>
+<span class="diff-line"> - Easily including some slots conditionally, e.g. based on the Python version.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>A clarifying sentence was added to the Nested slot tables section to illustrate that mixing dynamically/stack-allocated slots with static ones can involve a heap-allocated module object as the module argument for PyType_FromModuleAndSpec. This does not change intent or behavior; it simply clarifies the example.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_6">Correct Reason:</label>
+                                    <select id="reason_6" name="reason_6" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_6">Explanation / Comment:</label>
+                                    <textarea id="explanation_6" name="explanation_6" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Fixed-width integers</span>
+<span class="diff-line"> ---------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This proposal uses fixed-width integers (``uint16_t``), for slot IDs and</span>
+<span class="diff-line diff-added">+This proposal uses fixed-width integers (``uint16_t``) for slot IDs and</span>
+<span class="diff-line"> flags.</span>
+<span class="diff-line diff-removed">-With the C ``int`` type, using more that 16 bits would not be portable,</span>
+<span class="diff-line diff-added">+With the C ``int`` type, using more than 16 bits would not be portable,</span>
+<span class="diff-line"> but it would silently work on common platforms.</span>
+<span class="diff-line"> Using ``int`` but avoiding values over ``UINT16_MAX`` wastes 16 bits</span>
+<span class="diff-line"> on common platforms.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-With these defined as ``uint16_t``, it seems natural to use fixed-width</span>
+<span class="diff-line diff-removed">-integers for everything except pointers and sizes.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Memory layout</span>
+<span class="diff-line"> -------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Dominant change: The core slot representation is redefined as a tagged anonymous union with flags, replacing the previous wording of a 'new, more type-safe structure', which changes the intended encoding/semantics of PySlot and its interaction with PyType_FromSlots/PyModule_FromSlots. This is a change in intent/behavior. Secondary changes include the addition of a 'Deprecation warnings' section (new policy for runtime deprecation) and minor editorial punctuation edits; these are editorial and do not alter core semantics.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_7">Correct Reason:</label>
+                                    <select id="reason_7" name="reason_7" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_7">Explanation / Comment:</label>
+                                    <textarea id="explanation_7" name="explanation_7" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">On common 64-bit platforms, we can keep the size of the new struct the same</span>
+<span class="diff-line"> as the existing ``PyType_Slot`` and ``PyModuleDef_Slot``. (The existing</span>
+<span class="diff-line"> struct waste 6 out of 16 bytes due to ``int`` portability and padding;</span>
+<span class="diff-line diff-removed">-this proposal puts those bits to use for new features.)</span>
+<span class="diff-line diff-added">+this proposal puts some of those bits to use for new features.)</span>
+<span class="diff-line"> On 32-bit platforms, this proposal calls for the same layout as on 64-bit,</span>
+<span class="diff-line"> doubling the size compared to the existing structs (from 8 bytes to 16).</span>
+<span class="diff-line"> For “configuration” data that's usually ``static``, it should be OK.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Minor editorial refinement in the Memory layout diff: the change clarifies that only some of the previously unused space (the 6 bytes) are repurposed, rather than all of them, and retains the note about keeping the new struct size the same on common 64-bit platforms.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_8">Correct Reason:</label>
+                                    <select id="reason_8" name="reason_8" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_8">Explanation / Comment:</label>
+                                    <textarea id="explanation_8" name="explanation_8" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">or harder to manage (if they're merged).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Deprecation warnings</span>
+<span class="diff-line diff-added">+--------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Multiple slots are documented to not allow NULL values, but CPython allows</span>
+<span class="diff-line diff-added">+NULL for backwards compatibility.</span>
+<span class="diff-line diff-added">+Similarly, multiple slot IDs should not appear more than once in a single</span>
+<span class="diff-line diff-added">+array, but CPython allows such duplicates.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+This is a maintenance issue, as CPython should preserve its undocumented</span>
+<span class="diff-line diff-added">+(and often untested) behaviour in these cases as the implementation is changed.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+It also prevents API extensions.</span>
+<span class="diff-line diff-added">+For example, instead of adding the :c:macro:`Py_TPFLAGS_DISALLOW_INSTANTIATION`</span>
+<span class="diff-line diff-added">+flag in 3.10, we could have allowed settning the ``Py_tp_new`` slot to NULL for</span>
+<span class="diff-line diff-added">+the same effect.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+To allow changing the edge case behaviour in the (far) future,</span>
+<span class="diff-line diff-added">+and to allow freedom for possible alternative implementations of the C API,</span>
+<span class="diff-line diff-added">+we'll start issuing runtime deprecation warnings in these cases.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Specification</span>
+<span class="diff-line"> =============</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
+                            </div>
+                            <p>The new version adds a Deprecation warnings section that was not present in the old version, introducing runtime deprecation guidance for slot API misuse (e.g., NULL slot values, duplicate slot IDs) and related behavior. This represents a new policy/requirement rather than a mere modification of existing text.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_9">Correct Reason:</label>
+                                    <select id="reason_9" name="reason_9" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_9">Explanation / Comment:</label>
+                                    <textarea id="explanation_9" name="explanation_9" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">- An union with the data, whose type depends on the slot.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Functions that use slots</span>
+<span class="diff-line diff-added">+New API</span>
+<span class="diff-line diff-added">+-------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The following function will be added.</span>
+<span class="diff-line"> It will create the corresponding Python type object from the given</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The change introduces a redesign of the slot data structure and API usage. Specifically, the slot representation is described as a tagged anonymous union with flags, and a new API path (New API section) is introduced (e.g., PyType_FromSlots and PyModule_FromSlotsAndSpec) indicating altered usage and semantics. This reflects a shift in meaning/intention toward stronger type-safety and forward-compatibility, not merely a formatting or minor editorial adjustment.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_10">Correct Reason:</label>
+                                    <select id="reason_10" name="reason_10" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_10">Explanation / Comment:</label>
+                                    <textarea id="explanation_10" name="explanation_10" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">PyObject *PyType_FromSlots(const PySlot *slots);</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+With this function, the ``Py_tp_token`` slot may not be set to</span>
+<span class="diff-line diff-added">+``Py_TP_USE_SPEC`` (i.e. ``NULL``).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Changed API</span>
+<span class="diff-line diff-added">+-----------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> The ``PyModule_FromSlotsAndSpec`` function (added in CPython 3.15 in</span>
+<span class="diff-line"> :pep:`793`) will be *changed* to take the new slot structure::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">     PyObject *PyModule_FromSlotsAndSpec(const PySlot *slots, PyObject *spec)</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+The :external+py3.15:ref:`extension module export hook <extension-export-hook>`</span>
+<span class="diff-line diff-added">+added in :pep:`793` (:samp:`PyModExport_{<name>}`) will be *changed* to</span>
+<span class="diff-line diff-added">+return the new slot structure.</span>
+<span class="diff-line diff-added">+The :external+py3.15:c:macro:`PyMODEXPORT_FUNC` macro will</span>
+<span class="diff-line diff-added">+be updated accordingly.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> General slot semantics</span>
+<span class="diff-line"> ----------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Introduces and constrains the new unified slot API: adds a requirement that Py_tp_token cannot be NULL when using PyType_FromSlots, and changes PyModule_FromSlotsAndSpec to accept the new slot structure (plus related extension export hook updates), signaling a shift to a single, type-safe slot representation and updated API semantics.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_11">Correct Reason:</label>
+                                    <select id="reason_11" name="reason_11" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_11">Explanation / Comment:</label>
+                                    <textarea id="explanation_11" name="explanation_11" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This flag is implied for function pointers.</span>
+<span class="diff-line"> </span>
+<span class="diff-line">   The flag applies even to data the slot points to "indirectly", except for</span>
+<span class="diff-line diff-removed">-  nested slots -- see ``Py_slot_subslots`` below -- which can have their</span>
+<span class="diff-line diff-added">+  nested slots -- see :ref:`pep820-nested-tables` below -- which can have their</span>
+<span class="diff-line">   own ``PySlot_STATIC`` flag.</span>
+<span class="diff-line">   For example, if applied to a ``Py_tp_members`` slot that points to an</span>
+<span class="diff-line">   *array* of ``PyMemberDef`` structures, then the entire array, as well as the</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Clarification: The new version replaces the older note that the module name is stored in a Py_mod_name slot with a clearer reference showing how the new slot system affects module creation, including an explicit example that the module argument to PyType_FromModuleAndSpec should be a heap-allocated module object. This makes the reference more precise than the old version, which spoke only about a module name.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_12">Correct Reason:</label>
+                                    <select id="reason_12" name="reason_12" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_12">Explanation / Comment:</label>
+                                    <textarea id="explanation_12" name="explanation_12" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">If the entire block is to be optional, it should end with a</span>
+<span class="diff-line">   slot with the OPTIONAL flag.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-- ``PySlot_IS_PTR``: The data is stored in ``sl_ptr``, and must be cast to</span>
+<span class="diff-line diff-added">+- ``PySlot_INTPTR``: The data is stored in ``sl_ptr``, and must be cast to</span>
+<span class="diff-line">   the appropriate type.</span>
+<span class="diff-line"> </span>
+<span class="diff-line">   This flag simplifies porting from the existing ``PyType_Slot`` and</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Rename that makes the requirement more clear.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_13">Correct Reason:</label>
+                                    <select id="reason_13" name="reason_13" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_13">Explanation / Comment:</label>
+                                    <textarea id="explanation_13" name="explanation_13" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>14</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">#define PySlot_END {0}</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> We'll also add two more macros that avoid named initializers,</span>
+<span class="diff-line diff-removed">-for use in C++11-compatibile code::</span>
+<span class="diff-line diff-added">+for use in C++11-compatibile code.</span>
+<span class="diff-line diff-added">+Note that these cast the value to ``void*``, so they do not improve type safety</span>
+<span class="diff-line diff-added">+over existing slots::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">     #define PySlot_PTR(NAME, VALUE) \</span>
+<span class="diff-line diff-removed">-       {NAME, PySlot_IS_PTR, {0}, {(void*)(VALUE)}}</span>
+<span class="diff-line diff-added">+       {NAME, PySlot_INTPTR, {0}, {(void*)(VALUE)}}</span>
+<span class="diff-line"> </span>
+<span class="diff-line">     #define PySlot_PTR_STATIC(NAME, VALUE) \</span>
+<span class="diff-line diff-removed">-       {NAME, PySlot_IS_PTR|Py_SLOT_STATIC, {0}, {(void*)(VALUE)}}</span>
+<span class="diff-line diff-added">+       {NAME, PySlot_INTPTR|Py_SLOT_STATIC, {0}, {(void*)(VALUE)}}</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. _pep820-nested-tables:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Nested slot tables</span>
+<span class="diff-line"> ------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff changes the macro flags used to indicate a pointer slot from PySlot_IS_PTR to PySlot_INTPTR (affecting PySlot_PTR and PySlot_PTR_STATIC), and adds a clarifying note that these cast to void* and do not improve type safety. This is a clarification/renaming in the implementation approach rather than adding new functionality.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_14">Correct Reason:</label>
+                                    <select id="reason_14" name="reason_14" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_14">Explanation / Comment:</label>
+                                    <textarea id="explanation_14" name="explanation_14" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>15</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">- ``Py_mod_slots`` for an array of ``PyModuleDef_Slot``</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Each ``PyType_Slot`` in the array will be converted to</span>
+<span class="diff-line diff-removed">-``(PySlot){.sl_id=slot, .sl_flags=PySlot_IS_PTR, .sl_ptr=func}``,</span>
+<span class="diff-line diff-added">+``(PySlot){.sl_id=slot, .sl_flags=PySlot_INTPTR, .sl_ptr=func}``,</span>
+<span class="diff-line"> and similar with ``PyModuleDef_Slot``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The initial implementation will have restrictions that may be lifted</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Clarification: The diff changes the pointer-data flag used when converting PyType_Slot entries (and PyModuleDef_Slot equivalents) to PySlot. The previous text used PySlot_IS_PTR; the updated text uses PySlot_INTPTR to reflect that the data in sl_ptr is a pointer-sized value. This is a semantic correction/renaming to align with the intended representation and avoid confusion about type vs pointer semantics; no functional behavior is intended to change.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_15">Correct Reason:</label>
+                                    <select id="reason_15" name="reason_15" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_15">Explanation / Comment:</label>
+                                    <textarea id="explanation_15" name="explanation_15" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>16</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">``PySlot_HAS_FALLBACK`` (the flag cannot be set on them nor a slot that</span>
+<span class="diff-line">   precedes them).</span>
+<span class="diff-line"> - Nesting depth will be limited to 5 levels.</span>
+<span class="diff-line diff-removed">-  (4 levels for the existing ``PyType_From*``, ``PyModule_From*`` functions,</span>
+<span class="diff-line diff-removed">-  which will use up one level internally.)</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> New slot IDs</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The Abstract's core design description changed from a generic 'new, more type-safe structure' to a concrete implementation description: a tagged anonymous union with flags. This redefines the underlying data layout and slot semantics in the requirement, while still aiming for forward-compatibility. It also notes that APIs added in 3.15 will be changed to use the new slots.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_16">Correct Reason:</label>
+                                    <select id="reason_16" name="reason_16" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_16">Explanation / Comment:</label>
+                                    <textarea id="explanation_16" name="explanation_16" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>17</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">allowed with ``Py_slot_end``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> - ``Py_slot_subslots``, ``Py_tp_slots``, ``Py_mod_slots``: see</span>
+<span class="diff-line diff-removed">-  *Nested slot tables* above</span>
+<span class="diff-line diff-removed">-- ``Py_slot_invalid``: treated as an unknown slot ID.</span>
+<span class="diff-line diff-added">+  :ref:`pep820-nested-tables` above</span>
+<span class="diff-line diff-added">+- ``Py_slot_invalid`` (defined as ``UINT16_MAX``, i.e. ``-1``): treated as an</span>
+<span class="diff-line diff-added">+  unknown slot ID.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The following new slot IDs will be added to cover existing</span>
+<span class="diff-line"> members of ``PyModuleDef``:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>Primarily a wording/terminology clarification: the diff replaces a generic reference to nested tables with a concrete cross-reference to pep820-nested-tables and expands the Py_slot_invalid description to explicitly define it as UINT16_MAX (-1). No new requirements or behavioral changes; the edits clarify existing concepts rather than introduce new functionality.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_17">Correct Reason:</label>
+                                    <select id="reason_17" name="reason_17" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_17">Explanation / Comment:</label>
+                                    <textarea id="explanation_17" name="explanation_17" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>18</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">None of the new slots will be usable with ``PyType_GetSlot``.</span>
+<span class="diff-line"> (This limitation may be lifted in the future, with C API WG approval.)</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Of the new slots, only ``Py_slot_end``, ``Py_slot_subslots``, ``Py_tp_slots``,</span>
+<span class="diff-line diff-added">+``Py_mod_slots`` will be allowed in ``PyType_Spec`` and/or ``PyModuleDef``.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Slot renumbering</span>
+<span class="diff-line"> ----------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The change adds an explicit constraint: only the new slots Py_slot_end, Py_slot_subslots, Py_tp_slots and Py_mod_slots may be used in PyType_Spec and/or PyModuleDef. This is a clarification of API usage constraints (not a new feature) and helps prevent confusion about which slots can appear in those structures.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_18">Correct Reason:</label>
+                                    <select id="reason_18" name="reason_18" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_18">Explanation / Comment:</label>
+                                    <textarea id="explanation_18" name="explanation_18" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>19</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">The old numbers will remain as aliases, and will be used when compiling for</span>
+<span class="diff-line"> Stable ABI versions below 3.15.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Slots for members of ``PyType_Spec``, which were added in</span>
+<span class="diff-line diff-added">+Slots for members of ``PyModuleDef``, which were added in</span>
+<span class="diff-line"> :ref:`PEP 793 <pep793-api-summary>`, will be renumbered so that they have</span>
+<span class="diff-line"> unique IDs:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The diff corrects a factual error in the original text by clarifying which slots are renumbered. It states that slots for members of PyModuleDef (not PyType_Spec) are renumbered, aligning the document with the intended design described elsewhere (CPython 793). This is a clarification of terminology/scope rather than a change in meaning or behavior.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_19">Correct Reason:</label>
+                                    <select id="reason_19" name="reason_19" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_19">Explanation / Comment:</label>
+                                    <textarea id="explanation_19" name="explanation_19" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>20</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">This includes nested "new-style" slots (``Py_slot_subslots``).</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+.. _pep820-hard-deprecations:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Deprecation warnings</span>
+<span class="diff-line diff-added">+--------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+CPython will emit runtime deprecation warnings for the following cases,</span>
+<span class="diff-line diff-added">+for slots where the case is currently disallowed in documentation but allowed</span>
+<span class="diff-line diff-added">+by the runtime:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- setting a slot value to NULL:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+  - all type slots except ``Py_tp_doc``</span>
+<span class="diff-line diff-added">+  - ``Py_mod_create``</span>
+<span class="diff-line diff-added">+  - ``Py_mod_exec``</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- repeating a slot ID in a single slots array (including sub-slot arrays</span>
+<span class="diff-line diff-added">+  added in this PEP):</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+  - all type slots, except slots where this is already a runtime error</span>
+<span class="diff-line diff-added">+    (``Py_tp_doc``, ``Py_tp_members``)</span>
+<span class="diff-line diff-added">+  - ``Py_mod_create``</span>
+<span class="diff-line diff-added">+  - ``Py_mod_abi``</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Backwards Compatibility</span>
+<span class="diff-line"> =======================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-This PEP only adds APIs, so it's backwards compatible.</span>
+<span class="diff-line diff-added">+This PEP proposes to change API that was already released in alpha versions of</span>
+<span class="diff-line diff-added">+Python 3.15.</span>
+<span class="diff-line diff-added">+This will inconvenience early adopters of that API, but -- as long as the</span>
+<span class="diff-line diff-added">+PEP is accepted and implemented before the first bety -- this change is within</span>
+<span class="diff-line diff-added">+the letter and spirit of our backwards compatibility policy.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Renumbering of slots is done in a backwards-compatible way.</span>
+<span class="diff-line diff-added">+Old values continue to be accepted, and are used when compiling for</span>
+<span class="diff-line diff-added">+earlier Stable ABI.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Some cases that are documented as illegal will begin emitting deprecation</span>
+<span class="diff-line diff-added">+warnings (see :ref:`pep820-hard-deprecations`).</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Otherwise, this PEP only adds and soft-deprecates APIs, which is backwards</span>
+<span class="diff-line diff-added">+compatible.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Security Implications</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The new version deliberately changes the API behavior and evolution policy by adding runtime deprecation warnings for certain slot usages and revising the backwards-compatibility stance (renumbering, new deprecations, and changed guidance). This is a change in meaning/intent of the API surface, not a simple Typo, Summarization, or formatting change.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_20">Correct Reason:</label>
+                                    <select id="reason_20" name="reason_20" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_20">Explanation / Comment:</label>
+                                    <textarea id="explanation_20" name="explanation_20" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>21</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Reference Implementation</span>
+<span class="diff-line"> ========================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-None yet.</span>
+<span class="diff-line diff-added">+Draft implementation is available as `pull request #37 in the author's fork</span>
+<span class="diff-line diff-added">+<https://github.com/encukou/cpython/pull/37>`__.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Rejected Ideas</span>
+<span class="diff-line"> ==============</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-None yet.</span>
+<span class="diff-line diff-added">+See the :ref:`pep820-rationale` section for several alternative ideas.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Third-party slot ID allocation</span>
+<span class="diff-line diff-added">+------------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+It was suggested to allow third parties to reserve slot IDs for their own use.</span>
+<span class="diff-line diff-added">+This would be mainly useful for alternate implementations. For example,</span>
+<span class="diff-line diff-added">+something like GraalPy might want custom type slots (e.g. an "inherits</span>
+<span class="diff-line diff-added">+from this Java class" slot).</span>
+<span class="diff-line diff-added">+Similarly, at one point PyPy had an extra ``tp_pypy_flags`` in their</span>
+<span class="diff-line diff-added">+typeobject struct.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+This PEP does not specify a namespace mechanism.</span>
+<span class="diff-line diff-added">+One can be added in the future.</span>
+<span class="diff-line diff-added">+We're also free to reserve individual slot IDs for alternate implementations.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Note that slots are not a good way for *extension modules* to add extra data</span>
+<span class="diff-line diff-added">+to types or modules, as there is no API to retrieve the slots used to create</span>
+<span class="diff-line diff-added">+a specific object.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Avoiding anonymous unions</span>
+<span class="diff-line diff-added">+-------------------------</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+This PEP proposes a struct with *anonymous unions*, which are not yet used in</span>
+<span class="diff-line diff-added">+CPython's documented public API.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+There is no known issue with adding these, but the following notes may</span>
+<span class="diff-line diff-added">+be relevant:</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- Anonymous unions are only supported in C since C11.</span>
+<span class="diff-line diff-added">+  But, CPython already requires the feature, and uses it for internal members</span>
+<span class="diff-line diff-added">+  of the ``PyObject`` struct.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- Until C++20, which adds C-style designated initializers, C++ initializers</span>
+<span class="diff-line diff-added">+  only allow setting the first member of a union.</span>
+<span class="diff-line diff-added">+  However, this is an issue for *named* unions as well.</span>
+<span class="diff-line diff-added">+  Avoiding unions entirely would mean losing most of the type-safety</span>
+<span class="diff-line diff-added">+  improvements of this PEP.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+  Note that the proposed flag ``PySlot_INTPTR``, and the workaround macros</span>
+<span class="diff-line diff-added">+  ``PySlot_PTR`` & ``PySlot_PTR_STATIC``, allow using this API in</span>
+<span class="diff-line diff-added">+  code that needs to be compatible with C++11 or has similar union-related</span>
+<span class="diff-line diff-added">+  limitations.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- C++ doesn't have anonymous *structs*.</span>
+<span class="diff-line diff-added">+  This might surprise C programmers for whom anonymous structs/unions are</span>
+<span class="diff-line diff-added">+  a single language feature.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+- Non-C/C++ language wrappers may need to give the union a name.</span>
+<span class="diff-line diff-added">+  This is fine.</span>
+<span class="diff-line diff-added">+  (Dear reader: if you need this, please open a CPython issue about</span>
+<span class="diff-line diff-added">+  exposing a preferred name in headers and documentation.)</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+For a bigger picture: anonymous unions can be a helpful tool for implemeting</span>
+<span class="diff-line diff-added">+tagged unions and for evolving public API in backwards-compatible ways.</span>
+<span class="diff-line diff-added">+This PEP intentionally opens the door to using them more often.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Open Issues</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>A substantive design rework of the slot system: the Abstract now specifies a concrete implementation (a tagged anonymous union with flags) and the New Version introduces significant API/compatibility changes, revised deprecation semantics (runtime deprecation warnings vs soft deprecation), new/changed functions and slot-ID rules, and concepts like nested slots. This alters intent/behavior beyond a mere clarification or wording adjustment.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_21">Correct Reason:</label>
+                                    <select id="reason_21" name="reason_21" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_21">Explanation / Comment:</label>
+                                    <textarea id="explanation_21" name="explanation_21" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>22</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                166e82e (2026-01-06 14:53:31 +0100) &rarr; 8c68109 (2026-01-28 21:35:29 +0100)
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">None yet.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-added">+Acknowledgements</span>
+<span class="diff-line diff-added">+================</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+Thanks to Da Woods, Antoine Pitrou and Mark Shannon</span>
+<span class="diff-line diff-added">+for substantial input on this iteration of the proposal.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> Copyright</span>
+<span class="diff-line"> =========</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Other
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>The changes are primarily editorial: wording changes, section renames, and minor rephrasings of the same requirements. No new requirements were introduced; the core intent remains the same (a unified slot system with a single slot structure). Thus the dominant change is editorial/clarification rather than a new or changed requirement.</p>
+                        </td>
+                        
+                        <td>
+                            <div class="feedback-cell">
+                                <div>
+                                    <label for="reason_22">Correct Reason:</label>
+                                    <select id="reason_22" name="reason_22" class="reason-select">
+                                        <option value="">(Confirm or Select correction)</option>
+                                        
+                                        <option value="Contradiction">Contradiction</option>
+                                        
+                                        <option value="Mistake">Mistake</option>
+                                        
+                                        <option value="Typo">Typo</option>
+                                        
+                                        <option value="Generalization">Generalization</option>
+                                        
+                                        <option value="Clarification">Clarification</option>
+                                        
+                                        <option value="Meaning">Meaning</option>
+                                        
+                                        <option value="Summarization/shortening">Summarization/shortening</option>
+                                        
+                                        <option value="Deletion">Deletion</option>
+                                        
+                                        <option value="Demonstration">Demonstration</option>
+                                        
+                                        <option value="New">New</option>
+                                        
+                                        <option value="Other">Other</option>
+                                        
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="explanation_22">Explanation / Comment:</label>
+                                    <textarea id="explanation_22" name="explanation_22" class="feedback-area" rows="3" placeholder="Explain why the analysis is wrong..."></textarea>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button type="button" class="submit-btn" onclick="submitFeedback('retry')" style="flex: 1; background-color: rgb(230, 230, 10); color: #333; font-weight: bold;">Submit Corrections & Re-Analyze</button>
+                <button type="button" class="submit-btn" onclick="submitFeedback('finish')" style="flex: 1; background-color: #27ae60;">Finish Analysis (Save Final Report)</button>
+            </div>
+            
+        </form>
+    </div>
+
+    
+    <script>
+        function submitFeedback(actionType) {
+            const formData = {};
+            const inputs = document.querySelectorAll('input, select, textarea');
+            let hasFeedback = false;
+            
+            inputs.forEach(input => {
+                const val = input.value.trim();
+                if (val) {
+                    formData[input.name] = val;
+                    hasFeedback = true;
+                }
+            });
+            
+            formData['action'] = actionType;
+            
+            if (actionType === 'retry' && !hasFeedback) {
+                if(!confirm("No feedback entered. Do you want to approve the current analysis?")) {
+                    return;
+                }
+                formData['action'] = 'approve';
+            }
+
+            fetch('http://localhost:8000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Action submitted! You can close this tab/window now.");
+                window.close();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("Submitted! (Note: Server might have closed if it received the response)");
+            });
+        }
+    </script>
+    
+</body>
+</html>

@@ -5,7 +5,7 @@ ReqEvo provides a dataset of requirements evolution and a tool that helps to ext
 The repo provides some kinds of artifacts:
 1. JSON: requirements versions comparison in a json format, located in `outputs` directory
 2. Final HTML reports: static HTML files of the requirements analysis, located in `final_reports\` directory
-3. HTML reports: dynamic HTML files that can be used only while running the code and allow the user to give some feedback of the anaylsis, located in `reports\` directory
+3. HTML reports: dynamic HTML files that can be used only while running the code and allow the user to give some feedback on the analysis, located in `reports\` directory
 
 ## How to Extand\Edit the Dataset?
 1. Clone the repo.
