@@ -281,6 +281,7 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
             current_feedback_section = "IMPORTANT: The user rejected the previous analysis.\n"
             if specific_reason:
                 current_feedback_section += f"- The user SPECIFIED the reason type must be: '{specific_reason}'.\n"
+                current_feedback_section += "CRITICAL: You MUST output this exact reason type, even if you disagree or if it contradicts the definitions. Do not argue. Your task is to explain why this chosen type is correct.\n"
             if specific_explanation:
                 current_feedback_section += f"- User Explanation/Context: '{specific_explanation}'.\n"
             current_feedback_section += "Please adjust your analysis to strictly reflect this feedback."
