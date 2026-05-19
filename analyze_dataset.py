@@ -39,6 +39,7 @@ def main():
             
         num_versions = data.get("number of versions", 0)
         diffs = data.get("diffs", [])
+        diffs = [diff for diff in diffs if diff.get("reason type") != "Non-substantive"]
         domain_raw = data.get("domain", filename)
         domain = os.path.splitext(os.path.basename(domain_raw))[0]
         

@@ -122,7 +122,7 @@
 <span class="diff-line"> ========</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>The changes are editorial/metadata edits to the document header (added Discussions-To and Post-History lines) and do not modify the requirements themselves (no change to intent, constraints, or semantics). This is not a requirement-level change.</p>
@@ -1064,7 +1064,7 @@
 <span class="diff-line"> also support unselecting them. This approach would be similar to the ``--no-install-recommends``</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>The diff is purely formatting: converting inline command examples into explicit code-block sections with code-block directives and shell prompts, adjusting indentation to fit the code-block styling. No requirements text, constraints, or meanings were added, removed, or changed.</p>
@@ -1351,7 +1351,7 @@
 <span class="diff-line"> -------------------------</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>No requirement-level change detected between old and new versions. The diff snippet appears to inject an analysis/template block and does not modify any substantive requirement text.</p>
@@ -1474,7 +1474,7 @@
 <span class="diff-line"> ``recommended`` containing the recommended but not required dependencies, and</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>Editorial formatting and minor content tweaks: the diff mainly reflows text (line wrapping) in the Motivation section and updates a couple of example bullets (changing tensorflow to sunpy and the extras mapping). The core requirements, their intent, and structure remain unchanged, so this is not a semantic change.</p>
@@ -1556,10 +1556,10 @@
 <span class="diff-line">         "..."</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
-                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
                             </div>
-                            <p>The primary change is the deletion of the 'minimal' extra under [project.optional-dependencies] (minimal = []). This removes a previously defined optional-dependency path, changing the documented behavior and semantics of default extras. It is not a typo, new requirement, or clarification, but a removal that alters the requirement set.</p>
+                            <p>Removal of a previously supported feature.</p>
                         </td>
                         
                     </tr>
@@ -1701,10 +1701,10 @@
 <span class="diff-line"> The ability for a package to reference itself in the extras is supported by</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
-                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            <div class="reason-type tooltip">Demonstration
+                                <span class="tooltiptext">An example or visualization was added to assist in understanding.</span>
                             </div>
-                            <p>The changes modify the structure and content of the [project.optional-dependencies] block: the 'minimal' key is removed, a new 'alternative' key is added with 'package3', and 'package3' is moved out of 'additional' into 'alternative' while 'package4' is added to 'additional'. This represents a semantic/behavioral change in the default-extras configuration rather than a simple typo, new standalone requirement, or minor wording adjustment; it alters which extras are installed by default and how defaults interact, so it does not map cleanly to the predefined categories (hence 'Other').</p>
+                            <p>The main change here demonstrates a new feature (of the "alternate" keyword) that was explained above.</p>
                         </td>
                         
                     </tr>
@@ -1727,10 +1727,10 @@
 <span class="diff-line">         "..."</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
-                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
                             </div>
-                            <p>The primary change is the deletion of the line 'minimal = []' from [project.optional-dependencies] in the New Version. This is an editorial/shortening adjustment (removing a demonstration of a default-empty extra) rather than a substantive change to requirements, nor a new or meaning-change change.</p>
+                            <p>Removal of a previously supported feature.</p>
                         </td>
                         
                     </tr>
@@ -2050,7 +2050,7 @@
 <span class="diff-line"> functional enough to allow for interested maintainers to try these out.</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>Editorial addition: the diff section was introduced in the new version, stating that a modified version of the Flit package is used. This does not change the requirements or intent of the PEP; content remains equivalent aside from the patch note.</p>
@@ -2266,7 +2266,7 @@
 <span class="diff-line"> break compatibility.</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>Editorial deletion of an explanatory sentence in the 'Using a meta-package...' section. The removed sentence was a clarification about compatibility; its deletion does not introduce a new requirement or change the intended behavior, only trimming text. Therefore it's not a new or meaning-changing requirement; it's an editorial content removal.</p>
@@ -2368,7 +2368,7 @@
 <span class="diff-line"> Topic: Packaging</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>The changes are metadata/editorial: only the Discussion-To link was updated and a new entry added to the Post-History. No changes to actual requirements, their meaning, or scope.</p>
@@ -2394,7 +2394,7 @@
 <span class="diff-line"> ========</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
+                            <div class="reason-type tooltip">Non-substantive
                                 <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
                             </div>
                             <p>Metadata change: added a new post-history entry for 09-Jun-2025 in the New Version. No changes to the requirements themselves.</p>
