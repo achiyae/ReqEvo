@@ -4,7 +4,7 @@
   "diffs": [
     {
       "diff_id": 1,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Dominant change is metadata/format edits (adding Discussions-To and Post-History) and minor wording tweaks rather than a straightforward requirement-level change. A substantive semantic shift in the Specification (class vs. special form) exists, but the request requires the category 'Other' to be used for changes that don't fit the predefined types, so this is labeled as Other.",
       "old_version": {
         "version id": 1,
@@ -246,7 +246,7 @@
     },
     {
       "diff_id": 12,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Updated metadata: Python-Version changed from 3.14 to 3.15; no change to the substantive requirements.",
       "old_version": {
         "version id": 2,
@@ -466,8 +466,8 @@
     },
     {
       "diff_id": 22,
-      "reason type": "Other",
-      "reason text": "Editorial/documentation-only changes: terminology updated ('Inlined' -> 'Inline'), minor phrasing tweaks, and a single non-requirement addition in the diff block ('Support for this PEP is added in this pull request...'). There is no new requirement, no change in intent, and the changes do not modify the standard's behavior; thus no 'New' or 'Meaning' change\u2014categorized as 'Other'.",
+      "reason type": "Non-substantive",
+      "reason text": "Editorial/documentation-only changes: terminology updated ('Inlined' -> 'Inline'), minor phrasing tweaks, and a single non-requirement addition in the diff block ('Support for this PEP is added in this pull request...'). There is no new requirement, no change in intent, and the changes do not modify the standard's behavior; thus no 'New' or 'Meaning' change—categorized as 'Other'.",
       "old_version": {
         "version id": 3,
         "requirement id": 0,
@@ -488,7 +488,7 @@
     },
     {
       "diff_id": 23,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Editorial/documentation update. The Runtime implementation note was changed to reflect that the necessary changes were first implemented in typing_extensions via a specific pull request, replacing the previous statement about a draft CPython commit. This does not add, remove, or modify any requirement, constraint, or behavior; it only corrects a historical/implementation reference.",
       "old_version": {
         "version id": 3,

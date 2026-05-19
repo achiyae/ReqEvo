@@ -13,7 +13,7 @@ REASON_DEFINITIONS = {
     "Deletion": "An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.",
     "Demonstration": "An example or visualization was added to assist in understanding.",
     "New": "A new requirement was added.",
-    "Other": "The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate)."
+    "Non-substantive": "The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate)."
 }
 
 HTML_TEMPLATE = """

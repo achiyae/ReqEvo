@@ -4,7 +4,7 @@
   "diffs": [
     {
       "diff_id": 1,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Editorial/name attribution clarification: the sentence changes from 'Nick Coghlan' to 'Alyssa (Nick) Coghlan' in the Rationale section. It does not alter any requirement, constraint, or behavior, so it is not a change in meaning or requirements.",
       "old_version": {
         "version id": 1,
@@ -423,7 +423,7 @@
     {
       "diff_id": 20,
       "reason type": "New",
-      "reason text": "Adds new features that enable cross-interpreter sharing and concurrent execution. The diff introduces new API items and capabilities not present before: a new is_shareable(obj) function to indicate whether an object\u2019s data can be shared across interpreters; a new concurrent.futures.InterpreterPoolExecutor for executing tasks in sub-interpreters; and expanded Interpreters API (e.g., set_main_attrs accepting iterable/mapping and channel-based sharing) to support cross-interpreter communication. Overall, this represents newly introduced behavior/capabilities rather than a correction or clarification.",
+      "reason text": "Adds new features that enable cross-interpreter sharing and concurrent execution. The diff introduces new API items and capabilities not present before: a new is_shareable(obj) function to indicate whether an object’s data can be shared across interpreters; a new concurrent.futures.InterpreterPoolExecutor for executing tasks in sub-interpreters; and expanded Interpreters API (e.g., set_main_attrs accepting iterable/mapping and channel-based sharing) to support cross-interpreter communication. Overall, this represents newly introduced behavior/capabilities rather than a correction or clarification.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,
@@ -863,7 +863,7 @@
     {
       "diff_id": 40,
       "reason type": "Clarification",
-      "reason text": "The changes are a terminology/API rename in the documentation: references to the run-based API have been updated to exec. This includes replacing \u2018Interpreter.run()\u2019 with \u2018Interpreter.exec()\u2019 in the descriptions and examples, and adjusting phrasing like \u201cwrap Interpreter.exec() calls\u201d instead of \u201cwrap Interpreter.run() calls.\u201d No new functionality or behavior is introduced; it is a clarification/renaming to align the doc with the updated API.",
+      "reason text": "The changes are a terminology/API rename in the documentation: references to the run-based API have been updated to exec. This includes replacing ‘Interpreter.run()’ with ‘Interpreter.exec()’ in the descriptions and examples, and adjusting phrasing like “wrap Interpreter.exec() calls” instead of “wrap Interpreter.run() calls.” No new functionality or behavior is introduced; it is a clarification/renaming to align the doc with the updated API.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,
@@ -1016,7 +1016,7 @@
     },
     {
       "diff_id": 47,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "References section updated, not a requirement change. Added/expanded the 'fifo' reference block with additional links and removed the 'global-gc' and 'global-atexit' bullets. No changes to requirements, constraints, or behavior; editorial metadata only.",
       "old_version": {
         "version id": 2,
@@ -1038,7 +1038,7 @@
     },
     {
       "diff_id": 48,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Updated document metadata: Status changed from Draft to Superseded and added 'Superseded-By: 734'; no substantive changes to the requirements content.",
       "old_version": {
         "version id": 3,
@@ -1060,7 +1060,7 @@
     },
     {
       "diff_id": 49,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Editorial/administrative change: the new version adds a 'Superseded-By: 734' indicator and an introductory note stating that the PEP's contents continue in PEP 734. No substantive requirement changes; it's a status/metadata update rather than a functional requirement change.",
       "old_version": {
         "version id": 3,
@@ -1126,7 +1126,7 @@
     },
     {
       "diff_id": 52,
-      "reason type": "Other",
+      "reason type": "Non-substantive",
       "reason text": "Not a requirement.",
       "old_version": {
         "version id": 4,
