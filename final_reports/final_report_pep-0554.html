@@ -939,10 +939,10 @@
 <span class="diff-line"> =========================</span></div>
                         </td>
                         <td>
-                            <div class="reason-type tooltip">Other
-                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            <div class="reason-type tooltip">New
+                                <span class="tooltiptext">A new requirement was added.</span>
                             </div>
-                            <p>Added a new documentation anchor label '.. _interpreters-is-shareable:' in the 'interpreters' Module API section. This is a formatting/navigation change and does not modify requirements, constraints, or behavior.</p>
+                            <p>Adds new features that enable cross-interpreter sharing and concurrent execution. The diff introduces new API items and capabilities not present before: a new is_shareable(obj) function to indicate whether an object’s data can be shared across interpreters; a new concurrent.futures.InterpreterPoolExecutor for executing tasks in sub-interpreters; and expanded Interpreters API (e.g., set_main_attrs accepting iterable/mapping and channel-based sharing) to support cross-interpreter communication. Overall, this represents newly introduced behavior/capabilities rather than a correction or clarification.</p>
                         </td>
                         
                     </tr>

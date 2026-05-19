@@ -642,8 +642,8 @@
     },
     {
       "diff_id": 30,
-      "reason type": "Other",
-      "reason text": "The primary change is the deletion of the 'minimal' extra under [project.optional-dependencies] (minimal = []). This removes a previously defined optional-dependency path, changing the documented behavior and semantics of default extras. It is not a typo, new requirement, or clarification, but a removal that alters the requirement set.",
+      "reason type": "Deletion",
+      "reason text": "Removal of a previously supported feature.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,
@@ -730,8 +730,8 @@
     },
     {
       "diff_id": 34,
-      "reason type": "Other",
-      "reason text": "The changes modify the structure and content of the [project.optional-dependencies] block: the 'minimal' key is removed, a new 'alternative' key is added with 'package3', and 'package3' is moved out of 'additional' into 'alternative' while 'package4' is added to 'additional'. This represents a semantic/behavioral change in the default-extras configuration rather than a simple typo, new standalone requirement, or minor wording adjustment; it alters which extras are installed by default and how defaults interact, so it does not map cleanly to the predefined categories (hence 'Other').",
+      "reason type": "Demonstration",
+      "reason text": "The main change here demonstrates a new feature (of the \"alternate\" keyword) that was explained above.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,
@@ -752,8 +752,8 @@
     },
     {
       "diff_id": 35,
-      "reason type": "Other",
-      "reason text": "The primary change is the deletion of the line 'minimal = []' from [project.optional-dependencies] in the New Version. This is an editorial/shortening adjustment (removing a demonstration of a default-empty extra) rather than a substantive change to requirements, nor a new or meaning-change change.",
+      "reason type": "Deletion",
+      "reason text": "Removal of a previously supported feature.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,

@@ -422,8 +422,8 @@
     },
     {
       "diff_id": 20,
-      "reason type": "Other",
-      "reason text": "Added a new documentation anchor label '.. _interpreters-is-shareable:' in the 'interpreters' Module API section. This is a formatting/navigation change and does not modify requirements, constraints, or behavior.",
+      "reason type": "New",
+      "reason text": "Adds new features that enable cross-interpreter sharing and concurrent execution. The diff introduces new API items and capabilities not present before: a new is_shareable(obj) function to indicate whether an object\u2019s data can be shared across interpreters; a new concurrent.futures.InterpreterPoolExecutor for executing tasks in sub-interpreters; and expanded Interpreters API (e.g., set_main_attrs accepting iterable/mapping and channel-based sharing) to support cross-interpreter communication. Overall, this represents newly introduced behavior/capabilities rather than a correction or clarification.",
       "old_version": {
         "version id": 2,
         "requirement id": 0,
