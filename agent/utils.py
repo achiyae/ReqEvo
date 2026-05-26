@@ -93,8 +93,27 @@ HTML_TEMPLATE = """
 <body>
     <div class="container">
         <h1>Requirement Evolution: {{ domain }}</h1>
-        <div class="meta">
-            <p><strong>Number of Versions:</strong> {{ num_versions }}</p>
+        <div class="meta" style="background-color: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 20px;">
+            <p style="margin: 5px 0;"><strong>Number of Versions:</strong> {{ num_versions }}</p>
+            {% if document_metadata %}
+                {% if document_metadata.num_lines_latest %}
+                <p style="margin: 5px 0;"><strong>Document Length (Latest Version):</strong> {{ document_metadata.num_lines_latest }} lines</p>
+                {% endif %}
+                {% if document_metadata.total_authors %}
+                <p style="margin: 5px 0;"><strong>Total Unique Authors:</strong> {{ document_metadata.total_authors }}</p>
+                {% endif %}
+                {% if document_metadata.document_popularity %}
+                <p style="margin: 5px 0;"><strong>Document Popularity:</strong> {{ document_metadata.document_popularity.value }} ({{ document_metadata.document_popularity.metric_name }})</p>
+                {% endif %}
+                {% if document_metadata.authors_jobs %}
+                <p style="margin: 10px 0 5px 0;"><strong>Authors and Roles:</strong></p>
+                <ul style="margin: 0; padding-left: 20px;">
+                    {% for author, job in document_metadata.authors_jobs.items() %}
+                    <li><strong>{{ author }}:</strong> {{ job }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
         </div>
         
         <form id="feedbackForm">
@@ -124,6 +143,19 @@ HTML_TEMPLATE = """
                                 {{ diff.old_commit_hash[:7] }} ({{ diff.old_date }}) &rarr; {{ diff.new_commit_hash[:7] }} ({{ diff.new_date }})
                             </div>
                             {% endif %}
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v{{ diff.old_version_id }}):</strong> 
+                                    {% if diff.old_author and diff.old_author != "Cached" and diff.old_author != "Unknown" %}by {{ diff.old_author }}{% if diff.old_author_job %} ({{ diff.old_author_job }}){% endif %}{% else %}unknown author{% endif %}
+                                    {% if diff.old_num_lines %} | {{ diff.old_num_lines }} lines{% endif %}
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v{{ diff.new_version_id }}):</strong> 
+                                    {% if diff.new_author and diff.new_author != "Cached" and diff.new_author != "Unknown" %}by {{ diff.new_author }}{% if diff.new_author_job %} ({{ diff.new_author_job }}){% endif %}{% else %}unknown author{% endif %}
+                                    {% if diff.new_num_lines %} | {{ diff.new_num_lines }} lines{% endif %}
+                                </div>
+                            </div>
+                            
                             <div class="diff-text">{{ diff.html_diff | safe }}</div>
                         </td>
                         <td>
@@ -213,7 +245,7 @@ HTML_TEMPLATE = """
 </html>
 """
 
-def render_html_report(domain: str, num_versions: int, diffs: list, output_path: str = "report.html", reason_types: list = None, is_final: bool = False):
+def render_html_report(domain: str, num_versions: int, diffs: list, output_path: str = "report.html", reason_types: list = None, is_final: bool = False, document_metadata: dict = None):
     # Pre-process diffs to add html_diff field
     for diff in diffs:
         raw_diff = diff['diff_text']
@@ -239,7 +271,8 @@ def render_html_report(domain: str, num_versions: int, diffs: list, output_path:
         diffs=diffs, 
         reason_types=reason_types,
         definitions=REASON_DEFINITIONS,
-        final_mode=is_final
+        final_mode=is_final,
+        document_metadata=document_metadata
     )
     
     # Use absolute path for robustness

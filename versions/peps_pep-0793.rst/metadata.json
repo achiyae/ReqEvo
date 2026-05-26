@@ -1,0 +1,141 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_b2d1e97.rst",
+      "commit_hash": "b2d1e978a247cda5dc53e777ba1104a600c8d445",
+      "date": "23-May-2025",
+      "num_lines": 607,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "Pending",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_f2b3a15.rst",
+      "commit_hash": "f2b3a1572d40058af1b2d4a3f44d9c55d9ce4527",
+      "date": "23-May-2025",
+      "num_lines": 608,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/93444",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__, `27-May-2025 <https://discuss.python.org/t/93444/>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_9f5ea5e.rst",
+      "commit_hash": "9f5ea5ee88fa44eae3e4d21259cdacf237cca908",
+      "date": "23-May-2025",
+      "num_lines": 711,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/93444",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__, `27-May-2025 <https://discuss.python.org/t/93444/>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_65602dc.rst",
+      "commit_hash": "65602dc7dc18ef21ba280c4c544aa415ba6a8cb0",
+      "date": "23-May-2025",
+      "num_lines": 714,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/93444",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__, `27-May-2025 <https://discuss.python.org/t/93444/>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_54cf5eb.rst",
+      "commit_hash": "54cf5eb5998afb5f37982c12cb1bfd30660313a0",
+      "date": "23-May-2025",
+      "num_lines": 750,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/93444",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__, `27-May-2025 <https://discuss.python.org/t/93444/>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_b433203.rst",
+      "commit_hash": "b4332032bdc8ca9ae317b5986b7417e3beadef8c",
+      "date": "23-May-2025",
+      "num_lines": 748,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "793",
+        "Title": "PyModExport: A new entry point for C extension modules",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/93444",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Created": "23-May-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`14-Mar-2025 <https://discuss.python.org/t/84498/>`__, `27-May-2025 <https://discuss.python.org/t/93444/>`__,",
+        "Resolution": "`23-Oct-2025 <https://discuss.python.org/t/93444/46>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Petr Viktorin": "Core Developer"
+  },
+  "document_popularity": null
+}

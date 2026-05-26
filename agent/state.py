@@ -6,7 +6,7 @@ class RequirementVersion(TypedDict):
     filename: str
     commit_hash: Optional[str]
     date: Optional[str]
-    author: Optional[str]
+    num_lines: Optional[int]
 
 class DiffEntry(TypedDict):
     diff_id: int
@@ -33,3 +33,8 @@ class AgentState(TypedDict):
     iteration: int
     start_time: float
     is_final: bool
+    total_authors: Optional[int]
+    authors_jobs: Optional[Dict[str, str]]
+    document_popularity: Optional[Dict[str, Any]]
+    document_headers: Optional[Dict[str, str]]   # headers from the latest version
+    document_authors: Optional[List[str]]         # unique authors across all versions
