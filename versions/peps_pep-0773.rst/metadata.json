@@ -1,0 +1,124 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_334ba78.rst",
+      "commit_hash": "334ba78",
+      "date": "21-Jan-2025",
+      "num_lines": 1622,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "773",
+        "Title": "A Python Installation Manager for Windows",
+        "Author": "Steve Dower",
+        "Discussions-To": "https://discuss.python.org/t/77900/",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Release",
+        "Created": "21-Jan-2025",
+        "Post-History": "`18-Dec-2024 <https://discuss.python.org/t/74556/>`__, `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,",
+        "Replaces": "397, 486"
+      },
+      "authors": [
+        "Steve Dower"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_1fb889b.rst",
+      "commit_hash": "1fb889b",
+      "date": "21-Jan-2025",
+      "num_lines": 1711,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "773",
+        "Title": "A Python Installation Manager for Windows",
+        "Author": "Steve Dower",
+        "Discussions-To": "https://discuss.python.org/t/77900/",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Release",
+        "Created": "21-Jan-2025",
+        "Post-History": "`18-Dec-2024 <https://discuss.python.org/t/74556/>`__, `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,",
+        "Replaces": "397, 486"
+      },
+      "authors": [
+        "Steve Dower"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_21848e4.rst",
+      "commit_hash": "21848e4",
+      "date": "21-Jan-2025",
+      "num_lines": 1720,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "773",
+        "Title": "A Python Installation Manager for Windows",
+        "Author": "Steve Dower",
+        "Discussions-To": "https://discuss.python.org/t/77900/",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Release",
+        "Created": "21-Jan-2025",
+        "Post-History": "`18-Dec-2024 <https://discuss.python.org/t/74556/>`__, `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,",
+        "Replaces": "397, 486"
+      },
+      "authors": [
+        "Steve Dower"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_d4dba2d.rst",
+      "commit_hash": "d4dba2d",
+      "date": "21-Jan-2025",
+      "num_lines": 1721,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "773",
+        "Title": "A Python Installation Manager for Windows",
+        "Author": "Steve Dower",
+        "Discussions-To": "https://discuss.python.org/t/77900/",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Release",
+        "Created": "21-Jan-2025",
+        "Post-History": "`18-Dec-2024 <https://discuss.python.org/t/74556/>`__, `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,",
+        "Replaces": "397, 486"
+      },
+      "authors": [
+        "Steve Dower"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_06c4421.rst",
+      "commit_hash": "06c4421",
+      "date": "21-Jan-2025",
+      "num_lines": 1722,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "773",
+        "Title": "A Python Installation Manager for Windows",
+        "Author": "Steve Dower",
+        "Discussions-To": "https://discuss.python.org/t/77900/",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Release",
+        "Created": "21-Jan-2025",
+        "Post-History": "`18-Dec-2024 <https://discuss.python.org/t/74556/>`__, `21-Jan-2025 <https://discuss.python.org/t/77900/>`__,",
+        "Replaces": "397, 486",
+        "Resolution": "`25-Apr-2025 <https://discuss.python.org/t/77900/180>`__"
+      },
+      "authors": [
+        "Steve Dower"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Steve Dower": "Core Developer"
+  },
+  "document_popularity": null
+}

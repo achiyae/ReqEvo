@@ -2,10 +2,11 @@ import os
 import difflib
 import json
 import time
+import pickle
+import threading
 from typing import List, Dict, Any
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import threading
-import pickle
+
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -13,7 +14,16 @@ from pydantic import BaseModel, Field
 
 from agent.state import AgentState, RequirementVersion, DiffEntry
 from agent.utils import render_html_report, open_in_browser, REASON_DEFINITIONS
-from agent.git_utils import parse_github_url, fetch_file_history, compute_git_diff
+from agent.git_utils import (
+    parse_github_url, 
+    fetch_file_history, 
+    compute_git_diff, 
+    save_extended_cache_metadata, 
+    get_local_git_remote,
+    get_local_git_author,
+    get_local_git_date,
+    enrich_version_with_headers
+)
 
 # --- Analysis Models ---
 class ChangeAnalysis(BaseModel):
@@ -26,14 +36,12 @@ def load_files_node(state: AgentState) -> Dict[str, Any]:
     """Loads requirement files from the specified paths OR Git URL."""
     print("--- Loading Files ---")
     
-    # Check if 'domain' acts as a placeholder for URL or if we check a specific state key
-    # For now, let's look at the 'domain' field or a 'file_paths' entry.
-    # The prompt said we'll ask for domain OR git url.
-    
     domain_or_url = state.get('domain', '')
     versions: List[RequirementVersion] = []
+    files = state.get('file_paths', [])
+    domain = domain_or_url
     
-    # Heuristic: Is it a GitHub URL?
+    # 1. Fetch versions (either from GitHub or fallback to local files)
     if 'github.com' in domain_or_url:
         print(f"Detected GitHub URL: {domain_or_url}")
         try:
@@ -43,38 +51,139 @@ def load_files_node(state: AgentState) -> Dict[str, Any]:
                 git_info['file_path'], 
                 git_info['branch']
             )
-            # Update domain name to be the file name
-            return {
-                "versions": versions, 
-                "domain": git_info['file_path'],
-                "file_paths": [domain_or_url]
-            }
+            domain = git_info['file_path']
+            files = [domain_or_url]
         except Exception as e:
             print(f"Error fetching from Git: {e}")
-            return {"versions": []}
+            versions = []
+    else:
+        # Fallback to local files
+        if not files:
+            req_dir = os.path.join(os.getcwd(), 'requirements')
+            if os.path.exists(req_dir):
+                files = [os.path.join(req_dir, f) for f in sorted(os.listdir(req_dir)) if f.endswith('.txt')]
+        
+        for idx, file_path in enumerate(files):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                versions.append({
+                    "version_id": idx + 1,
+                    "content": content,
+                    "filename": os.path.basename(file_path),
+                    "commit_hash": None,
+                    "date": None,
+                    "authors": []
+                })
 
-    # Fallback to local files
-    files = state.get('file_paths', [])
+    # 2. Enrich versions and state with metadata
+    # Count lines per version
+    for idx, v in enumerate(versions):
+        v['num_lines'] = len(v['content'].splitlines()) if v.get('content') else 0
+        
+        # If local files, try to extract git info
+        if not v.get('commit_hash') and files:
+            if idx < len(files):
+                file_path = files[idx]
+                if os.path.exists(file_path):
+                    author = get_local_git_author(file_path)
+                    date = get_local_git_date(file_path)
+                    if author and author not in ("Cached", "Unknown"):
+                        v['authors'] = [author]
+                    if date:
+                        v['date'] = date
+        # Enrich with document headers (PEP headers)
+        v = enrich_version_with_headers(v)
+        # Remove per-version headers to avoid redundancy; they'll be stored at document level later
+        if 'headers' in v:
+            v.pop('headers')
     
-    # If no files in state, try to find them in 'requirements' dir
-    if not files:
-        req_dir = os.path.join(os.getcwd(), 'requirements')
-        if os.path.exists(req_dir):
-            files = [os.path.join(req_dir, f) for f in sorted(os.listdir(req_dir)) if f.endswith('.txt')]
+    # Determine document-level headers from the latest version (if any)
+    document_headers = versions[-1].get('headers') if versions else {}
     
-    for idx, file_path in enumerate(files):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-            versions.append({
-                "version_id": idx + 1,
-                "content": content,
-                "filename": os.path.basename(file_path),
-                "commit_hash": None,
-                "date": None,
-                "author": None
-            })
+    # Check if there is cached metadata
+    cached_jobs = {}
+    cached_pop = None
+    if 'github.com' in domain_or_url:
+        try:
+            git_info = parse_github_url(domain_or_url)
+            safe_filename = git_info['file_path'].replace('/', '_').replace('\\', '_')
+            versions_dir = os.path.join(os.getcwd(), 'versions', safe_filename)
+            metadata_path = os.path.join(versions_dir, 'metadata.json')
+            if os.path.exists(metadata_path):
+                import json
+                with open(metadata_path, 'r', encoding='utf-8') as f:
+                    meta = json.load(f)
+                cached_jobs = meta.get('authors_jobs', {})
+                cached_pop = meta.get('document_popularity')
+        except Exception:
+            pass
+
+    # Extract unique authors
+    authors_set = set()
+    for v in versions:
+        v_auths = v.get('authors')
+        if v_auths:
+            for auth in v_auths:
+                if auth and auth not in ("Cached", "Unknown"):
+                    authors_set.add(auth)
+    authors = list(authors_set)
+    
+    # Resolve author jobs
+    from agent.metadata_fetcher import fetch_author_jobs, fetch_document_popularity
+    
+    # Use cached if possible
+    authors_jobs = {}
+    missing_authors = []
+    for author in authors:
+        if author in cached_jobs:
+            authors_jobs[author] = cached_jobs[author]
+        else:
+            missing_authors.append(author)
             
-    return {"versions": versions, "file_paths": files}
+    if missing_authors:
+        fetched_jobs = fetch_author_jobs(missing_authors, domain)
+        authors_jobs.update(fetched_jobs)
+    else:
+        authors_jobs.update(cached_jobs)
+        
+    # Resolve document popularity
+    if cached_pop is not None:
+        doc_pop = cached_pop
+    else:
+        doc_pop = fetch_document_popularity(domain_or_url)
+        
+    # Apply jobs to versions
+    for v in versions:
+        v_auths = v.get('authors', [])
+        if v_auths:
+            jobs_list = [authors_jobs.get(auth, "Unknown") for auth in v_auths]
+            if len(set(jobs_list)) == 1:
+                v['author_job'] = jobs_list[0]
+            else:
+                v['author_job'] = ", ".join(f"{auth}: {job}" for auth, job in zip(v_auths, jobs_list))
+        else:
+            v['author_job'] = None
+            
+    # Save back to cache if git
+    if 'github.com' in domain_or_url:
+        try:
+            git_info = parse_github_url(domain_or_url)
+            safe_filename = git_info['file_path'].replace('/', '_').replace('\\', '_')
+            versions_dir = os.path.join(os.getcwd(), 'versions', safe_filename)
+            save_extended_cache_metadata(versions_dir, authors_jobs, doc_pop)
+        except Exception:
+            pass
+            
+    return {
+        "versions": versions,
+        "domain": domain,
+        "file_paths": files,
+        "total_authors": len(authors),
+        "authors_jobs": authors_jobs,
+        "document_popularity": doc_pop,
+        "document_headers": document_headers,
+        "document_authors": authors
+    }
 
 def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
     """Computes granular diffs between sequential versions."""
@@ -325,71 +434,93 @@ def analyze_changes_node(state: AgentState) -> Dict[str, Any]:
     return {"diffs": updated_diffs, "user_feedback": None}
 
 def generate_json_node(state: AgentState) -> Dict[str, Any]:
-    print("--- Generating JSON ---")
-    
-    # Construct the final JSON structure requested
-    # { "domain": "name", "number of versions": 0, "diffs": [ ... ] }
-    
-    versions_map = {v['version_id']: v for v in state['versions']}
-    
+    """Generate JSON output adhering to the new schema.
+
+    The output contains:
+    1. Top‑level document metadata (authors, headers, etc.)
+    2. A ``versions`` dictionary keyed by version ID with minimal metadata
+    3. A ``diffs`` list that references version IDs but does not duplicate
+       full document information.
+    """
+    # Build a dictionary of versions keyed by version_id with minimal metadata
+    versions_dict = {
+        v['version_id']: {
+            "version_id": v['version_id'],
+            "commit_hash": v.get('commit_hash'),
+            "date": v.get('date'),
+            "num_lines": v.get('num_lines'),
+            "content": v.get('content')
+        }
+        for v in state['versions']
+    }
+
+    # Build diffs list without redundant version information
     json_diffs = []
     for d in state['diffs']:
-        old_v = versions_map.get(d['old_version_id'])
-        new_v = versions_map.get(d['new_version_id'])
-        
+        old_v = versions_dict.get(d['old_version_id'])
+        new_v = versions_dict.get(d['new_version_id'])
         json_diffs.append({
             "diff_id": d['diff_id'],
-            "reason type": d['reason_type'],
-            "reason text": d['reason_text'],
+            "reason_type": d.get('reason_type'),
+            "reason_text": d.get('reason_text'),
             "old_version": {
-                "version id": d['old_version_id'],
-                "requirement id": 0,
-                "content": old_v['content'] if old_v else "",
+                "version_id": d['old_version_id'],
+                "content": old_v.get('content') if old_v else "",
                 "commit_hash": d.get('old_commit_hash'),
-                "date": d.get('old_date')
+                "date": d.get('old_date'),
+                "num_lines": old_v.get('num_lines') if old_v else None,
             },
             "new_version": {
-                "version id": d['new_version_id'],
-                "requirement id": 0,
-                "content": new_v['content'] if new_v else "",
+                "version_id": d['new_version_id'],
+                "content": new_v.get('content') if new_v else "",
                 "commit_hash": d.get('new_commit_hash'),
-                "date": d.get('new_date')
+                "date": d.get('new_date'),
+                "num_lines": new_v.get('num_lines') if new_v else None,
             },
             "diff": d['diff_text'],
             "old_content_snippet": d.get('old_content_snippet', ''),
-            "new_content_snippet": d.get('new_content_snippet', '')
+            "new_content_snippet": d.get('new_content_snippet', ''),
         })
-        
+
     json_output = {
         "domain": state.get("domain", "Unknown Domain"),
-        "number of versions": len(state['versions']),
-        "diffs": json_diffs
+        "number_of_versions": len(state['versions']),
+        "document_metadata": {
+            "num_lines_latest": state['versions'][-1].get('num_lines') if state['versions'] else 0,
+            "total_authors": state.get("total_authors", 0),
+            "document_popularity": state.get("document_popularity"),
+            "authors_jobs": state.get("authors_jobs", {}),
+            "headers": state.get("document_headers", {}),
+            "authors": state.get("document_authors", []),
+        },
+        "versions": versions_dict,
+        "diffs": json_diffs,
     }
-    
-    # Generate filename: output_{basename}.json
+
+    # Determine a safe base filename from the domain
     domain = state.get("domain", "Unknown Domain")
     base_name = os.path.basename(domain)
     name_root, _ = os.path.splitext(base_name)
     safe_name = "".join(c for c in name_root if c.isalnum() or c in ('-', '_')).strip()
     if not safe_name:
         safe_name = "analysis"
-        
+
+    # Write JSON output
     outputs_dir = os.path.join(os.getcwd(), "outputs")
     os.makedirs(outputs_dir, exist_ok=True)
     output_filename = os.path.join(outputs_dir, f"output_{safe_name}.json")
-    
-    # Save to JSON
     with open(output_filename, "w") as f:
         json.dump(json_output, f, indent=2)
 
-    # Save to Pickle for full state persistence
+    # Persist full state as pickle for later reuse
     states_dir = os.path.join(os.getcwd(), "states")
     os.makedirs(states_dir, exist_ok=True)
     pickle_filename = os.path.join(states_dir, f"{safe_name}.pkl")
     with open(pickle_filename, "wb") as f:
         pickle.dump(dict(state), f)
-        
+
     return {"json_output": json_output}
+
 
 def generate_html_node(state: AgentState) -> Dict[str, Any]:
     print("--- Generating HTML ---")
@@ -411,13 +542,39 @@ def generate_html_node(state: AgentState) -> Dict[str, Any]:
         reports_dir = os.path.join(os.getcwd(), "reports")
         output_filename = os.path.join(reports_dir, f"report_{safe_name}.html")
         
+    versions_map = {v['version_id']: v for v in state['versions']}
+    enriched_diffs = []
+    for d in state['diffs']:
+        d_enriched = dict(d)
+        old_v = versions_map.get(d['old_version_id'])
+        new_v = versions_map.get(d['new_version_id'])
+        if old_v:
+            d_enriched['old_author'] = ", ".join(old_v.get('authors', [])) if old_v.get('authors') else None
+            d_enriched['old_author_job'] = old_v.get('author_job')
+            d_enriched['old_num_lines'] = old_v.get('num_lines')
+        if new_v:
+            d_enriched['new_author'] = ", ".join(new_v.get('authors', [])) if new_v.get('authors') else None
+            d_enriched['new_author_job'] = new_v.get('author_job')
+            d_enriched['new_num_lines'] = new_v.get('num_lines')
+        enriched_diffs.append(d_enriched)
+
+    document_metadata = {
+        "num_lines_latest": state['versions'][-1].get('num_lines') if state['versions'] else 0,
+        "total_authors": state.get("total_authors", 0),
+        "document_popularity": state.get("document_popularity"),
+        "authors_jobs": state.get("authors_jobs", {}),
+        "headers": state.get("document_headers", {}),
+        "document_authors": state.get("document_authors", [])
+    }
+        
     html_path = render_html_report(
         domain=domain,
         num_versions=len(state['versions']),
-        diffs=state['diffs'],
+        diffs=enriched_diffs,
         reason_types=list(REASON_DEFINITIONS.keys()),
         output_path=output_filename,
-        is_final=is_final
+        is_final=is_final,
+        document_metadata=document_metadata
     )
     
     # Auto-open

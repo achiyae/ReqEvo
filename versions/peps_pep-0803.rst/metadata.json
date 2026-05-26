@@ -1,0 +1,168 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_8462643.rst",
+      "commit_hash": "8462643104e0d208f656ce3373de37501d5152fc",
+      "date": "19-Aug-2025",
+      "num_lines": 333,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "Pending",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_59918e8.rst",
+      "commit_hash": "59918e812e46295e54ac72377222148244ddeb85",
+      "date": "19-Aug-2025",
+      "num_lines": 333,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/103628",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_415c032.rst",
+      "commit_hash": "415c032d611f0b598187ee5758051e8bb00744da",
+      "date": "19-Aug-2025",
+      "num_lines": 485,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/103628",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`08-Sep-2025 <https://discuss.python.org/t/103628>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_3248238.rst",
+      "commit_hash": "3248238eca393ee63f9c38bd6fe568ebcfb74067",
+      "date": "19-Aug-2025",
+      "num_lines": 597,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/103628",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`08-Sep-2025 <https://discuss.python.org/t/103628>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_d6914ac.rst",
+      "commit_hash": "d6914aca4e41c95e8f358f539d062d80aeac783c",
+      "date": "19-Aug-2025",
+      "num_lines": 597,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/103628",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`08-Sep-2025 <https://discuss.python.org/t/103628>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_01ae9b7.rst",
+      "commit_hash": "01ae9b789b374371f53b9db2d8762d84133aa4bb",
+      "date": "19-Aug-2025",
+      "num_lines": 665,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "\"abi3t\": Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/103628",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`08-Sep-2025 <https://discuss.python.org/t/103628>`__, `20-Nov-2025 <https://discuss.python.org/t/104976>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_623c591.rst",
+      "commit_hash": "623c591b086fcdbe9dc5a25ec95570788a132058",
+      "date": "19-Aug-2025",
+      "num_lines": 666,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "803",
+        "Title": "\"abi3t\": Stable ABI for Free-Threaded Builds",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/106181",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Requires": "703, 793, 697",
+        "Created": "19-Aug-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`08-Sep-2025 <https://discuss.python.org/t/103628>`__, `20-Nov-2025 <https://discuss.python.org/t/104976>`__, `16-Feb-2026 <https://discuss.python.org/t/106181>`__,"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Petr Viktorin": "Core Developer",
+    "Cl\u00e9ment Robert": "Core Developer"
+  },
+  "document_popularity": null
+}

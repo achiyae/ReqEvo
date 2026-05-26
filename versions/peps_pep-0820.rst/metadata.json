@@ -1,0 +1,74 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_0df3190.rst",
+      "commit_hash": "0df319087bccc1e6e488482b9938211cf3de79ce",
+      "date": "19-Dec-2025",
+      "num_lines": 575,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "820",
+        "Title": "PySlot: Unified slot system for the C API",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "Pending",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Dec-2025",
+        "Python-Version": "3.15",
+        "Post-History": "Pending"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_166e82e.rst",
+      "commit_hash": "166e82e8bc370561e9e49ebf9ba69f95d90d55a8",
+      "date": "19-Dec-2025",
+      "num_lines": 575,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "820",
+        "Title": "PySlot: Unified slot system for the C API",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/105552",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Dec-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`06-Jan-2026 <https://discuss.python.org/t/105552>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_8c68109.rst",
+      "commit_hash": "8c68109ac7f8ae5ac94bfd988b16beb9fc322ded",
+      "date": "19-Dec-2025",
+      "num_lines": 722,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "820",
+        "Title": "PySlot: Unified slot system for the C API",
+        "Author": "Petr Viktorin <encukou@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/105552",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Dec-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`06-Jan-2026 <https://discuss.python.org/t/105552>`__"
+      },
+      "authors": [
+        "Petr Viktorin"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Petr Viktorin": "Core Developer"
+  },
+  "document_popularity": null
+}

@@ -1,0 +1,83 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_0b971b4.rst",
+      "commit_hash": "0b971b4135590077f97ce7cbef77627da02c13bc",
+      "date": "21-Mar-2025",
+      "num_lines": 451,
+      "author_job": "Klaus Zimmermann: Author, Ralf Gommers: Core Developer",
+      "headers": {
+        "PEP": "780",
+        "Title": "ABI features as environment markers",
+        "Author": "Klaus Zimmermann <klaus_zimmermann@gmx.de>, Ralf Gommers <ralf.gommers@gmail.com>",
+        "Sponsor": "Lysandros Nikolaou <lisandrosnik@gmail.com>",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "21-Mar-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`05-Aug-2024 <https://discuss.python.org/t/60007>`__,"
+      },
+      "authors": [
+        "Klaus Zimmermann",
+        "Ralf Gommers"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_c437b2e.rst",
+      "commit_hash": "c437b2e29fed4626221674a4aa5a8ed431192c59",
+      "date": "21-Mar-2025",
+      "num_lines": 453,
+      "author_job": "Klaus Zimmermann: Author, Ralf Gommers: Core Developer",
+      "headers": {
+        "PEP": "780",
+        "Title": "ABI features as environment markers",
+        "Author": "Klaus Zimmermann <klaus_zimmermann@gmx.de>, Ralf Gommers <ralf.gommers@gmail.com>",
+        "Sponsor": "Lysandros Nikolaou <lisandrosnik@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/86013",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "21-Mar-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`05-Aug-2024 <https://discuss.python.org/t/60007>`__, `26-Mar-2025 <https://discuss.python.org/t/86013>`__,"
+      },
+      "authors": [
+        "Klaus Zimmermann",
+        "Ralf Gommers"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_1bd750c.rst",
+      "commit_hash": "1bd750cbf322a7e3c9874c3074b696e5bc25ba39",
+      "date": "21-Mar-2025",
+      "num_lines": 381,
+      "author_job": "Klaus Zimmermann: Author, Ralf Gommers: Core Developer",
+      "headers": {
+        "PEP": "780",
+        "Title": "ABI features as environment markers",
+        "Author": "Klaus Zimmermann <klaus_zimmermann@gmx.de>, Ralf Gommers <ralf.gommers@gmail.com>",
+        "Sponsor": "Lysandros Nikolaou <lisandrosnik@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/86013",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "21-Mar-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`05-Aug-2024 <https://discuss.python.org/t/60007>`__, `26-Mar-2025 <https://discuss.python.org/t/86013>`__,"
+      },
+      "authors": [
+        "Klaus Zimmermann",
+        "Ralf Gommers"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Klaus Zimmermann": "Author",
+    "Ralf Gommers": "Core Developer"
+  },
+  "document_popularity": null
+}

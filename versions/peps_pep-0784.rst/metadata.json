@@ -1,0 +1,146 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_77031b7.rst",
+      "commit_hash": "77031b781fc38d5612ff8c5684a2fb3650240350",
+      "date": "06-Apr-2025",
+      "num_lines": 280,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_ded32dd.rst",
+      "commit_hash": "ded32dd213689df04de9161cc719b21a9e757712",
+      "date": "06-Apr-2025",
+      "num_lines": 306,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Discussions-To": "https://discuss.python.org/t/87377",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`07-Apr-2025 <https://discuss.python.org/t/87377>`__,"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_56768d6.rst",
+      "commit_hash": "56768d6adeab1902e6e0356254d04ceb811aaad1",
+      "date": "06-Apr-2025",
+      "num_lines": 309,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Discussions-To": "https://discuss.python.org/t/87377",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`07-Apr-2025 <https://discuss.python.org/t/87377>`__,"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_f7d669e.rst",
+      "commit_hash": "f7d669e95cd34a9f43f8a86d8f71a9f238fbd18b",
+      "date": "06-Apr-2025",
+      "num_lines": 374,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Discussions-To": "https://discuss.python.org/t/87377",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`07-Apr-2025 <https://discuss.python.org/t/87377>`__,"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_7072430.rst",
+      "commit_hash": "70724309f2b12553926b0f764e288a3ed013efff",
+      "date": "06-Apr-2025",
+      "num_lines": 360,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Discussions-To": "https://discuss.python.org/t/87377",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`07-Apr-2025 <https://discuss.python.org/t/87377>`__,",
+        "Resolution": "`25-Apr-2025 <https://discuss.python.org/t/87377/138>`__"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_b8a7cb6.rst",
+      "commit_hash": "b8a7cb62b3572a565bf40ebef4b74525983aed2d",
+      "date": "06-Apr-2025",
+      "num_lines": 363,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "784",
+        "Title": "Adding Zstandard to the standard library",
+        "Author": "Emma Harper Smith <emma@python.org>",
+        "Sponsor": "Gregory P. Smith <greg@krypto.org>",
+        "Discussions-To": "https://discuss.python.org/t/87377",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Created": "06-Apr-2025",
+        "Python-Version": "3.14",
+        "Post-History": "`07-Apr-2025 <https://discuss.python.org/t/87377>`__,",
+        "Resolution": "`25-Apr-2025 <https://discuss.python.org/t/87377/138>`__"
+      },
+      "authors": [
+        "Emma Harper Smith"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Emma Harper Smith": "Author"
+  },
+  "document_popularity": null
+}
