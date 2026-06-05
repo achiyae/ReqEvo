@@ -1,0 +1,446 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_1a089b8.rst",
+      "commit_hash": "1a089b850ef9a25008a146c3438b5bed37fa7974",
+      "date": "20-Nov-2023",
+      "num_lines": 652,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_d75db62.rst",
+      "commit_hash": "d75db62fa3c27416bfbdf1033b38a99e1aba960e",
+      "date": "20-Nov-2023",
+      "num_lines": 965,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_2a8ea31.rst",
+      "commit_hash": "2a8ea315ef018d3debdda94967f9c9b46610ed68",
+      "date": "20-Nov-2023",
+      "num_lines": 1220,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_bf96565.rst",
+      "commit_hash": "bf96565f05946e337dde5920cf53ffb982af8b9b",
+      "date": "20-Nov-2023",
+      "num_lines": 1259,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_9d82dd1.rst",
+      "commit_hash": "9d82dd1cd831fceba8f725d3085c31b389cb100c",
+      "date": "20-Nov-2023",
+      "num_lines": 1273,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_9c5d66b.rst",
+      "commit_hash": "9c5d66b67d9415001568313c181ab6af6d29d99d",
+      "date": "20-Nov-2023",
+      "num_lines": 1273,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_c55835e.rst",
+      "commit_hash": "c55835e170c3b3de8eaad3aa5e39867efef889dc",
+      "date": "20-Nov-2023",
+      "num_lines": 1276,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 8,
+      "filename": "v8_e947a9d.rst",
+      "commit_hash": "e947a9dcb0af6361549d4f9c1ecff12f3ee689e7",
+      "date": "20-Nov-2023",
+      "num_lines": 1276,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 9,
+      "filename": "v9_4660531.rst",
+      "commit_hash": "46605315035f9099bd21110ab9a674dd52b07e82",
+      "date": "20-Nov-2023",
+      "num_lines": 1423,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 10,
+      "filename": "v10_2ec2140.rst",
+      "commit_hash": "2ec2140ec83dcc6069e3e757641ca82809bc87eb",
+      "date": "20-Nov-2023",
+      "num_lines": 1454,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 11,
+      "filename": "v11_79a41d1.rst",
+      "commit_hash": "79a41d10024bb3bb4af4260583fca15c2aedb1d2",
+      "date": "20-Nov-2023",
+      "num_lines": 1416,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 12,
+      "filename": "v12_267dc02.rst",
+      "commit_hash": "267dc02fc0049ed597b109bda831ca626ff8d006",
+      "date": "20-Nov-2023",
+      "num_lines": 1448,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 13,
+      "filename": "v13_38806a6.rst",
+      "commit_hash": "38806a6487fcad587edc2d784317a185c1d5cb05",
+      "date": "20-Nov-2023",
+      "num_lines": 1450,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "https://discuss.python.org/t/39233/312"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 14,
+      "filename": "v14_7d83e6c.rst",
+      "commit_hash": "7d83e6c8f0adac2c3323647c518d956852d1d48d",
+      "date": "20-Nov-2023",
+      "num_lines": 1448,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "https://discuss.python.org/t/39233/312"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 15,
+      "filename": "v15_e43cb85.rst",
+      "commit_hash": "e43cb850dd96d1336d7dfef94bcaf815d95cd786",
+      "date": "20-Nov-2023",
+      "num_lines": 1449,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "https://discuss.python.org/t/39233/312"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 16,
+      "filename": "v16_c56c5c5.rst",
+      "commit_hash": "c56c5c526b070b2be981e9a257347a048f8fcc35",
+      "date": "20-Nov-2023",
+      "num_lines": 1449,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "`10-Oct-2024 <https://discuss.python.org/t/39233/312>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 17,
+      "filename": "v17_1478f6e.rst",
+      "commit_hash": "1478f6e08719b8c56dae05de236cdc4d51978810",
+      "date": "20-Nov-2023",
+      "num_lines": 1451,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "`10-Oct-2024 <https://discuss.python.org/t/39233/312>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    },
+    {
+      "version_id": 18,
+      "filename": "v18_ec5833e.rst",
+      "commit_hash": "ec5833e5b4c0d12bf937c92f973c68a99104a3da",
+      "date": "20-Nov-2023",
+      "num_lines": 1451,
+      "author_job": "Author",
+      "headers": {
+        "PEP": "735",
+        "Title": "Dependency Groups in pyproject.toml",
+        "Author": "Stephen Rosen <sirosen0@gmail.com>",
+        "Sponsor": "Brett Cannon <brett@python.org>",
+        "PEP-Delegate": "Paul Moore <p.f.moore@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/39233",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Topic": "Packaging",
+        "Created": "20-Nov-2023",
+        "Post-History": "`14-Nov-2023 <https://discuss.python.org/t/29684>`__, `20-Nov-2023 <https://discuss.python.org/t/39233>`__",
+        "Resolution": "`10-Oct-2024 <https://discuss.python.org/t/39233/312>`__"
+      },
+      "authors": [
+        "Stephen Rosen"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Stephen Rosen": "Author"
+  },
+  "document_popularity": null
+}

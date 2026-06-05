@@ -1,0 +1,202 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_286d861.rst",
+      "commit_hash": "286d8615ccb93a6d49b3538367e2969bc1f48641",
+      "date": "19-Jul-2025",
+      "num_lines": 798,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "Pending",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_54ab504.rst",
+      "commit_hash": "54ab504ccc2e7034e2f1a51f6486e0f51f9ca192",
+      "date": "19-Jul-2025",
+      "num_lines": 798,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_fccb504.rst",
+      "commit_hash": "fccb5044f0da604789802368553f7a60b7f96a79",
+      "date": "19-Jul-2025",
+      "num_lines": 798,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_b1facf0.rst",
+      "commit_hash": "b1facf05bb06e2b0a60f9be1b747051f7a491c82",
+      "date": "19-Jul-2025",
+      "num_lines": 819,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_0e4aee4.rst",
+      "commit_hash": "0e4aee46972af2f55f4d41887436aea971fa5942",
+      "date": "19-Jul-2025",
+      "num_lines": 1074,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_c53b02c.rst",
+      "commit_hash": "c53b02cf75339f37c446c5aa8d54a84f7f63a49b",
+      "date": "19-Jul-2025",
+      "num_lines": 1074,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__, `19-Jul-2025 <https://discuss.python.org/t/pep-798-unpacking-in-comprehensions/99435>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_ad8a891.rst",
+      "commit_hash": "ad8a89181c1b13654584a551031937e8273b1207",
+      "date": "19-Jul-2025",
+      "num_lines": 1080,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__, `19-Jul-2025 <https://discuss.python.org/t/pep-798-unpacking-in-comprehensions/99435>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    },
+    {
+      "version_id": 8,
+      "filename": "v8_2bd9217.rst",
+      "commit_hash": "2bd92170add1405681b476beeb252986f5369894",
+      "date": "19-Jul-2025",
+      "num_lines": 1071,
+      "author_job": "Adam Hartz: Software Engineer, Erik Demaine: Professor at MIT",
+      "headers": {
+        "PEP": "798",
+        "Title": "Unpacking in Comprehensions",
+        "Author": "Adam Hartz <hz@mit.edu>, Erik Demaine <edemaine@mit.edu>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/99435",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Created": "19-Jul-2025",
+        "Python-Version": "3.15",
+        "Post-History": "`16-Oct-2021 <https://mail.python.org/archives/list/python-ideas@python.org/thread/7G732VMDWCRMWM4PKRG6ZMUKH7SUC7SH/>`__, `22-Jun-2025 <https://discuss.python.org/t/pre-pep-unpacking-in-comprehensions/96362>`__, `19-Jul-2025 <https://discuss.python.org/t/pep-798-unpacking-in-comprehensions/99435>`__",
+        "Resolution": "`03-Nov-2025 <https://discuss.python.org/t/pep-798-unpacking-in-comprehensions/99435/60>`__"
+      },
+      "authors": [
+        "Adam Hartz",
+        "Erik Demaine"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Adam Hartz": "Software Engineer",
+    "Erik Demaine": "Professor at MIT"
+  },
+  "document_popularity": null
+}
