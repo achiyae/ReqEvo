@@ -3,7 +3,7 @@ ReqEvo provides a dataset of requirements evolution and a tool that helps to ext
 
 ## Artifacts
 The repo provides some kinds of artifacts:
-1. JSON: requirements versions comparison in a json format, located in `outputs` directory
+1. JSON: requirements versions comparison in a json format, located in `outputs\` directory
 2. Final HTML reports: static HTML files of the requirements analysis, located in `final_reports\` directory
 3. HTML reports: dynamic HTML files that can be used only while running the code and allow the user to give some feedback on the analysis, located in `reports\` directory
 
@@ -16,8 +16,12 @@ The repo provides some kinds of artifacts:
 ```
 OPENAI_API_KEY=sk-...
 ```
-6. Run `python main.py` and follow the steps in the terminal:
+6. Run `python main.py <reviewer_name>` and follow the steps in the terminal:
    - In order to add a new domain, type "N" and provide a git file URL.
    - In order to edit an already exsiting one, type "R" and enter the name of the domain you would like to review.
 7. In both cases, an HTML editable report will appear. You can provide some feedback and submit it.
    There is a button for submitting the feedback during the process that allows some iterations of re-analysis, and another button to approve the analysis that generates a final HTML report when you finish.
+
+## Analyze Dataset
+You can analyze the dataset using the `analyze_dataset.py` script.
+Run `python analyze_dataset.py <reviewer_name>`.

@@ -1,0 +1,1149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirement Evolution Analysis - peps/pep-0780.rst</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #2c3e50; }
+        .container { max-width: 95%; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .diff-text { font-family: 'Consolas', 'Courier New', monospace; white-space: pre-wrap; background-color: #f8f9fa; padding: 5px; border-radius: 4px; border: 1px solid #e1e4e8; overflow-x: auto; }
+        .reason-type { font-weight: bold; color: #2980b9; position: relative; display: inline-block; cursor: help; border-bottom: 1px dotted #2980b9; }
+        .old-version { color: #c0392b; text-decoration: line-through; }
+        .new-version { color: #27ae60; }
+        .meta { margin-bottom: 20px; color: #7f8c8d; }
+        
+        /* Tooltip container */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            font-weight: normal;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            line-height: 1.4;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Git Style Diff */
+        .diff-line { display: block; min-height: 1.2em; }
+        .diff-added { background-color: #e6ffed; color: #22863a; }
+        .diff-removed { background-color: #ffeef0; color: #b31d28; }
+        .diff-header { color: #6f7781; font-weight: bold; }
+        
+        /* Feedback Form */
+        .feedback-cell { display: flex; flex-direction: column; gap: 10px; }
+        .feedback-area { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+        .reason-select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; }
+        .submit-btn { display: block; width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; font-size: 1.2em; cursor: pointer; margin-top: 20px; transition: all 0.3s ease; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.9; }
+        label { font-weight: bold; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Requirement Evolution: peps/pep-0780.rst</h1>
+        <div class="meta" style="background-color: #f8f9fa; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 20px;">
+            <p style="margin: 5px 0;"><strong>Number of Versions:</strong> 3</p>
+            
+                
+                <p style="margin: 5px 0;"><strong>Document Length (Latest Version):</strong> 381 lines</p>
+                
+                
+                <p style="margin: 5px 0;"><strong>Total Unique Authors:</strong> 2</p>
+                
+                
+                
+                <p style="margin: 10px 0 5px 0;"><strong>Authors and Roles:</strong></p>
+                <ul style="margin: 0; padding-left: 20px;">
+                    
+                    <li><strong>Ralf Gommers:</strong> Core Developer</li>
+                    
+                    <li><strong>Klaus Zimmermann:</strong> Author</li>
+                    
+                </ul>
+                
+            
+        </div>
+        
+        <form id="feedbackForm">
+            <table>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 60%;">
+                    <col style="width: 35%;">
+                    
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Change Details</th>
+                        <th>AI Analysis</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                0b971b4 (21-Mar-2025) &rarr; c437b2e (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v1):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 451 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Author: Klaus Zimmermann <klaus_zimmermann@gmx.de>,</span>
+<span class="diff-line">         Ralf Gommers <ralf.gommers@gmail.com></span>
+<span class="diff-line"> Sponsor: Lysandros Nikolaou <lisandrosnik@gmail.com></span>
+<span class="diff-line diff-added">+Discussions-To: https://discuss.python.org/t/86013</span>
+<span class="diff-line"> Status: Draft</span>
+<span class="diff-line"> Type: Standards Track</span>
+<span class="diff-line"> Topic: Packaging</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Non-substantive
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Added a new metadata field 'Discussions-To' referencing the discussion thread, and updated Post-History. No changes to the actual requirements or technical content.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <div><strong>From:</strong> 1 &rarr; <strong>To:</strong> 2</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                0b971b4 (21-Mar-2025) &rarr; c437b2e (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v1):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 451 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Python-Version: 3.14</span>
+<span class="diff-line"> Post-History:</span>
+<span class="diff-line">   `05-Aug-2024 <https://discuss.python.org/t/60007>`__,</span>
+<span class="diff-line diff-added">+  `26-Mar-2025 <https://discuss.python.org/t/86013>`__,</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ..</span>
+<span class="diff-line">     If accepted, the contents of this PEP should be integrated into the</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Non-substantive
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Metadata changes only: added a Discussions-To field pointing to a new discussion thread and added an extra Post-History entry (26-Mar-2025). There are no changes to the actual requirements, constraints, or their meaning.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">========</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> This PEP defines using ABI features as environment markers for project</span>
+<span class="diff-line diff-removed">-dependencies, through a new ``sys_abi_features`` environment marker and</span>
+<span class="diff-line diff-removed">-:data:`!sys.abi_features` attribute in the :mod:`sys` module.</span>
+<span class="diff-line diff-removed">-:pep:`508` (later moved to :ref:`packaging:dependency-specifiers`) introduced</span>
+<span class="diff-line diff-removed">-environment markers to specify dependencies based on rules that describe</span>
+<span class="diff-line diff-removed">-when the dependency should be used.</span>
+<span class="diff-line diff-removed">-This PEP extends the environment markers to allow specifying dependencies</span>
+<span class="diff-line diff-removed">-based on specific ABI features of the Python interpreter.</span>
+<span class="diff-line diff-removed">-For this, it defines a set of `ABI Features`_ and specifies how they are made</span>
+<span class="diff-line diff-removed">-available via an `addition to the Python Standard Library <pep-780-sys.abi_features_>`_</span>
+<span class="diff-line diff-removed">-in the form of a new attribute :data:`!sys.abi_features`, as well as for</span>
+<span class="diff-line diff-removed">-`environment markers <pep-780-sys_abi_features_>`_ as a new marker variable,</span>
+<span class="diff-line diff-removed">-``sys_abi_features``.</span>
+<span class="diff-line diff-added">+dependencies, through a new ``sys_abi_features`` environment marker. :pep:`508`</span>
+<span class="diff-line diff-added">+(later moved to :ref:`packaging:dependency-specifiers`) introduced environment</span>
+<span class="diff-line diff-added">+markers to specify dependencies based on rules that describe when the</span>
+<span class="diff-line diff-added">+dependency should be used. This PEP extends the environment markers to allow</span>
+<span class="diff-line diff-added">+specifying dependencies based on specific ABI features of the Python</span>
+<span class="diff-line diff-added">+interpreter. For this, it defines a set of `ABI Features`_ and specifies how</span>
+<span class="diff-line diff-added">+they are made available for `environment markers <pep-780-sys_abi_features_>`_</span>
+<span class="diff-line diff-added">+as a new marker variable, ``sys_abi_features``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Motivation</span>
+<span class="diff-line"> ==========</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> In 2015, :pep:`508` established environment markers to specify dependencies</span>
+<span class="diff-line diff-removed">-based on environment conditions.</span>
+<span class="diff-line diff-removed">-The development of free-threaded CPython [#python-free-threading]_</span>
+<span class="diff-line diff-removed">-has underlined the need for an environment marker to discriminate between</span>
+<span class="diff-line diff-removed">-different ABI features that the interpreter was built with.</span>
+<span class="diff-line diff-removed">-For example, currently there is</span>
+<span class="diff-line diff-removed">-no way to distinguish between a GIL-enabled and a free-threaded CPython</span>
+<span class="diff-line diff-removed">-interpreter with an environment marker. This leads to real world issues for the</span>
+<span class="diff-line diff-removed">-adoption of free-threading and its incremental rollout. When a Python package</span>
+<span class="diff-line diff-removed">-is being made compatible with free-threaded CPython, it also needs all its</span>
+<span class="diff-line diff-removed">-build and runtime dependencies to be compatible. Capturing the first version of</span>
+<span class="diff-line diff-removed">-a dependency that is compatible precisely in metadata is currently not</span>
+<span class="diff-line diff-removed">-possible, and increasing the minimum version of a dependency also for the</span>
+<span class="diff-line diff-removed">-GIL-enabled build is usually undesirable since it unnecessarily limits</span>
+<span class="diff-line diff-removed">-compatibility between packages.</span>
+<span class="diff-line diff-added">+based on environment conditions. The development of free-threaded CPython</span>
+<span class="diff-line diff-added">+[#python-free-threading]_ has underlined the need for an environment marker to</span>
+<span class="diff-line diff-added">+discriminate between different ABI features that the interpreter was built</span>
+<span class="diff-line diff-added">+with. For example, currently there is no way to distinguish between a</span>
+<span class="diff-line diff-added">+GIL-enabled and a free-threaded CPython interpreter with an environment marker.</span>
+<span class="diff-line diff-added">+This leads to real world issues for the adoption of free-threading and its</span>
+<span class="diff-line diff-added">+incremental rollout. When a Python package is being made compatible with</span>
+<span class="diff-line diff-added">+free-threaded CPython, it also needs all its build and runtime dependencies to</span>
+<span class="diff-line diff-added">+be compatible. Capturing the first version of a dependency that is compatible</span>
+<span class="diff-line diff-added">+precisely in metadata is currently not possible, and increasing the minimum</span>
+<span class="diff-line diff-added">+version of a dependency also for the GIL-enabled build is usually undesirable</span>
+<span class="diff-line diff-added">+since it unnecessarily limits compatibility between packages.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Some concrete examples of such issues have been discussed in the `Environment</span>
+<span class="diff-line"> marker for free-threading`_ Discourse thread:</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>The Abstract was rewritten to foreground the sys_abi_features environment marker and reference PEP 508, reorganizing wording and removing an explicit up-front mention of the sys.abi_features attribute in the initial sentence. This clarifies usage and context without changing the intended meaning or introducing new requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">- Cython has (experimental) support for free-threading only in its master</span>
+<span class="diff-line">   branch, and is used by a lot of projects that already publish ``cp313t``</span>
+<span class="diff-line">   wheels. Picking up the wrong Cython version is causing a lot of obscure build</span>
+<span class="diff-line diff-removed">-  failures and runtime crashes. It would be beneficial if the metadata</span>
+<span class="diff-line diff-removed">-  could express that (c.f. `Require Cython Pre-release for Free-Threaded</span>
+<span class="diff-line diff-removed">-  Python`_).</span>
+<span class="diff-line diff-added">+  failures and runtime crashes. It would be beneficial if the metadata could</span>
+<span class="diff-line diff-added">+  express that (c.f. `Require Cython Pre-release for Free-Threaded Python`_).</span>
+<span class="diff-line"> - CFFI has no support for free-threading yet, and `Armin Rigo, one of the</span>
+<span class="diff-line">   maintainers, has stated</span>
+<span class="diff-line">   <https://github.com/python-cffi/cffi/pull/143#issuecomment-2580781899>`__</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>Abstract was rewritten to remove the claim that a !sys.abi_features attribute in the sys module is defined as part of exposure; instead it now states that ABI features are exposed via the sys_abi_features environment marker, with the sys.abi_features attribute documentation moved to its own section. This changes the stated mechanism/placement of ABI feature exposure (from a sys attribute plus environment marker to primarily an environment-marker approach).</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">While these concrete examples may be addressed later this year by Cython and</span>
+<span class="diff-line"> CFFI making compatible releases, the same issue is going to repeat further up</span>
+<span class="diff-line"> the stack. The free-threading rollout is expected to take several years, and an</span>
+<span class="diff-line diff-removed">-environment marker for free-threading will make that rollout significantly easier.</span>
+<span class="diff-line diff-added">+environment marker for free-threading will make that rollout significantly</span>
+<span class="diff-line diff-added">+easier.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Another important ABI feature that is not yet covered by environment markers is</span>
+<span class="diff-line"> the bitness of the interpreter. In most cases, the ``sys_platform`` or</span>
+<span class="diff-line diff-removed">-``platform_system`` markers are enough, because there's only a single bitness</span>
+<span class="diff-line diff-added">+``platform_system`` markers are enough, because there is only a single bitness</span>
+<span class="diff-line"> in use per platform. This is not the case on Windows however: both 32-bit and</span>
+<span class="diff-line"> 64-bit Python interpreters are widely used on x86-64 Windows. Not being able to</span>
+<span class="diff-line"> distinguish between the two may be relevant for packages that provide compiled</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The Abstract in the New Version removes the previously described sys.abi_features attribute in the sys module and shifts to using a new sys_abi_features environment marker to express ABI features in dependency specifications, changing the mechanism/intent from an attribute-based exposure to an environment-marker based approach.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">=========</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The intention of this PEP is to introduce its core features with minimal impact</span>
+<span class="diff-line diff-removed">-on the existing ecosystem.</span>
+<span class="diff-line diff-removed">-The existing grammar proposed in :pep:`508` lends itself to a straightforward</span>
+<span class="diff-line diff-removed">-extension to include the new environment marker.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Adding ``sys.abi_features`` to the Python Standard Library</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-The Python standard library already has mechanisms to provide information about</span>
+<span class="diff-line diff-removed">-the ABI of the interpreter, like the :data:`!sys.abiflags` attribute and the</span>
+<span class="diff-line diff-removed">-:mod:`sysconfig` module, but these do not provide all the `ABI Features`_ that</span>
+<span class="diff-line diff-removed">-are relevant for environment markers.</span>
+<span class="diff-line diff-removed">-The new attribute :data:`!sys.abi_features` is a natural extension to the</span>
+<span class="diff-line diff-removed">-existing mechanisms, and it is a simple and intuitive way to provide this</span>
+<span class="diff-line diff-removed">-information, including the information from :data:`!sys.abiflags`.</span>
+<span class="diff-line diff-added">+on the existing ecosystem. The existing grammar proposed in :pep:`508` lends</span>
+<span class="diff-line diff-added">+itself to a straightforward extension to include the new environment marker.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> A Forward Looking View on Free-Threaded Python</span>
+<span class="diff-line"> ----------------------------------------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-:pep:`703`, the accepted proposal for free threading, states that the</span>
+<span class="diff-line diff-removed">-rollout of free-threaded Python should be gradual, which has been clarified</span>
+<span class="diff-line diff-removed">-by the Python Steering Council in `the PEP 703 acceptance post`_ to mean a</span>
+<span class="diff-line diff-removed">-three stage process over multiple releases. It is therefore important to make</span>
+<span class="diff-line diff-removed">-sure that the mechanisms in this PEP are useable for Python interpreters where</span>
+<span class="diff-line diff-removed">-either free-threading or non-free-threading could be the default or the only</span>
+<span class="diff-line diff-removed">-option.</span>
+<span class="diff-line diff-added">+:pep:`703`, the accepted proposal for free threading, states that the rollout</span>
+<span class="diff-line diff-added">+of free-threaded Python should be gradual, which has been clarified by the</span>
+<span class="diff-line diff-added">+Python Steering Council in `the PEP 703 acceptance post`_ to mean a three stage</span>
+<span class="diff-line diff-added">+process over multiple releases. It is therefore important to make sure that the</span>
+<span class="diff-line diff-added">+mechanisms in this PEP are useable for Python interpreters where either</span>
+<span class="diff-line diff-added">+free-threading or non-free-threading could be the default or the only option.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> At the time of writing, free-threaded Python is in Phase I: experimental phase.</span>
+<span class="diff-line"> In this phase, there is an acute need for the proposed environment markers to</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The change removes the explicit sys.abi_features attribute from the Abstract and redefines ABI features as available solely via the environment marker sys_abi_features, indicating a shift in design from a stdlib attribute to environment-marker based usage. It also adjusts the sys_abi_features table sample values from frozenset(...) to plain set literals and slightly rewords related sections.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Phase II: Supported-but-not-default phase, we still anticipate a strong need</span>
+<span class="diff-line"> for the environment markers to help with the transition.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-As free-threaded Python enters into Phase III: Default phase, the need for</span>
+<span class="diff-line diff-removed">-the environment markers will decrease, though at this point it is not clear</span>
+<span class="diff-line diff-removed">-that the GIL-enabled Python will be completely phased out (it may remain</span>
+<span class="diff-line diff-removed">-available as a non standard build option). If it persists, the inverse need for</span>
+<span class="diff-line diff-removed">-the ABI feature detection may arise.</span>
+<span class="diff-line diff-added">+As free-threaded Python enters into Phase III: Default phase, the need for the</span>
+<span class="diff-line diff-added">+environment markers will decrease, though at this point it is not clear that</span>
+<span class="diff-line diff-added">+the GIL-enabled Python will be completely phased out (it may remain available</span>
+<span class="diff-line diff-added">+as a non standard build option). If it persists, the inverse need for the ABI</span>
+<span class="diff-line diff-added">+feature detection may arise.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Indeed, in all three phases it may be necessary for package authors to choose</span>
+<span class="diff-line"> specific versions of their dependencies based on the ABI features, with a shift</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Non-substantive
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Formatting/line-wrapping change in a paragraph; content and meaning unchanged.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">------------</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ABI features are intrinsic properties of the Python interpreter, expressed as</span>
+<span class="diff-line diff-removed">-simple, understandable strings.</span>
+<span class="diff-line diff-removed">-However, not all features are equally applicable to all Python interpreters or</span>
+<span class="diff-line diff-removed">-Python versions. For example, the distinction between free-threaded and</span>
+<span class="diff-line diff-removed">-GIL-enabled interpreters is only relevant for CPython 3.13 onwards, but the bitness</span>
+<span class="diff-line diff-removed">-of the interpreter is relevant for all interpreters.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-All interpreters MUST handle the following ABI features as stated.</span>
+<span class="diff-line diff-removed">-ABI features that are restricted to particular interpreters MUST NOT be</span>
+<span class="diff-line diff-removed">-provided by other interpreters.</span>
+<span class="diff-line diff-removed">-The features are subdivided into groups and for each group there MUST be</span>
+<span class="diff-line diff-removed">-exactly one feature present, except when the group is marked as optional, in</span>
+<span class="diff-line diff-removed">-which case there MUST be at most one feature present.</span>
+<span class="diff-line diff-added">+simple, understandable strings. However, not all features are equally</span>
+<span class="diff-line diff-added">+applicable to all Python interpreters or Python versions. For example, the</span>
+<span class="diff-line diff-added">+distinction between free-threaded and GIL-enabled interpreters is only relevant</span>
+<span class="diff-line diff-added">+for CPython 3.13 onwards, but the bitness of the interpreter is relevant for</span>
+<span class="diff-line diff-added">+all interpreters.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line diff-added">+All interpreters MUST handle the following ABI features as stated. ABI features</span>
+<span class="diff-line diff-added">+that are restricted to particular interpreters MUST NOT be provided by other</span>
+<span class="diff-line diff-added">+interpreters. The features are subdivided into groups and for each group there</span>
+<span class="diff-line diff-added">+MUST be exactly one feature present, except when the group is marked as</span>
+<span class="diff-line diff-added">+optional, in which case there MUST be at most one feature present.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ``free-threading`` or ``gil-enabled`` (only CPython)</span>
+<span class="diff-line">     If the Python interpreter is free-threaded, the ``free-threading`` feature</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The change redefines how ABI features are exposed: the Old version describes a sys.abi_features attribute on the sys module; the New version removes that attribute reference and introduces a new environment marker sys_abi_features for dependency specifications. This shifts the mechanism from an attribute-based probe to environment-marker based usage, i.e., a change in intent/behavior rather than a formatting or typo fix.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">``debug`` (only CPython, optional)</span>
+<span class="diff-line">     This ABI feature is reserved for the ``--with-pydebug`` build of CPython.</span>
+<span class="diff-line">     If the interpreter is a CPython interpreter with ``Py_DEBUG`` capabilities,</span>
+<span class="diff-line diff-removed">-    the ``debug`` feature MUST be present.</span>
+<span class="diff-line diff-removed">-    On POSIX systems, this corresponds to ``"d" in sys.abiflags``.</span>
+<span class="diff-line diff-added">+    the ``debug`` feature MUST be present. On POSIX systems, this corresponds</span>
+<span class="diff-line diff-added">+    to the Python expression ``"d" in sys.abiflags``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> ``32-bit`` or ``64-bit`` (optional)</span>
+<span class="diff-line">     The bitness of the interpreter, that is, whether it is a 32-bit or 64-bit</span>
+<span class="diff-line">     build [#bitness]_. If the bitness is unknown or neither 32-bit nor 64-bit,</span>
+<span class="diff-line">     this feature MUST NOT be present.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. _pep-780-sys.abi_features:</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-The :data:`!sys.abi_features` Attribute</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Making the ABI features available in an easily accessible, expressive,</span>
+<span class="diff-line diff-removed">-standardized way is useful beyond the scope of environment markers.</span>
+<span class="diff-line diff-removed">-For example, ``"32-bit" in sys.abi_features`` is much more expressive than the</span>
+<span class="diff-line diff-removed">-current standard test of comparing ``sys.maxsize`` with  ``2**32``, which can</span>
+<span class="diff-line diff-removed">-be found more than ten thousand times on GitHub.</span>
+<span class="diff-line diff-removed">-If one wants to determine whether the interpreter is a debug build, there is</span>
+<span class="diff-line diff-removed">-currently no standardized, cross platform way to do so, and ``sys.abiflags`` is</span>
+<span class="diff-line diff-removed">-not available on Windows.</span>
+<span class="diff-line diff-removed">-Hence, the `ABI Features`_ listed above are added to the Python standard</span>
+<span class="diff-line diff-removed">-library.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-Since they are all the result of compile time choices describing basic features</span>
+<span class="diff-line diff-removed">-of the interpreter, the most intuitive place to put them is in ``sys``.</span>
+<span class="diff-line diff-removed">-Since there is no intrinsic order, nor a possibility for duplication, they are</span>
+<span class="diff-line diff-removed">-added as a ``frozenset`` of strings.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-All Python interpreters MUST provide the ``sys.abi_features`` attribute as a</span>
+<span class="diff-line diff-removed">-``frozenset`` of strings, which MUST contain only the `ABI Features`_ that are</span>
+<span class="diff-line diff-removed">-defined in this PEP or in a subsequent PEP.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-removed">-An example value would be ``sys.abi_features == frozenset({"free-threading",</span>
+<span class="diff-line diff-removed">-"debug", "32-bit"})`` on a free-threaded debug build for win32.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> .. _pep-780-sys_abi_features:</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> The ``sys_abi_features`` Environment Marker</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Deletion
+                                <span class="tooltiptext">An entire REQUIREMENT was redundant and therefore removed. Do NOT use this for removal of metadata, placeholders, or formatting.</span>
+                            </div>
+                            <p>Removed the 'The !sys.abi_features Attribute' section, effectively deleting the attribute-based exposure of ABI features (sys.abi_features) from the specification. The new version replaces this with documentation of the sys_abi_features environment marker, reworking the spec to rely on the environment marker rather than the sys.abi_features attribute.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">To make ABI features available in dependency specifications, a new environment</span>
+<span class="diff-line"> marker variable, ``sys_abi_features``, is added to the format of dependency</span>
+<span class="diff-line diff-removed">-specifiers with the same semantics as the ``sys.abi_features`` attribute</span>
+<span class="diff-line diff-removed">-proposed above.</span>
+<span class="diff-line diff-added">+specifiers.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> To do this, we need to extend the grammar laid out in :pep:`508` and maintained</span>
+<span class="diff-line"> in the :ref:`packaging:dependency-specifiers` and document the possible values.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Removed a redundant clause stating the new 'sys_abi_features' marker has the same semantics as the previously proposed 'sys.abi_features' attribute; the sentence was shortened without changing meaning.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">- Python equivalent</span>
+<span class="diff-line">       - Sample values</span>
+<span class="diff-line">     * - ``sys_abi_features``</span>
+<span class="diff-line diff-removed">-      - ``sys.abi_features`` [#sys-abi-features]_</span>
+<span class="diff-line diff-removed">-      - ``frozenset()``, ``frozenset({'free-threading', '64-bit'})``,</span>
+<span class="diff-line diff-removed">-        ``frozenset({'gil-enabled', 'debug', '32-bit'})``</span>
+<span class="diff-line diff-added">+      - no direct equivalent available</span>
+<span class="diff-line diff-added">+      - ``{'free-threading', '64-bit'}``,</span>
+<span class="diff-line diff-added">+        ``{'gil-enabled', 'debug', '32-bit'}``</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> With these additions, ABI features can be used in dependency specifications via</span>
+<span class="diff-line"> the ``in`` operator to test for the presence of a feature, or the ``not in``</span>
+<span class="diff-line"> operator to test for the absence of a feature.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Note that the presence of ``sys.abi_features`` in the Python standard library</span>
+<span class="diff-line diff-removed">-makes implementation particularly easy for new Python versions, but its absence</span>
+<span class="diff-line diff-removed">-in older versions does not prevent the implementation of the new environment</span>
+<span class="diff-line diff-removed">-markers, as demonstrated in the `Reference Implementation`_.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> Examples</span>
+<span class="diff-line"> ========</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Require Cython Pre-release for Free-Threaded Python</span>
+<span class="diff-line"> ----------------------------------------------------</span>
+<span class="diff-line diff-removed">-To require a pre-release of Cython only for a free-threaded Python</span>
+<span class="diff-line diff-removed">-interpreter, the following dependency specification can be used::</span>
+<span class="diff-line diff-added">+To require a pre-release of Cython only for a free-threaded Python interpreter,</span>
+<span class="diff-line diff-added">+the following dependency specification can be used::</span>
+<span class="diff-line"> </span>
+<span class="diff-line">     cython >3.1.0a1; "free-threading" in sys_abi_features</span>
+<span class="diff-line">     cython ==3.0.*; "free-threading" not in sys_abi_features</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The dominant change redefines how the sys_abi_features marker relates to Python's runtime features. The table now states there is no direct Python equivalent for the marker (no direct mapping to sys.abi_features) and shows sample values as sets; previously it mapped to sys.abi_features. This shifts the interpretation/behavior of ABI-feature-based dependency markers and is not just a wording tweak.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">affect existing environment markers or dependency specifications, hence there</span>
+<span class="diff-line"> are no direct backwards compatibility concerns.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-However, the introduction of the feature has implications for a</span>
+<span class="diff-line diff-removed">-number of ecosystem tools, especially those which attempt to support</span>
+<span class="diff-line diff-removed">-examination of data in ``pyproject.toml`` and ``requirements.txt``.</span>
+<span class="diff-line diff-added">+However, the introduction of the feature has implications for a number of</span>
+<span class="diff-line diff-added">+ecosystem tools, especially those which attempt to support examination of data</span>
+<span class="diff-line diff-added">+in ``pyproject.toml`` and ``requirements.txt``.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Audit and Update Tools</span>
+<span class="diff-line"> ----------------------</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Reflow/line-wrapping in the Backwards Compatibility section (a sentence split across lines is merged); no semantic changes to the content.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">``requirements.txt`` files. (e.g., Dependabot, Tidelift, etc)</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Such tools inspect dependency data and, in some cases, offer tool-assisted or</span>
+<span class="diff-line diff-removed">-fully automated updates.</span>
+<span class="diff-line diff-removed">-It is our expectation that no such tools would support the new environment</span>
+<span class="diff-line diff-removed">-markers at first, and broad ecosystem support could take many months or even</span>
+<span class="diff-line diff-removed">-some number of years to arrive.</span>
+<span class="diff-line diff-added">+fully automated updates. It is our expectation that no such tools would support</span>
+<span class="diff-line diff-added">+the new environment markers at first, and broad ecosystem support could take</span>
+<span class="diff-line diff-added">+many months or even some number of years to arrive.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> As a result, users of the new environment markers would experience a</span>
+<span class="diff-line"> degradation in their workflows and tool support at the time that they start</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Non-substantive
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Formatting change: line-wrapping in the Audit and Update Tools section; no change to the content, meaning, or requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>14</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">How to Teach This</span>
+<span class="diff-line"> =================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The use of environment markers is well established and communicated chiefly</span>
+<span class="diff-line diff-removed">-in :ref:`packaging:dependency-specifiers`.</span>
+<span class="diff-line diff-removed">-The new environment marker can be introduced in the same document.</span>
+<span class="diff-line diff-removed">-Additionally, both for package authors and users, free-threading specific</span>
+<span class="diff-line diff-removed">-guidance can be provided at the `Python free-threading guide`_.</span>
+<span class="diff-line diff-removed">-The new ``sys.abi_features`` attribute will be documented in the Python</span>
+<span class="diff-line diff-removed">-standard library documentation.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line diff-added">+The use of environment markers is well established and communicated chiefly in</span>
+<span class="diff-line diff-added">+:ref:`packaging:dependency-specifiers`. The new environment marker can be</span>
+<span class="diff-line diff-added">+introduced in the same document. Additionally, both for package authors and</span>
+<span class="diff-line diff-added">+users, free-threading specific guidance can be provided at the</span>
+<span class="diff-line diff-added">+`Python free-threading guide`_.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Reference Implementation</span>
+<span class="diff-line"> ========================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-The reference implementation for the ``sys.abi_features`` attribute can be</span>
+<span class="diff-line diff-removed">-found in `Add abi_features to sys</span>
+<span class="diff-line diff-removed">-<https://github.com/zklaus/cpython/pull/1>`__.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> The reference implementation for the environment markers is available in a fork</span>
+<span class="diff-line"> of the ``packaging`` library at `Environment markers for ABI features</span>
+<span class="diff-line"> <https://github.com/zklaus/packaging/pull/1>`__.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>The change shortens and consolidates the 'How to Teach This' guidance by rewording into a single sentence and removing the sentence that stated the 'sys.abi_features' attribute would be documented in the Python standard library. The overall intent remains the same; no new requirements or functional changes introduced.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>15</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">also available.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Since ``pip`` uses a vendored copy of ``packaging`` internally, we also provide</span>
+<span class="diff-line diff-removed">-`a patched version of pip`__, which replaces the vendored ``packaging`` with the</span>
+<span class="diff-line diff-removed">-reference implementation linked above.</span>
+<span class="diff-line diff-added">+`a patched version of pip`__, which replaces the vendored ``packaging`` with</span>
+<span class="diff-line diff-added">+the reference implementation linked above.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> __ https://github.com/zklaus/pip/tree/env-marker-free-threading</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Non-substantive
+                                <span class="tooltiptext">The change does not fit into any of the above categories (e.g. metadata removal, formatting changes, boilerplate).</span>
+                            </div>
+                            <p>Minor formatting/line-wrapping adjustment in the Reference Implementation section; content unchanged.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>16</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">the idea of a general extension mechanism for environment markers was brought</span>
+<span class="diff-line"> up. While it is appealing to forego a whole PEP process should the need for</span>
+<span class="diff-line"> new environment markers arise in the future, there are two main challenges.</span>
+<span class="diff-line diff-added">+</span>
+<span class="diff-line"> First, a completely dynamic mechanism would present difficulties for tools that</span>
+<span class="diff-line"> rely on static analysis of dependency specifications.</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Clarification
+                                <span class="tooltiptext">Rephrasing the same requirement to help understanding WITHOUT changing the meaning/intent.</span>
+                            </div>
+                            <p>A new sentence was added under 'Extension Mechanism' in the Rejected Ideas section to explicitly state the first challenge of a completely dynamic environment-marker extension: it would hinder tools that rely on static analysis of dependency specifications, clarifying why a general extension mechanism is rejected.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>17</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">implementation in the packaging library, which would be a significant departure</span>
+<span class="diff-line"> from the current approach.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Having said that, the new ``sys.abi_features`` attribute provides a natural</span>
+<span class="diff-line diff-removed">-extension point for any new ABI features, even if specific to a subset of</span>
+<span class="diff-line diff-removed">-interpreters, should the need arise to add such new features with a subsequent</span>
+<span class="diff-line diff-removed">-PEP.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> Open Issues</span>
+<span class="diff-line"> ===========</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The change shifts ABI feature exposure from a sys.abi_features attribute to solely using the sys_abi_features environment marker. This removes the requirement for interpreters to provide a sys.abi_features frozenset and adjusts the Abstract, ABI Features, and related sections to emphasize environment-marker semantics instead. Consequently, the marker table changes to indicate no direct Python equivalent, reflecting a change in approach from attribute-based exposure to marker-based usage.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>18</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line diff-removed">-------------</span>
+<span class="diff-line"> The reference implementation is based on the ``packaging`` library and ``pip``.</span>
+<span class="diff-line"> We have confirmed that this allows for building and installing packages with</span>
+<span class="diff-line diff-removed">-several build backends.</span>
+<span class="diff-line diff-removed">-It is possible that other tools should be added to the reference</span>
+<span class="diff-line diff-removed">-implementation.</span>
+<span class="diff-line diff-added">+several build backends. It is possible that other tools should be added to the</span>
+<span class="diff-line diff-added">+reference implementation.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Footnotes</span>
+<span class="diff-line"> =========</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. [#python-free-threading] Python experimental support for free threading</span>
+<span class="diff-line diff-removed">-   is available in Python 3.13 and later. For more information, see `Python</span>
+<span class="diff-line diff-added">+.. [#python-free-threading] Python experimental support for free threading is</span>
+<span class="diff-line diff-added">+   available in Python 3.13 and later. For more information, see `Python</span>
+<span class="diff-line">    experimental support for free threading`_.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> .. [#bitness] While there are some related environment markers available, such</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Non-substantive formatting changes that reflow/wrap text without changing meaning: the Reference Implementation paragraph lines were merged/rewrapped, and the Footnotes text was reflowed (adding line breaks) without altering content or introducing new requirements.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>19</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">not sufficient to reliably determine the bitness of the interpreter,</span>
+<span class="diff-line">    particularly on platforms that allow the execution of either kind of binary.</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-.. [#sys-abi-features] This is contingent on the availability of the</span>
+<span class="diff-line diff-removed">-   ``sys.abi_features`` attribute in the Python standard library. In</span>
+<span class="diff-line diff-removed">-   versions that don't provide this attribute, the marker will be constructed</span>
+<span class="diff-line diff-removed">-   from other available information, such as the ``sys.abiflags`` string.</span>
+<span class="diff-line diff-removed">-</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> .. _Python experimental support for free threading: https://docs.python.org/3/howto/free-threading-python.html</span>
+<span class="diff-line"> .. _Python free-threading guide: https://py-free-threading.github.io/</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Meaning
+                                <span class="tooltiptext">The requirement meaning/intention is changed (says something different).</span>
+                            </div>
+                            <p>The primary change is a semantic shift in how the sys_abi_features environment marker is presented: in the Overview table, the Python equivalent is removed and sample values are shown as plain sets instead of frozenset(...) wrappers, signaling no direct Python equivalent and altering how dependency specs are interpreted. This is a change in intent/behavior of the marker documentation rather than a new feature, typo, or simple deletion. A small footnote removal about sys.abi_features availability is a minor Summarization/shortening, but the dominant change is the semantic clarification of the marker in the grammar/table.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>20</td>
+                        <td>
+                            <div><strong>From:</strong> 2 &rarr; <strong>To:</strong> 3</div>
+                            
+                            <div style="font-size: 0.8em; color: #666; margin-bottom: 5px;">
+                                c437b2e (21-Mar-2025) &rarr; 1bd750c (21-Mar-2025)
+                            </div>
+                            
+                            
+                            <!-- Version-Level Metadata -->
+                            <div style="font-size: 0.85em; color: #444; background-color: #f0f4f8; padding: 8px; border-radius: 4px; margin-bottom: 8px; border-left: 3px solid #2980b9;">
+                                <div><strong>Old Version (v2):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 453 lines
+                                </div>
+                                <div style="margin-top: 4px;"><strong>New Version (v3):</strong> 
+                                    by Klaus Zimmermann, Ralf Gommers (Klaus Zimmermann: Author, Ralf Gommers: Core Developer)
+                                     | 381 lines
+                                </div>
+                            </div>
+                            
+                            <div class="diff-text"><span class="diff-line">Acknowledgements</span>
+<span class="diff-line"> ================</span>
+<span class="diff-line"> </span>
+<span class="diff-line diff-removed">-Thanks to Filipe Laíns for the suggestion of the ``abi_features`` attribute</span>
+<span class="diff-line diff-removed">-and to Stephen Rosen for the Backwards Compatibility section of :pep:`735`,</span>
+<span class="diff-line diff-removed">-which served as a template for the corresponding section in this PEP.</span>
+<span class="diff-line diff-added">+Thanks to Filipe Laíns for the suggestion of the ``abi_features`` attribute and</span>
+<span class="diff-line diff-added">+to Stephen Rosen for the Backwards Compatibility section of :pep:`735`, which</span>
+<span class="diff-line diff-added">+served as a template for the corresponding section in this PEP.</span>
+<span class="diff-line"> </span>
+<span class="diff-line"> Copyright</span>
+<span class="diff-line"> =========</span></div>
+                        </td>
+                        <td>
+                            <div class="reason-type tooltip">Summarization/shortening
+                                <span class="tooltiptext">The change is made to summarize/shorten without changing meaning.</span>
+                            </div>
+                            <p>Editorial consolidation in the Acknowledgements: merged two lines into one sentence and adjusted punctuation; no new content or substantive meaning changes.</p>
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+            
+            
+        </form>
+    </div>
+
+    
+</body>
+</html>

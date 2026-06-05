@@ -1,12 +1,15 @@
-from agent.metadata_fetcher import extract_version_id
-from agent.metadata_fetcher import extract_reason_type
-from agent.metadata_fetcher import get_diffs
 import os
+import sys
 import json
 from collections import Counter
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.ticker import MultipleLocator, MaxNLocator
+
+from agent.setup_reviewers import get_existing_reviewers
+from agent.metadata_fetcher import extract_reason_type
+from agent.metadata_fetcher import extract_version_id
+from agent.metadata_fetcher import get_diffs
 
 
 def get_vid_sort_key(k):
@@ -17,7 +20,28 @@ def get_vid_sort_key(k):
 
 
 def main():
-    outputs_dir = "outputs"
+    existing_reviewers = get_existing_reviewers()
+
+    if len(sys.argv) < 2:
+        print("Error: Reviewer name command line argument is required.")
+        print("Usage: python analyze_dataset.py <reviewer_name>")
+        print(f"Available reviewers: {', '.join(existing_reviewers)}")
+        sys.exit(1)
+
+    reviewer_arg = sys.argv[1].lower()
+    reviewer = None
+    for r in existing_reviewers:
+        if r.lower() == reviewer_arg:
+            reviewer = r
+            break
+
+    if not reviewer:
+        print(f"Error: Reviewer '{sys.argv[1]}' not found. Available reviewers: {', '.join(existing_reviewers)}")
+        sys.exit(1)
+
+    print(f"Analyzing dataset for reviewer: {reviewer}...")
+
+    outputs_dir = os.path.join("dataset_reviewers", reviewer, "outputs")
 
     reason_types = Counter()
     total_versions = 0
@@ -204,7 +228,8 @@ def main():
             print(f"{str(reason).ljust(max_label_len)} | {count:4d} {bar}")
 
     try:
-        plots_dir = "plots"
+
+        plots_dir = os.path.join("dataset_reviewers", reviewer, "plots")
         os.makedirs(plots_dir, exist_ok=True)
 
         labels = [item[0] for item in reason_types.most_common()]

@@ -1,7 +1,7 @@
 import os
 import time
-import json
 import pickle
+import sys
 from dotenv import load_dotenv
 from typing import Dict, Any
 from langgraph.graph import StateGraph, END
@@ -15,6 +15,7 @@ from agent.nodes import (
     generate_html_node,
     feedback_node
 )
+from agent.setup_reviewers import setup_new_reviewer, get_existing_reviewers
 
 # Load environment variables
 load_dotenv()
@@ -67,9 +68,9 @@ def build_graph():
     
     return workflow.compile()
 
-def load_existing_state(name: str) -> Dict[str, Any]:
+def load_existing_state(name: str, reviewer: str) -> Dict[str, Any]:
     """Loads state from an existing pickle file."""
-    states_dir = os.path.join(os.getcwd(), "states")
+    states_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "states")
     filename = f"{name}.pkl"
     filepath = os.path.join(states_dir, filename)
     
@@ -91,7 +92,37 @@ def load_existing_state(name: str) -> Dict[str, Any]:
     return state
 
 def main():
-    print("Starting Requirement Evolution Agent...")
+    if len(sys.argv) < 2:
+        print("Error: Reviewer name command line argument is required.")
+        print("Usage: python main.py <reviewer_name>")
+        sys.exit(1)
+
+    reviewer_arg = sys.argv[1].lower()
+    existing_reviewers = get_existing_reviewers()
+    reviewer = None
+    for r in existing_reviewers:
+        if r.lower() == reviewer_arg:
+            reviewer = r
+            break
+
+    if not reviewer:
+        print(f"\nReviewer '{sys.argv[1]}' was not found in the existing reviewers list: {existing_reviewers}")
+        while True:
+            answer = input("Are you a new reviewer? (y/n): ").strip().lower()
+            if answer == 'y':
+                # Use the original casing provided by the user
+                reviewer = sys.argv[1]
+                print(f"Adding '{reviewer}' as a new reviewer...")
+                setup_new_reviewer(reviewer)
+                break
+            elif answer == 'n':
+                print(f"Please re-run the script with a correct reviewer name.")
+                print(f"Available reviewers: {', '.join(existing_reviewers)}")
+                sys.exit(1)
+            else:
+                print("Please answer 'y' (yes) or 'n' (no).")
+
+    print(f"Starting Requirement Evolution Agent for reviewer: {reviewer}...")
     
     while True:
         print("\nSelect Mode:")
@@ -114,7 +145,8 @@ def main():
                 print("Invalid input logged: File name cannot be empty.")
                 continue
             try:
-                state = load_existing_state(name)
+                state = load_existing_state(name, reviewer)
+                state['reviewer'] = reviewer
                 print(f"Resuming analysis for: {state['domain']}")
                 break
             except Exception as e:
@@ -178,7 +210,8 @@ def main():
             "diffs": [],
             "start_time": time.time(),
             "user_feedback": None,
-            "is_final": False
+            "is_final": False,
+            "reviewer": reviewer
         }
 
         # We can't use the compiled LangGraph directly if we need the custom loop with 'finish'

@@ -506,14 +506,21 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
         safe_name = "analysis"
 
     # Write JSON output
-    outputs_dir = os.path.join(os.getcwd(), "outputs")
+    reviewer = state.get("reviewer")
+    if reviewer:
+        outputs_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "outputs")
+    else:
+        outputs_dir = os.path.join(os.getcwd(), "outputs")
     os.makedirs(outputs_dir, exist_ok=True)
     output_filename = os.path.join(outputs_dir, f"output_{safe_name}.json")
     with open(output_filename, "w") as f:
         json.dump(json_output, f, indent=2)
 
     # Persist full state as pickle for later reuse
-    states_dir = os.path.join(os.getcwd(), "states")
+    if reviewer:
+        states_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "states")
+    else:
+        states_dir = os.path.join(os.getcwd(), "states")
     os.makedirs(states_dir, exist_ok=True)
     pickle_filename = os.path.join(states_dir, f"{safe_name}.pkl")
     with open(pickle_filename, "wb") as f:
@@ -535,11 +542,18 @@ def generate_html_node(state: AgentState) -> Dict[str, Any]:
     if not safe_name:
         safe_name = "analysis"
         
+    reviewer = state.get("reviewer")
     if is_final:
-        reports_dir = os.path.join(os.getcwd(), "final_reports")
+        if reviewer:
+            reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "final_reports")
+        else:
+            reports_dir = os.path.join(os.getcwd(), "final_reports")
         output_filename = os.path.join(reports_dir, f"final_report_{safe_name}.html")
     else:
-        reports_dir = os.path.join(os.getcwd(), "reports")
+        if reviewer:
+            reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "reports")
+        else:
+            reports_dir = os.path.join(os.getcwd(), "reports")
         output_filename = os.path.join(reports_dir, f"report_{safe_name}.html")
         
     versions_map = {v['version_id']: v for v in state['versions']}
