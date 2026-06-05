@@ -168,7 +168,7 @@ HTML_TEMPLATE = """
                         <td>
                             <div class="feedback-cell">
                                 <div>
-                                    <label for="reason_{{ diff.diff_id }}">Correct Reason:</label>
+                                    <label for="reason_{{ diff.diff_id }}">Correct Reason Type:</label>
                                     <select id="reason_{{ diff.diff_id }}" name="reason_{{ diff.diff_id }}" class="reason-select">
                                         <option value="">(Confirm or Select correction)</option>
                                         {% for r_type in reason_types %}
