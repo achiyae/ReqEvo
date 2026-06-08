@@ -295,3 +295,4 @@ pyrightconfig.json
 /bprograms/
 
 /classification_results_with_feedback/
+/dataset_reviewers/**/classification_results_with_feedback/
