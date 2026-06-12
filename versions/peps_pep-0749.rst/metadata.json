@@ -1,0 +1,417 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_0a803fe.rst",
+      "commit_hash": "0a803fec895c5dea8df5153a34b70b1aade7425a",
+      "date": "28-May-2024",
+      "num_lines": 753,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_6a3075f.rst",
+      "commit_hash": "6a3075f867c9701b1b2bdd8e3fab6fd316ea19d4",
+      "date": "28-May-2024",
+      "num_lines": 755,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_7c738ca.rst",
+      "commit_hash": "7c738cacf534582879de2c734c1cd85f586cfc99",
+      "date": "28-May-2024",
+      "num_lines": 759,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_736c729.rst",
+      "commit_hash": "736c72935b054b5c7c07c8451858745aa5e05eeb",
+      "date": "28-May-2024",
+      "num_lines": 771,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_93557b3.rst",
+      "commit_hash": "93557b380886177f86869b22993eba6bcef5edfe",
+      "date": "28-May-2024",
+      "num_lines": 789,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_c5915b3.rst",
+      "commit_hash": "c5915b3ae0c7127a708ba0646368f35e46ed3a89",
+      "date": "28-May-2024",
+      "num_lines": 789,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_c1c52a5.rst",
+      "commit_hash": "c1c52a5832c9ea67865f934e91bb6b4c85ab7d99",
+      "date": "28-May-2024",
+      "num_lines": 952,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 8,
+      "filename": "v8_d135546.rst",
+      "commit_hash": "d135546f0b480a9048218b0cd5aadae9e78722ef",
+      "date": "28-May-2024",
+      "num_lines": 930,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 9,
+      "filename": "v9_6fe0175.rst",
+      "commit_hash": "6fe0175e3d677142a2727596f47abc6672285e68",
+      "date": "28-May-2024",
+      "num_lines": 940,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 10,
+      "filename": "v10_9c9c5c3.rst",
+      "commit_hash": "9c9c5c3aee487ba99c42f3895c1fcb10a1721630",
+      "date": "28-May-2024",
+      "num_lines": 965,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 11,
+      "filename": "v11_55cf374.rst",
+      "commit_hash": "55cf374db5e04bd85be36148ff6b604e1ddbb7df",
+      "date": "28-May-2024",
+      "num_lines": 989,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 12,
+      "filename": "v12_fb3926f.rst",
+      "commit_hash": "fb3926f4d7db4e5fb543d5617bbd0695ff0035a7",
+      "date": "28-May-2024",
+      "num_lines": 989,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 13,
+      "filename": "v13_5873714.rst",
+      "commit_hash": "5873714e28dd5d425ad461ecf397ddecbae96dbf",
+      "date": "28-May-2024",
+      "num_lines": 974,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 14,
+      "filename": "v14_8b44c5e.rst",
+      "commit_hash": "8b44c5e8e487f7aef704bf7aa58cb3c30ff0463a",
+      "date": "28-May-2024",
+      "num_lines": 1125,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 15,
+      "filename": "v15_db044b6.rst",
+      "commit_hash": "db044b61d2a6f567aaab2c3dba10186b02c691ce",
+      "date": "28-May-2024",
+      "num_lines": 1128,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__",
+        "Resolution": "`05-May-2025 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974/66>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 16,
+      "filename": "v16_8a7de2f.rst",
+      "commit_hash": "8a7de2fe4b51cac8cf18c24b2940bb9eaed14625",
+      "date": "28-May-2024",
+      "num_lines": 1127,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Accepted",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__",
+        "Resolution": "`05-May-2025 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974/66>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    },
+    {
+      "version_id": 17,
+      "filename": "v17_5a1fddd.rst",
+      "commit_hash": "5a1fdddc5a8bf1233c04babdc836b79d78385080",
+      "date": "28-May-2024",
+      "num_lines": 1129,
+      "author_job": "Core Developer",
+      "headers": {
+        "PEP": "749",
+        "Title": "Implementing PEP 649",
+        "Author": "Jelle Zijlstra <jelle.zijlstra@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-749-implementing-pep-649/54974",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Requires": "649",
+        "Created": "28-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`04-Jun-2024 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974>`__",
+        "Resolution": "`05-May-2025 <https://discuss.python.org/t/pep-749-implementing-pep-649/54974/66>`__"
+      },
+      "authors": [
+        "Jelle Zijlstra"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Jelle Zijlstra": "Core Developer"
+  },
+  "document_popularity": null
+}
