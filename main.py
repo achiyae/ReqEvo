@@ -2,6 +2,7 @@ import os
 import time
 import pickle
 import sys
+import shutil
 from dotenv import load_dotenv
 from typing import Dict, Any
 from langgraph.graph import StateGraph, END
@@ -69,22 +70,53 @@ def build_graph():
     return workflow.compile()
 
 def load_existing_state(name: str, reviewer: str) -> Dict[str, Any]:
-    """Loads state from an existing pickle file."""
+    """Loads state from an existing pickle file, falling back to 'AI' if not found."""
     states_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "states")
     filename = f"{name}.pkl"
     filepath = os.path.join(states_dir, filename)
     
-    if not os.path.exists(filepath):
-        # Try if name already includes .pkl
-        if name.endswith('.pkl'):
-             filepath = os.path.join(states_dir, name)
-        else:
-             # Try search in dir
-             files = [f for f in os.listdir(states_dir) if f.startswith(name)]
-             if files:
-                 filepath = os.path.join(states_dir, files[0])
-             else:
-                 raise FileNotFoundError(f"Could not find state for {name} in {states_dir}")
+    if os.path.exists(filepath):
+        with open(filepath, 'rb') as f:
+            return pickle.load(f)
+
+    if reviewer.lower() != 'ai':
+        ai_states_dir = os.path.join(os.getcwd(), "dataset_reviewers", "AI", "states")
+        ai_filename = f"{name}.pkl"
+        ai_filepath = os.path.join(ai_states_dir, ai_filename)
+
+        if os.path.exists(ai_filepath):
+            print(f"Document '{name}' not found for reviewer '{reviewer}', but found in 'AI'. Copying files...")
+            
+            safe_name = os.path.splitext(ai_filename)[0]
+            
+            dest_states_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "states")
+            dest_outputs_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "outputs")
+            dest_reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "reports")
+            dest_final_reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "final_reports")
+            
+            os.makedirs(dest_states_dir, exist_ok=True)
+            os.makedirs(dest_outputs_dir, exist_ok=True)
+            os.makedirs(dest_reports_dir, exist_ok=True)
+            os.makedirs(dest_final_reports_dir, exist_ok=True)
+            
+            files_to_copy = [
+                (ai_filepath, os.path.join(dest_states_dir, ai_filename)),
+                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "outputs", f"output_{safe_name}.json"),
+                     os.path.join(dest_outputs_dir, f"output_{safe_name}.json")),
+                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "reports", f"report_{safe_name}.html"),
+                     os.path.join(dest_reports_dir, f"report_{safe_name}.html")),
+                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "final_reports", f"final_report_{safe_name}.html"),
+                     os.path.join(dest_final_reports_dir, f"final_report_{safe_name}.html"))
+                ]
+                
+            for src, dst in files_to_copy:
+                if os.path.exists(src):
+                    shutil.copy2(src, dst)
+                    print(f"  Copied {os.path.basename(src)} to {reviewer}'s subdirectory.")
+            
+            filepath = os.path.join(dest_states_dir, ai_filename)
+    else:
+        raise FileNotFoundError(f"Could not find state for {name} in {states_dir}")
 
     with open(filepath, 'rb') as f:
         state = pickle.load(f)

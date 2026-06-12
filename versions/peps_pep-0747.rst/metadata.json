@@ -1,0 +1,530 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_3e200c6.rst",
+      "commit_hash": "3e200c644bb82d34f3368ba5dd952d51bbe82d90",
+      "date": "27-May-2024",
+      "num_lines": 977,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_5fa23ee.rst",
+      "commit_hash": "5fa23eecb5ae2755d84aea4244f646104b10e122",
+      "date": "27-May-2024",
+      "num_lines": 978,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_be31ca3.rst",
+      "commit_hash": "be31ca3251c6eb212a81da113e1cb5e62f84bba3",
+      "date": "27-May-2024",
+      "num_lines": 1057,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_1ad2288.rst",
+      "commit_hash": "1ad22881bc77173be8099211c6f82dc6e7bc8a80",
+      "date": "27-May-2024",
+      "num_lines": 1108,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_a6fb1e8.rst",
+      "commit_hash": "a6fb1e8d5a8299d5ebb0741fb8398ae52f2eb800",
+      "date": "27-May-2024",
+      "num_lines": 1064,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_89ae6e0.rst",
+      "commit_hash": "89ae6e0e30a9c59c5892775eaba3787497656887",
+      "date": "27-May-2024",
+      "num_lines": 1064,
+      "author_job": "Software Engineer",
+      "headers": {
+        "PEP": "747",
+        "Title": "TypeExpr: Type Hint for a Type Expression",
+        "Author": "David Foster <david at dafoster.net>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_02a7034.rst",
+      "commit_hash": "02a70341a2d34b7ad4c86a5773629d587e47c295",
+      "date": "27-May-2024",
+      "num_lines": 639,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 8,
+      "filename": "v8_2af9ffd.rst",
+      "commit_hash": "2af9ffd96195d5f4fa6d16f008eaac9521f34d0b",
+      "date": "27-May-2024",
+      "num_lines": 639,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 9,
+      "filename": "v9_a5b63cb.rst",
+      "commit_hash": "a5b63cb1404177f0588a1166dfd22aca0e9543b3",
+      "date": "27-May-2024",
+      "num_lines": 638,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 10,
+      "filename": "v10_85f165e.rst",
+      "commit_hash": "85f165ea3aea78a5501d54fec1d0c298f234edf1",
+      "date": "27-May-2024",
+      "num_lines": 640,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 11,
+      "filename": "v11_714d709.rst",
+      "commit_hash": "714d70935018827f0591238d348ff0bdc54191d6",
+      "date": "27-May-2024",
+      "num_lines": 667,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 12,
+      "filename": "v12_fb3926f.rst",
+      "commit_hash": "fb3926f4d7db4e5fb543d5617bbd0695ff0035a7",
+      "date": "27-May-2024",
+      "num_lines": 667,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 13,
+      "filename": "v13_fc81536.rst",
+      "commit_hash": "fc815363823806b3bab473714aba480682267cb5",
+      "date": "27-May-2024",
+      "num_lines": 652,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.14",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 14,
+      "filename": "v14_9481da9.rst",
+      "commit_hash": "9481da95d7486f8d77d30af8ed1155a2abffeebe",
+      "date": "27-May-2024",
+      "num_lines": 652,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 15,
+      "filename": "v15_145091a.rst",
+      "commit_hash": "145091a8e92133cebb1269204afa752d63174a3a",
+      "date": "27-May-2024",
+      "num_lines": 688,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 16,
+      "filename": "v16_60f0e69.rst",
+      "commit_hash": "60f0e69ff6dd96b756c7231375081984ff43a525",
+      "date": "27-May-2024",
+      "num_lines": 694,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 17,
+      "filename": "v17_b6bc205.rst",
+      "commit_hash": "b6bc20583cbd4d4b8585deaa5f070fd1a2397421",
+      "date": "27-May-2024",
+      "num_lines": 696,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 18,
+      "filename": "v18_74e861f.rst",
+      "commit_hash": "74e861f4b6df045dc099b92cc0f064d2936a74b8",
+      "date": "27-May-2024",
+      "num_lines": 698,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Draft",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 19,
+      "filename": "v19_4d64741.rst",
+      "commit_hash": "4d64741fd50ec3b215ddf0c945f8d13e23dd33a3",
+      "date": "27-May-2024",
+      "num_lines": 700,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__",
+        "Resolution": "`20-Feb-2026 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984/103>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 20,
+      "filename": "v20_4f2a433.rst",
+      "commit_hash": "4f2a4334093b9e083db0a8fa32a506690a0ac5d6",
+      "date": "27-May-2024",
+      "num_lines": 700,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__",
+        "Resolution": "`20-Feb-2026 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984/103>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    },
+    {
+      "version_id": 21,
+      "filename": "v21_e1c510a.rst",
+      "commit_hash": "e1c510a4ff8cfb5616554a403698f4a5c0b1c660",
+      "date": "27-May-2024",
+      "num_lines": 688,
+      "author_job": "David Foster: Software Engineer, Eric Traut: Core Developer",
+      "headers": {
+        "PEP": "747",
+        "Title": "Annotating Type Forms",
+        "Author": "David Foster <david at dafoster.net>, Eric Traut <erictr at microsoft.com>",
+        "Sponsor": "Jelle Zijlstra <jelle.zijlstra at gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984",
+        "Status": "Final",
+        "Type": "Standards Track",
+        "Topic": "Typing",
+        "Created": "27-May-2024",
+        "Python-Version": "3.15",
+        "Post-History": "`19-Apr-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435>`__, `04-May-2024 <https://discuss.python.org/t/typeform-spelling-for-a-type-annotation-object-at-runtime/51435/7/>`__, `17-Jun-2024 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984>`__",
+        "Resolution": "`20-Feb-2026 <https://discuss.python.org/t/pep-747-typeexpr-type-hint-for-a-type-expression/55984/103>`__"
+      },
+      "authors": [
+        "David Foster",
+        "Eric Traut"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Eric Traut": "Core Developer",
+    "David Foster": "Software Engineer"
+  },
+  "document_popularity": null
+}

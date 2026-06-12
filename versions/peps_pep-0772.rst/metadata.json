@@ -1,0 +1,479 @@
+{
+  "versions": [
+    {
+      "version_id": 1,
+      "filename": "v1_e95aa67.rst",
+      "commit_hash": "e95aa6726cfcbb871f3d9a1faccee6107032d3ed",
+      "date": "21-Jan-2025",
+      "num_lines": 464,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 2,
+      "filename": "v2_cd861f5.rst",
+      "commit_hash": "cd861f5a9dd1900eda3edb70ada1949828230bd2",
+      "date": "21-Jan-2025",
+      "num_lines": 465,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-governance-process/79724",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 3,
+      "filename": "v3_d0f2868.rst",
+      "commit_hash": "d0f2868d4c442d30168f85f53956f03bf3310c44",
+      "date": "21-Jan-2025",
+      "num_lines": 468,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-governance-process/79724",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 4,
+      "filename": "v4_be2ab53.rst",
+      "commit_hash": "be2ab534e6b325da1a7f3f5efc63d22c0f5b96ba",
+      "date": "21-Jan-2025",
+      "num_lines": 486,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-governance-process/79724",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 5,
+      "filename": "v5_45e6128.rst",
+      "commit_hash": "45e6128945c1e70cd9fed137e43f61f16ed42b46",
+      "date": "21-Jan-2025",
+      "num_lines": 486,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-governance-process/79724",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 6,
+      "filename": "v6_44dc1a5.rst",
+      "commit_hash": "44dc1a5cb3c4b71c004c78c330336c9ec7628792",
+      "date": "21-Jan-2025",
+      "num_lines": 483,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-governance-process/79724",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 7,
+      "filename": "v7_3158ed3.rst",
+      "commit_hash": "3158ed354dd41b6af5ef48ebbbeed77c74d591af",
+      "date": "21-Jan-2025",
+      "num_lines": 484,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "06-Feb-2025, 30-May-2025",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 8,
+      "filename": "v8_33f0d9b.rst",
+      "commit_hash": "33f0d9b3893ca8c99cc6e4ab0353dc3063db014e",
+      "date": "21-Jan-2025",
+      "num_lines": 486,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 9,
+      "filename": "v9_8c82cb8.rst",
+      "commit_hash": "8c82cb8ffe902ecf27d5ecbef0110aac96703070",
+      "date": "21-Jan-2025",
+      "num_lines": 504,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 10,
+      "filename": "v10_1ba076f.rst",
+      "commit_hash": "1ba076f5b16b10bccdf1cd69baabdfb97b26b1a0",
+      "date": "21-Jan-2025",
+      "num_lines": 505,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 11,
+      "filename": "v11_ed1de2a.rst",
+      "commit_hash": "ed1de2a2b05de9e739d3d445b58deb7e05709c07",
+      "date": "21-Jan-2025",
+      "num_lines": 516,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 12,
+      "filename": "v12_8851590.rst",
+      "commit_hash": "88515903b5e834a373f57c48db9941c925173807",
+      "date": "21-Jan-2025",
+      "num_lines": 518,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 13,
+      "filename": "v13_0ce1884.rst",
+      "commit_hash": "0ce188404b204aedb88271f502a284eebee67646",
+      "date": "21-Jan-2025",
+      "num_lines": 520,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 14,
+      "filename": "v14_3c2b82e.rst",
+      "commit_hash": "3c2b82ed5776b0f47b848cd6f124b38a2cf7bdb7",
+      "date": "21-Jan-2025",
+      "num_lines": 524,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 15,
+      "filename": "v15_19216b0.rst",
+      "commit_hash": "19216b022cf434a0c8724fa03d61e71856bc3d05",
+      "date": "21-Jan-2025",
+      "num_lines": 532,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 16,
+      "filename": "v16_763c2dc.rst",
+      "commit_hash": "763c2dc25c2672c5f362718f6a1d03d966572306",
+      "date": "21-Jan-2025",
+      "num_lines": 533,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__, `23-Mar-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/108>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 17,
+      "filename": "v17_40a3e79.rst",
+      "commit_hash": "40a3e7989997fbb6835ebbab4ec0968cb85e751c",
+      "date": "21-Jan-2025",
+      "num_lines": 540,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__, `23-Mar-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/108>`__, `14-Apr-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/117>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 18,
+      "filename": "v18_850f4f7.rst",
+      "commit_hash": "850f4f7050ee65e29dd4a949a4c51b495c0c53c9",
+      "date": "21-Jan-2025",
+      "num_lines": 540,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904",
+        "Status": "Draft",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__, `23-Mar-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/108>`__, `14-Apr-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/117>`__,",
+        "Replaces": "609"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    },
+    {
+      "version_id": 19,
+      "filename": "v19_7cab606.rst",
+      "commit_hash": "7cab606014267c8011d4ccbb8381fb2d56629d60",
+      "date": "21-Jan-2025",
+      "num_lines": 541,
+      "author_job": "Barry Warsaw: Core Developer, Deb Nicholson: Director of Community at Open Source Initiative, Pradyun Gedam: Core Developer",
+      "headers": {
+        "PEP": "772",
+        "Title": "Packaging Council governance process",
+        "Author": "Barry Warsaw <barry@python.org>, Deb Nicholson <deb@python.org>, Pradyun Gedam <pradyunsg@gmail.com>",
+        "Discussions-To": "https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181",
+        "Status": "Accepted",
+        "Type": "Process",
+        "Topic": "Governance, Packaging",
+        "Created": "21-Jan-2025",
+        "Post-History": "`06-Feb-2025 <https://discuss.python.org/t/pep-772-packaging-governance-process/79724/1>`__, `30-May-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-2/93904>`__, `25-Jul-2025 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181>`__, `23-Mar-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/108>`__, `14-Apr-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/117>`__,",
+        "Replaces": "609",
+        "Resolution": "`16-Apr-2026 <https://discuss.python.org/t/pep-772-packaging-council-governance-process-round-3/100181/118>`__"
+      },
+      "authors": [
+        "Barry Warsaw",
+        "Deb Nicholson",
+        "Pradyun Gedam"
+      ]
+    }
+  ],
+  "authors_jobs": {
+    "Barry Warsaw": "Core Developer",
+    "Deb Nicholson": "Director of Community at Open Source Initiative",
+    "Pradyun Gedam": "Core Developer"
+  },
+  "document_popularity": null
+}
