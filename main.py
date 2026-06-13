@@ -92,22 +92,18 @@ def load_existing_state(name: str, reviewer: str) -> Dict[str, Any]:
             dest_states_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "states")
             dest_outputs_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "outputs")
             dest_reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "reports")
-            dest_final_reports_dir = os.path.join(os.getcwd(), "dataset_reviewers", reviewer, "final_reports")
             
             os.makedirs(dest_states_dir, exist_ok=True)
             os.makedirs(dest_outputs_dir, exist_ok=True)
             os.makedirs(dest_reports_dir, exist_ok=True)
-            os.makedirs(dest_final_reports_dir, exist_ok=True)
             
             files_to_copy = [
                 (ai_filepath, os.path.join(dest_states_dir, ai_filename)),
-                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "outputs", f"output_{safe_name}.json"),
-                     os.path.join(dest_outputs_dir, f"output_{safe_name}.json")),
-                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "reports", f"report_{safe_name}.html"),
-                     os.path.join(dest_reports_dir, f"report_{safe_name}.html")),
-                    (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "final_reports", f"final_report_{safe_name}.html"),
-                     os.path.join(dest_final_reports_dir, f"final_report_{safe_name}.html"))
-                ]
+                (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "outputs", f"output_{safe_name}.json"),
+                 os.path.join(dest_outputs_dir, f"output_{safe_name}.json")),
+                (os.path.join(os.getcwd(), "dataset_reviewers", "AI", "reports", f"report_{safe_name}.html"),
+                 os.path.join(dest_reports_dir, f"report_{safe_name}.html"))
+            ]
                 
             for src, dst in files_to_copy:
                 if os.path.exists(src):
