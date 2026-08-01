@@ -156,7 +156,7 @@ def main():
     else:
         # bitsandbytes 4-bit and paged optimizers are CUDA-only. Use torch-native path on MPS/CPU.
         print(f"Loading model {args.model_id} without bitsandbytes quantization...")
-        model_kwargs["torch_dtype"] = torch.float16 if backend == "mps" else torch.float32
+        model_kwargs["torch_dtype"] = torch.bfloat16 if backend == "mps" else torch.float32
 
     if cache_dir:
         model_kwargs["cache_dir"] = cache_dir
@@ -184,6 +184,7 @@ def main():
 
     optim_name = "paged_adamw_32bit" if use_4bit else "adamw_torch"
     use_fp16 = backend == "cuda"
+    use_bf16 = backend == "mps"
     use_pin_memory = backend == "cuda"
 
     training_args = SFTConfig(
@@ -194,6 +195,7 @@ def main():
         logging_steps=10,
         learning_rate=2e-4,
         fp16=use_fp16,
+        bf16=use_bf16,
         max_grad_norm=0.3,
         num_train_epochs=args.epochs,
         eval_strategy="epoch",

@@ -100,7 +100,7 @@ def main():
             }
         )
     else:
-        model_kwargs["torch_dtype"] = torch.float16 if backend == "mps" else torch.float32
+        model_kwargs["torch_dtype"] = torch.bfloat16 if backend == "mps" else torch.float32
 
     if cache_dir:
         model_kwargs["cache_dir"] = cache_dir
