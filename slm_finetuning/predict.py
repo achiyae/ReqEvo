@@ -46,7 +46,9 @@ def main():
     parser.add_argument("--adapter_dir", type=str, required=True)
     args = parser.parse_args()
 
-    data_dir = r"C:\Repositories\ReqEvo\dataset_reviewers\Tali\outputs"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(base_dir, "..", "dataset_reviewers", "Tali", "outputs")
+    data_dir = os.path.normpath(data_dir)
 
     tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
     quantization_config = BitsAndBytesConfig(

@@ -77,7 +77,9 @@ def main():
     output_dir = f"./lora_adapter_{model_name_safe}"
     
     print(f"Loading data...")
-    data_dir = r"C:\Repositories\ReqEvo\dataset_reviewers\Tali\outputs"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(base_dir, "..", "dataset_reviewers", "Tali", "outputs")
+    data_dir = os.path.normpath(data_dir)
     raw_data = load_raw_data(data_dir)
     
     # Shuffle and split 90% Train / 10% Test
