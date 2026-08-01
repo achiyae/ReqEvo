@@ -184,6 +184,7 @@ def main():
 
     optim_name = "paged_adamw_32bit" if use_4bit else "adamw_torch"
     use_fp16 = backend == "cuda"
+    use_pin_memory = backend == "cuda"
 
     training_args = SFTConfig(
         output_dir=output_dir,
@@ -197,6 +198,7 @@ def main():
         num_train_epochs=args.epochs,
         eval_strategy="epoch",
         save_strategy="epoch",
+        dataloader_pin_memory=use_pin_memory,
         warmup_ratio=0.03,
         lr_scheduler_type="cosine",
         dataset_text_field="text",
