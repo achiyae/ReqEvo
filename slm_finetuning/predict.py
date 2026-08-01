@@ -40,6 +40,16 @@ def parse_json_response(response_text):
     except:
         return None, None
 
+
+def get_hf_cache_dir():
+    return (
+        os.environ.get("HF_HUB_CACHE")
+        or os.environ.get("TRANSFORMERS_CACHE")
+        or os.environ.get("HF_CACHE_DIR")
+        or os.environ.get("HF_HOME")
+    )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_id", type=str, required=True)
@@ -50,12 +60,29 @@ def main():
     data_dir = os.path.join(base_dir, "..", "dataset_reviewers", "Tali", "outputs")
     data_dir = os.path.normpath(data_dir)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
+    cache_dir = get_hf_cache_dir()
+    if cache_dir:
+        print(f"Using Hugging Face cache directory: {cache_dir}")
+
+    tokenizer_kwargs = {"trust_remote_code": True}
+    if cache_dir:
+        tokenizer_kwargs["cache_dir"] = cache_dir
+
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, **tokenizer_kwargs)
     quantization_config = BitsAndBytesConfig(
         load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_quant_type="nf4"
     )
+    model_kwargs = {
+        "device_map": "auto",
+        "quantization_config": quantization_config,
+        "torch_dtype": torch.float16,
+        "trust_remote_code": True,
+    }
+    if cache_dir:
+        model_kwargs["cache_dir"] = cache_dir
+
     base_model = AutoModelForCausalLM.from_pretrained(
-        args.model_id, device_map="auto", quantization_config=quantization_config, torch_dtype=torch.float16, trust_remote_code=True
+        args.model_id, **model_kwargs
     )
     
     model = PeftModel.from_pretrained(base_model, args.adapter_dir)

@@ -15,6 +15,15 @@ def parse_args():
     parser.add_argument("--epochs", type=int, default=3)
     return parser.parse_args()
 
+
+def get_hf_cache_dir():
+    return (
+        os.environ.get("HF_HUB_CACHE")
+        or os.environ.get("TRANSFORMERS_CACHE")
+        or os.environ.get("HF_CACHE_DIR")
+        or os.environ.get("HF_HOME")
+    )
+
 PROMPT_TEMPLATE = """You are an expert reviewer analyzing changes in PEP (Python Enhancement Proposal) specifications.
 Below is the general context of the PEP document (metadata and versions lists), followed by a specific diff to analyze.
 Determine the reason type and reason text for the diff.
@@ -99,7 +108,15 @@ def main():
     train_ds = Dataset.from_list([{"text": d["text"]} for d in train_data])
     test_ds = Dataset.from_list([{"text": d["text"]} for d in test_data])
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
+    cache_dir = get_hf_cache_dir()
+    if cache_dir:
+        print(f"Using Hugging Face cache directory: {cache_dir}")
+
+    tokenizer_kwargs = {"trust_remote_code": True}
+    if cache_dir:
+        tokenizer_kwargs["cache_dir"] = cache_dir
+
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, **tokenizer_kwargs)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -110,12 +127,18 @@ def main():
         bnb_4bit_quant_type="nf4"
     )
 
+    model_kwargs = {
+        "device_map": "auto",
+        "quantization_config": quantization_config,
+        "torch_dtype": torch.float16,
+        "trust_remote_code": True,
+    }
+    if cache_dir:
+        model_kwargs["cache_dir"] = cache_dir
+
     model = AutoModelForCausalLM.from_pretrained(
         args.model_id,
-        device_map="auto",
-        quantization_config=quantization_config,
-        torch_dtype=torch.float16,
-        trust_remote_code=True
+        **model_kwargs
     )
     
     model = prepare_model_for_kbit_training(model)
