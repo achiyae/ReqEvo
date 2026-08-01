@@ -38,6 +38,17 @@ def get_hf_cache_dir():
     )
 
 
+def detect_backend():
+    has_cuda = torch.cuda.is_available()
+    has_mps = torch.backends.mps.is_available() and torch.backends.mps.is_built()
+
+    if has_cuda:
+        return "cuda"
+    if has_mps:
+        return "mps"
+    return "cpu"
+
+
 def parse_reason_type(response_text):
     match = re.search(r'```json\s*(\{.*?\})\s*```', response_text, re.DOTALL)
     if match:
@@ -66,15 +77,31 @@ def main():
         tokenizer_kwargs["cache_dir"] = cache_dir
 
     tokenizer = AutoTokenizer.from_pretrained(args.model_id, **tokenizer_kwargs)
-    quantization_config = BitsAndBytesConfig(
-        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_quant_type="nf4"
-    )
+
+    backend = detect_backend()
+    use_4bit = backend == "cuda"
+    print(f"Detected backend: {backend}")
+
     model_kwargs = {
-        "device_map": "auto",
-        "quantization_config": quantization_config,
-        "torch_dtype": torch.float16,
         "trust_remote_code": True,
     }
+
+    if use_4bit:
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4"
+        )
+        model_kwargs.update(
+            {
+                "device_map": "auto",
+                "quantization_config": quantization_config,
+                "torch_dtype": torch.float16,
+            }
+        )
+    else:
+        model_kwargs["torch_dtype"] = torch.float16 if backend == "mps" else torch.float32
+
     if cache_dir:
         model_kwargs["cache_dir"] = cache_dir
 
@@ -82,7 +109,11 @@ def main():
         args.model_id, **model_kwargs
     )
     model = PeftModel.from_pretrained(base_model, args.adapter_dir)
+    if not use_4bit:
+        model.to(backend)
     model.eval()
+
+    model_device = next(model.parameters()).device
 
     with open(args.test_file, "r", encoding="utf-8") as f:
         test_data = json.load(f)
@@ -96,7 +127,7 @@ def main():
             document_context=item['document_context'],
             diff=item['diff_str']
         )
-        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        inputs = tokenizer(prompt, return_tensors="pt").to(model_device)
         
         with torch.no_grad():
             outputs = model.generate(**inputs, max_new_tokens=512, temperature=0.1, pad_token_id=tokenizer.eos_token_id)

@@ -50,6 +50,17 @@ def get_hf_cache_dir():
     )
 
 
+def detect_backend():
+    has_cuda = torch.cuda.is_available()
+    has_mps = torch.backends.mps.is_available() and torch.backends.mps.is_built()
+
+    if has_cuda:
+        return "cuda"
+    if has_mps:
+        return "mps"
+    return "cpu"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_id", type=str, required=True)
@@ -69,15 +80,31 @@ def main():
         tokenizer_kwargs["cache_dir"] = cache_dir
 
     tokenizer = AutoTokenizer.from_pretrained(args.model_id, **tokenizer_kwargs)
-    quantization_config = BitsAndBytesConfig(
-        load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_quant_type="nf4"
-    )
+
+    backend = detect_backend()
+    use_4bit = backend == "cuda"
+    print(f"Detected backend: {backend}")
+
     model_kwargs = {
-        "device_map": "auto",
-        "quantization_config": quantization_config,
-        "torch_dtype": torch.float16,
         "trust_remote_code": True,
     }
+
+    if use_4bit:
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4"
+        )
+        model_kwargs.update(
+            {
+                "device_map": "auto",
+                "quantization_config": quantization_config,
+                "torch_dtype": torch.float16,
+            }
+        )
+    else:
+        model_kwargs["torch_dtype"] = torch.float16 if backend == "mps" else torch.float32
+
     if cache_dir:
         model_kwargs["cache_dir"] = cache_dir
 
@@ -86,7 +113,11 @@ def main():
     )
     
     model = PeftModel.from_pretrained(base_model, args.adapter_dir)
+    if not use_4bit:
+        model.to(backend)
     model.eval()
+
+    model_device = next(model.parameters()).device
 
     for filename in os.listdir(data_dir):
         if not filename.endswith(".json"):
@@ -111,7 +142,7 @@ def main():
                 diff_str = json.dumps(diff_inputs, indent=2, ensure_ascii=False)
                 
                 prompt = INFERENCE_TEMPLATE.format(document_context=document_context, diff=diff_str)
-                inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+                inputs = tokenizer(prompt, return_tensors="pt").to(model_device)
                 
                 with torch.no_grad():
                     # We pass output_scores=True to get the logprobs (certainty) of the generation

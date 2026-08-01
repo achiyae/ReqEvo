@@ -6,7 +6,7 @@ import argparse
 import torch
 from datasets import Dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import LoraConfig, prepare_model_for_kbit_training
 from trl import SFTTrainer, SFTConfig
 
 def parse_args():
@@ -23,6 +23,17 @@ def get_hf_cache_dir():
         or os.environ.get("HF_CACHE_DIR")
         or os.environ.get("HF_HOME")
     )
+
+
+def detect_backend():
+    has_cuda = torch.cuda.is_available()
+    has_mps = torch.backends.mps.is_available() and torch.backends.mps.is_built()
+
+    if has_cuda:
+        return "cuda"
+    if has_mps:
+        return "mps"
+    return "cpu"
 
 PROMPT_TEMPLATE = """You are an expert reviewer analyzing changes in PEP (Python Enhancement Proposal) specifications.
 Below is the general context of the PEP document (metadata and versions lists), followed by a specific diff to analyze.
@@ -120,19 +131,33 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    print(f"Loading model {args.model_id} in 4-bit...")
-    quantization_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.float16,
-        bnb_4bit_quant_type="nf4"
-    )
+    backend = detect_backend()
+    use_4bit = backend == "cuda"
+    print(f"Detected backend: {backend}")
 
     model_kwargs = {
-        "device_map": "auto",
-        "quantization_config": quantization_config,
-        "torch_dtype": torch.float16,
         "trust_remote_code": True,
     }
+
+    if use_4bit:
+        print(f"Loading model {args.model_id} in 4-bit (bitsandbytes)...")
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4"
+        )
+        model_kwargs.update(
+            {
+                "device_map": "auto",
+                "quantization_config": quantization_config,
+                "torch_dtype": torch.float16,
+            }
+        )
+    else:
+        # bitsandbytes 4-bit and paged optimizers are CUDA-only. Use torch-native path on MPS/CPU.
+        print(f"Loading model {args.model_id} without bitsandbytes quantization...")
+        model_kwargs["torch_dtype"] = torch.float16 if backend == "mps" else torch.float32
+
     if cache_dir:
         model_kwargs["cache_dir"] = cache_dir
 
@@ -140,8 +165,12 @@ def main():
         args.model_id,
         **model_kwargs
     )
-    
-    model = prepare_model_for_kbit_training(model)
+
+    if use_4bit:
+        model = prepare_model_for_kbit_training(model)
+    else:
+        model.to(backend)
+
     # "all-linear" ensures PEFT targets all linear layers regardless of architecture (works for both Phi and Qwen)
     lora_config = LoraConfig(
         r=16,
@@ -153,14 +182,17 @@ def main():
     )
     # SFTTrainer will automatically call get_peft_model since we pass peft_config to it
 
+    optim_name = "paged_adamw_32bit" if use_4bit else "adamw_torch"
+    use_fp16 = backend == "cuda"
+
     training_args = SFTConfig(
         output_dir=output_dir,
         per_device_train_batch_size=1, # Reduced to 1 for 6GB VRAM compatibility
         gradient_accumulation_steps=8, # Kept effective batch size at 8
-        optim="paged_adamw_32bit",
+        optim=optim_name,
         logging_steps=10,
         learning_rate=2e-4,
-        fp16=True,
+        fp16=use_fp16,
         max_grad_norm=0.3,
         num_train_epochs=args.epochs,
         eval_strategy="epoch",
