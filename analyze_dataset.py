@@ -7,39 +7,21 @@ import matplotlib.patches as mpatches
 from matplotlib.ticker import MultipleLocator, MaxNLocator
 
 from agent.setup_reviewers import get_existing_reviewers
-from agent.metadata_fetcher import extract_reason_type
-from agent.metadata_fetcher import extract_version_id
-from agent.metadata_fetcher import get_diffs
-
-# Categorization of reason types for plotting
-CATEGORIES = ["Shortening", "Clarification", "Fix", "New"]
-CATEGORY_MAPPING = {
-    "deletion": "Shortening",
-    "summarization/shortening": "Shortening",
-    "generalization": "Shortening",
-    "clarification": "Clarification",
-    "demonstration": "Clarification",
-    "meaning": "Fix",
-    "mistake": "Fix",
-    "contradiction": "Fix",
-    "new": "New"
-}
-CATEGORY_COLORS = {
-    "Shortening": "#f39c12",    # Warm orange/amber
-    "Clarification": "#3498db", # Bright sky blue
-    "Fix": "#e74c3c",           # Muted red/coral
-    "New": "#2ecc71"            # Emerald green
-}
+from agent.metadata_fetcher import extract_reason_type, extract_version_id, get_diffs
+from agent.tracking_utils import (
+    CATEGORIES,
+    CATEGORY_MAPPING,
+    CATEGORY_COLORS,
+    get_vid_sort_key,
+    get_new_vid as _get_new_vid,
+    get_new_range as _get_new_range,
+    build_chains,
+    augment_chains_with_new_sentinel,
+    chains_to_trees,
+)
 
 
-def get_vid_sort_key(k):
-    try:
-        return float(k)
-    except Exception:
-        return str(k)
-
-
-def generate_plots(plots_dir, reason_types, doc_names, doc_versions, doc_version_changes, doc_version_reasons_list):
+def generate_plots(plots_dir, reason_types, doc_names, doc_versions, doc_version_changes, doc_version_reasons_list, reason_color=None):
     os.makedirs(plots_dir, exist_ok=True)
 
     labels = [item[0] for item in reason_types.most_common()]
@@ -150,12 +132,11 @@ def generate_plots(plots_dir, reason_types, doc_names, doc_versions, doc_version
     if len(all_reasons) >= 1:
         fig, ax = plt.subplots(figsize=(14, 8))
 
-        cmap = plt.get_cmap('tab20')
-
-        reason_color = {
-            reason: cmap(i % 20)
-            for i, reason in enumerate(all_reasons)
-        }
+        # Use the globally-consistent reason_color if provided; build a local
+        # fallback only for reason types not already in the shared map.
+        if reason_color is None:
+            cmap = plt.get_cmap('tab20')
+            reason_color = {r: cmap(i % 20) for i, r in enumerate(sorted(all_reasons))}
 
         n_docs = len(doc_names)
         total_width = 0.8
@@ -416,6 +397,165 @@ def generate_plots(plots_dir, reason_types, doc_names, doc_versions, doc_version
     plt.close('all')
 
 
+def generate_requirements_tracking_plot(plots_dir, doc_name, diffs, versions_sorted_ids, versions_data=None, reason_color=None):
+    """Generate a horizontal tracking chart for requirements that changed in multiple versions.
+
+    Each row represents a requirement chain (the same requirement evolving across versions).
+    Trees with common prefixes share rows up to the split point, fanning out on new rows below.
+    Each cell is coloured by the reason_type of that version's change.
+    """
+    if not diffs:
+        return
+
+    chains = build_chains(diffs)
+    multi_chains = [c for c in chains if len(c) >= 2]
+    if not multi_chains:
+        return
+
+    multi_chains = augment_chains_with_new_sentinel(multi_chains, versions_data, versions_sorted_ids)
+
+    # Convert flat chains to tree structure (merging common prefixes)
+    roots = chains_to_trees(multi_chains)
+    roots = [r for r in roots if r.get("children")]
+    if not roots:
+        return
+
+    # Collect all reason types present in this document's chains.
+    all_reason_types = sorted({
+        extract_reason_type(d)
+        for chain in multi_chains for d in chain
+    })
+    # Use the globally-consistent reason_color map if provided; build a local
+    # fallback only for reason types not already in the shared map.
+    if reason_color is None:
+        cmap = plt.get_cmap("tab20")
+        reason_color = {r: cmap(i % 20) for i, r in enumerate(all_reason_types)}
+
+    # Map version IDs to x-axis positions
+    vid_to_x = {str(vid): idx for idx, vid in enumerate(versions_sorted_ids)}
+
+    # Assign row indices to tree nodes (common prefixes share row, branches go on rows below)
+    node_row = {}
+
+    def assign_rows(node, current_row):
+        node_row[id(node)] = current_row
+        children = node.get("children", [])
+        if not children:
+            return current_row
+        max_row = current_row
+        for i, child in enumerate(children):
+            if i == 0:
+                child_max = assign_rows(child, current_row)
+                max_row = max(max_row, child_max)
+            else:
+                next_row = max_row + 1
+                child_max = assign_rows(child, next_row)
+                max_row = max(max_row, child_max)
+        return max_row
+
+    current_row = 0
+    for root in roots:
+        max_r = assign_rows(root, current_row)
+        current_row = max_r + 1
+
+    n_rows = current_row
+    fig_height = max(4, n_rows * 0.55 + 2)
+    fig, ax = plt.subplots(figsize=(max(10, len(versions_sorted_ids) * 1.2), fig_height))
+
+    bar_height = 0.6
+
+    # Draw connecting lines and node boxes
+    def draw_node(node):
+        diff = node["diff"]
+        row_idx = node_row[id(node)]
+        vid = str(_get_new_vid(diff))
+        x = vid_to_x.get(vid)
+
+        children = node.get("children", [])
+
+        for i, child in enumerate(children):
+            child_diff = child["diff"]
+            child_row = node_row[id(child)]
+            child_vid = str(_get_new_vid(child_diff))
+            child_x = vid_to_x.get(child_vid)
+
+            if x is not None and child_x is not None:
+                if child_row == row_idx:
+                    # Same row: horizontal dashed line
+                    ax.plot([x, child_x], [row_idx, row_idx], color="#95a5a6", linestyle="--", linewidth=1.0, zorder=1)
+                else:
+                    # Branching row: vertical/elbow dashed line from split node to branch start
+                    ax.plot([x, x, child_x], [row_idx, child_row, child_row], color="#95a5a6", linestyle="--", linewidth=1.0, zorder=1)
+
+            draw_node(child)
+
+        if x is not None:
+            reason = extract_reason_type(diff)
+            color = reason_color.get(reason, "#7f8c8d")
+            ax.broken_barh(
+                [(x - 0.4, 0.8)],
+                (row_idx - bar_height / 2, bar_height),
+                facecolors=color,
+                edgecolors="white",
+                linewidth=0.5,
+                zorder=2,
+            )
+            new_lr = _get_new_range(diff)
+            if new_lr and len(new_lr) >= 2:
+                bar_label = f"{new_lr[0]}-{new_lr[1]}"
+            else:
+                bar_label = ""
+            if bar_label:
+                ax.text(
+                    x,
+                    row_idx,
+                    bar_label,
+                    ha="center",
+                    va="center",
+                    fontsize=5,
+                    color="white",
+                    fontweight="bold",
+                    clip_on=True,
+                    zorder=3,
+                )
+
+    for root in roots:
+        draw_node(root)
+
+    ax.set_yticks(range(n_rows))
+    ax.set_yticklabels([""] * n_rows)  # no tick labels; title describes the axis
+    ax.tick_params(axis="y", length=0)  # also hide tick marks
+    ax.set_xticks(range(len(versions_sorted_ids)))
+    ax.set_xticklabels([str(v) for v in versions_sorted_ids], rotation=45, ha="right", fontsize=8)
+    ax.set_xlabel("Version")
+    ax.set_ylabel("Text Diffs (recognized by Git)")
+    ax.set_title(f"Requirements Tracking — {doc_name}")
+    ax.set_xlim(-1, len(versions_sorted_ids))
+    ax.set_ylim(-0.8, n_rows - 0.2)
+    ax.invert_yaxis()
+
+    legend_handles = [
+        mpatches.Patch(color=reason_color.get(r, "#7f8c8d"), label=r)
+        for r in all_reason_types
+    ]
+    ax.legend(
+        handles=legend_handles,
+        bbox_to_anchor=(1.02, 1),
+        loc="upper left",
+        fontsize=8,
+    )
+
+    plt.tight_layout()
+
+    tracking_dir = os.path.join(plots_dir, "requirements_tracking")
+    os.makedirs(tracking_dir, exist_ok=True)
+    safe_name = "".join(c if c.isalnum() or c in ('-', '_') else '_' for c in doc_name)
+    out_path = os.path.join(tracking_dir, f"{safe_name}.png")
+    fig.savefig(out_path, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved requirements tracking plot to '{out_path}'.")
+
+
 def main():
     existing_reviewers = get_existing_reviewers()
 
@@ -454,10 +594,15 @@ def main():
     doc_reason_counts = []
     doc_version_reasons_list = []
     doc_metadata_list = []
+    _pending_tracking = []  # deferred (domain, diffs, versions) tuples
 
     if not os.path.exists(outputs_dir):
         print(f"Directory '{outputs_dir}' not found.")
         return
+
+    # Ensure the plots directory exists
+    plots_dir = os.path.join("dataset_reviewers", reviewer, "plots")
+    os.makedirs(plots_dir, exist_ok=True)
 
     for filename in os.listdir(outputs_dir):
         if not filename.endswith('.json'):
@@ -573,6 +718,10 @@ def main():
             doc_version_reason_types[vid]
             for vid in doc_versions_for_changes
         ])
+        # Generate requirements tracking plot for this document.
+        # reason_color_global is built after all docs are processed; we pass
+        # None here and backfill via a deferred list below.
+        _pending_tracking.append((domain, diffs, doc_versions_sorted, data.get("versions", {})))
 
     print("=== Dataset Analysis ===")
     print(f"Total documents analyzed: {total_documents}")
@@ -653,6 +802,28 @@ def main():
     try:
         plots_dir = os.path.join("dataset_reviewers", reviewer, "plots")
 
+        # Build a single, globally-consistent reason_type color map so that
+        # all plots (bar charts and tracking charts) use the same color for
+        # the same reason type.
+        _all_reason_types_global = sorted(reason_types.keys())
+        _cmap = plt.get_cmap('tab20')
+        reason_color_global = {
+            r: _cmap(i % 20)
+            for i, r in enumerate(_all_reason_types_global)
+        }
+
+        # Now generate the deferred requirements-tracking plots with the
+        # globally-consistent color map.
+        for _domain, _diffs, _versions, _versions_data in _pending_tracking:
+            generate_requirements_tracking_plot(
+                plots_dir,
+                _domain,
+                _diffs,
+                _versions,
+                versions_data=_versions_data,
+                reason_color=reason_color_global,
+            )
+
         # 1. Generate normal plots
         print("\nGenerating standard plots...")
         generate_plots(
@@ -661,7 +832,8 @@ def main():
             doc_names,
             doc_versions,
             doc_version_changes,
-            doc_version_reasons_list
+            doc_version_reasons_list,
+            reason_color=reason_color_global,
         )
 
         # 2. Filter INTERESTING documents
@@ -687,7 +859,8 @@ def main():
                 filtered_doc_names,
                 filtered_doc_versions,
                 filtered_doc_version_changes,
-                filtered_doc_version_reasons_list
+                filtered_doc_version_reasons_list,
+                reason_color=reason_color_global,
             )
         else:
             print(f"\nNo documents found with at least {MIN_INTERESTING_VERSIONS} version changes. Skipping only interesting docs plots.")
