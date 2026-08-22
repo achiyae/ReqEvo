@@ -1,6 +1,146 @@
 import os
 import json
-from typing import List, Dict, Any, Optional
+import difflib
+from typing import List, Dict, Any, Optional, Tuple
+
+
+def find_line_range(
+    snippet: str,
+    content: str,
+    diff_text: str = "",
+    diff_mode: str = "new",
+) -> Optional[List[int]]:
+    """Return a 1-based [start, end] line range for *snippet* inside *content*.
+
+    Strategy (in order):
+    1. If *snippet* is non-empty, try an exact multi-line substring search.
+    2. If not found (or *snippet* is empty), extract candidate text from
+       *diff_text* (lines prefixed with '-' for old, '+' for new).
+    3. Fuzzy-search the candidate text as a sliding window over *content* lines,
+       picking the window with the highest SequenceMatcher ratio.
+
+    Returns ``None`` (null) if failed to find the lines in all attempts.
+    """
+    # Pre-rstrip lines to speed up exact search
+    lines = [l.rstrip() for l in content.splitlines()] if content else []
+    if not lines:
+        return None
+
+    def _exact_search(text: str) -> Tuple[int, int] | None:
+        """Locate *text* block inside *lines*; return 1-based (start, end) or None."""
+        needle_stripped = [l.rstrip() for l in text.strip().splitlines()]
+        if not needle_stripped:
+            return None
+        n = len(needle_stripped)
+        for i in range(len(lines) - n + 1):
+            if lines[i:i + n] == needle_stripped:
+                return (i + 1, i + n)
+        return None
+
+    def _fuzzy_search(text: str) -> Tuple[int, int] | None:
+        """Find the best-matching window in *lines* for *text*.
+
+        Returns None if no match is found (e.g. best_ratio is 0.0 or lower).
+        """
+        needle_lines = [l.rstrip() for l in text.strip().splitlines()]
+        if not needle_lines:
+            return None
+        n = max(1, len(needle_lines))
+        needle_joined = "\n".join(needle_lines)
+
+        needle_words = set(needle_joined.lower().split())
+        if not needle_words:
+            return None
+
+        # Precompute words per line
+        line_words = [set(l.lower().split()) for l in lines]
+        match_count = [len(w & needle_words) for w in line_words]
+
+        # Calculate sliding window sums of size n
+        num_windows = max(1, len(lines) - n + 1)
+        window_sums = []
+        if len(match_count) >= n:
+            current_sum = sum(match_count[:n])
+            window_sums.append((current_sum, 0))
+            for i in range(1, num_windows):
+                current_sum = current_sum - match_count[i - 1] + match_count[i + n - 1]
+                window_sums.append((current_sum, i))
+        else:
+            # Document is shorter than the needle
+            window_sums.append((sum(match_count), 0))
+
+        # Find max sum
+        max_sum = max(item[0] for item in window_sums)
+        if max_sum == 0:
+            return None
+
+        # Sort windows by sum descending and take the top candidates (close to max_sum or top 5)
+        window_sums.sort(key=lambda x: x[0], reverse=True)
+        candidates = []
+        for s, idx in window_sums:
+            if len(candidates) < 10 and s >= max_sum * 0.8:
+                candidates.append(idx)
+            else:
+                break
+
+        best_ratio = -1.0
+        best_start = 0
+        for i in candidates:
+            window = lines[i:i + n]
+            window_joined = "\n".join(window)
+            ratio = difflib.SequenceMatcher(
+                None, window_joined, needle_joined, autojunk=False
+            ).ratio()
+            if ratio > best_ratio:
+                best_ratio = ratio
+                best_start = i
+
+        if best_ratio <= 0.0:
+            return None
+        return (best_start + 1, best_start + n)
+
+    def _extract_from_diff(mode: str) -> str:
+        """Reconstruct the old or new version snippet from the unified-diff text, including context."""
+        prefix = "-" if mode == "old" else "+"
+        other_prefix = "+" if mode == "old" else "-"
+        extracted = []
+        for line in (diff_text or "").splitlines():
+            if line.startswith("--- ") or line.startswith("+++ ") or line.startswith("@@"):
+                continue
+            if line.startswith(other_prefix):
+                continue
+            if line.startswith(prefix):
+                extracted.append(line[1:])
+            elif line.startswith(" "):
+                extracted.append(line[1:])
+            elif not line.startswith("\\"):
+                extracted.append(line)
+        return "\n".join(extracted)
+
+    # --- Main logic ---
+    candidate = snippet.strip() if snippet else ""
+
+    if candidate:
+        result = _exact_search(candidate)
+        if result:
+            return list(result)
+        # Exact failed — fall through to fuzzy with the snippet
+        fuzzy_res = _fuzzy_search(candidate)
+        if fuzzy_res:
+            return list(fuzzy_res)
+
+    # Try to reconstruct from diff text
+    from_diff = _extract_from_diff(diff_mode)
+    if from_diff.strip():
+        result = _exact_search(from_diff)
+        if result:
+            return list(result)
+        fuzzy_res = _fuzzy_search(from_diff)
+        if fuzzy_res:
+            return list(fuzzy_res)
+
+    # Nothing worked — return None
+    return None
 
 
 def get_clean_doc_name(domain: str) -> str:

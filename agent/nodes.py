@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field
 
 from agent.state import AgentState, RequirementVersion, DiffEntry
 from agent.utils import render_html_report, open_in_browser, REASON_DEFINITIONS
+from agent.metadata_fetcher import find_line_range
 from agent.git_utils import (
     parse_github_url, 
     fetch_file_history, 
@@ -217,24 +218,43 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                     in_hunk = True
                     # Skip the @@ line
                 elif in_hunk:
-                    # Skip git metadata lines
-                    if line.startswith('---') or line.startswith('+++') or line.startswith('diff') or line.startswith('index') or line.startswith('new file') or line.startswith('deleted file'):
-                        continue
-                    current_hunk.append(line)
+                    # Skip git metadata lines, leaving actual deleted headers starting with '---' intact
+                    if line.startswith('diff --git') or line.startswith('--- ') or line.startswith('+++ ') or line.startswith('index ') or line.startswith('new file') or line.startswith('deleted file'):
+                        in_hunk = False
+                        if current_hunk:
+                            hunks.append("\n".join(current_hunk))
+                            current_hunk = []
+                    else:
+                        current_hunk.append(line)
                     
             if current_hunk:
                 hunks.append("\n".join(current_hunk))
                 
             for hunk in hunks:
+                hunk_stripped = hunk.strip()
+                old_lr = find_line_range(
+                    snippet="",
+                    content=old_v.get('content', ''),
+                    diff_text=hunk_stripped,
+                    diff_mode="old",
+                )
+                new_lr = find_line_range(
+                    snippet="",
+                    content=new_v.get('content', ''),
+                    diff_text=hunk_stripped,
+                    diff_mode="new",
+                )
                 diffs.append({
                     "diff_id": global_diff_id,
                     "old_version_id": old_v['version_id'],
                     "new_version_id": new_v['version_id'],
-                    "diff_text": hunk.strip(),
+                    "diff_text": hunk_stripped,
                     "reason_type": "Pending Analysis",
                     "reason_text": "Pending...",
-                    "old_content_snippet": "", 
+                    "old_content_snippet": "",
                     "new_content_snippet": "",
+                    "old_line_range": old_lr,
+                    "new_line_range": new_lr,
                     "old_commit_hash": old_v.get('commit_hash'),
                     "old_date": old_v.get('date'),
                     "new_commit_hash": new_v.get('commit_hash'),
@@ -270,6 +290,18 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                     
                     diff_text = "\n".join(diff_lines)
                     
+                    old_lr = find_line_range(
+                        snippet=sub_old if sub_old else "",
+                        content=old_v.get('content', ''),
+                        diff_text=diff_text.strip(),
+                        diff_mode="old",
+                    )
+                    new_lr = find_line_range(
+                        snippet=sub_new if sub_new else "",
+                        content=new_v.get('content', ''),
+                        diff_text=diff_text.strip(),
+                        diff_mode="new",
+                    )
                     diffs.append({
                         "diff_id": global_diff_id,
                         "old_version_id": old_v['version_id'],
@@ -279,6 +311,8 @@ def compute_diffs_node(state: AgentState) -> Dict[str, Any]:
                         "reason_text": "Pending...",
                         "old_content_snippet": sub_old if sub_old else "",
                         "new_content_snippet": sub_new if sub_new else "",
+                        "old_line_range": old_lr,
+                        "new_line_range": new_lr,
                         "old_commit_hash": old_v.get('commit_hash'),
                         "old_date": old_v.get('date'),
                         "new_commit_hash": new_v.get('commit_hash'),
@@ -469,6 +503,7 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
                 "commit_hash": d.get('old_commit_hash'),
                 "date": d.get('old_date'),
                 "num_lines": old_v.get('num_lines') if old_v else None,
+                "line_range": d.get('old_line_range'),
             },
             "new_version": {
                 "version_id": d['new_version_id'],
@@ -476,6 +511,7 @@ def generate_json_node(state: AgentState) -> Dict[str, Any]:
                 "commit_hash": d.get('new_commit_hash'),
                 "date": d.get('new_date'),
                 "num_lines": new_v.get('num_lines') if new_v else None,
+                "line_range": d.get('new_line_range'),
             },
             "diff": d['diff_text'],
             "old_content_snippet": d.get('old_content_snippet', ''),
